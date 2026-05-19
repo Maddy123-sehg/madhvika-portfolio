@@ -1,0 +1,43 @@
+--longest streak
+
+WITH match_ordered AS
+  (SELECT player_id,
+          match_date,
+          match_result,
+          LAG(match_result) OVER (PARTITION BY player_id
+                                  ORDER BY match_date) AS prev_result
+   FROM players_results),
+     streak_flags AS
+  (SELECT player_id,
+          match_date,
+          match_result,
+          CASE
+              WHEN match_result = prev_result THEN 0
+              ELSE 1
+          END AS streak_change
+   FROM match_ordered),
+     streak_groups AS
+  (SELECT player_id,
+          match_date,
+          match_result,
+          SUM(streak_change) OVER (PARTITION BY player_id
+                                   ORDER BY match_date ROWS UNBOUNDED PRECEDING) AS streak_id
+   FROM streak_flags),
+     win_streaks AS
+  (SELECT player_id,
+          streak_id,
+          COUNT(*) AS streak_length
+   FROM streak_groups
+   WHERE match_result = 'W'
+   GROUP BY player_id,
+            streak_id),
+     ranked_streaks AS
+  (SELECT player_id,
+          streak_length,
+          RANK() OVER (
+                       ORDER BY streak_length DESC) AS rnk
+   FROM win_streaks)
+SELECT player_id,
+       streak_length
+FROM ranked_streaks
+WHERE rnk = 1

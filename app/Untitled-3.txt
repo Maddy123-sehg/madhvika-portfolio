@@ -1,0 +1,7 @@
+def get_max_score(books):
+    # 1) For each category, keep only its highest-scoring book
+    best_by_cat = {}
+    for cat, pts in books:
+        best_by_cat[cat] = max(best_by_cat.get(cat, 0), pts)
+    # 2) Take the top 3 scores among those categories
+    return sum(sorted(best_by_cat.values(), reverse=True)[:3])

@@ -1,0 +1,32 @@
+def sort_string(string):
+    return "".join(sorted(string))
+ #Write a function longest_unique_substring(s) that returns the length of the longest substring of s that contains no repeated characters.
+
+ def longest_unique_substring(arr,k):
+    lst=[]
+    for i in range(len(arr)):
+        for j in range(i+1, len(arr)):
+            if arr[i] + arr[j]==k:
+                lst = lst+ [i,j]
+    return lst
+
+def flatten_list(lst):
+    flat_list = []
+    for item in lst:
+        if isinstance(item, list):
+            flat_list.extend(flatten_list(item))
+        else:
+            flat_list.append(item)
+    return flat_list
+def longest_unique_substring(s):
+    char_index = {}
+    start = 0
+    max_length = 0
+
+    for i, char in enumerate(s):
+        if char in char_index and char_index[char] >= start:
+            start = char_index[char] + 1
+        char_index[char] = i
+        max_length = max(max_length, i - start + 1)
+
+    return max_length
