@@ -523,14 +523,30 @@ function LogoImage({
   );
 }
 
-function CompanyLogo({ name, image }: { name: string; image: string }) {
+function CompanyLogo({
+  name,
+  image,
+}: {
+  name: string;
+  image: string;
+}) {
+  const logoSizing: Record<string, string> = {
+    Amazon: "scale-[1.15]",
+    Barclays: "scale-[1.55]",
+    Accenture: "scale-[1.45]",
+    University: "scale-[1.05]",
+  };
+
   return (
-    <div className="flex h-[130px] items-center justify-center bg-white px-10 py-8 hover:bg-slate-50 transition duration-300 overflow-hidden">
+    <div className="flex h-[130px] items-center justify-center bg-white px-8 py-6 hover:bg-slate-50 transition duration-300 overflow-hidden">
       <div className="flex h-full w-full items-center justify-center">
         <LogoImage
           src={image}
           alt={name}
-          className="h-full w-full object-contain"
+          className={`
+            h-full w-full object-contain transition-transform
+            ${logoSizing[name] || "scale-100"}
+          `}
         />
       </div>
     </div>
@@ -1029,7 +1045,7 @@ export default function Portfolio() {
           heading="Amazon Projects"
           label="Pharmacy Finance · Cost Allocation · Contribution Profit"
           description="Finance data engineering-adjacent analytics work across MEC cost allocation, CP reporting, automation, governance, GenAI-assisted cost narratives, and stakeholder documentation."
-          pipelineTitle="Main pipeline I worked on: MEC → Contribution Profit"
+          pipelineTitle="Pipeline Architecture:GL → Contribution Profit"
           pipelineDescription="A simplified, portfolio-safe view of the financial allocation pipeline I helped debug, redesign, validate, document, and operationalize."
           pipelineSteps={pipelineDefinitions.amazonMec}
           projects={amazonProjects}
@@ -1044,7 +1060,7 @@ export default function Portfolio() {
           heading="Barclays Projects"
           label="Fintech · IVR · Contact Center Analytics"
           description="Customer journey and contact-center analytics across IVR funnels, callback workflows, cloud migration, SLA logic, A/B testing, and performance scoring."
-          pipelineTitle="Main analytics flow: IVR → KPI dashboards"
+          pipelineTitle="Pipeline Architecture: IVR → KPI dashboards"
           pipelineDescription="A simplified view of the IVR analytics pipeline across call-center data, ETL, KPI definitions, Tableau reporting, and operational decision-making."
           pipelineSteps={pipelineDefinitions.barclaysIvr}
           projects={barclaysProjects}
