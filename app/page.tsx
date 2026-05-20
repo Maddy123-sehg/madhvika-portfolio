@@ -36,7 +36,7 @@ const logos = {
   amazon: "/logos/Amazon.png",
   barclays: "/logos/Barclays.svg",
   accenture: "/logos/Accenture.webp",
-  eller: "/logos/Eller.jpeg",
+  eller: "/logos/Eller.png",
 };
 
 const metrics = [
@@ -527,10 +527,16 @@ function themeClasses(theme: Theme) {
   };
 }
 
-function companyLogo(theme: Theme) {
-  if (theme === "amazon") return logos.amazon;
-  if (theme === "barclays") return logos.barclays;
-  return logos.accenture;
+function CompanyLogo({ name, image }: { name: string; image: string }) {
+  return (
+    <div className="flex items-center justify-center bg-white hover:bg-slate-50 transition duration-300 h-[130px] overflow-hidden">
+      <LogoImage
+        src={image}
+        alt={name}
+        className="object-contain max-h-[78px] max-w-[210px] w-auto"
+      />
+    </div>
+  );
 }
 
 function LogoImage({
@@ -814,12 +820,12 @@ export default function Portfolio() {
 
             <div className="mt-10 rounded-[28px] border border-slate-200 bg-white shadow-lg overflow-hidden">
               <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-slate-200">
-                <CompanyLogo name="Amazon" image={logos.amazon} />
+                <CompanyLogo name="Amazon Pharmacy" image={logos.amazon} />
                 <CompanyLogo name="Barclays" image={logos.barclays} />
                 <CompanyLogo name="Accenture" image={logos.accenture} />
                 <CompanyLogo name="University of Arizona" image={logos.eller} />
               </div>
-            </div>
+          </div>
           </motion.div>
 
           <motion.div
