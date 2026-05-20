@@ -499,30 +499,22 @@ function LogoImage({
 
 function CompanyLogo({ name, image }: { name: string; image: string }) {
   const lower = name.toLowerCase();
-  const isAmazon = lower.includes("amazon");
   const isBarclays = lower.includes("barclays");
   const isAccenture = lower.includes("accenture");
-  const isEller = lower.includes("arizona") || lower.includes("eller");
 
-  const sizing = isAmazon
-    ? "h-[105px] w-[280px]"
-    : isBarclays
-    ? "h-[105px] w-[285px] scale-[1.12]"
+  const logoSize = isBarclays
+    ? "h-[70px] w-[260px]"
     : isAccenture
-    ? "h-[105px] w-[285px] scale-[1.16]"
-    : isEller
-    ? "h-[105px] w-[280px]"
-    : "h-[100px] w-[260px]";
+    ? "h-[78px] w-[280px]"
+    : "h-[90px] w-[300px]";
 
   return (
-    <div className="flex h-[105px] items-center justify-center overflow-hidden bg-white px-12 sm:px-14 md:px-16">
-      <div className="flex h-full w-full items-center justify-center overflow-hidden">
-        <LogoImage
-          src={image}
-          alt={name}
-          className={`object-contain ${sizing} max-w-full`}
-        />
-      </div>
+    <div className="flex h-[150px] items-center justify-center overflow-visible bg-white px-10">
+      <LogoImage
+        src={image}
+        alt={name}
+        className={`object-contain ${logoSize}`}
+      />
     </div>
   );
 }
@@ -720,7 +712,7 @@ function CompanySection({
           <div
   className={`mb-4 flex items-center ${
     theme === "barclays"
-      ? "h-28 w-[440px]"
+      ? "h-36 w-[500px]"
       : theme === "accenture"
       ? "h-20 w-[360px]"
       : "h-20 w-[360px]"
@@ -946,7 +938,7 @@ export default function Portfolio() {
               </Button>
             </div>
 
-            <div className="mt-10 overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-lg xl:w-[112%] xl:-ml-[6%]">
+            <div className="mt-10 overflow-visible rounded-[28px] border border-slate-200 bg-white shadow-lg">
               <div className="grid grid-cols-1 divide-y divide-slate-200 sm:grid-cols-2 sm:divide-x sm:divide-y-0 xl:grid-cols-4">
                 <CompanyLogo name="Amazon" image={logos.amazon} />
                 <CompanyLogo name="Barclays" image={logos.barclays} />
