@@ -534,8 +534,8 @@ function CompanyLogo({ name, image }: { name: string; image: string }) {
       <Image
         src={image}
         alt={name}
-        width={220}
-        height={90}
+        width={180}
+        height={80}
         className="object-contain max-h-[78px] max-w-[210px] w-auto h-auto"
       />
     </div>
@@ -669,7 +669,7 @@ function ProjectCard({
               <div>
                 <div className="h-8 w-32 mb-2 flex items-center">
                   <LogoImage
-                    src={companyLogo(project.theme)}
+                    src={CompanyLogo(project.theme)}
                     alt={project.company}
                     className="object-contain h-8 max-w-[130px]"
                   />
@@ -1160,7 +1160,7 @@ export default function Portfolio() {
               <div>
                 <div className="h-10 w-48 flex items-center mb-3">
                   <LogoImage
-                    src={companyLogo(selectedProject.theme)}
+                    src={CompanyLogo(selectedProject.theme)}
                     alt={selectedProject.company}
                     className="object-contain h-10 max-w-[190px]"
                   />
