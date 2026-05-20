@@ -586,13 +586,6 @@ function SectionHeader({
   );
 }
 
-function CompanyLogo({ name, image }: { name: string; image: string }) {
-  return (
-    <div className="flex items-center justify-center px-8 py-6 bg-white hover:bg-slate-50 transition duration-300 min-h-[110px]">
-      <LogoImage src={image} alt={name} className="object-contain h-14 max-w-[190px]" />
-    </div>
-  );
-}
 
 function PipelineStrip({
   title,
