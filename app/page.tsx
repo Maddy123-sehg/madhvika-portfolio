@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -16,7 +15,6 @@ import {
   Download,
   ExternalLink,
   FileText,
-  GitBranch,
   Layers3,
   LineChart,
   Mail,
@@ -24,7 +22,6 @@ import {
   Sparkles,
   X,
   CalendarDays,
-  Clock3,
   Workflow,
 } from "lucide-react";
 
@@ -34,10 +31,27 @@ const emailUrl =
 const linkedInUrl = "https://www.linkedin.com/in/madhvika-sehgal/";
 
 const logos = {
-  amazon: "/logos/Amazon.png",
-  barclays: "/logos/Barclays.svg",
-  accenture: "/logos/Accenture.webp",
-  eller: "/logos/Eller.png",
+  amazon: "/logos/amazon-pharmacy.webp",
+  barclays: "/logos/barclays.png",
+  accenture: "/logos/accenture.png",
+  eller: "/logos/eller.png",
+};
+
+type Theme = "amazon" | "barclays" | "accenture";
+
+type Project = {
+  company: string;
+  theme: Theme;
+  title: string;
+  subtitle: string;
+  text: string;
+  problem: string;
+  complexity: string[];
+  actions: string[];
+  impact: string[];
+  tags: string[];
+  icon: string;
+  pipeline?: "amazonMec" | "barclaysIvr";
 };
 
 const metrics = [
@@ -68,26 +82,9 @@ const pipelineDefinitions = {
   ],
 };
 
-type Theme = "amazon" | "barclays" | "accenture";
-
-type Project = {
-  company: string;
-  theme: Theme;
-  title: string;
-  subtitle: string;
-  text: string;
-  problem: string;
-  complexity: string[];
-  actions: string[];
-  impact: string[];
-  tags: string[];
-  icon: string;
-  pipeline?: keyof typeof pipelineDefinitions;
-};
-
 const projects: Project[] = [
   {
-    company: "Amazon",
+    company: "Amazon Pharmacy",
     theme: "amazon",
     title: "MEC Cost Allocation & Contribution Profit Framework",
     subtitle:
@@ -115,7 +112,7 @@ const projects: Project[] = [
     pipeline: "amazonMec",
   },
   {
-    company: "Amazon",
+    company: "Amazon Pharmacy",
     theme: "amazon",
     title: "Cost Allocation Redesign During Cost Center Restructuring",
     subtitle:
@@ -143,7 +140,7 @@ const projects: Project[] = [
     pipeline: "amazonMec",
   },
   {
-    company: "Amazon",
+    company: "Amazon Pharmacy",
     theme: "amazon",
     title: "Automated Labor Allocation for Month-End Close",
     subtitle: "Payroll + warehouse metadata automation feeding MEC inputs",
@@ -169,7 +166,7 @@ const projects: Project[] = [
     icon: "LA",
   },
   {
-    company: "Amazon",
+    company: "Amazon Pharmacy",
     theme: "amazon",
     title: "HFDA Data Platform Usage Metrics Dashboard",
     subtitle: "Governance analytics from 1M+ monthly audit log events",
@@ -195,7 +192,7 @@ const projects: Project[] = [
     icon: "HFDA",
   },
   {
-    company: "Amazon",
+    company: "Amazon Pharmacy",
     theme: "amazon",
     title: "GenAI-Assisted Cost Variance Summaries",
     subtitle: "Claude-on-Bedrock workflow for month-end variance narratives",
@@ -221,7 +218,7 @@ const projects: Project[] = [
     icon: "AI",
   },
   {
-    company: "Amazon",
+    company: "Amazon Pharmacy",
     theme: "amazon",
     title: "Business-Facing Cost Allocation Documentation",
     subtitle: "Turning SQL-heavy finance logic into stakeholder-ready methodology",
@@ -410,59 +407,6 @@ const projects: Project[] = [
   },
 ];
 
-const softSkills = [
-  {
-    company: "Amazon",
-    logo: logos.amazon,
-    color: "from-orange-50 to-teal-50 border-orange-100",
-    skills: [
-      "Deep ownership",
-      "Finance stakeholder communication",
-      "Ambiguity handling",
-      "Month-end discipline",
-      "Root-cause debugging",
-      "Executive-ready documentation",
-    ],
-  },
-  {
-    company: "Barclays",
-    logo: logos.barclays,
-    color: "from-sky-50 to-blue-50 border-sky-100",
-    skills: [
-      "Team leadership",
-      "Cross-functional delivery",
-      "SLA thinking",
-      "Experimentation mindset",
-      "Customer journey framing",
-      "Operational storytelling",
-    ],
-  },
-  {
-    company: "Accenture",
-    logo: logos.accenture,
-    color: "from-purple-50 to-violet-50 border-purple-100",
-    skills: [
-      "Client consulting",
-      "Requirements gathering",
-      "UAT facilitation",
-      "Change management",
-      "Training delivery",
-      "Process documentation",
-    ],
-  },
-];
-
-const tools = [
-  { name: "SQL", icon: Database },
-  { name: "Python", icon: BrainCircuit },
-  { name: "Amazon Redshift", icon: Cloud },
-  { name: "AWS", icon: Cloud },
-  { name: "QuickSight", icon: BarChart3 },
-  { name: "Tableau", icon: LineChart },
-  { name: "Oracle", icon: Database },
-  { name: "Excel", icon: Layers3 },
-];
-
 const skills = [
   "SQL",
   "Python",
@@ -480,13 +424,10 @@ const skills = [
   "Data Modeling",
   "ETL/ELT",
   "KPI Development",
-  "Funnel Analysis",
   "Cost Allocation",
-  "Activity-Based Costing",
   "Finance Analytics",
   "Data Validation",
   "Root Cause Analysis",
-  "Stakeholder Communication",
   "Amazon Bedrock",
   "JIRA",
   "Confluence",
@@ -528,18 +469,10 @@ function themeClasses(theme: Theme) {
   };
 }
 
-function CompanyLogo({ name, image }: { name: string; image: string }) {
-  return (
-    <div className="flex items-center justify-center bg-white hover:bg-slate-50 transition duration-300 h-[130px] overflow-hidden px-6">
-      <Image
-        src={image}
-        alt={name}
-        width={180}
-        height={80}
-        className="object-contain max-h-[78px] max-w-[210px] w-auto h-auto"
-      />
-    </div>
-  );
+function getCompanyLogo(theme: Theme) {
+  if (theme === "amazon") return logos.amazon;
+  if (theme === "barclays") return logos.barclays;
+  return logos.accenture;
 }
 
 function LogoImage({
@@ -553,17 +486,20 @@ function LogoImage({
 }) {
   const [failed, setFailed] = useState(false);
 
-  if (failed) {
-    return <span className="font-black text-slate-800">{alt}</span>;
-  }
+  if (failed) return <span className="font-black text-slate-800">{alt}</span>;
 
+  return <img src={src} alt={alt} className={className} onError={() => setFailed(true)} />;
+}
+
+function CompanyLogo({ name, image }: { name: string; image: string }) {
   return (
-    <img
-      src={src}
-      alt={alt}
-      className={className}
-      onError={() => setFailed(true)}
-    />
+    <div className="flex items-center justify-center bg-white hover:bg-slate-50 transition duration-300 h-[130px] overflow-hidden px-6">
+      <LogoImage
+        src={image}
+        alt={name}
+        className="object-contain max-h-[78px] max-w-[180px] w-auto"
+      />
+    </div>
   );
 }
 
@@ -588,7 +524,6 @@ function SectionHeader({
     </div>
   );
 }
-
 
 function PipelineStrip({
   title,
@@ -641,13 +576,7 @@ function DetailList({ title, items }: { title: string; items: string[] }) {
   );
 }
 
-function ProjectCard({
-  project,
-  onClick,
-}: {
-  project: Project;
-  onClick: () => void;
-}) {
+function ProjectCard({ project, onClick }: { project: Project; onClick: () => void }) {
   const theme = themeClasses(project.theme);
 
   return (
@@ -669,7 +598,7 @@ function ProjectCard({
               <div>
                 <div className="h-8 w-32 mb-2 flex items-center">
                   <LogoImage
-                    src={CompanyLogo(project.theme)}
+                    src={getCompanyLogo(project.theme)}
                     alt={project.company}
                     className="object-contain h-8 max-w-[130px]"
                   />
@@ -711,7 +640,6 @@ function ProjectCard({
 
 export default function Portfolio() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [showPipeline, setShowPipeline] = useState(false);
 
   const amazonProjects = projects.filter((p) => p.theme === "amazon");
   const barclaysProjects = projects.filter((p) => p.theme === "barclays");
@@ -767,8 +695,8 @@ export default function Portfolio() {
             transition={{ duration: 0.55 }}
           >
             <div className="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 shadow-sm">
-              <Sparkles className="h-4 w-4" /> BI Engineering · Finance Analytics · Cloud
-              Data Platforms
+              <Sparkles className="h-4 w-4" /> BI Engineering · Finance Analytics · Cloud Data
+              Platforms
             </div>
 
             <h1 className="mt-7 text-5xl md:text-7xl font-black tracking-tight leading-[1.03] text-slate-950">
@@ -777,10 +705,10 @@ export default function Portfolio() {
             </h1>
 
             <p className="mt-7 text-lg leading-8 text-slate-600 max-w-3xl">
-              Business Intelligence Engineer with 4+ years of experience across
-              healthcare-tech, fintech, and consulting. I build SQL-heavy finance pipelines,
-              cost allocation frameworks, governance dashboards, IVR analytics systems, and
-              stakeholder-ready reporting layers.
+              Business Intelligence Engineer with 4+ years of experience across healthcare-tech,
+              fintech, and consulting. I build SQL-heavy finance pipelines, cost allocation
+              frameworks, governance dashboards, IVR analytics systems, and stakeholder-ready
+              reporting layers.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -821,7 +749,7 @@ export default function Portfolio() {
                 <CompanyLogo name="Accenture" image={logos.accenture} />
                 <CompanyLogo name="University of Arizona" image={logos.eller} />
               </div>
-          </div>
+            </div>
           </motion.div>
 
           <motion.div
@@ -865,217 +793,60 @@ export default function Portfolio() {
           </motion.div>
         </section>
 
-        <section id="amazon" className={`py-16 border-y ${themeClasses("amazon").section}`}>
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="mb-8">
-              <div className="h-14 w-72 flex items-center mb-4">
-                <LogoImage
-                  src={logos.amazon}
-                  alt="Amazon"
-                  className="object-contain h-14 max-w-[280px]"
-                />
-              </div>
-              <p
-                className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] ${
-                  themeClasses("amazon").pill
-                }`}
-              >
-                Pharmacy Finance · Cost Allocation · Contribution Profit
-              </p>
-              <h2 className="mt-4 text-3xl md:text-4xl font-black tracking-tight text-slate-950">
-                Amazon Projects
-              </h2>
-              <p className="mt-3 max-w-3xl text-slate-600 leading-7">
-                Finance data engineering-adjacent analytics work across MEC cost allocation,
-                CP reporting, automation, governance, GenAI-assisted cost narratives, and
-                stakeholder documentation.
-              </p>
-            </div>
+        <CompanySection
+          id="amazon"
+          theme="amazon"
+          logo={logos.amazon}
+          heading="Amazon Projects"
+          label="Pharmacy Finance · Cost Allocation · Contribution Profit"
+          description="Finance data engineering-adjacent analytics work across MEC cost allocation, CP reporting, automation, governance, GenAI-assisted cost narratives, and stakeholder documentation."
+          pipelineTitle="MEC → Contribution Profit pipeline"
+          pipelineSteps={pipelineDefinitions.amazonMec}
+          projects={amazonProjects}
+          setSelectedProject={setSelectedProject}
+        />
 
-            <PipelineStrip
-              title="MEC → Contribution Profit pipeline"
-              steps={pipelineDefinitions.amazonMec}
-              theme="amazon"
-            />
+        <CompanySection
+          id="barclays"
+          theme="barclays"
+          logo={logos.barclays}
+          heading="Barclays Projects"
+          label="Fintech · IVR · Contact Center Analytics"
+          description="Customer journey and contact-center analytics across IVR funnels, callback workflows, cloud migration, SLA logic, A/B testing, and performance scoring."
+          pipelineTitle="IVR analytics pipeline"
+          pipelineSteps={pipelineDefinitions.barclaysIvr}
+          projects={barclaysProjects}
+          setSelectedProject={setSelectedProject}
+        />
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {amazonProjects.map((project) => (
-                <ProjectCard
-                  key={project.title}
-                  project={project}
-                  onClick={() => {
-                    setSelectedProject(project);
-                    setShowPipeline(false);
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="barclays" className={`py-16 border-y ${themeClasses("barclays").section}`}>
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="mb-8">
-              <div className="h-14 w-72 flex items-center mb-4">
-                <LogoImage
-                  src={logos.barclays}
-                  alt="Barclays"
-                  className="object-contain h-14 max-w-[280px]"
-                />
-              </div>
-              <p
-                className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] ${
-                  themeClasses("barclays").pill
-                }`}
-              >
-                Fintech · IVR · Contact Center Analytics
-              </p>
-              <h2 className="mt-4 text-3xl md:text-4xl font-black tracking-tight text-slate-950">
-                Barclays Projects
-              </h2>
-              <p className="mt-3 max-w-3xl text-slate-600 leading-7">
-                Customer journey and contact-center analytics across IVR funnels, callback
-                workflows, cloud migration, SLA logic, A/B testing, and performance scoring.
-              </p>
-            </div>
-
-            <PipelineStrip
-              title="IVR analytics pipeline"
-              steps={pipelineDefinitions.barclaysIvr}
-              theme="barclays"
-            />
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {barclaysProjects.map((project) => (
-                <ProjectCard
-                  key={project.title}
-                  project={project}
-                  onClick={() => {
-                    setSelectedProject(project);
-                    setShowPipeline(false);
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section
+        <CompanySection
           id="accenture"
-          className={`py-16 border-y ${themeClasses("accenture").section}`}
-        >
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="mb-8">
-              <div className="h-14 w-60 flex items-center mb-4">
-                <LogoImage
-                  src={logos.accenture}
-                  alt="Accenture"
-                  className="object-contain h-14 max-w-[230px]"
-                />
-              </div>
-              <p
-                className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] ${
-                  themeClasses("accenture").pill
-                }`}
-              >
-                Consulting · SAP MM · Procure-to-Pay
-              </p>
-              <h2 className="mt-4 text-3xl md:text-4xl font-black tracking-tight text-slate-950">
-                Accenture Foundation
-              </h2>
-              <p className="mt-3 max-w-3xl text-slate-600 leading-7">
-                Enterprise consulting experience that built the foundation for stakeholder
-                management, requirements gathering, UAT, documentation, and cross-functional
-                delivery.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {accentureProjects.map((project) => (
-                <ProjectCard
-                  key={project.title}
-                  project={project}
-                  onClick={() => {
-                    setSelectedProject(project);
-                    setShowPipeline(false);
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
+          theme="accenture"
+          logo={logos.accenture}
+          heading="Accenture Foundation"
+          label="Consulting · SAP MM · Procure-to-Pay"
+          description="Enterprise consulting experience that built the foundation for stakeholder management, requirements gathering, UAT, documentation, and cross-functional delivery."
+          projects={accentureProjects}
+          setSelectedProject={setSelectedProject}
+        />
 
         <section id="skills" className="py-16 bg-white">
           <div className="mx-auto max-w-7xl px-6">
             <SectionHeader
-              eyebrow="Role-based strengths"
-              title="Soft skills built across each role"
-              subtitle="The technical work matters. The real differentiator is being able to align messy systems, people, timelines, and business definitions."
+              eyebrow="Tools & Technologies"
+              title="The stack behind the work"
+              subtitle="A practical mix of BI, analytics engineering, finance analytics, cloud migration, and stakeholder-facing reporting."
             />
 
-            <div className="grid md:grid-cols-3 gap-6">
-              {softSkills.map((item) => (
-                <Card
-                  key={item.company}
-                  className={`rounded-3xl border bg-gradient-to-br ${item.color} shadow-sm`}
+            <div className="flex flex-wrap justify-center gap-3">
+              {skills.map((skill) => (
+                <span
+                  key={skill}
+                  className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm"
                 >
-                  <CardContent className="p-6">
-                    <div className="h-12 w-48 flex items-center mb-5">
-                      <LogoImage
-                        src={item.logo}
-                        alt={item.company}
-                        className="object-contain h-12 max-w-[190px]"
-                      />
-                    </div>
-                    <h3 className="text-xl font-black text-slate-950 mb-4">
-                      {item.company}
-                    </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {item.skills.map((skill) => (
-                        <span
-                          key={skill}
-                          className="rounded-full border border-white/80 bg-white/75 px-3 py-1.5 text-xs font-semibold text-slate-700"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
+                  {skill}
+                </span>
               ))}
-            </div>
-
-            <div className="mt-14">
-              <SectionHeader eyebrow="Tools & Technologies" title="The stack behind the work" />
-
-              <Card className="rounded-2xl border-slate-200 bg-white shadow-sm">
-                <CardContent className="p-6">
-                  <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
-                    {tools.map(({ name, icon: Icon }) => (
-                      <div
-                        key={name}
-                        className="rounded-2xl border border-slate-100 bg-white p-4 text-center hover:border-blue-200 hover:bg-blue-50/40 transition"
-                      >
-                        <Icon className="mx-auto h-7 w-7 text-blue-600" />
-                        <div className="mt-3 text-sm font-semibold text-slate-700">
-                          {name}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-
-              <div className="mt-8 flex flex-wrap justify-center gap-3">
-                {skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
             </div>
           </div>
         </section>
@@ -1092,8 +863,8 @@ export default function Portfolio() {
                     Analytics Engineer · BIE · Finance Analytics
                   </h2>
                   <p className="mt-4 text-slate-300 max-w-3xl leading-7">
-                    Best fit: roles where business ambiguity, SQL-heavy pipelines, finance
-                    logic, and stakeholder communication all meet.
+                    Best fit: roles where business ambiguity, SQL-heavy pipelines, finance logic,
+                    and stakeholder communication all meet.
                   </p>
 
                   <div className="mt-6 grid sm:grid-cols-3 gap-4 text-sm text-slate-200">
@@ -1142,118 +913,164 @@ export default function Portfolio() {
       </main>
 
       {selectedProject && (
-        <div
-          className="fixed inset-0 z-[100] bg-slate-950/60 backdrop-blur-sm p-4 md:p-8 flex items-center justify-center"
-          onClick={() => setSelectedProject(null)}
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            className="max-h-[90vh] w-full max-w-6xl overflow-y-auto rounded-[2rem] bg-white shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div
-              className={`sticky top-0 bg-white/95 backdrop-blur border-b p-6 flex items-start justify-between gap-4 ${
-                themeClasses(selectedProject.theme).border
-              }`}
-            >
-              <div>
-                <div className="h-10 w-48 flex items-center mb-3">
-                  <LogoImage
-                    src={CompanyLogo(selectedProject.theme)}
-                    alt={selectedProject.company}
-                    className="object-contain h-10 max-w-[190px]"
+        <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+      )}
+    </div>
+  );
+}
+
+function CompanySection({
+  id,
+  theme,
+  logo,
+  heading,
+  label,
+  description,
+  pipelineTitle,
+  pipelineSteps,
+  projects,
+  setSelectedProject,
+}: {
+  id: string;
+  theme: Theme;
+  logo: string;
+  heading: string;
+  label: string;
+  description: string;
+  pipelineTitle?: string;
+  pipelineSteps?: string[];
+  projects: Project[];
+  setSelectedProject: (project: Project) => void;
+}) {
+  const t = themeClasses(theme);
+
+  return (
+    <section id={id} className={`py-16 border-y ${t.section}`}>
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-8">
+          <div className="h-14 w-72 flex items-center mb-4">
+            <LogoImage src={logo} alt={heading} className="object-contain h-14 max-w-[280px]" />
+          </div>
+
+          <p className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] ${t.pill}`}>
+            {label}
+          </p>
+
+          <h2 className="mt-4 text-3xl md:text-4xl font-black tracking-tight text-slate-950">
+            {heading}
+          </h2>
+
+          <p className="mt-3 max-w-3xl text-slate-600 leading-7">{description}</p>
+        </div>
+
+        {pipelineTitle && pipelineSteps && (
+          <PipelineStrip title={pipelineTitle} steps={pipelineSteps} theme={theme} />
+        )}
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project) => (
+            <ProjectCard
+              key={project.title}
+              project={project}
+              onClick={() => setSelectedProject(project)}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
+  const [showPipeline, setShowPipeline] = useState(false);
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] bg-slate-950/60 backdrop-blur-sm p-4 md:p-8 flex items-center justify-center"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 20, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        className="max-h-[90vh] w-full max-w-6xl overflow-y-auto rounded-[2rem] bg-white shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className={`sticky top-0 bg-white/95 backdrop-blur border-b p-6 flex items-start justify-between gap-4 ${themeClasses(project.theme).border}`}>
+          <div>
+            <div className="h-10 w-48 flex items-center mb-3">
+              <LogoImage
+                src={getCompanyLogo(project.theme)}
+                alt={project.company}
+                className="object-contain h-10 max-w-[190px]"
+              />
+            </div>
+
+            <p className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold ${themeClasses(project.theme).pill}`}>
+              {project.company}
+            </p>
+
+            <h2 className="mt-3 text-3xl font-black text-slate-950">{project.title}</h2>
+            <p className="mt-2 text-slate-600">{project.subtitle}</p>
+          </div>
+
+          <button onClick={onClose} className="rounded-full border border-slate-200 p-2 hover:bg-slate-50">
+            <X className="h-5 w-5" />
+          </button>
+        </div>
+
+        <div className="p-6 md:p-8 space-y-8">
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+            <h3 className="font-black text-slate-950 mb-2">Problem</h3>
+            <p className="text-slate-700 leading-7">{project.problem}</p>
+          </div>
+
+          {project.pipeline && (
+            <div>
+              <Button
+                variant="outline"
+                onClick={() => setShowPipeline(!showPipeline)}
+                className="rounded-xl border-slate-200 bg-white hover:bg-slate-50"
+              >
+                <Workflow className="mr-2 h-4 w-4" />
+                {showPipeline ? "Hide pipeline" : "View pipeline"}
+              </Button>
+
+              {showPipeline && (
+                <div className="mt-5">
+                  <PipelineStrip
+                    title="Detailed pipeline view"
+                    steps={pipelineDefinitions[project.pipeline]}
+                    theme={project.theme}
                   />
                 </div>
-                <p
-                  className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold ${
-                    themeClasses(selectedProject.theme).pill
-                  }`}
-                >
-                  {selectedProject.company}
-                </p>
-                <h2 className="mt-3 text-3xl font-black text-slate-950">
-                  {selectedProject.title}
-                </h2>
-                <p className="mt-2 text-slate-600">{selectedProject.subtitle}</p>
-              </div>
-
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="rounded-full border border-slate-200 p-2 hover:bg-slate-50"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-
-            <div className="p-6 md:p-8 space-y-8">
-              <div
-                className={`rounded-2xl border p-5 ${
-                  selectedProject.theme === "amazon"
-                    ? "bg-orange-50 border-orange-100"
-                    : selectedProject.theme === "barclays"
-                    ? "bg-sky-50 border-sky-100"
-                    : "bg-purple-50 border-purple-100"
-                }`}
-              >
-                <h3 className="font-black text-slate-950 mb-2">Problem</h3>
-                <p className="text-slate-700 leading-7">{selectedProject.problem}</p>
-              </div>
-
-              {selectedProject.pipeline && (
-                <div>
-                  <Button
-                    variant="outline"
-                    onClick={() => setShowPipeline(!showPipeline)}
-                    className="rounded-xl border-slate-200 bg-white hover:bg-slate-50"
-                  >
-                    <Workflow className="mr-2 h-4 w-4" />
-                    {showPipeline ? "Hide pipeline" : "View pipeline"}
-                  </Button>
-
-                  {showPipeline && (
-                    <div className="mt-5 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                      <PipelineStrip
-                        title="Detailed pipeline view"
-                        steps={pipelineDefinitions[selectedProject.pipeline]}
-                        theme={selectedProject.theme}
-                      />
-                    </div>
-                  )}
-                </div>
               )}
-
-              <div className="grid md:grid-cols-3 gap-6">
-                <DetailList title="Complexity" items={selectedProject.complexity} />
-                <DetailList title="Actions" items={selectedProject.actions} />
-                <DetailList title="Impact" items={selectedProject.impact} />
-              </div>
-
-              <div className="flex flex-wrap gap-2 pt-2">
-                {selectedProject.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className={`rounded-lg px-3 py-1.5 text-xs font-medium border ${
-                      themeClasses(selectedProject.theme).tag
-                    }`}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex justify-end">
-                <Button
-                  onClick={() => setSelectedProject(null)}
-                  className="rounded-xl bg-blue-600 hover:bg-blue-700"
-                >
-                  Close
-                </Button>
-              </div>
             </div>
-          </motion.div>
+          )}
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <DetailList title="Complexity" items={project.complexity} />
+            <DetailList title="Actions" items={project.actions} />
+            <DetailList title="Impact" items={project.impact} />
+          </div>
+
+          <div className="flex flex-wrap gap-2 pt-2">
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                className={`rounded-lg px-3 py-1.5 text-xs font-medium border ${themeClasses(project.theme).tag}`}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex justify-end">
+            <Button onClick={onClose} className="rounded-xl bg-blue-600 hover:bg-blue-700">
+              Close
+            </Button>
+          </div>
         </div>
-      )}
+      </motion.div>
     </div>
   );
 }
