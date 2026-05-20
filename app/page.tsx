@@ -33,7 +33,7 @@ const emailUrl =
 const linkedInUrl = "https://www.linkedin.com/in/madhvika-sehgal/";
 
 const logos = {
-  amazon: "/logos/Amazon.svp",
+  amazon: "/logos/Amazon.png",
   barclays: "/logos/Barclays.svg",
   accenture: "/logos/Accenture.svp",
   eller: "/logos/Eller.jpeg",
@@ -86,7 +86,7 @@ type Project = {
 
 const projects: Project[] = [
   {
-    company: "Amazon Pharmacy",
+    company: "Amazon",
     theme: "amazon",
     title: "MEC Cost Allocation & Contribution Profit Framework",
     subtitle:
@@ -114,7 +114,7 @@ const projects: Project[] = [
     pipeline: "amazonMec",
   },
   {
-    company: "Amazon Pharmacy",
+    company: "Amazon",
     theme: "amazon",
     title: "Cost Allocation Redesign During Cost Center Restructuring",
     subtitle:
@@ -142,7 +142,7 @@ const projects: Project[] = [
     pipeline: "amazonMec",
   },
   {
-    company: "Amazon Pharmacy",
+    company: "Amazon",
     theme: "amazon",
     title: "Automated Labor Allocation for Month-End Close",
     subtitle: "Payroll + warehouse metadata automation feeding MEC inputs",
@@ -168,7 +168,7 @@ const projects: Project[] = [
     icon: "LA",
   },
   {
-    company: "Amazon Pharmacy",
+    company: "Amazon",
     theme: "amazon",
     title: "HFDA Data Platform Usage Metrics Dashboard",
     subtitle: "Governance analytics from 1M+ monthly audit log events",
@@ -194,7 +194,7 @@ const projects: Project[] = [
     icon: "HFDA",
   },
   {
-    company: "Amazon Pharmacy",
+    company: "Amazon",
     theme: "amazon",
     title: "GenAI-Assisted Cost Variance Summaries",
     subtitle: "Claude-on-Bedrock workflow for month-end variance narratives",
@@ -220,7 +220,7 @@ const projects: Project[] = [
     icon: "AI",
   },
   {
-    company: "Amazon Pharmacy",
+    company: "Amazon",
     theme: "amazon",
     title: "Business-Facing Cost Allocation Documentation",
     subtitle: "Turning SQL-heavy finance logic into stakeholder-ready methodology",
@@ -411,7 +411,7 @@ const projects: Project[] = [
 
 const softSkills = [
   {
-    company: "Amazon Pharmacy",
+    company: "Amazon",
     logo: logos.amazon,
     color: "from-orange-50 to-teal-50 border-orange-100",
     skills: [
@@ -814,7 +814,7 @@ export default function Portfolio() {
 
             <div className="mt-10 rounded-[28px] border border-slate-200 bg-white shadow-lg overflow-hidden">
               <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-slate-200">
-                <CompanyLogo name="Amazon Pharmacy" image={logos.amazon} />
+                <CompanyLogo name="Amazon" image={logos.amazon} />
                 <CompanyLogo name="Barclays" image={logos.barclays} />
                 <CompanyLogo name="Accenture" image={logos.accenture} />
                 <CompanyLogo name="University of Arizona" image={logos.eller} />
@@ -869,7 +869,7 @@ export default function Portfolio() {
               <div className="h-14 w-72 flex items-center mb-4">
                 <LogoImage
                   src={logos.amazon}
-                  alt="Amazon Pharmacy"
+                  alt="Amazon"
                   className="object-contain h-14 max-w-[280px]"
                 />
               </div>
