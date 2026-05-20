@@ -1061,7 +1061,7 @@ export default function Portfolio() {
           label="Fintech · IVR · Contact Center Analytics"
           description="Customer journey and contact-center analytics across IVR funnels, callback workflows, cloud migration, SLA logic, A/B testing, and performance scoring."
           pipelineTitle="Pipeline Architecture: IVR → KPI dashboards"
-          pipelineDescription="A simplified view of the IVR analytics pipeline across call-center data, ETL, KPI definitions, Tableau reporting, and operational decision-making."
+          pipelineDescription="Architected and implemented a scalable IVR analytics ecosystem from the ground up during contact center modernization, integrating multi-source call data, designing ETL pipelines, standardizing KPI definitions, and enabling Tableau-based operational reporting for business stakeholders."
           pipelineSteps={pipelineDefinitions.barclaysIvr}
           projects={barclaysProjects}
           setSelectedProject={setSelectedProject}
