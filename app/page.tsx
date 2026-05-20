@@ -899,6 +899,7 @@ export default function Portfolio() {
             <a href="#top" className="border-b-2 border-blue-600 pb-2 text-blue-600">Home</a>
             <a href="#amazon" className="hover:text-blue-600">Amazon</a>
             <a href="#barclays" className="hover:text-blue-600">Barclays</a>
+            <a href="#accenture" className="hover:text-blue-600">Accenture</a>
             <a href="#skills" className="hover:text-blue-600">Skills</a>
             <a href="#contact" className="hover:text-blue-600">Contact</a>
           </nav>
