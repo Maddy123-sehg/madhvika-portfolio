@@ -505,19 +505,23 @@ function CompanyLogo({ name, image }: { name: string; image: string }) {
   const isEller = lower.includes("arizona") || lower.includes("eller");
 
   const sizing = isAmazon
-    ? "h-[150px] w-[300px]"
+    ? "h-[105px] w-[280px]"
     : isBarclays
-    ? "h-[145px] w-[300px] scale-[1.1]"
+    ? "h-[105px] w-[285px] scale-[1.12]"
     : isAccenture
-    ? "h-[145px] w-[300px] scale-[1.18]"
+    ? "h-[105px] w-[285px] scale-[1.16]"
     : isEller
-    ? "h-[150px] w-[300px]"
-    : "h-[140px] w-[280px]";
+    ? "h-[105px] w-[280px]"
+    : "h-[100px] w-[260px]";
 
   return (
-    <div className="flex h-[220px] items-center justify-center overflow-hidden bg-white px-4 sm:px-6 md:px-8">
+    <div className="flex h-[155px] items-center justify-center overflow-hidden bg-white px-8 sm:px-10 md:px-12">
       <div className="flex h-full w-full items-center justify-center overflow-hidden">
-        <LogoImage src={image} alt={name} className={`object-contain ${sizing} max-w-full`} />
+        <LogoImage
+          src={image}
+          alt={name}
+          className={`object-contain ${sizing} max-w-full`}
+        />
       </div>
     </div>
   );
@@ -635,11 +639,11 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
   const theme = themeClasses(project.theme);
 
   const logoClass =
-    project.theme === "barclays"
-      ? "object-contain h-12 max-w-[185px] scale-[1.15]"
-      : project.theme === "accenture"
-      ? "object-contain h-12 max-w-[180px] scale-[1.2]"
-      : "object-contain h-8 max-w-[130px]";
+  project.theme === "barclays"
+    ? "object-contain h-12 max-w-[185px] scale-[1.15]"
+    : project.theme === "accenture"
+    ? "object-contain h-7 max-w-[95px]"
+    : "object-contain h-8 max-w-[130px]";
 
   return (
     <button onClick={onClick} className="group h-full w-full text-left">
@@ -652,7 +656,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
                 {project.icon}
               </div>
               <div>
-                <div className="mb-2 flex h-12 w-48 items-center overflow-visible">
+                <div className="mb-2 flex h-10 w-44 items-center overflow-visible">
                   <LogoImage src={getCompanyLogo(project.theme)} alt={project.company} className={logoClass} />
                 </div>
                 <h3 className="text-lg font-black leading-snug text-slate-950">{project.title}</h3>
@@ -713,9 +717,27 @@ function CompanySection({
     <section id={id} className={`border-y py-16 ${t.section}`}>
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-8">
-          <div className="mb-4 flex h-16 w-80 items-center">
-            <LogoImage src={logo} alt={heading} className="h-16 max-w-[320px] object-contain" />
-          </div>
+          <div
+  className={`mb-4 flex items-center ${
+    theme === "barclays"
+      ? "h-24 w-[420px]"
+      : theme === "accenture"
+      ? "h-20 w-[360px]"
+      : "h-20 w-[360px]"
+  }`}
+>
+  <LogoImage
+    src={logo}
+    alt={heading}
+    className={`object-contain ${
+      theme === "barclays"
+        ? "h-20 max-w-[340px]"
+        : theme === "accenture"
+        ? "h-14 max-w-[260px]"
+        : "h-16 max-w-[320px]"
+    }`}
+  />
+</div>
           <p className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] ${t.pill}`}>
             {label}
           </p>
@@ -924,7 +946,7 @@ export default function Portfolio() {
               </Button>
             </div>
 
-            <div className="mt-10 overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-lg">
+            <div className="mt-10 overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-lg xl:w-[112%] xl:-ml-[6%]">
               <div className="grid grid-cols-1 divide-y divide-slate-200 sm:grid-cols-2 sm:divide-x sm:divide-y-0 xl:grid-cols-4">
                 <CompanyLogo name="Amazon" image={logos.amazon} />
                 <CompanyLogo name="Barclays" image={logos.barclays} />
