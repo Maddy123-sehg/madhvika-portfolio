@@ -530,25 +530,31 @@ function CompanyLogo({
   name: string;
   image: string;
 }) {
-  const logoSizing: Record<string, string> = {
-    Amazon: "scale-[1.15]",
-    Barclays: "scale-[1.55]",
-    Accenture: "scale-[1.45]",
-    University: "scale-[1.05]",
-  };
+  const isBarclays = name.toLowerCase().includes("barclays");
+  const isAccenture = name.toLowerCase().includes("accenture");
+  const isAmazon = name.toLowerCase().includes("amazon");
+  const isEller = name.toLowerCase().includes("arizona");
 
   return (
-    <div className="flex h-[130px] items-center justify-center bg-white px-8 py-6 hover:bg-slate-50 transition duration-300 overflow-hidden">
-      <div className="flex h-full w-full items-center justify-center">
-        <LogoImage
-          src={image}
-          alt={name}
-          className={`
-            h-full w-full object-contain transition-transform
-            ${logoSizing[name] || "scale-100"}
-          `}
-        />
-      </div>
+    <div className="flex items-center justify-center bg-white transition duration-300 h-[170px] overflow-hidden px-6">
+      <img
+        src={image}
+        alt={name}
+        className={`
+          object-contain w-auto h-auto
+          ${
+            isAmazon
+              ? "max-h-[110px] max-w-[230px]"
+              : isBarclays
+              ? "max-h-[75px] max-w-[240px] scale-[1.45]"
+              : isAccenture
+              ? "max-h-[70px] max-w-[230px] scale-[1.55]"
+              : isEller
+              ? "max-h-[95px] max-w-[230px]"
+              : "max-h-[90px] max-w-[220px]"
+          }
+        `}
+      />
     </div>
   );
 }
