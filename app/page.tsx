@@ -712,7 +712,7 @@ function CompanySection({
           <div
   className={`mb-4 flex items-center ${
     theme === "barclays"
-      ? "h-36 w-[500px]"
+      ? "h-32 w-[520px]"
       : theme === "accenture"
       ? "h-20 w-[360px]"
       : "h-20 w-[360px]"
@@ -723,7 +723,7 @@ function CompanySection({
     alt={heading}
     className={`object-contain ${
       theme === "barclays"
-        ? "h-20 max-w-[340px]"
+        ? "h-28 max-w-[460px]"
         : theme === "accenture"
         ? "h-14 max-w-[260px]"
         : "h-16 max-w-[320px]"
