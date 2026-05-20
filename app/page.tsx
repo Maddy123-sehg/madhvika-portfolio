@@ -9,23 +9,21 @@ import {
   BarChart3,
   BrainCircuit,
   BriefcaseBusiness,
+  CalendarDays,
   CheckCircle2,
   Cloud,
   Database,
   Download,
   ExternalLink,
+  Eye,
   FileText,
   Layers3,
   LineChart,
   Mail,
   MapPin,
   Sparkles,
-  X,
-  CalendarDays,
   Workflow,
-  Eye,
-  GitBranch,
-  Network,
+  X,
 } from "lucide-react";
 
 const resumeUrl = "/Madhvika-Sehgal-Resume-2026.pdf";
@@ -33,11 +31,10 @@ const emailUrl =
   "mailto:madhvika.sehgal@gmail.com?subject=Portfolio%20Inquiry%20-%20Madhvika%20Sehgal";
 const linkedInUrl = "https://www.linkedin.com/in/madhvika-sehgal/";
 
-// IMPORTANT: these paths must match the exact filenames in public/logos.
-// Based on your Windows folder screenshot, these are the correct names.
+// These must match exact filenames inside public/logos.
 const logos = {
   amazon: "/logos/Amazon.png",
-  barclays: "/logos/Barclays.svg",
+  barclays: "/logos/Barclays.webp",
   accenture: "/logos/Accenture.webp",
   eller: "/logos/Eller.png",
 };
@@ -78,12 +75,12 @@ const pipelineDefinitions: Record<PipelineKey, string[]> = {
     "Finance review layer",
   ],
   barclaysIvr: [
-    "Oracle + AWS sources",
-    "IVR / call logs",
-    "ETL + Tableau Prep",
-    "Unified KPI layer",
+    "Legacy + AWS sources",
+    "Call / IVR ingestion",
+    "ETL standardization",
+    "KPI logic design",
     "SLA + funnel metrics",
-    "Tableau dashboards",
+    "Tableau reporting",
     "Ops decision layer",
   ],
 };
@@ -93,11 +90,9 @@ const projects: Project[] = [
     company: "Amazon Pharmacy",
     theme: "amazon",
     title: "MEC Cost Allocation & Contribution Profit Framework",
-    subtitle:
-      "Core Pharmacy Finance allocation engine supporting Contribution Profit reporting",
+    subtitle: "Core Pharmacy Finance allocation engine supporting Contribution Profit reporting",
     text: "Led analysis, debugging, enhancement, and validation of a 1,900+ line SQL-based cost allocation pipeline powering Pharmacy Finance reporting.",
-    problem:
-      "Pharmacy Finance needed reliable allocation of fulfillment, customer service, pharmacist, billing, and operational costs into Contribution Profit reporting during month-end close.",
+    problem: "Pharmacy Finance needed reliable allocation of fulfillment, customer service, pharmacist, billing, and operational costs into Contribution Profit reporting during month-end close.",
     complexity: [
       "Pipeline logic spanned finance facts, operational work units, cost centers, warehouse mappings, manual inputs, and downstream CP reporting.",
       "Small mapping, sign, or allocation-driver issues could materially change P&L interpretation.",
@@ -121,11 +116,9 @@ const projects: Project[] = [
     company: "Amazon Pharmacy",
     theme: "amazon",
     title: "Cost Allocation Redesign During Cost Center Restructuring",
-    subtitle:
-      "Allocation logic redesign with structured validation and SQL reconciliation",
+    subtitle: "Allocation logic redesign with structured validation and SQL reconciliation",
     text: "Redesigned allocation logic during cost center restructuring and validated downstream impacts through SQL reconciliation and structured allocation models.",
-    problem:
-      "Cost center restructuring created risk that existing allocation logic would misattribute costs across warehouses, services, and finance reporting categories.",
+    problem: "Cost center restructuring created risk that existing allocation logic would misattribute costs across warehouses, services, and finance reporting categories.",
     complexity: [
       "Restructuring affected downstream allocation percentages, rate-card logic, and CP reporting outputs.",
       "Validation required connecting SQL outputs with structured Excel allocation models and finance expectations.",
@@ -151,8 +144,7 @@ const projects: Project[] = [
     title: "Automated Labor Allocation for Month-End Close",
     subtitle: "Payroll + warehouse metadata automation feeding MEC inputs",
     text: "Built an automated labor allocation solution connecting ADP payroll data, warehouse metadata, and employee-to-warehouse business logic.",
-    problem:
-      "A manual Excel/S3-driven labor allocation process required recurring updates whenever warehouses changed, creating avoidable month-end dependency.",
+    problem: "A manual Excel/S3-driven labor allocation process required recurring updates whenever warehouses changed, creating avoidable month-end dependency.",
     complexity: [
       "Employee effort needed to be mapped to warehouses using business rules, not simple static lookups.",
       "New fulfillment centers had to be onboarded dynamically without manually editing files every month.",
@@ -177,8 +169,7 @@ const projects: Project[] = [
     title: "HFDA Data Platform Usage Metrics Dashboard",
     subtitle: "Governance analytics from 1M+ monthly audit log events",
     text: "Built a governance dashboard using audit log event data to measure dataset adoption, platform usage, user access patterns, and unused assets.",
-    problem:
-      "Data platform owners needed visibility into who was using which datasets, through which tools, and where unused or underused assets existed.",
+    problem: "Data platform owners needed visibility into who was using which datasets, through which tools, and where unused or underused assets existed.",
     complexity: [
       "Audit logs contained dense ARN, session, role, and event metadata that needed classification before it was useful.",
       "Access patterns needed separation across QuickSight, Workbench, Athena/Glue, Cradle, Datanet, and other tools.",
@@ -203,8 +194,7 @@ const projects: Project[] = [
     title: "GenAI-Assisted Cost Variance Summaries",
     subtitle: "Claude-on-Bedrock workflow for month-end variance narratives",
     text: "Integrated Claude via Amazon Bedrock to analyze cost allocation anomalies and generate natural-language summaries of month-end variance reports.",
-    problem:
-      "Finance stakeholders often needed plain-English explanations for cost allocation anomalies and month-end variance movements, not just raw tables.",
+    problem: "Finance stakeholders often needed plain-English explanations for cost allocation anomalies and month-end variance movements, not just raw tables.",
     complexity: [
       "Narratives had to be finance-safe, reviewable, and careful not to invent unsupported causes.",
       "Structured cost variance data needed to be converted into meaningful prompts and consistent summary output.",
@@ -229,8 +219,7 @@ const projects: Project[] = [
     title: "Business-Facing Cost Allocation Documentation",
     subtitle: "Turning SQL-heavy finance logic into stakeholder-ready methodology",
     text: "Authored a business-facing cost allocation framework explaining methodology, cost drivers, manual adjustments, and rate-card logic.",
-    problem:
-      "The cost allocation ecosystem was highly technical, making it difficult for finance and business stakeholders to understand methodology, assumptions, and month-end behavior.",
+    problem: "The cost allocation ecosystem was highly technical, making it difficult for finance and business stakeholders to understand methodology, assumptions, and month-end behavior.",
     complexity: [
       "Documentation needed to bridge SQL logic, finance concepts, cost centers, drivers, and stakeholder questions.",
       "It had to explain current-month proxy logic, manual adjustments, segment definitions, and rate-card examples.",
@@ -253,11 +242,9 @@ const projects: Project[] = [
     company: "Barclays",
     theme: "barclays",
     title: "Callback Feature Revamp & SLA Logic Redesign",
-    subtitle:
-      "Contact center performance analytics across callback workflows and SLA reporting",
+    subtitle: "Contact center performance analytics across callback workflows and SLA reporting",
     text: "Led a 3-member team to redesign SLA logic and integrate callback features into Contact Center workflows, enhancing 45+ dashboards and reports.",
-    problem:
-      "Contact center teams needed updated SLA logic and callback reporting to better track queue efficiency, customer retention, and servicing outcomes.",
+    problem: "Contact center teams needed updated SLA logic and callback reporting to better track queue efficiency, customer retention, and servicing outcomes.",
     complexity: [
       "Changes affected 45+ dashboards and reports tied to operational workflows and SLA reporting.",
       "Callback performance had to be integrated into existing contact center KPI definitions.",
@@ -281,11 +268,9 @@ const projects: Project[] = [
     company: "Barclays",
     theme: "barclays",
     title: "IVR Customer Journey Analytics & ETL Framework",
-    subtitle:
-      "5M+ interactions analyzed across IVR funnels, transfers, and servicing paths",
+    subtitle: "5M+ interactions analyzed across IVR funnels, transfers, and servicing paths",
     text: "Built and managed ETL processes powering 30+ IVR Tableau dashboards and analyzed 5M+ interactions across call logs and servicing data.",
-    problem:
-      "Servicing teams needed standardized funnel reporting across containment, self-service, transfers, sentiment, and customer journey drop-offs.",
+    problem: "Servicing teams needed standardized funnel reporting across containment, self-service, transfers, sentiment, and customer journey drop-offs.",
     complexity: [
       "Data came from Oracle, AWS, IVR logs, clickstream, call records, and Tableau Prep flows.",
       "Metrics had to be standardized across multiple dashboards to avoid conflicting KPI definitions.",
@@ -311,8 +296,7 @@ const projects: Project[] = [
     title: "Cloud Migration & Data Lake Setup",
     subtitle: "Oracle to AWS S3 migration with Athena and Redshift performance gains",
     text: "Co-led migration of multi-terabyte datasets from Oracle to AWS S3, creating a scalable data lake and reducing query latency using Athena and Redshift.",
-    problem:
-      "Legacy Oracle-based reporting workflows were becoming slower and less scalable as data volumes increased across servicing and IVR analytics.",
+    problem: "Legacy Oracle-based reporting workflows were becoming slower and less scalable as data volumes increased across servicing and IVR analytics.",
     complexity: [
       "Multi-terabyte datasets needed migration without breaking downstream dashboards and reporting workflows.",
       "Historical and current data needed to remain usable for performance reporting.",
@@ -337,8 +321,7 @@ const projects: Project[] = [
     title: "Queue Optimization, A/B Testing & Agent Performance Analytics",
     subtitle: "Experimentation and scoring models for servicing performance improvement",
     text: "Designed A/B tests for queue restructuring and developed an agent performance scoring model using sentiment, CSAT, NPS, and Z-score normalization.",
-    problem:
-      "Operations teams needed evidence-based ways to evaluate queue restructuring and identify coaching opportunities for agent performance.",
+    problem: "Operations teams needed evidence-based ways to evaluate queue restructuring and identify coaching opportunities for agent performance.",
     complexity: [
       "Queue experiments needed clean comparison logic between Simple vs. Complex servicing paths.",
       "Agent benchmarking required normalizing multiple metrics like sentiment, CSAT, and NPS.",
@@ -361,11 +344,9 @@ const projects: Project[] = [
     company: "Accenture",
     theme: "accenture",
     title: "SAP MM / Procure-to-Pay Workflow Automation",
-    subtitle:
-      "Procurement process automation across purchasing, inventory, and invoice workflows",
+    subtitle: "Procurement process automation across purchasing, inventory, and invoice workflows",
     text: "Streamlined procurement operations by implementing SAP MM workflow automation including automatic PO generation and release strategy configuration.",
-    problem:
-      "Enterprise clients needed more efficient Procure-to-Pay workflows across purchasing, inventory, invoice processing, and approval routing.",
+    problem: "Enterprise clients needed more efficient Procure-to-Pay workflows across purchasing, inventory, invoice processing, and approval routing.",
     complexity: [
       "Automation needed to align with business approval rules, procurement controls, and SAP MM configuration logic.",
       "Process changes had to integrate cleanly with downstream finance, inventory, and enterprise reporting flows.",
@@ -388,11 +369,9 @@ const projects: Project[] = [
     company: "Accenture",
     theme: "accenture",
     title: "SAP Integration, BRDs & UAT Enablement",
-    subtitle:
-      "Cross-functional consulting delivery across requirements, documentation, testing, and adoption",
+    subtitle: "Cross-functional consulting delivery across requirements, documentation, testing, and adoption",
     text: "Delivered functional specifications, BRDs, UAT support, stakeholder workshops, training, and integration coordination across SAP MM, SD, FI, and PP teams.",
-    problem:
-      "Large enterprise SAP programs needed business requirements translated into scalable technical changes while keeping stakeholders aligned through testing and rollout.",
+    problem: "Large enterprise SAP programs needed business requirements translated into scalable technical changes while keeping stakeholders aligned through testing and rollout.",
     complexity: [
       "SAP MM changes had to integrate with SD, FI, and PP modules while preserving data integrity.",
       "Custom reports and enhancements required clear functional specs for ABAP developers.",
@@ -512,52 +491,34 @@ function LogoImage({
       src={src}
       alt={alt}
       className={className}
-      style={{
-        maxWidth: "100%",
-        maxHeight: "100%",
-        objectFit: "contain",
-        display: "block",
-      }}
+      style={{ objectFit: "contain", display: "block" }}
       onError={() => setFailed(true)}
     />
   );
 }
 
-function CompanyLogo({
-  name,
-  image,
-}: {
-  name: string;
-  image: string;
-}) {
+function CompanyLogo({ name, image }: { name: string; image: string }) {
   const lower = name.toLowerCase();
-
   const isAmazon = lower.includes("amazon");
   const isBarclays = lower.includes("barclays");
   const isAccenture = lower.includes("accenture");
-  const isEller =
-    lower.includes("arizona") || lower.includes("eller");
+  const isEller = lower.includes("arizona") || lower.includes("eller");
+
+  const sizing = isAmazon
+    ? "h-[150px] w-[300px]"
+    : isBarclays
+    ? "h-[145px] w-[300px] scale-[1.1]"
+    : isAccenture
+    ? "h-[145px] w-[300px] scale-[1.18]"
+    : isEller
+    ? "h-[150px] w-[300px]"
+    : "h-[140px] w-[280px]";
 
   return (
-    <div className="flex items-center justify-center bg-white h-[220px] px-8 overflow-hidden">
-      <img
-        src={image}
-        alt={name}
-        className={`
-          object-contain transition-all duration-300
-          ${
-            isAmazon
-              ? "max-h-[155px] max-w-[290px]"
-              : isBarclays
-              ? "max-h-[145px] max-w-[280px]"
-              : isAccenture
-              ? "max-h-[145px] max-w-[280px]"
-              : isEller
-              ? "max-h-[155px] max-w-[290px]"
-              : "max-h-[140px] max-w-[260px]"
-          }
-        `}
-      />
+    <div className="flex h-[220px] items-center justify-center overflow-hidden bg-white px-4 sm:px-6 md:px-8">
+      <div className="flex h-full w-full items-center justify-center overflow-hidden">
+        <LogoImage src={image} alt={name} className={`object-contain ${sizing} max-w-full`} />
+      </div>
     </div>
   );
 }
@@ -572,14 +533,14 @@ function SectionHeader({
   subtitle?: string;
 }) {
   return (
-    <div className="text-center max-w-3xl mx-auto mb-10">
-      <p className="text-blue-600 text-xs font-black uppercase tracking-[0.35em]">
+    <div className="mx-auto mb-10 max-w-3xl text-center">
+      <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-600">
         {eyebrow}
       </p>
-      <h2 className="mt-3 text-3xl md:text-4xl font-black tracking-tight text-slate-950">
+      <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
         {title}
       </h2>
-      {subtitle && <p className="mt-3 text-slate-600 leading-7">{subtitle}</p>}
+      {subtitle && <p className="mt-3 leading-7 text-slate-600">{subtitle}</p>}
     </div>
   );
 }
@@ -599,9 +560,9 @@ function PipelinePreviewCard({
 
   return (
     <Card className={`mb-8 rounded-3xl border ${t.border} bg-white/90 shadow-sm`}>
-      <CardContent className="p-6 md:p-7 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+      <CardContent className="flex flex-col gap-5 p-6 md:flex-row md:items-center md:justify-between md:p-7">
         <div className="flex gap-4">
-          <div className={`h-12 w-12 rounded-2xl flex items-center justify-center ${t.icon}`}>
+          <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${t.icon}`}>
             <Workflow className="h-6 w-6" />
           </div>
           <div>
@@ -616,7 +577,7 @@ function PipelinePreviewCard({
         <Button
           onClick={onOpen}
           variant="outline"
-          className="rounded-xl border-slate-200 bg-white px-5 py-6 hover:bg-slate-50 shrink-0"
+          className="shrink-0 rounded-xl border-slate-200 bg-white px-5 py-6 hover:bg-slate-50"
         >
           <Eye className="mr-2 h-4 w-4" /> View Pipeline
         </Button>
@@ -629,21 +590,21 @@ function PipelineDiagram({ steps, theme }: { steps: string[]; theme: Theme }) {
   const t = themeClasses(theme);
 
   return (
-    <div className="rounded-[2rem] border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
+    <div className="rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm md:p-7">
       <div className="grid gap-4 md:grid-cols-7">
         {steps.map((step, index) => (
           <div key={step} className="relative">
-            <div className={`rounded-2xl border ${t.border} bg-gradient-to-br from-white to-slate-50 p-4 min-h-[120px] shadow-sm`}>
+            <div className={`min-h-[120px] rounded-2xl border ${t.border} bg-gradient-to-br from-white to-slate-50 p-4 shadow-sm`}>
               <div className="flex items-center justify-between">
-                <div className={`h-8 w-8 rounded-full bg-gradient-to-r ${t.accent} text-white flex items-center justify-center text-xs font-black`}>
+                <div className={`flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r ${t.accent} text-xs font-black text-white`}>
                   {index + 1}
                 </div>
                 <Layers3 className="h-4 w-4 text-slate-400" />
               </div>
-              <p className="mt-5 text-sm font-black leading-5 text-slate-850">{step}</p>
+              <p className="mt-5 text-sm font-black leading-5 text-slate-800">{step}</p>
             </div>
             {index < steps.length - 1 && (
-              <ArrowRight className="hidden md:block absolute -right-5 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 z-10" />
+              <ArrowRight className="absolute -right-5 top-1/2 z-10 hidden h-5 w-5 -translate-y-1/2 text-slate-400 md:block" />
             )}
           </div>
         ))}
@@ -655,13 +616,13 @@ function PipelineDiagram({ steps, theme }: { steps: string[]; theme: Theme }) {
 function DetailList({ title, items }: { title: string; items: string[] }) {
   return (
     <div>
-      <h4 className="text-sm font-black uppercase tracking-[0.2em] text-slate-900 mb-3">
+      <h4 className="mb-3 text-sm font-black uppercase tracking-[0.2em] text-slate-900">
         {title}
       </h4>
       <ul className="space-y-2">
         {items.map((item) => (
           <li key={item} className="flex gap-3 text-sm leading-6 text-slate-700">
-            <CheckCircle2 className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
+            <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-blue-600" />
             <span>{item}</span>
           </li>
         ))}
@@ -673,56 +634,44 @@ function DetailList({ title, items }: { title: string; items: string[] }) {
 function ProjectCard({ project, onClick }: { project: Project; onClick: () => void }) {
   const theme = themeClasses(project.theme);
 
-  return (
-    <button onClick={onClick} className="h-full w-full text-left group">
-      <Card
-        className={`h-full rounded-3xl border ${theme.border} bg-white shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden`}
-      >
-        <div className={`h-2 bg-gradient-to-r ${theme.accent}`} />
+  const logoClass =
+    project.theme === "barclays"
+      ? "object-contain h-12 max-w-[185px] scale-[1.15]"
+      : project.theme === "accenture"
+      ? "object-contain h-12 max-w-[180px] scale-[1.2]"
+      : "object-contain h-8 max-w-[130px]";
 
+  return (
+    <button onClick={onClick} className="group h-full w-full text-left">
+      <Card className={`h-full overflow-hidden rounded-3xl border ${theme.border} bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl`}>
+        <div className={`h-2 bg-gradient-to-r ${theme.accent}`} />
         <CardContent className="p-6">
           <div className="flex items-start justify-between gap-4">
             <div className="flex gap-4">
-              <div
-                className={`h-14 w-14 rounded-2xl flex items-center justify-center font-black text-xs ${theme.icon}`}
-              >
+              <div className={`flex h-14 w-14 items-center justify-center rounded-2xl text-xs font-black ${theme.icon}`}>
                 {project.icon}
               </div>
-
               <div>
-                <div className="h-8 w-32 mb-2 flex items-center">
-                  <LogoImage
-                    src={getCompanyLogo(project.theme)}
-                    alt={project.company}
-                    className="object-contain h-8 max-w-[130px]"
-                  />
+                <div className="mb-2 flex h-12 w-48 items-center overflow-visible">
+                  <LogoImage src={getCompanyLogo(project.theme)} alt={project.company} className={logoClass} />
                 </div>
-
-                <h3 className="text-lg font-black text-slate-950 leading-snug">
-                  {project.title}
-                </h3>
+                <h3 className="text-lg font-black leading-snug text-slate-950">{project.title}</h3>
               </div>
             </div>
-
-            <ArrowRight
-              className={`h-5 w-5 shrink-0 group-hover:translate-x-1 transition ${theme.button}`}
-            />
+            <ArrowRight className={`h-5 w-5 shrink-0 transition group-hover:translate-x-1 ${theme.button}`} />
           </div>
 
           <p className="mt-5 text-sm leading-7 text-slate-600">{project.text}</p>
 
           <div className="mt-5 flex flex-wrap gap-2">
             {project.tags.slice(0, 5).map((tag) => (
-              <span
-                key={tag}
-                className={`rounded-lg px-3 py-1.5 text-xs font-medium border ${theme.tag}`}
-              >
+              <span key={tag} className={`rounded-lg border px-3 py-1.5 text-xs font-medium ${theme.tag}`}>
                 {tag}
               </span>
             ))}
           </div>
 
-          <p className={`mt-5 text-sm font-bold flex items-center gap-2 ${theme.button}`}>
+          <p className={`mt-5 flex items-center gap-2 text-sm font-bold ${theme.button}`}>
             View details <ExternalLink className="h-4 w-4" />
           </p>
         </CardContent>
@@ -761,22 +710,19 @@ function CompanySection({
   const t = themeClasses(theme);
 
   return (
-    <section id={id} className={`py-16 border-y ${t.section}`}>
+    <section id={id} className={`border-y py-16 ${t.section}`}>
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-8">
-          <div className="h-14 w-72 flex items-center mb-4">
-            <LogoImage src={logo} alt={heading} className="object-contain h-14 max-w-[280px]" />
+          <div className="mb-4 flex h-16 w-80 items-center">
+            <LogoImage src={logo} alt={heading} className="h-16 max-w-[320px] object-contain" />
           </div>
-
           <p className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] ${t.pill}`}>
             {label}
           </p>
-
-          <h2 className="mt-4 text-3xl md:text-4xl font-black tracking-tight text-slate-950">
+          <h2 className="mt-4 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
             {heading}
           </h2>
-
-          <p className="mt-3 max-w-3xl text-slate-600 leading-7">{description}</p>
+          <p className="mt-3 max-w-3xl leading-7 text-slate-600">{description}</p>
         </div>
 
         {pipelineTitle && pipelineDescription && pipelineSteps && (
@@ -788,13 +734,9 @@ function CompanySection({
           />
         )}
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
-            <ProjectCard
-              key={project.title}
-              project={project}
-              onClick={() => setSelectedProject(project)}
-            />
+            <ProjectCard key={project.title} project={project} onClick={() => setSelectedProject(project)} />
           ))}
         </div>
       </div>
@@ -807,68 +749,50 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
   const t = themeClasses(project.theme);
 
   return (
-    <div
-      className="fixed inset-0 z-[100] bg-slate-950/60 backdrop-blur-sm p-4 md:p-8 flex items-center justify-center"
-      onClick={onClose}
-    >
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/60 p-4 backdrop-blur-sm md:p-8" onClick={onClose}>
       <motion.div
         initial={{ opacity: 0, y: 20, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         className="max-h-[90vh] w-full max-w-6xl overflow-y-auto rounded-[2rem] bg-white shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className={`sticky top-0 bg-white/95 backdrop-blur border-b p-6 flex items-start justify-between gap-4 ${t.border}`}>
+        <div className={`sticky top-0 flex items-start justify-between gap-4 border-b bg-white/95 p-6 backdrop-blur ${t.border}`}>
           <div>
-            <div className="h-10 w-48 flex items-center mb-3">
-              <LogoImage
-                src={getCompanyLogo(project.theme)}
-                alt={project.company}
-                className="object-contain h-10 max-w-[190px]"
-              />
+            <div className="mb-3 flex h-12 w-60 items-center">
+              <LogoImage src={getCompanyLogo(project.theme)} alt={project.company} className="h-12 max-w-[240px] object-contain" />
             </div>
-
             <p className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold ${t.pill}`}>
               {project.company}
             </p>
-
             <h2 className="mt-3 text-3xl font-black text-slate-950">{project.title}</h2>
             <p className="mt-2 text-slate-600">{project.subtitle}</p>
           </div>
-
           <button onClick={onClose} className="rounded-full border border-slate-200 p-2 hover:bg-slate-50">
             <X className="h-5 w-5" />
           </button>
         </div>
 
-        <div className="p-6 md:p-8 space-y-8">
+        <div className="space-y-8 p-6 md:p-8">
           <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-            <h3 className="font-black text-slate-950 mb-2">Problem</h3>
-            <p className="text-slate-700 leading-7">{project.problem}</p>
+            <h3 className="mb-2 font-black text-slate-950">Problem</h3>
+            <p className="leading-7 text-slate-700">{project.problem}</p>
           </div>
 
           {project.pipeline && (
             <div>
-              <Button
-                variant="outline"
-                onClick={() => setShowPipeline(!showPipeline)}
-                className="rounded-xl border-slate-200 bg-white hover:bg-slate-50"
-              >
+              <Button variant="outline" onClick={() => setShowPipeline(!showPipeline)} className="rounded-xl border-slate-200 bg-white hover:bg-slate-50">
                 <Workflow className="mr-2 h-4 w-4" />
                 {showPipeline ? "Hide related pipeline" : "View related pipeline"}
               </Button>
-
               {showPipeline && (
                 <div className="mt-5">
-                  <PipelineDiagram
-                    steps={pipelineDefinitions[project.pipeline]}
-                    theme={project.theme}
-                  />
+                  <PipelineDiagram steps={pipelineDefinitions[project.pipeline]} theme={project.theme} />
                 </div>
               )}
             </div>
           )}
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-3">
             <DetailList title="Complexity" items={project.complexity} />
             <DetailList title="Actions" items={project.actions} />
             <DetailList title="Impact" items={project.impact} />
@@ -876,10 +800,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 
           <div className="flex flex-wrap gap-2 pt-2">
             {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className={`rounded-lg px-3 py-1.5 text-xs font-medium border ${t.tag}`}
-              >
+              <span key={tag} className={`rounded-lg border px-3 py-1.5 text-xs font-medium ${t.tag}`}>
                 {tag}
               </span>
             ))}
@@ -908,17 +829,14 @@ function PipelineModal({
   onClose: () => void;
 }) {
   return (
-    <div
-      className="fixed inset-0 z-[100] bg-slate-950/60 backdrop-blur-sm p-4 md:p-8 flex items-center justify-center"
-      onClick={onClose}
-    >
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/60 p-4 backdrop-blur-sm md:p-8" onClick={onClose}>
       <motion.div
         initial={{ opacity: 0, y: 20, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        className="w-full max-w-7xl rounded-[2rem] bg-white shadow-2xl overflow-hidden"
+        className="w-full max-w-7xl overflow-hidden rounded-[2rem] bg-white shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="border-b border-slate-200 p-6 flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between gap-4 border-b border-slate-200 p-6">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.3em] text-blue-600">Pipeline architecture</p>
             <h2 className="mt-2 text-3xl font-black text-slate-950">{title}</h2>
@@ -955,23 +873,23 @@ export default function Portfolio() {
       <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,#dbeafe,transparent_35%),radial-gradient(circle_at_bottom_left,#fff7ed,transparent_30%)]" />
 
       <header className="sticky top-0 z-50 border-b border-slate-100 bg-white/85 backdrop-blur-xl">
-        <div className="mx-auto max-w-7xl px-6 py-5 flex items-center justify-between">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
           <div>
             <a href="#top" className="text-2xl font-black tracking-tight text-slate-950">
               Madhvika Sehgal
             </a>
-            <p className="text-sm text-slate-500 mt-1">Business Intelligence Engineer</p>
+            <p className="mt-1 text-sm text-slate-500">Business Intelligence Engineer</p>
           </div>
 
-          <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-700">
-            <a href="#top" className="text-blue-600 border-b-2 border-blue-600 pb-2">Home</a>
+          <nav className="hidden items-center gap-8 text-sm font-medium text-slate-700 lg:flex">
+            <a href="#top" className="border-b-2 border-blue-600 pb-2 text-blue-600">Home</a>
             <a href="#amazon" className="hover:text-blue-600">Amazon</a>
             <a href="#barclays" className="hover:text-blue-600">Barclays</a>
             <a href="#skills" className="hover:text-blue-600">Skills</a>
             <a href="#contact" className="hover:text-blue-600">Contact</a>
           </nav>
 
-          <Button asChild className="hidden md:inline-flex rounded-xl bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-600/20">
+          <Button asChild className="hidden rounded-xl bg-blue-600 shadow-lg shadow-blue-600/20 hover:bg-blue-700 md:inline-flex">
             <a href={resumeUrl} download>
               <Download className="mr-2 h-4 w-4" /> Download Resume
             </a>
@@ -980,37 +898,35 @@ export default function Portfolio() {
       </header>
 
       <main id="top">
-        <section className="mx-auto max-w-7xl px-6 pt-16 pb-12 grid lg:grid-cols-[1.05fr_.95fr] gap-14 items-center">
+        <section className="mx-auto grid max-w-7xl items-center gap-14 px-6 pb-12 pt-16 lg:grid-cols-[1.05fr_.95fr]">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>
             <div className="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 shadow-sm">
               <Sparkles className="h-4 w-4" /> BI Engineering · Finance Analytics · Cloud Data Platforms
             </div>
 
-            <h1 className="mt-7 text-5xl md:text-7xl font-black tracking-tight leading-[1.03] text-slate-950">
+            <h1 className="mt-7 text-5xl font-black leading-[1.03] tracking-tight text-slate-950 md:text-7xl">
               I turn messy finance and operations data into <span className="text-blue-600">trusted business decisions.</span>
             </h1>
 
-            <p className="mt-7 text-lg leading-8 text-slate-600 max-w-3xl">
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-slate-600">
               Business Intelligence Engineer with 4+ years of experience across healthcare-tech, fintech, and consulting. I build SQL-heavy finance pipelines, cost allocation frameworks, governance dashboards, IVR analytics systems, and stakeholder-ready reporting layers.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button asChild className="rounded-xl bg-blue-600 hover:bg-blue-700 px-6 py-6 text-base shadow-lg shadow-blue-600/20">
+              <Button asChild className="rounded-xl bg-blue-600 px-6 py-6 text-base shadow-lg shadow-blue-600/20 hover:bg-blue-700">
                 <a href="#amazon">View Projects <ArrowRight className="ml-2 h-4 w-4" /></a>
               </Button>
-
               <Button asChild variant="outline" className="rounded-xl border-slate-200 bg-white px-6 py-6 text-base hover:bg-slate-50">
                 <a href={resumeUrl} download><FileText className="mr-2 h-4 w-4" /> Resume</a>
               </Button>
-
               <Button asChild variant="outline" className="rounded-xl border-slate-200 bg-white px-6 py-6 text-base hover:bg-slate-50">
                 <a href={emailUrl}><Mail className="mr-2 h-4 w-4" /> Contact</a>
               </Button>
             </div>
 
-            <div className="mt-10 rounded-[28px] border border-slate-200 bg-white shadow-lg overflow-hidden">
-              <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-slate-200">
-                <CompanyLogo name="Amazon Pharmacy" image={logos.amazon} />
+            <div className="mt-10 overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-lg">
+              <div className="grid grid-cols-1 divide-y divide-slate-200 sm:grid-cols-2 sm:divide-x sm:divide-y-0 xl:grid-cols-4">
+                <CompanyLogo name="Amazon" image={logos.amazon} />
                 <CompanyLogo name="Barclays" image={logos.barclays} />
                 <CompanyLogo name="Accenture" image={logos.accenture} />
                 <CompanyLogo name="University of Arizona" image={logos.eller} />
@@ -1021,8 +937,8 @@ export default function Portfolio() {
           <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.65, delay: 0.1 }}>
             <Card className="rounded-[2rem] border-slate-200 bg-white/90 shadow-2xl shadow-slate-200/70">
               <CardContent className="p-8">
-                <p className="text-blue-600 text-xs font-black uppercase tracking-[0.35em]">Portfolio Snapshot</p>
-                <h2 className="mt-4 text-2xl md:text-3xl font-black text-slate-950">Scale, complexity, and business impact.</h2>
+                <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-600">Portfolio Snapshot</p>
+                <h2 className="mt-4 text-2xl font-black text-slate-950 md:text-3xl">Scale, complexity, and business impact.</h2>
 
                 <div className="mt-6 grid grid-cols-2 gap-4">
                   {metrics.map(({ value, label, icon: Icon }) => (
@@ -1031,13 +947,13 @@ export default function Portfolio() {
                         <Icon className="h-7 w-7 text-blue-600" />
                         <div className="text-3xl font-black text-blue-600">{value}</div>
                       </div>
-                      <div className="mt-2 text-sm text-slate-600 pl-11">{label}</div>
+                      <div className="mt-2 pl-11 text-sm text-slate-600">{label}</div>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-6 rounded-2xl border border-emerald-200 bg-emerald-50 p-5 flex gap-4">
-                  <CheckCircle2 className="h-6 w-6 text-emerald-600 shrink-0 mt-1" />
+                <div className="mt-6 flex gap-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
+                  <CheckCircle2 className="mt-1 h-6 w-6 shrink-0 text-emerald-600" />
                   <p className="text-sm leading-7 text-slate-700">
                     Core strength: tracing metrics from dashboard symptoms back through SQL, upstream data, finance logic, and stakeholder definitions.
                   </p>
@@ -1054,7 +970,7 @@ export default function Portfolio() {
           heading="Amazon Projects"
           label="Pharmacy Finance · Cost Allocation · Contribution Profit"
           description="Finance data engineering-adjacent analytics work across MEC cost allocation, CP reporting, automation, governance, GenAI-assisted cost narratives, and stakeholder documentation."
-          pipelineTitle="Pipeline Architecture:GL → Contribution Profit"
+          pipelineTitle="Main pipeline I worked on: MEC → Contribution Profit"
           pipelineDescription="A simplified, portfolio-safe view of the financial allocation pipeline I helped debug, redesign, validate, document, and operationalize."
           pipelineSteps={pipelineDefinitions.amazonMec}
           projects={amazonProjects}
@@ -1069,8 +985,8 @@ export default function Portfolio() {
           heading="Barclays Projects"
           label="Fintech · IVR · Contact Center Analytics"
           description="Customer journey and contact-center analytics across IVR funnels, callback workflows, cloud migration, SLA logic, A/B testing, and performance scoring."
-          pipelineTitle="Pipeline Architecture: IVR → KPI dashboards"
-          pipelineDescription="Architected and implemented a scalable IVR analytics ecosystem from the ground up during contact center modernization, integrating multi-source call data, designing ETL pipelines, standardizing KPI definitions, and enabling Tableau-based operational reporting for business stakeholders."
+          pipelineTitle="Main analytics flow: IVR → KPI dashboards"
+          pipelineDescription="Designed and led migration of a unified IVR analytics pipeline from legacy contact-center systems to a cloud-based reporting architecture, spanning call-data ingestion, ETL standardization, KPI logic, Tableau reporting, and operational decision support."
           pipelineSteps={pipelineDefinitions.barclaysIvr}
           projects={barclaysProjects}
           setSelectedProject={setSelectedProject}
@@ -1089,7 +1005,7 @@ export default function Portfolio() {
           setPipelineModal={setPipelineModal}
         />
 
-        <section id="skills" className="py-16 bg-white">
+        <section id="skills" className="bg-white py-16">
           <div className="mx-auto max-w-7xl px-6">
             <SectionHeader
               eyebrow="Skills"
@@ -1115,18 +1031,17 @@ export default function Portfolio() {
           </div>
         </section>
 
-        <section id="contact" className="py-16 bg-white">
+        <section id="contact" className="bg-white py-16">
           <div className="mx-auto max-w-7xl px-6">
             <Card className="rounded-[2rem] border-slate-200 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white shadow-2xl shadow-slate-400/20">
-              <CardContent className="p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+              <CardContent className="flex flex-col items-start justify-between gap-8 p-8 md:flex-row md:items-center md:p-10">
                 <div>
-                  <p className="text-slate-300 text-sm font-bold uppercase tracking-[0.25em]">Open to roles</p>
-                  <h2 className="mt-3 text-3xl md:text-4xl font-black">Analytics Engineer · BIE · Finance Analytics</h2>
-                  <p className="mt-4 text-slate-300 max-w-3xl leading-7">
+                  <p className="text-sm font-bold uppercase tracking-[0.25em] text-slate-300">Open to roles</p>
+                  <h2 className="mt-3 text-3xl font-black md:text-4xl">Analytics Engineer · BIE · Finance Analytics</h2>
+                  <p className="mt-4 max-w-3xl leading-7 text-slate-300">
                     Best fit: roles where business ambiguity, SQL-heavy pipelines, finance logic, and stakeholder communication all meet.
                   </p>
-
-                  <div className="mt-6 grid sm:grid-cols-3 gap-4 text-sm text-slate-200">
+                  <div className="mt-6 grid gap-4 text-sm text-slate-200 sm:grid-cols-3">
                     <a className="flex items-center gap-2 hover:underline" href={emailUrl}>
                       <Mail className="h-4 w-4" /> madhvika.sehgal@gmail.com
                     </a>
@@ -1139,12 +1054,11 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Button asChild variant="secondary" className="rounded-xl bg-white text-slate-950 hover:bg-slate-100 px-6 py-6 font-bold">
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <Button asChild variant="secondary" className="rounded-xl bg-white px-6 py-6 font-bold text-slate-950 hover:bg-slate-100">
                     <a href={emailUrl}><Mail className="mr-2 h-4 w-4" /> Contact Me</a>
                   </Button>
-
-                  <Button asChild variant="secondary" className="rounded-xl bg-white text-slate-950 hover:bg-slate-100 px-6 py-6 font-bold">
+                  <Button asChild variant="secondary" className="rounded-xl bg-white px-6 py-6 font-bold text-slate-950 hover:bg-slate-100">
                     <a href={resumeUrl} download><Download className="mr-2 h-4 w-4" /> Resume</a>
                   </Button>
                 </div>
@@ -1155,7 +1069,6 @@ export default function Portfolio() {
       </main>
 
       {selectedProject && <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />}
-
       {pipelineModal && (
         <PipelineModal
           title={pipelineModal.title}
