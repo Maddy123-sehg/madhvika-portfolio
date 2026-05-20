@@ -35,7 +35,7 @@ const linkedInUrl = "https://www.linkedin.com/in/madhvika-sehgal/";
 const logos = {
   amazon: "/logos/Amazon.png",
   barclays: "/logos/Barclays.svg",
-  accenture: "/logos/Accenture.svp",
+  accenture: "/logos/Accenture.webp",
   eller: "/logos/Eller.jpeg",
 };
 
