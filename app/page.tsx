@@ -37,7 +37,7 @@ const linkedInUrl = "https://www.linkedin.com/in/madhvika-sehgal/";
 // Based on your Windows folder screenshot, these are the correct names.
 const logos = {
   amazon: "/logos/Amazon.png",
-  barclays: "/logos/Barclays.png",
+  barclays: "/logos/Barclays.svg",
   accenture: "/logos/Accenture.webp",
   eller: "/logos/Eller.png",
 };
@@ -505,19 +505,34 @@ function LogoImage({
 }) {
   const [failed, setFailed] = useState(false);
 
-  if (failed) return <span className="font-black text-slate-800">{alt}</span>;
+  if (failed) return <span className="text-lg font-bold text-slate-800">{alt}</span>;
 
-  return <img src={src} alt={alt} className={className} onError={() => setFailed(true)} />;
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={className}
+      style={{
+        maxWidth: "100%",
+        maxHeight: "100%",
+        objectFit: "contain",
+        display: "block",
+      }}
+      onError={() => setFailed(true)}
+    />
+  );
 }
 
 function CompanyLogo({ name, image }: { name: string; image: string }) {
   return (
-    <div className="flex items-center justify-center bg-white hover:bg-slate-50 transition duration-300 h-[130px] overflow-hidden px-6">
-      <LogoImage
-        src={image}
-        alt={name}
-        className="object-contain max-h-[78px] max-w-[180px] w-auto"
-      />
+    <div className="flex h-[130px] items-center justify-center bg-white px-10 py-8 hover:bg-slate-50 transition duration-300 overflow-hidden">
+      <div className="flex h-full w-full items-center justify-center">
+        <LogoImage
+          src={image}
+          alt={name}
+          className="h-full w-full object-contain"
+        />
+      </div>
     </div>
   );
 }
