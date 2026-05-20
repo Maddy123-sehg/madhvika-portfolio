@@ -515,7 +515,7 @@ function CompanyLogo({ name, image }: { name: string; image: string }) {
     : "h-[100px] w-[260px]";
 
   return (
-    <div className="flex h-[155px] items-center justify-center overflow-hidden bg-white px-8 sm:px-10 md:px-12">
+    <div className="flex h-[140px] items-center justify-center overflow-hidden bg-white px-10 sm:px-12 md:px-14">
       <div className="flex h-full w-full items-center justify-center overflow-hidden">
         <LogoImage
           src={image}
@@ -720,7 +720,7 @@ function CompanySection({
           <div
   className={`mb-4 flex items-center ${
     theme === "barclays"
-      ? "h-24 w-[420px]"
+      ? "h-28 w-[440px]"
       : theme === "accenture"
       ? "h-20 w-[360px]"
       : "h-20 w-[360px]"
