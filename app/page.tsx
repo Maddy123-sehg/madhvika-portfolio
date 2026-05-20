@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -21,20 +20,16 @@ import {
   LineChart,
   Mail,
   MapPin,
-  Network,
   Sparkles,
-  User,
   X,
   CalendarDays,
   Clock3,
   Workflow,
-  Users,
-  Target,
-  MessageSquare,
 } from "lucide-react";
 
 const resumeUrl = "/Madhvika-Sehgal-Resume-2026.pdf";
-const emailUrl = "mailto:madhvika.sehgal@gmail.com?subject=Portfolio%20Inquiry%20-%20Madhvika%20Sehgal&body=Hi%20Madhvika%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20wanted%20to%20connect.%0A%0A";
+const emailUrl =
+  "mailto:madhvika.sehgal@gmail.com?subject=Portfolio%20Inquiry%20-%20Madhvika%20Sehgal";
 const linkedInUrl = "https://www.linkedin.com/in/madhvika-sehgal/";
 
 const logos = {
@@ -53,28 +48,30 @@ const metrics = [
 
 const pipelineDefinitions = {
   amazonMec: [
-    "Cognos / GL + operational inputs",
-    "Work-unit derivation",
-    "Cost center mapping",
-    "MEC allocation logic",
-    "Rate cards + manual adjustments",
-    "Contribution Profit reporting",
-    "Finance dashboards / month-end review",
+    "Finance + ops inputs",
+    "Work units",
+    "Cost centers",
+    "MEC allocation",
+    "Rate cards",
+    "Contribution Profit",
+    "Finance review",
   ],
   barclaysIvr: [
-    "Oracle + AWS contact-center data",
-    "IVR / call / clickstream logs",
-    "Tableau Prep + ETL logic",
-    "Unified KPI layer",
-    "Containment, transfer, SLA metrics",
+    "Oracle + AWS data",
+    "IVR / call logs",
+    "ETL logic",
+    "KPI layer",
+    "SLA + funnel metrics",
     "Tableau dashboards",
-    "CX / product / operations decisions",
+    "Ops decisions",
   ],
 };
 
+type Theme = "amazon" | "barclays" | "accenture";
+
 type Project = {
-  company: "Amazon Pharmacy" | "Barclays" | "Accenture";
-  theme: "amazon" | "barclays" | "accenture";
+  company: string;
+  theme: Theme;
   title: string;
   subtitle: string;
   text: string;
@@ -92,9 +89,11 @@ const projects: Project[] = [
     company: "Amazon Pharmacy",
     theme: "amazon",
     title: "MEC Cost Allocation & Contribution Profit Framework",
-    subtitle: "Core Pharmacy Finance allocation engine supporting Contribution Profit reporting",
+    subtitle:
+      "Core Pharmacy Finance allocation engine supporting Contribution Profit reporting",
     text: "Led analysis, debugging, enhancement, and validation of a 1,900+ line SQL-based cost allocation pipeline powering Pharmacy Finance reporting.",
-    problem: "Pharmacy Finance needed reliable allocation of fulfillment, customer service, pharmacist, billing, and operational costs into Contribution Profit reporting during month-end close.",
+    problem:
+      "Pharmacy Finance needed reliable allocation of fulfillment, customer service, pharmacist, billing, and operational costs into Contribution Profit reporting during month-end close.",
     complexity: [
       "Pipeline logic spanned finance facts, operational work units, cost centers, warehouse mappings, manual inputs, and downstream CP reporting.",
       "Small mapping, sign, or allocation-driver issues could materially change P&L interpretation.",
@@ -110,7 +109,7 @@ const projects: Project[] = [
       "Supported more reliable month-end financial attribution and stakeholder reviews.",
       "Built SME-level understanding of a complex finance analytics ecosystem.",
     ],
-    tags: ["SQL", "Athena", "Redshift", "Finance Analytics", "Cost Allocation", "Contribution Profit"],
+    tags: ["SQL", "Athena", "Redshift", "Finance Analytics", "Cost Allocation"],
     icon: "CP",
     pipeline: "amazonMec",
   },
@@ -118,13 +117,15 @@ const projects: Project[] = [
     company: "Amazon Pharmacy",
     theme: "amazon",
     title: "Cost Allocation Redesign During Cost Center Restructuring",
-    subtitle: "Allocation logic redesign with structured validation and SQL reconciliation",
+    subtitle:
+      "Allocation logic redesign with structured validation and SQL reconciliation",
     text: "Redesigned allocation logic during cost center restructuring and validated downstream impacts through SQL reconciliation and structured allocation models.",
-    problem: "Cost center restructuring created risk that existing allocation logic would misattribute costs across warehouses, services, and finance reporting categories.",
+    problem:
+      "Cost center restructuring created risk that existing allocation logic would misattribute costs across warehouses, services, and finance reporting categories.",
     complexity: [
       "Restructuring affected downstream allocation percentages, rate-card logic, and CP reporting outputs.",
       "Validation required connecting SQL outputs with structured Excel allocation models and finance expectations.",
-      "The work needed to be both technically precise and explainable to non-technical finance stakeholders.",
+      "The work needed to be technically precise and explainable to non-technical finance stakeholders.",
     ],
     actions: [
       "Mapped old vs. new cost center allocation behavior and identified downstream dependencies.",
@@ -146,7 +147,8 @@ const projects: Project[] = [
     title: "Automated Labor Allocation for Month-End Close",
     subtitle: "Payroll + warehouse metadata automation feeding MEC inputs",
     text: "Built an automated labor allocation solution connecting ADP payroll data, warehouse metadata, and employee-to-warehouse business logic.",
-    problem: "A manual Excel/S3-driven labor allocation process required recurring updates whenever warehouses changed, creating avoidable month-end dependency.",
+    problem:
+      "A manual Excel/S3-driven labor allocation process required recurring updates whenever warehouses changed, creating avoidable month-end dependency.",
     complexity: [
       "Employee effort needed to be mapped to warehouses using business rules, not simple static lookups.",
       "New fulfillment centers had to be onboarded dynamically without manually editing files every month.",
@@ -162,7 +164,7 @@ const projects: Project[] = [
       "Reduced manual error risk during month-end close.",
       "Made labor allocation more scalable as new warehouses were added.",
     ],
-    tags: ["Python", "SQL", "AWS S3", "ADP", "Automation", "Month-End Close"],
+    tags: ["Python", "SQL", "AWS S3", "ADP", "Automation"],
     icon: "LA",
   },
   {
@@ -171,11 +173,12 @@ const projects: Project[] = [
     title: "HFDA Data Platform Usage Metrics Dashboard",
     subtitle: "Governance analytics from 1M+ monthly audit log events",
     text: "Built a governance dashboard using audit log event data to measure dataset adoption, platform usage, user access patterns, and unused assets.",
-    problem: "Data platform owners needed visibility into who was using which datasets, through which tools, and where unused or underused assets existed.",
+    problem:
+      "Data platform owners needed visibility into who was using which datasets, through which tools, and where unused or underused assets existed.",
     complexity: [
       "Audit logs contained dense ARN, session, role, and event metadata that needed classification before it was useful.",
-      "Access patterns needed to be separated across QuickSight, Workbench/Redshift Spectrum, Cradle, Athena/Glue, Datanet, and other tools.",
-      "The dashboard had to serve both governance and capacity-planning needs without becoming a noisy log dump.",
+      "Access patterns needed separation across QuickSight, Workbench, Athena/Glue, Cradle, Datanet, and other tools.",
+      "The dashboard had to serve governance and capacity-planning needs without becoming a noisy log dump.",
     ],
     actions: [
       "Reverse-engineered event metadata and created classification logic for platform, user, role, dataset, and tool usage.",
@@ -187,7 +190,7 @@ const projects: Project[] = [
       "Surfaced underused assets and usage patterns for capacity planning.",
       "Converted raw audit events into decision-ready data product insights.",
     ],
-    tags: ["SQL", "QuickSight", "Audit Logs", "Governance", "Data Platform Analytics"],
+    tags: ["SQL", "QuickSight", "Audit Logs", "Governance", "Data Platform"],
     icon: "HFDA",
   },
   {
@@ -196,7 +199,8 @@ const projects: Project[] = [
     title: "GenAI-Assisted Cost Variance Summaries",
     subtitle: "Claude-on-Bedrock workflow for month-end variance narratives",
     text: "Integrated Claude via Amazon Bedrock to analyze cost allocation anomalies and generate natural-language summaries of month-end variance reports.",
-    problem: "Finance stakeholders often needed plain-English explanations for cost allocation anomalies and month-end variance movements, not just raw tables.",
+    problem:
+      "Finance stakeholders often needed plain-English explanations for cost allocation anomalies and month-end variance movements, not just raw tables.",
     complexity: [
       "Narratives had to be finance-safe, reviewable, and careful not to invent unsupported causes.",
       "Structured cost variance data needed to be converted into meaningful prompts and consistent summary output.",
@@ -221,9 +225,10 @@ const projects: Project[] = [
     title: "Business-Facing Cost Allocation Documentation",
     subtitle: "Turning SQL-heavy finance logic into stakeholder-ready methodology",
     text: "Authored a business-facing cost allocation framework explaining methodology, cost drivers, manual adjustments, and rate-card logic.",
-    problem: "The cost allocation ecosystem was highly technical, making it difficult for finance and business stakeholders to understand methodology, assumptions, and month-end behavior.",
+    problem:
+      "The cost allocation ecosystem was highly technical, making it difficult for finance and business stakeholders to understand methodology, assumptions, and month-end behavior.",
     complexity: [
-      "The documentation needed to bridge SQL logic, finance concepts, cost centers, drivers, and stakeholder questions.",
+      "Documentation needed to bridge SQL logic, finance concepts, cost centers, drivers, and stakeholder questions.",
       "It had to explain current-month proxy logic, manual adjustments, segment definitions, and rate-card examples.",
       "The output needed to be useful for onboarding, review, and business sign-off.",
     ],
@@ -237,16 +242,18 @@ const projects: Project[] = [
       "Reduced onboarding friction for complex finance pipeline logic.",
       "Created a reusable reference for business review and future allocation changes.",
     ],
-    tags: ["Documentation", "Finance Analytics", "Stakeholder Management", "Cost Drivers", "Methodology"],
+    tags: ["Documentation", "Finance Analytics", "Cost Drivers", "Methodology"],
     icon: "DOC",
   },
   {
     company: "Barclays",
     theme: "barclays",
     title: "Callback Feature Revamp & SLA Logic Redesign",
-    subtitle: "Contact center performance analytics across callback workflows and SLA reporting",
+    subtitle:
+      "Contact center performance analytics across callback workflows and SLA reporting",
     text: "Led a 3-member team to redesign SLA logic and integrate callback features into Contact Center workflows, enhancing 45+ dashboards and reports.",
-    problem: "Contact center teams needed updated SLA logic and callback reporting to better track queue efficiency, customer retention, and servicing outcomes.",
+    problem:
+      "Contact center teams needed updated SLA logic and callback reporting to better track queue efficiency, customer retention, and servicing outcomes.",
     complexity: [
       "Changes affected 45+ dashboards and reports tied to operational workflows and SLA reporting.",
       "Callback performance had to be integrated into existing contact center KPI definitions.",
@@ -262,7 +269,7 @@ const projects: Project[] = [
       "Enhanced 45+ dashboards and reports.",
       "Supported a 15% improvement in customer retention as reported in project outcomes.",
     ],
-    tags: ["Tableau", "SLA", "Callback Analytics", "Leadership", "Contact Center"],
+    tags: ["Tableau", "SLA", "Callback Analytics", "Leadership"],
     icon: "CB",
     pipeline: "barclaysIvr",
   },
@@ -270,9 +277,11 @@ const projects: Project[] = [
     company: "Barclays",
     theme: "barclays",
     title: "IVR Customer Journey Analytics & ETL Framework",
-    subtitle: "5M+ interactions analyzed across IVR funnels, transfers, and servicing paths",
+    subtitle:
+      "5M+ interactions analyzed across IVR funnels, transfers, and servicing paths",
     text: "Built and managed ETL processes powering 30+ IVR Tableau dashboards and analyzed 5M+ interactions across call logs and servicing data.",
-    problem: "Servicing teams needed standardized funnel reporting across containment, self-service, transfers, sentiment, and customer journey drop-offs.",
+    problem:
+      "Servicing teams needed standardized funnel reporting across containment, self-service, transfers, sentiment, and customer journey drop-offs.",
     complexity: [
       "Data came from Oracle, AWS, IVR logs, clickstream, call records, and Tableau Prep flows.",
       "Metrics had to be standardized across multiple dashboards to avoid conflicting KPI definitions.",
@@ -288,7 +297,7 @@ const projects: Project[] = [
       "Improved funnel monitoring consistency across servicing teams.",
       "Created a scalable analytics foundation for IVR performance reporting.",
     ],
-    tags: ["Tableau", "ETL", "Oracle", "AWS", "IVR", "Customer Journey"],
+    tags: ["Tableau", "ETL", "Oracle", "AWS", "IVR"],
     icon: "IVR",
     pipeline: "barclaysIvr",
   },
@@ -298,7 +307,8 @@ const projects: Project[] = [
     title: "Cloud Migration & Data Lake Setup",
     subtitle: "Oracle to AWS S3 migration with Athena and Redshift performance gains",
     text: "Co-led migration of multi-terabyte datasets from Oracle to AWS S3, creating a scalable data lake and reducing query latency using Athena and Redshift.",
-    problem: "Legacy Oracle-based reporting workflows were becoming slower and less scalable as data volumes increased across servicing and IVR analytics.",
+    problem:
+      "Legacy Oracle-based reporting workflows were becoming slower and less scalable as data volumes increased across servicing and IVR analytics.",
     complexity: [
       "Multi-terabyte datasets needed migration without breaking downstream dashboards and reporting workflows.",
       "Historical and current data needed to remain usable for performance reporting.",
@@ -314,7 +324,7 @@ const projects: Project[] = [
       "Improved scalability of analytics workflows.",
       "Supported modernization of reporting infrastructure for contact center analytics.",
     ],
-    tags: ["AWS S3", "Athena", "Redshift", "Oracle", "Cloud Migration"],
+    tags: ["AWS S3", "Athena", "Redshift", "Oracle", "Migration"],
     icon: "AWS",
   },
   {
@@ -323,10 +333,11 @@ const projects: Project[] = [
     title: "Queue Optimization, A/B Testing & Agent Performance Analytics",
     subtitle: "Experimentation and scoring models for servicing performance improvement",
     text: "Designed A/B tests for queue restructuring and developed an agent performance scoring model using sentiment, CSAT, NPS, and Z-score normalization.",
-    problem: "Operations teams needed evidence-based ways to evaluate queue restructuring and identify coaching opportunities for agent performance.",
+    problem:
+      "Operations teams needed evidence-based ways to evaluate queue restructuring and identify coaching opportunities for agent performance.",
     complexity: [
       "Queue experiments needed clean comparison logic between Simple vs. Complex servicing paths.",
-      "Agent performance benchmarking required normalizing multiple metrics like sentiment, CSAT, and NPS.",
+      "Agent benchmarking required normalizing multiple metrics like sentiment, CSAT, and NPS.",
       "Outputs needed to be easy for QA and coaching teams to interpret.",
     ],
     actions: [
@@ -339,33 +350,62 @@ const projects: Project[] = [
       "Improved visibility into agent outliers for QA and coaching.",
       "Helped operations teams evaluate servicing changes with data rather than anecdotes.",
     ],
-    tags: ["A/B Testing", "Z-Score", "CSAT", "NPS", "Tableau", "Operations Analytics"],
+    tags: ["A/B Testing", "Z-Score", "CSAT", "NPS", "Tableau"],
     icon: "AB",
   },
   {
     company: "Accenture",
     theme: "accenture",
-    title: "SAP MM / Procure-to-Pay Implementation & Workflow Automation",
-    subtitle: "Enterprise consulting foundation across requirements, testing, automation, and stakeholder delivery",
-    text: "Delivered SAP MM and Procure-to-Pay implementations, workflow automation, BRDs, UAT, training, and post-go-live support for global clients.",
-    problem: "Enterprise clients needed procurement workflows, purchasing, inventory, and invoice processes implemented and improved across SAP MM environments.",
+    title: "SAP MM / Procure-to-Pay Workflow Automation",
+    subtitle:
+      "Procurement process automation across purchasing, inventory, and invoice workflows",
+    text: "Streamlined procurement operations by implementing SAP MM workflow automation including automatic PO generation and release strategy configuration.",
+    problem:
+      "Enterprise clients needed more efficient Procure-to-Pay workflows across purchasing, inventory, invoice processing, and approval routing.",
     complexity: [
-      "Work required translating business requirements into functional specifications and configuration logic.",
-      "SAP MM needed integration with SD, FI, and PP modules while preserving data integrity.",
-      "Stakeholders needed training, UAT support, and smooth change management during implementation.",
+      "Automation needed to align with business approval rules, procurement controls, and SAP MM configuration logic.",
+      "Process changes had to integrate cleanly with downstream finance, inventory, and enterprise reporting flows.",
+      "Stakeholders needed clear testing, training, and change-management support before adoption.",
     ],
     actions: [
-      "Led requirements gathering, BRD creation, UAT, training, and post-go-live support.",
-      "Implemented workflow automation including automatic PO generation and release strategy configuration.",
-      "Partnered with ABAP developers to deliver custom reports and enhancements aligned to business KPIs.",
+      "Configured SAP MM workflow logic including automatic PO generation and release strategy support.",
+      "Partnered with business and IT teams to translate operational requirements into system behavior.",
+      "Supported testing, training, and post-go-live stabilization for procurement users.",
     ],
     impact: [
       "Reduced procurement processing time by 25% in project outcomes.",
-      "Supported 95% user adoption through training and change management.",
-      "Built strong consulting, stakeholder management, and enterprise delivery foundations.",
+      "Improved operational efficiency and approval consistency.",
+      "Built strong foundation in enterprise process automation and stakeholder delivery.",
     ],
-    tags: ["SAP MM", "P2P", "BRD", "UAT", "Workflow Automation", "Stakeholder Management"],
-    icon: "SAP",
+    tags: ["SAP MM", "P2P", "Workflow Automation", "Procurement"],
+    icon: "P2P",
+  },
+  {
+    company: "Accenture",
+    theme: "accenture",
+    title: "SAP Integration, BRDs & UAT Enablement",
+    subtitle:
+      "Cross-functional consulting delivery across requirements, documentation, testing, and adoption",
+    text: "Delivered functional specifications, BRDs, UAT support, stakeholder workshops, training, and integration coordination across SAP MM, SD, FI, and PP teams.",
+    problem:
+      "Large enterprise SAP programs needed business requirements translated into scalable technical changes while keeping stakeholders aligned through testing and rollout.",
+    complexity: [
+      "SAP MM changes had to integrate with SD, FI, and PP modules while preserving data integrity.",
+      "Custom reports and enhancements required clear functional specs for ABAP developers.",
+      "Business users needed training and UAT support to adopt process changes with minimal disruption.",
+    ],
+    actions: [
+      "Created BRDs and functional specifications for custom reports and enhancements.",
+      "Coordinated with ABAP developers and business stakeholders to deliver logic-driven solutions.",
+      "Facilitated workshops, UAT, end-user training, and post-go-live support.",
+    ],
+    impact: [
+      "Supported 95% user adoption in project outcomes.",
+      "Improved cross-module communication and enterprise data integrity.",
+      "Built consulting muscles in requirements gathering, documentation, UAT, and stakeholder management.",
+    ],
+    tags: ["BRD", "UAT", "SAP Integration", "Workshops"],
+    icon: "UAT",
   },
 ];
 
@@ -374,19 +414,40 @@ const softSkills = [
     company: "Amazon Pharmacy",
     logo: logos.amazon,
     color: "from-orange-50 to-teal-50 border-orange-100",
-    skills: ["Deep ownership", "Finance stakeholder communication", "Ambiguity handling", "Month-end discipline", "Root-cause debugging", "Executive-ready documentation"],
+    skills: [
+      "Deep ownership",
+      "Finance stakeholder communication",
+      "Ambiguity handling",
+      "Month-end discipline",
+      "Root-cause debugging",
+      "Executive-ready documentation",
+    ],
   },
   {
     company: "Barclays",
     logo: logos.barclays,
     color: "from-sky-50 to-blue-50 border-sky-100",
-    skills: ["Team leadership", "Cross-functional delivery", "SLA thinking", "Experimentation mindset", "Customer journey framing", "Operational storytelling"],
+    skills: [
+      "Team leadership",
+      "Cross-functional delivery",
+      "SLA thinking",
+      "Experimentation mindset",
+      "Customer journey framing",
+      "Operational storytelling",
+    ],
   },
   {
     company: "Accenture",
     logo: logos.accenture,
     color: "from-purple-50 to-violet-50 border-purple-100",
-    skills: ["Client consulting", "Requirements gathering", "UAT facilitation", "Change management", "Training delivery", "Process documentation"],
+    skills: [
+      "Client consulting",
+      "Requirements gathering",
+      "UAT facilitation",
+      "Change management",
+      "Training delivery",
+      "Process documentation",
+    ],
   },
 ];
 
@@ -401,9 +462,36 @@ const tools = [
   { name: "Excel", icon: Layers3 },
 ];
 
-const skills = ["SQL", "Python", "Pandas", "AWS S3", "Athena", "Glue", "Lambda", "Redshift", "Oracle", "Tableau", "QuickSight", "Tableau Prep", "Alteryx", "Data Modeling", "ETL/ELT", "KPI Development", "Funnel Analysis", "Cost Allocation", "Activity-Based Costing", "Finance Analytics", "Data Validation", "Root Cause Analysis", "Stakeholder Communication", "Amazon Bedrock", "JIRA", "Confluence"];
+const skills = [
+  "SQL",
+  "Python",
+  "Pandas",
+  "AWS S3",
+  "Athena",
+  "Glue",
+  "Lambda",
+  "Redshift",
+  "Oracle",
+  "Tableau",
+  "QuickSight",
+  "Tableau Prep",
+  "Alteryx",
+  "Data Modeling",
+  "ETL/ELT",
+  "KPI Development",
+  "Funnel Analysis",
+  "Cost Allocation",
+  "Activity-Based Costing",
+  "Finance Analytics",
+  "Data Validation",
+  "Root Cause Analysis",
+  "Stakeholder Communication",
+  "Amazon Bedrock",
+  "JIRA",
+  "Confluence",
+];
 
-function themeClasses(theme: Project["theme"]) {
+function themeClasses(theme: Theme) {
   if (theme === "amazon") {
     return {
       section: "bg-gradient-to-br from-orange-50 via-white to-teal-50 border-orange-100",
@@ -412,8 +500,10 @@ function themeClasses(theme: Project["theme"]) {
       button: "text-orange-700",
       tag: "bg-orange-50 text-orange-800 border-orange-100",
       border: "border-orange-200",
+      accent: "from-orange-400 to-teal-500",
     };
   }
+
   if (theme === "barclays") {
     return {
       section: "bg-gradient-to-br from-sky-50 via-white to-blue-50 border-sky-100",
@@ -422,8 +512,10 @@ function themeClasses(theme: Project["theme"]) {
       button: "text-sky-700",
       tag: "bg-sky-50 text-sky-800 border-sky-100",
       border: "border-sky-200",
+      accent: "from-sky-400 to-blue-600",
     };
   }
+
   return {
     section: "bg-gradient-to-br from-purple-50 via-white to-violet-50 border-purple-100",
     pill: "bg-purple-100 text-purple-800 border-purple-200",
@@ -431,20 +523,58 @@ function themeClasses(theme: Project["theme"]) {
     button: "text-purple-700",
     tag: "bg-purple-50 text-purple-800 border-purple-100",
     border: "border-purple-200",
+    accent: "from-purple-500 to-violet-700",
   };
 }
 
-function companyLogo(theme: Project["theme"]) {
+function companyLogo(theme: Theme) {
   if (theme === "amazon") return logos.amazon;
   if (theme === "barclays") return logos.barclays;
   return logos.accenture;
 }
 
-function SectionHeader({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle?: string }) {
+function LogoImage({
+  src,
+  alt,
+  className = "",
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) {
+  const [failed, setFailed] = useState(false);
+
+  if (failed) {
+    return <span className="font-black text-slate-800">{alt}</span>;
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={className}
+      onError={() => setFailed(true)}
+    />
+  );
+}
+
+function SectionHeader({
+  eyebrow,
+  title,
+  subtitle,
+}: {
+  eyebrow: string;
+  title: string;
+  subtitle?: string;
+}) {
   return (
     <div className="text-center max-w-3xl mx-auto mb-10">
-      <p className="text-blue-600 text-xs font-black uppercase tracking-[0.35em]">{eyebrow}</p>
-      <h2 className="mt-3 text-3xl md:text-4xl font-black tracking-tight text-slate-950">{title}</h2>
+      <p className="text-blue-600 text-xs font-black uppercase tracking-[0.35em]">
+        {eyebrow}
+      </p>
+      <h2 className="mt-3 text-3xl md:text-4xl font-black tracking-tight text-slate-950">
+        {title}
+      </h2>
       {subtitle && <p className="mt-3 text-slate-600 leading-7">{subtitle}</p>}
     </div>
   );
@@ -453,7 +583,40 @@ function SectionHeader({ eyebrow, title, subtitle }: { eyebrow: string; title: s
 function CompanyLogo({ name, image }: { name: string; image: string }) {
   return (
     <div className="flex items-center justify-center px-8 py-6 bg-white hover:bg-slate-50 transition duration-300 min-h-[110px]">
-      <Image src={image} alt={name} width={190} height={70} className="object-contain h-14 w-auto" />
+      <LogoImage src={image} alt={name} className="object-contain h-14 max-w-[190px]" />
+    </div>
+  );
+}
+
+function PipelineStrip({
+  title,
+  steps,
+  theme,
+}: {
+  title: string;
+  steps: string[];
+  theme: Theme;
+}) {
+  const t = themeClasses(theme);
+
+  return (
+    <div className={`mb-8 rounded-3xl border bg-white/85 p-5 shadow-sm ${t.border}`}>
+      <div className="mb-4 flex items-center gap-3">
+        <Workflow className="h-5 w-5 text-slate-700" />
+        <h3 className="text-lg font-black text-slate-950">{title}</h3>
+      </div>
+
+      <div className="grid gap-3 md:grid-cols-7">
+        {steps.map((step, index) => (
+          <div
+            key={step}
+            className="rounded-2xl border border-slate-200 bg-white p-4 min-h-[96px]"
+          >
+            <div className="text-xs font-black text-slate-400">0{index + 1}</div>
+            <p className="mt-3 text-sm font-bold leading-5 text-slate-800">{step}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -461,7 +624,9 @@ function CompanyLogo({ name, image }: { name: string; image: string }) {
 function DetailList({ title, items }: { title: string; items: string[] }) {
   return (
     <div>
-      <h4 className="text-sm font-black uppercase tracking-[0.2em] text-slate-900 mb-3">{title}</h4>
+      <h4 className="text-sm font-black uppercase tracking-[0.2em] text-slate-900 mb-3">
+        {title}
+      </h4>
       <ul className="space-y-2">
         {items.map((item) => (
           <li key={item} className="flex gap-3 text-sm leading-6 text-slate-700">
@@ -474,58 +639,71 @@ function DetailList({ title, items }: { title: string; items: string[] }) {
   );
 }
 
-function ProjectCard({ project, onClick }: { project: Project; onClick: () => void }) {
+function ProjectCard({
+  project,
+  onClick,
+}: {
+  project: Project;
+  onClick: () => void;
+}) {
   const theme = themeClasses(project.theme);
+
   return (
     <button onClick={onClick} className="h-full w-full text-left group">
-      <Card className={`h-full rounded-3xl border ${theme.border} bg-white shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden`}>
-        <div className={`h-2 ${project.theme === "amazon" ? "bg-gradient-to-r from-orange-400 to-teal-500" : project.theme === "barclays" ? "bg-gradient-to-r from-sky-400 to-blue-600" : "bg-gradient-to-r from-purple-500 to-violet-700"}`} />
+      <Card
+        className={`h-full rounded-3xl border ${theme.border} bg-white shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden`}
+      >
+        <div className={`h-2 bg-gradient-to-r ${theme.accent}`} />
+
         <CardContent className="p-6">
           <div className="flex items-start justify-between gap-4">
             <div className="flex gap-4">
-              <div className={`h-14 w-14 rounded-2xl flex items-center justify-center font-black text-xs ${theme.icon}`}>{project.icon}</div>
+              <div
+                className={`h-14 w-14 rounded-2xl flex items-center justify-center font-black text-xs ${theme.icon}`}
+              >
+                {project.icon}
+              </div>
+
               <div>
-                <div className="h-8 w-32 relative mb-2">
-                  <Image src={companyLogo(project.theme)} alt={project.company} fill className="object-contain object-left" />
+                <div className="h-8 w-32 mb-2 flex items-center">
+                  <LogoImage
+                    src={companyLogo(project.theme)}
+                    alt={project.company}
+                    className="object-contain h-8 max-w-[130px]"
+                  />
                 </div>
-                <h3 className="text-lg font-black text-slate-950 leading-snug">{project.title}</h3>
+
+                <h3 className="text-lg font-black text-slate-950 leading-snug">
+                  {project.title}
+                </h3>
               </div>
             </div>
-            <ArrowRight className={`h-5 w-5 shrink-0 group-hover:translate-x-1 transition ${theme.button}`} />
+
+            <ArrowRight
+              className={`h-5 w-5 shrink-0 group-hover:translate-x-1 transition ${theme.button}`}
+            />
           </div>
+
           <p className="mt-5 text-sm leading-7 text-slate-600">{project.text}</p>
+
           <div className="mt-5 flex flex-wrap gap-2">
-            {project.tags.slice(0, 5).map((tag) => <span key={tag} className={`rounded-lg px-3 py-1.5 text-xs font-medium border ${theme.tag}`}>{tag}</span>)}
+            {project.tags.slice(0, 5).map((tag) => (
+              <span
+                key={tag}
+                className={`rounded-lg px-3 py-1.5 text-xs font-medium border ${theme.tag}`}
+              >
+                {tag}
+              </span>
+            ))}
           </div>
-          <p className={`mt-5 text-sm font-bold flex items-center gap-2 ${theme.button}`}>View details {project.pipeline ? "+ pipeline" : ""} <ExternalLink className="h-4 w-4" /></p>
+
+          <p className={`mt-5 text-sm font-bold flex items-center gap-2 ${theme.button}`}>
+            View details {project.pipeline ? "+ pipeline" : ""}
+            <ExternalLink className="h-4 w-4" />
+          </p>
         </CardContent>
       </Card>
     </button>
-  );
-}
-
-function ProjectSection({ theme, title, subtitle, projects }: { theme: Project["theme"]; title: string; subtitle: string; projects: Project[] }) {
-  const t = themeClasses(theme);
-  return (
-    <section className={`py-16 border-y ${t.section}`}>
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
-          <div>
-            <div className="h-12 w-56 relative mb-4">
-              <Image src={companyLogo(theme)} alt={title} fill className="object-contain object-left" />
-            </div>
-            <p className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] ${t.pill}`}>{theme === "amazon" ? "Healthcare-tech finance analytics" : theme === "barclays" ? "Fintech contact center analytics" : "Enterprise consulting foundation"}</p>
-            <h2 className="mt-4 text-3xl md:text-4xl font-black tracking-tight text-slate-950">{title}</h2>
-            <p className="mt-3 max-w-3xl text-slate-600 leading-7">{subtitle}</p>
-          </div>
-        </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
-            <ProjectCard key={project.title} project={project} onClick={() => {}} />
-          ))}
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -538,45 +716,102 @@ export default function Portfolio() {
   const accentureProjects = projects.filter((p) => p.theme === "accenture");
 
   return (
-    <div className="min-h-screen bg-white text-slate-900">
+    <div className="min-h-screen bg-white text-slate-900 [font-family:Inter,Segoe_UI,Arial,sans-serif]">
       <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,#dbeafe,transparent_35%),radial-gradient(circle_at_bottom_left,#fff7ed,transparent_30%)]" />
 
       <header className="sticky top-0 z-50 border-b border-slate-100 bg-white/85 backdrop-blur-xl">
         <div className="mx-auto max-w-7xl px-6 py-5 flex items-center justify-between">
           <div>
-            <a href="#top" className="text-2xl font-black tracking-tight text-slate-950">Madhvika Sehgal</a>
+            <a href="#top" className="text-2xl font-black tracking-tight text-slate-950">
+              Madhvika Sehgal
+            </a>
             <p className="text-sm text-slate-500 mt-1">Business Intelligence Engineer</p>
           </div>
+
           <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-700">
-            <a href="#top" className="text-blue-600 border-b-2 border-blue-600 pb-2">Home</a>
-            <a href="#amazon" className="hover:text-blue-600">Amazon</a>
-            <a href="#barclays" className="hover:text-blue-600">Barclays</a>
-            <a href="#skills" className="hover:text-blue-600">Skills</a>
-            <a href="#contact" className="hover:text-blue-600">Contact</a>
+            <a href="#top" className="text-blue-600 border-b-2 border-blue-600 pb-2">
+              Home
+            </a>
+            <a href="#amazon" className="hover:text-blue-600">
+              Amazon
+            </a>
+            <a href="#barclays" className="hover:text-blue-600">
+              Barclays
+            </a>
+            <a href="#skills" className="hover:text-blue-600">
+              Skills
+            </a>
+            <a href="#contact" className="hover:text-blue-600">
+              Contact
+            </a>
           </nav>
-          <Button asChild className="hidden md:inline-flex rounded-xl bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-600/20">
-            <a href={resumeUrl} download><Download className="mr-2 h-4 w-4" /> Download Resume</a>
+
+          <Button
+            asChild
+            className="hidden md:inline-flex rounded-xl bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-600/20"
+          >
+            <a href={resumeUrl} download>
+              <Download className="mr-2 h-4 w-4" /> Download Resume
+            </a>
           </Button>
         </div>
       </header>
 
       <main id="top">
         <section className="mx-auto max-w-7xl px-6 pt-16 pb-12 grid lg:grid-cols-[1.05fr_.95fr] gap-14 items-center">
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55 }}
+          >
             <div className="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 shadow-sm">
-              <Sparkles className="h-4 w-4" /> BI Engineering · Finance Analytics · Cloud Data Platforms
+              <Sparkles className="h-4 w-4" /> BI Engineering · Finance Analytics · Cloud
+              Data Platforms
             </div>
+
             <h1 className="mt-7 text-5xl md:text-7xl font-black tracking-tight leading-[1.03] text-slate-950">
-              I turn messy finance and operations data into <span className="text-blue-600">trusted business decisions.</span>
+              I turn messy finance and operations data into{" "}
+              <span className="text-blue-600">trusted business decisions.</span>
             </h1>
+
             <p className="mt-7 text-lg leading-8 text-slate-600 max-w-3xl">
-              Business Intelligence Engineer with 4+ years of experience across healthcare-tech, fintech, and consulting. I build SQL-heavy finance pipelines, cost allocation frameworks, governance dashboards, IVR analytics systems, and stakeholder-ready reporting layers.
+              Business Intelligence Engineer with 4+ years of experience across
+              healthcare-tech, fintech, and consulting. I build SQL-heavy finance pipelines,
+              cost allocation frameworks, governance dashboards, IVR analytics systems, and
+              stakeholder-ready reporting layers.
             </p>
+
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button asChild className="rounded-xl bg-blue-600 hover:bg-blue-700 px-6 py-6 text-base shadow-lg shadow-blue-600/20"><a href="#amazon">View Projects <ArrowRight className="ml-2 h-4 w-4" /></a></Button>
-              <Button asChild variant="outline" className="rounded-xl border-slate-200 bg-white px-6 py-6 text-base hover:bg-slate-50"><a href={resumeUrl} download><FileText className="mr-2 h-4 w-4" /> Resume</a></Button>
-              <Button asChild variant="outline" className="rounded-xl border-slate-200 bg-white px-6 py-6 text-base hover:bg-slate-50"><a href={emailUrl}><Mail className="mr-2 h-4 w-4" /> Contact</a></Button>
+              <Button
+                asChild
+                className="rounded-xl bg-blue-600 hover:bg-blue-700 px-6 py-6 text-base shadow-lg shadow-blue-600/20"
+              >
+                <a href="#amazon">
+                  View Projects <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+
+              <Button
+                asChild
+                variant="outline"
+                className="rounded-xl border-slate-200 bg-white px-6 py-6 text-base hover:bg-slate-50"
+              >
+                <a href={resumeUrl} download>
+                  <FileText className="mr-2 h-4 w-4" /> Resume
+                </a>
+              </Button>
+
+              <Button
+                asChild
+                variant="outline"
+                className="rounded-xl border-slate-200 bg-white px-6 py-6 text-base hover:bg-slate-50"
+              >
+                <a href={emailUrl}>
+                  <Mail className="mr-2 h-4 w-4" /> Contact
+                </a>
+              </Button>
             </div>
+
             <div className="mt-10 rounded-[28px] border border-slate-200 bg-white shadow-lg overflow-hidden">
               <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-slate-200">
                 <CompanyLogo name="Amazon Pharmacy" image={logos.amazon} />
@@ -587,22 +822,41 @@ export default function Portfolio() {
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.65, delay: 0.1 }}>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.65, delay: 0.1 }}
+          >
             <Card className="rounded-[2rem] border-slate-200 bg-white/90 shadow-2xl shadow-slate-200/70">
               <CardContent className="p-8">
-                <p className="text-blue-600 text-xs font-black uppercase tracking-[0.35em]">Portfolio Snapshot</p>
-                <h2 className="mt-4 text-2xl md:text-3xl font-black text-slate-950">Scale, complexity, and business impact.</h2>
+                <p className="text-blue-600 text-xs font-black uppercase tracking-[0.35em]">
+                  Portfolio Snapshot
+                </p>
+                <h2 className="mt-4 text-2xl md:text-3xl font-black text-slate-950">
+                  Scale, complexity, and business impact.
+                </h2>
+
                 <div className="mt-6 grid grid-cols-2 gap-4">
                   {metrics.map(({ value, label, icon: Icon }) => (
-                    <div key={value} className="rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-blue-50/60 p-5 shadow-sm">
-                      <div className="flex items-center gap-4"><Icon className="h-7 w-7 text-blue-600" /><div className="text-3xl font-black text-blue-600">{value}</div></div>
+                    <div
+                      key={value}
+                      className="rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-blue-50/60 p-5 shadow-sm"
+                    >
+                      <div className="flex items-center gap-4">
+                        <Icon className="h-7 w-7 text-blue-600" />
+                        <div className="text-3xl font-black text-blue-600">{value}</div>
+                      </div>
                       <div className="mt-2 text-sm text-slate-600 pl-11">{label}</div>
                     </div>
                   ))}
                 </div>
+
                 <div className="mt-6 rounded-2xl border border-emerald-200 bg-emerald-50 p-5 flex gap-4">
                   <CheckCircle2 className="h-6 w-6 text-emerald-600 shrink-0 mt-1" />
-                  <p className="text-sm leading-7 text-slate-700">Core strength: tracing metrics from dashboard symptoms back through SQL, upstream data, finance logic, and stakeholder definitions.</p>
+                  <p className="text-sm leading-7 text-slate-700">
+                    Core strength: tracing metrics from dashboard symptoms back through SQL,
+                    upstream data, finance logic, and stakeholder definitions.
+                  </p>
                 </div>
               </CardContent>
             </Card>
@@ -612,13 +866,47 @@ export default function Portfolio() {
         <section id="amazon" className={`py-16 border-y ${themeClasses("amazon").section}`}>
           <div className="mx-auto max-w-7xl px-6">
             <div className="mb-8">
-              <div className="h-14 w-72 relative mb-4"><Image src={logos.amazon} alt="Amazon Pharmacy" fill className="object-contain object-left" /></div>
-              <p className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] ${themeClasses("amazon").pill}`}>Pharmacy Finance · Cost Allocation · Contribution Profit</p>
-              <h2 className="mt-4 text-3xl md:text-4xl font-black tracking-tight text-slate-950">Amazon Pharmacy projects</h2>
-              <p className="mt-3 max-w-3xl text-slate-600 leading-7">Finance data engineering-adjacent analytics work across MEC cost allocation, CP reporting, automation, governance, GenAI-assisted cost narratives, and stakeholder documentation.</p>
+              <div className="h-14 w-72 flex items-center mb-4">
+                <LogoImage
+                  src={logos.amazon}
+                  alt="Amazon Pharmacy"
+                  className="object-contain h-14 max-w-[280px]"
+                />
+              </div>
+              <p
+                className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] ${
+                  themeClasses("amazon").pill
+                }`}
+              >
+                Pharmacy Finance · Cost Allocation · Contribution Profit
+              </p>
+              <h2 className="mt-4 text-3xl md:text-4xl font-black tracking-tight text-slate-950">
+                Amazon Projects
+              </h2>
+              <p className="mt-3 max-w-3xl text-slate-600 leading-7">
+                Finance data engineering-adjacent analytics work across MEC cost allocation,
+                CP reporting, automation, governance, GenAI-assisted cost narratives, and
+                stakeholder documentation.
+              </p>
             </div>
+
+            <PipelineStrip
+              title="MEC → Contribution Profit pipeline"
+              steps={pipelineDefinitions.amazonMec}
+              theme="amazon"
+            />
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {amazonProjects.map((project) => <ProjectCard key={project.title} project={project} onClick={() => { setSelectedProject(project); setShowPipeline(false); }} />)}
+              {amazonProjects.map((project) => (
+                <ProjectCard
+                  key={project.title}
+                  project={project}
+                  onClick={() => {
+                    setSelectedProject(project);
+                    setShowPipeline(false);
+                  }}
+                />
+              ))}
             </div>
           </div>
         </section>
@@ -626,42 +914,129 @@ export default function Portfolio() {
         <section id="barclays" className={`py-16 border-y ${themeClasses("barclays").section}`}>
           <div className="mx-auto max-w-7xl px-6">
             <div className="mb-8">
-              <div className="h-14 w-72 relative mb-4"><Image src={logos.barclays} alt="Barclays" fill className="object-contain object-left" /></div>
-              <p className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] ${themeClasses("barclays").pill}`}>Fintech · IVR · Contact Center Analytics</p>
-              <h2 className="mt-4 text-3xl md:text-4xl font-black tracking-tight text-slate-950">Barclays projects</h2>
-              <p className="mt-3 max-w-3xl text-slate-600 leading-7">Customer journey and contact-center analytics across IVR funnels, callback workflows, cloud migration, SLA logic, A/B testing, and performance scoring.</p>
+              <div className="h-14 w-72 flex items-center mb-4">
+                <LogoImage
+                  src={logos.barclays}
+                  alt="Barclays"
+                  className="object-contain h-14 max-w-[280px]"
+                />
+              </div>
+              <p
+                className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] ${
+                  themeClasses("barclays").pill
+                }`}
+              >
+                Fintech · IVR · Contact Center Analytics
+              </p>
+              <h2 className="mt-4 text-3xl md:text-4xl font-black tracking-tight text-slate-950">
+                Barclays Projects
+              </h2>
+              <p className="mt-3 max-w-3xl text-slate-600 leading-7">
+                Customer journey and contact-center analytics across IVR funnels, callback
+                workflows, cloud migration, SLA logic, A/B testing, and performance scoring.
+              </p>
             </div>
+
+            <PipelineStrip
+              title="IVR analytics pipeline"
+              steps={pipelineDefinitions.barclaysIvr}
+              theme="barclays"
+            />
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {barclaysProjects.map((project) => <ProjectCard key={project.title} project={project} onClick={() => { setSelectedProject(project); setShowPipeline(false); }} />)}
+              {barclaysProjects.map((project) => (
+                <ProjectCard
+                  key={project.title}
+                  project={project}
+                  onClick={() => {
+                    setSelectedProject(project);
+                    setShowPipeline(false);
+                  }}
+                />
+              ))}
             </div>
           </div>
         </section>
 
-        <section id="accenture" className={`py-16 border-y ${themeClasses("accenture").section}`}>
+        <section
+          id="accenture"
+          className={`py-16 border-y ${themeClasses("accenture").section}`}
+        >
           <div className="mx-auto max-w-7xl px-6">
             <div className="mb-8">
-              <div className="h-14 w-60 relative mb-4"><Image src={logos.accenture} alt="Accenture" fill className="object-contain object-left" /></div>
-              <p className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] ${themeClasses("accenture").pill}`}>Consulting · SAP MM · Procure-to-Pay</p>
-              <h2 className="mt-4 text-3xl md:text-4xl font-black tracking-tight text-slate-950">Accenture foundation</h2>
-              <p className="mt-3 max-w-3xl text-slate-600 leading-7">Enterprise consulting experience that built the foundation for stakeholder management, requirements gathering, UAT, documentation, and cross-functional delivery.</p>
+              <div className="h-14 w-60 flex items-center mb-4">
+                <LogoImage
+                  src={logos.accenture}
+                  alt="Accenture"
+                  className="object-contain h-14 max-w-[230px]"
+                />
+              </div>
+              <p
+                className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] ${
+                  themeClasses("accenture").pill
+                }`}
+              >
+                Consulting · SAP MM · Procure-to-Pay
+              </p>
+              <h2 className="mt-4 text-3xl md:text-4xl font-black tracking-tight text-slate-950">
+                Accenture Foundation
+              </h2>
+              <p className="mt-3 max-w-3xl text-slate-600 leading-7">
+                Enterprise consulting experience that built the foundation for stakeholder
+                management, requirements gathering, UAT, documentation, and cross-functional
+                delivery.
+              </p>
             </div>
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {accentureProjects.map((project) => <ProjectCard key={project.title} project={project} onClick={() => { setSelectedProject(project); setShowPipeline(false); }} />)}
+              {accentureProjects.map((project) => (
+                <ProjectCard
+                  key={project.title}
+                  project={project}
+                  onClick={() => {
+                    setSelectedProject(project);
+                    setShowPipeline(false);
+                  }}
+                />
+              ))}
             </div>
           </div>
         </section>
 
         <section id="skills" className="py-16 bg-white">
           <div className="mx-auto max-w-7xl px-6">
-            <SectionHeader eyebrow="Role-based strengths" title="Soft skills built across each role" subtitle="The technical work matters. The real differentiator is being able to align messy systems, people, timelines, and business definitions." />
+            <SectionHeader
+              eyebrow="Role-based strengths"
+              title="Soft skills built across each role"
+              subtitle="The technical work matters. The real differentiator is being able to align messy systems, people, timelines, and business definitions."
+            />
+
             <div className="grid md:grid-cols-3 gap-6">
               {softSkills.map((item) => (
-                <Card key={item.company} className={`rounded-3xl border bg-gradient-to-br ${item.color} shadow-sm`}>
+                <Card
+                  key={item.company}
+                  className={`rounded-3xl border bg-gradient-to-br ${item.color} shadow-sm`}
+                >
                   <CardContent className="p-6">
-                    <div className="h-12 w-48 relative mb-5"><Image src={item.logo} alt={item.company} fill className="object-contain object-left" /></div>
-                    <h3 className="text-xl font-black text-slate-950 mb-4">{item.company}</h3>
+                    <div className="h-12 w-48 flex items-center mb-5">
+                      <LogoImage
+                        src={item.logo}
+                        alt={item.company}
+                        className="object-contain h-12 max-w-[190px]"
+                      />
+                    </div>
+                    <h3 className="text-xl font-black text-slate-950 mb-4">
+                      {item.company}
+                    </h3>
                     <div className="flex flex-wrap gap-2">
-                      {item.skills.map((skill) => <span key={skill} className="rounded-full border border-white/80 bg-white/75 px-3 py-1.5 text-xs font-semibold text-slate-700">{skill}</span>)}
+                      {item.skills.map((skill) => (
+                        <span
+                          key={skill}
+                          className="rounded-full border border-white/80 bg-white/75 px-3 py-1.5 text-xs font-semibold text-slate-700"
+                        >
+                          {skill}
+                        </span>
+                      ))}
                     </div>
                   </CardContent>
                 </Card>
@@ -670,29 +1045,93 @@ export default function Portfolio() {
 
             <div className="mt-14">
               <SectionHeader eyebrow="Tools & Technologies" title="The stack behind the work" />
-              <Card className="rounded-2xl border-slate-200 bg-white shadow-sm"><CardContent className="p-6"><div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">{tools.map(({ name, icon: Icon }) => <div key={name} className="rounded-2xl border border-slate-100 bg-white p-4 text-center hover:border-blue-200 hover:bg-blue-50/40 transition"><Icon className="mx-auto h-7 w-7 text-blue-600" /><div className="mt-3 text-sm font-semibold text-slate-700">{name}</div></div>)}</div></CardContent></Card>
-              <div className="mt-8 flex flex-wrap justify-center gap-3">{skills.map((skill) => <span key={skill} className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm">{skill}</span>)}</div>
+
+              <Card className="rounded-2xl border-slate-200 bg-white shadow-sm">
+                <CardContent className="p-6">
+                  <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+                    {tools.map(({ name, icon: Icon }) => (
+                      <div
+                        key={name}
+                        className="rounded-2xl border border-slate-100 bg-white p-4 text-center hover:border-blue-200 hover:bg-blue-50/40 transition"
+                      >
+                        <Icon className="mx-auto h-7 w-7 text-blue-600" />
+                        <div className="mt-3 text-sm font-semibold text-slate-700">
+                          {name}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <div className="mt-8 flex flex-wrap justify-center gap-3">
+                {skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
         <section id="contact" className="py-16 bg-white">
           <div className="mx-auto max-w-7xl px-6">
-            <Card className="rounded-[2rem] border-blue-100 bg-gradient-to-br from-blue-600 to-blue-700 text-white shadow-2xl shadow-blue-600/20">
+            <Card className="rounded-[2rem] border-slate-200 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white shadow-2xl shadow-slate-400/20">
               <CardContent className="p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
                 <div>
-                  <p className="text-blue-100 text-sm font-bold uppercase tracking-[0.25em]">Open to roles</p>
-                  <h2 className="mt-3 text-3xl md:text-4xl font-black">Analytics Engineer · BIE · Finance Analytics</h2>
-                  <p className="mt-4 text-blue-50 max-w-3xl leading-7">Best fit: roles where business ambiguity, SQL-heavy pipelines, finance logic, and stakeholder communication all meet.</p>
-                  <div className="mt-6 grid sm:grid-cols-3 gap-4 text-sm text-blue-50">
-                    <a className="flex items-center gap-2 hover:underline" href={emailUrl}><Mail className="h-4 w-4" /> madhvika.sehgal@gmail.com</a>
-                    <div className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Seattle, WA</div>
-                    <a className="flex items-center gap-2 hover:underline" href={linkedInUrl} target="_blank" rel="noreferrer"><BriefcaseBusiness className="h-4 w-4" /> LinkedIn</a>
+                  <p className="text-slate-300 text-sm font-bold uppercase tracking-[0.25em]">
+                    Open to roles
+                  </p>
+                  <h2 className="mt-3 text-3xl md:text-4xl font-black">
+                    Analytics Engineer · BIE · Finance Analytics
+                  </h2>
+                  <p className="mt-4 text-slate-300 max-w-3xl leading-7">
+                    Best fit: roles where business ambiguity, SQL-heavy pipelines, finance
+                    logic, and stakeholder communication all meet.
+                  </p>
+
+                  <div className="mt-6 grid sm:grid-cols-3 gap-4 text-sm text-slate-200">
+                    <a className="flex items-center gap-2 hover:underline" href={emailUrl}>
+                      <Mail className="h-4 w-4" /> madhvika.sehgal@gmail.com
+                    </a>
+                    <div className="flex items-center gap-2">
+                      <MapPin className="h-4 w-4" /> Seattle, WA
+                    </div>
+                    <a
+                      className="flex items-center gap-2 hover:underline"
+                      href={linkedInUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <BriefcaseBusiness className="h-4 w-4" /> LinkedIn
+                    </a>
                   </div>
                 </div>
+
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Button asChild variant="secondary" className="rounded-xl bg-white text-blue-700 hover:bg-blue-50 px-6 py-6 font-bold"><a href={emailUrl}><Mail className="mr-2 h-4 w-4" /> Contact Me</a></Button>
-                  <Button asChild variant="secondary" className="rounded-xl bg-white text-blue-700 hover:bg-blue-50 px-6 py-6 font-bold"><a href={resumeUrl} download><Download className="mr-2 h-4 w-4" /> Resume</a></Button>
+                  <Button
+                    asChild
+                    variant="secondary"
+                    className="rounded-xl bg-white text-slate-950 hover:bg-slate-100 px-6 py-6 font-bold"
+                  >
+                    <a href={emailUrl}>
+                      <Mail className="mr-2 h-4 w-4" /> Contact Me
+                    </a>
+                  </Button>
+
+                  <Button
+                    asChild
+                    variant="secondary"
+                    className="rounded-xl bg-white text-slate-950 hover:bg-slate-100 px-6 py-6 font-bold"
+                  >
+                    <a href={resumeUrl} download>
+                      <Download className="mr-2 h-4 w-4" /> Resume
+                    </a>
+                  </Button>
                 </div>
               </CardContent>
             </Card>
@@ -701,43 +1140,114 @@ export default function Portfolio() {
       </main>
 
       {selectedProject && (
-        <div className="fixed inset-0 z-[100] bg-slate-950/60 backdrop-blur-sm p-4 md:p-8 flex items-center justify-center" onClick={() => setSelectedProject(null)}>
-          <motion.div initial={{ opacity: 0, y: 20, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} className="max-h-[90vh] w-full max-w-6xl overflow-y-auto rounded-[2rem] bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            <div className={`sticky top-0 bg-white/95 backdrop-blur border-b p-6 flex items-start justify-between gap-4 ${themeClasses(selectedProject.theme).border}`}>
+        <div
+          className="fixed inset-0 z-[100] bg-slate-950/60 backdrop-blur-sm p-4 md:p-8 flex items-center justify-center"
+          onClick={() => setSelectedProject(null)}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            className="max-h-[90vh] w-full max-w-6xl overflow-y-auto rounded-[2rem] bg-white shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div
+              className={`sticky top-0 bg-white/95 backdrop-blur border-b p-6 flex items-start justify-between gap-4 ${
+                themeClasses(selectedProject.theme).border
+              }`}
+            >
               <div>
-                <div className="h-10 w-48 relative mb-3"><Image src={companyLogo(selectedProject.theme)} alt={selectedProject.company} fill className="object-contain object-left" /></div>
-                <p className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold ${themeClasses(selectedProject.theme).pill}`}>{selectedProject.company}</p>
-                <h2 className="mt-3 text-3xl font-black text-slate-950">{selectedProject.title}</h2>
+                <div className="h-10 w-48 flex items-center mb-3">
+                  <LogoImage
+                    src={companyLogo(selectedProject.theme)}
+                    alt={selectedProject.company}
+                    className="object-contain h-10 max-w-[190px]"
+                  />
+                </div>
+                <p
+                  className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold ${
+                    themeClasses(selectedProject.theme).pill
+                  }`}
+                >
+                  {selectedProject.company}
+                </p>
+                <h2 className="mt-3 text-3xl font-black text-slate-950">
+                  {selectedProject.title}
+                </h2>
                 <p className="mt-2 text-slate-600">{selectedProject.subtitle}</p>
               </div>
-              <button onClick={() => setSelectedProject(null)} className="rounded-full border border-slate-200 p-2 hover:bg-slate-50"><X className="h-5 w-5" /></button>
+
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="rounded-full border border-slate-200 p-2 hover:bg-slate-50"
+              >
+                <X className="h-5 w-5" />
+              </button>
             </div>
+
             <div className="p-6 md:p-8 space-y-8">
-              <div className={`rounded-2xl border p-5 ${selectedProject.theme === "amazon" ? "bg-orange-50 border-orange-100" : selectedProject.theme === "barclays" ? "bg-sky-50 border-sky-100" : "bg-purple-50 border-purple-100"}`}><h3 className="font-black text-slate-950 mb-2">Problem</h3><p className="text-slate-700 leading-7">{selectedProject.problem}</p></div>
+              <div
+                className={`rounded-2xl border p-5 ${
+                  selectedProject.theme === "amazon"
+                    ? "bg-orange-50 border-orange-100"
+                    : selectedProject.theme === "barclays"
+                    ? "bg-sky-50 border-sky-100"
+                    : "bg-purple-50 border-purple-100"
+                }`}
+              >
+                <h3 className="font-black text-slate-950 mb-2">Problem</h3>
+                <p className="text-slate-700 leading-7">{selectedProject.problem}</p>
+              </div>
+
               {selectedProject.pipeline && (
                 <div>
-                  <Button variant="outline" onClick={() => setShowPipeline(!showPipeline)} className="rounded-xl border-slate-200 bg-white hover:bg-slate-50"><Workflow className="mr-2 h-4 w-4" /> {showPipeline ? "Hide pipeline" : "View pipeline"}</Button>
+                  <Button
+                    variant="outline"
+                    onClick={() => setShowPipeline(!showPipeline)}
+                    className="rounded-xl border-slate-200 bg-white hover:bg-slate-50"
+                  >
+                    <Workflow className="mr-2 h-4 w-4" />
+                    {showPipeline ? "Hide pipeline" : "View pipeline"}
+                  </Button>
+
                   {showPipeline && (
                     <div className="mt-5 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                      <div className="grid md:grid-cols-7 gap-3">
-                        {pipelineDefinitions[selectedProject.pipeline].map((step, index) => (
-                          <div key={step} className="relative rounded-2xl border border-slate-200 bg-slate-50 p-4 min-h-28 flex flex-col justify-between">
-                            <div className="flex items-center justify-between"><Layers3 className="h-5 w-5 text-blue-600" /><span className="text-xs font-black text-slate-400">0{index + 1}</span></div>
-                            <p className="mt-4 text-sm font-bold text-slate-800 leading-5">{step}</p>
-                          </div>
-                        ))}
-                      </div>
+                      <PipelineStrip
+                        title="Detailed pipeline view"
+                        steps={pipelineDefinitions[selectedProject.pipeline]}
+                        theme={selectedProject.theme}
+                      />
                     </div>
                   )}
                 </div>
               )}
+
               <div className="grid md:grid-cols-3 gap-6">
                 <DetailList title="Complexity" items={selectedProject.complexity} />
                 <DetailList title="Actions" items={selectedProject.actions} />
                 <DetailList title="Impact" items={selectedProject.impact} />
               </div>
-              <div className="flex flex-wrap gap-2 pt-2">{selectedProject.tags.map((tag) => <span key={tag} className={`rounded-lg px-3 py-1.5 text-xs font-medium border ${themeClasses(selectedProject.theme).tag}`}>{tag}</span>)}</div>
-              <div className="flex justify-end"><Button onClick={() => setSelectedProject(null)} className="rounded-xl bg-blue-600 hover:bg-blue-700">Close</Button></div>
+
+              <div className="flex flex-wrap gap-2 pt-2">
+                {selectedProject.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className={`rounded-lg px-3 py-1.5 text-xs font-medium border ${
+                      themeClasses(selectedProject.theme).tag
+                    }`}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex justify-end">
+                <Button
+                  onClick={() => setSelectedProject(null)}
+                  className="rounded-xl bg-blue-600 hover:bg-blue-700"
+                >
+                  Close
+                </Button>
+              </div>
             </div>
           </motion.div>
         </div>
