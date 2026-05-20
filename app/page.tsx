@@ -34,8 +34,8 @@ const linkedInUrl = "https://www.linkedin.com/in/madhvika-sehgal/";
 // These must match exact filenames inside public/logos.
 const logos = {
   amazon: "/logos/Amazon.png",
-  barclays: "/logos/Barclays.webp",
-  accenture: "/logos/Accenture.webp",
+  barclays: "/logos/Barclays.svg",
+  accenture: "/logos/Accenture.svg",
   eller: "/logos/Eller.png",
 };
 
