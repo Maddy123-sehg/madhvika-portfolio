@@ -33,10 +33,10 @@ const emailUrl =
 const linkedInUrl = "https://www.linkedin.com/in/madhvika-sehgal/";
 
 const logos = {
-  amazon: "/logos/amazon-pharmacy.webp",
-  barclays: "/logos/barclays.png",
-  accenture: "/logos/accenture.png",
-  eller: "/logos/eller.png",
+  amazon: "/logos/Amazon.svp",
+  barclays: "/logos/Barclays.svg",
+  accenture: "/logos/Accenture.svp",
+  eller: "/logos/Eller.jpeg",
 };
 
 const metrics = [
