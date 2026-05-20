@@ -515,7 +515,7 @@ function CompanyLogo({ name, image }: { name: string; image: string }) {
     : "h-[100px] w-[260px]";
 
   return (
-    <div className="flex h-[140px] items-center justify-center overflow-hidden bg-white px-10 sm:px-12 md:px-14">
+    <div className="flex h-[105px] items-center justify-center overflow-hidden bg-white px-12 sm:px-14 md:px-16">
       <div className="flex h-full w-full items-center justify-center overflow-hidden">
         <LogoImage
           src={image}
