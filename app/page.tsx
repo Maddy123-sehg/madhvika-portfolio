@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -529,11 +530,13 @@ function themeClasses(theme: Theme) {
 
 function CompanyLogo({ name, image }: { name: string; image: string }) {
   return (
-    <div className="flex items-center justify-center bg-white hover:bg-slate-50 transition duration-300 h-[130px] overflow-hidden">
-      <LogoImage
+    <div className="flex items-center justify-center bg-white hover:bg-slate-50 transition duration-300 h-[130px] overflow-hidden px-6">
+      <Image
         src={image}
         alt={name}
-        className="object-contain max-h-[78px] max-w-[210px] w-auto"
+        width={220}
+        height={90}
+        className="object-contain max-h-[78px] max-w-[210px] w-auto h-auto"
       />
     </div>
   );
