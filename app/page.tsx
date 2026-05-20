@@ -984,7 +984,7 @@ export default function Portfolio() {
           heading="Amazon Projects"
           label="Pharmacy Finance · Cost Allocation · Contribution Profit"
           description="Finance data engineering-adjacent analytics work across MEC cost allocation, CP reporting, automation, governance, GenAI-assisted cost narratives, and stakeholder documentation."
-          pipelineTitle="Main pipeline I worked on: MEC → Contribution Profit"
+          pipelineTitle="Pipeline Architecture: GL → Contribution Profit"
           pipelineDescription="A simplified, portfolio-safe view of the financial allocation pipeline I helped debug, redesign, validate, document, and operationalize."
           pipelineSteps={pipelineDefinitions.amazonMec}
           projects={amazonProjects}
@@ -999,7 +999,7 @@ export default function Portfolio() {
           heading="Barclays Projects"
           label="Fintech · IVR · Contact Center Analytics"
           description="Customer journey and contact-center analytics across IVR funnels, callback workflows, cloud migration, SLA logic, A/B testing, and performance scoring."
-          pipelineTitle="Main analytics flow: IVR → KPI dashboards"
+          pipelineTitle="Pipeline Architecture: Call Data → KPI dashboards"
           pipelineDescription="Designed and led migration of a unified IVR analytics pipeline from legacy contact-center systems to a cloud-based reporting architecture, spanning call-data ingestion, ETL standardization, KPI logic, Tableau reporting, and operational decision support."
           pipelineSteps={pipelineDefinitions.barclaysIvr}
           projects={barclaysProjects}
