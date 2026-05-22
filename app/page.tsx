@@ -975,7 +975,7 @@ export default function Portfolio() {
             <a href="#top" className="text-2xl font-black tracking-tight text-slate-950">
               Madhvika Sehgal
             </a>
-            <p className="mt-1 text-sm text-slate-500">Business Intelligence Engineer</p>
+            <p className="mt-1 text-sm text-slate-500">Analytics Engineer</p>
           </div>
 
           <nav className="hidden items-center gap-8 text-sm font-medium text-slate-700 lg:flex">
@@ -997,7 +997,12 @@ export default function Portfolio() {
 
       <main id="top">
         <section className="mx-auto grid max-w-7xl items-center gap-14 px-6 pb-12 pt-16 lg:grid-cols-[1.05fr_.95fr]">
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.65, delay: 0.1 }}
+            className="self-start pt-10 lg:pt-0"
+          >
             <div className="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 shadow-sm">
               <Sparkles className="h-4 w-4" /> BI Engineering · Finance Analytics · Cloud Data Platforms
             </div>
