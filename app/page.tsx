@@ -577,7 +577,7 @@ function TopSkillsPanel() {
           </h2>
         </div>
         <p className="max-w-xl text-sm leading-6 text-slate-600">
-          A compact snapshot for recruiters before they dive into the detailed project case studies.
+          A compact snapshot before you dive into the detailed project case studies.
         </p>
       </div>
 
@@ -1001,7 +1001,7 @@ export default function Portfolio() {
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.65, delay: 0.1 }}
-            className="self-start pt-10 lg:pt-0"
+            className="self-start -mt-4"
           >
             <div className="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 shadow-sm">
               <Sparkles className="h-4 w-4" /> BI Engineering · Finance Analytics · Cloud Data Platforms
