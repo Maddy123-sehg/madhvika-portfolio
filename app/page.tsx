@@ -26,7 +26,7 @@ import {
   X,
 } from "lucide-react";
 
-const resumeUrl = "/Madhvika_Sehgal_AnalyticsEngineer_Resume.docx";
+const resumeUrl = "/Madhvika_Sehgal_Analytics_Engineer_2026.docx";
 const emailUrl =
   "mailto:madhvika.sehgal@gmail.com?subject=Portfolio%20Inquiry%20-%20Madhvika%20Sehgal";
 const linkedInUrl = "https://www.linkedin.com/in/madhvika-sehgal/";
