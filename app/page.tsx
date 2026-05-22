@@ -26,7 +26,7 @@ import {
   X,
 } from "lucide-react";
 
-const resumeUrl = "/Madhvika-Sehgal-Resume-2026.pdf";
+const resumeUrl = "/Madhvika_Sehgal_AnalyticsEngineer_Resume.docx";
 const emailUrl =
   "mailto:madhvika.sehgal@gmail.com?subject=Portfolio%20Inquiry%20-%20Madhvika%20Sehgal";
 const linkedInUrl = "https://www.linkedin.com/in/madhvika-sehgal/";
@@ -431,6 +431,25 @@ const softSkills = [
   "Team leadership",
 ];
 
+const topSkillGroups = [
+  {
+    title: "Analytics Engineering",
+    skills: ["SQL", "ETL/ELT", "Data Modeling", "dbt-ready logic"],
+  },
+  {
+    title: "Cloud + Data Platforms",
+    skills: ["AWS S3", "Athena", "Redshift", "Glue/Lambda"],
+  },
+  {
+    title: "BI + Product Analytics",
+    skills: ["Tableau", "QuickSight", "KPI Design", "Funnel Analysis"],
+  },
+  {
+    title: "Finance + AI Analytics",
+    skills: ["Cost Allocation", "CP Reporting", "Bedrock/Claude", "Variance Narratives"],
+  },
+];
+
 function themeClasses(theme: Theme) {
   if (theme === "amazon") {
     return {
@@ -499,22 +518,26 @@ function LogoImage({
 
 function CompanyLogo({ name, image }: { name: string; image: string }) {
   const lower = name.toLowerCase();
+  const isAmazon = lower.includes("amazon");
   const isBarclays = lower.includes("barclays");
   const isAccenture = lower.includes("accenture");
+  const isEller = lower.includes("arizona") || lower.includes("eller");
 
-  const logoSize = isBarclays
-    ? "h-[70px] w-[260px]"
+  const sizing = isAmazon
+    ? "h-[90px] w-[330px]"
+    : isBarclays
+    ? "h-[90px] w-[340px] scale-[1.12]"
     : isAccenture
-    ? "h-[78px] w-[280px]"
-    : "h-[90px] w-[300px]";
+    ? "h-[90px] w-[340px] scale-[1.16]"
+    : isEller
+    ? "h-[90px] w-[330px]"
+    : "h-[85px] w-[300px]";
 
   return (
-    <div className="flex h-[150px] items-center justify-center overflow-visible bg-white px-10">
-      <LogoImage
-        src={image}
-        alt={name}
-        className={`object-contain ${logoSize}`}
-      />
+    <div className="flex h-[125px] items-center justify-center overflow-hidden bg-white px-10 sm:px-12 md:px-14">
+      <div className="flex h-full w-full items-center justify-center overflow-hidden">
+        <LogoImage src={image} alt={name} className={`object-contain ${sizing} max-w-full`} />
+      </div>
     </div>
   );
 }
@@ -537,6 +560,47 @@ function SectionHeader({
         {title}
       </h2>
       {subtitle && <p className="mt-3 leading-7 text-slate-600">{subtitle}</p>}
+    </div>
+  );
+}
+
+function TopSkillsPanel() {
+  return (
+    <div className="mt-8 rounded-[28px] border border-slate-200 bg-white/90 p-5 shadow-lg shadow-slate-200/70">
+      <div className="flex flex-col gap-2 border-b border-slate-100 pb-4 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.28em] text-blue-600">
+            Core skills
+          </p>
+          <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-950">
+            What I bring to the table
+          </h2>
+        </div>
+        <p className="max-w-xl text-sm leading-6 text-slate-600">
+          A compact snapshot for recruiters before they dive into the detailed project case studies.
+        </p>
+      </div>
+
+      <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        {topSkillGroups.map((group) => (
+          <div
+            key={group.title}
+            className="rounded-2xl border border-slate-100 bg-gradient-to-br from-white to-slate-50 p-4"
+          >
+            <h3 className="text-sm font-black text-slate-950">{group.title}</h3>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {group.skills.map((skill) => (
+                <span
+                  key={skill}
+                  className="rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-800"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -631,11 +695,11 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
   const theme = themeClasses(project.theme);
 
   const logoClass =
-  project.theme === "barclays"
-    ? "object-contain h-12 max-w-[185px] scale-[1.15]"
-    : project.theme === "accenture"
-    ? "object-contain h-7 max-w-[95px]"
-    : "object-contain h-8 max-w-[130px]";
+    project.theme === "barclays"
+      ? "object-contain h-12 max-w-[185px] scale-[1.15]"
+      : project.theme === "accenture"
+      ? "object-contain h-7 max-w-[95px]"
+      : "object-contain h-8 max-w-[130px]";
 
   return (
     <button onClick={onClick} className="group h-full w-full text-left">
@@ -708,8 +772,7 @@ function CompanySection({
   return (
     <section id={id} className={`border-y py-16 ${t.section}`}>
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-8">
-          <div
+       <div
   className={`mb-4 flex items-center ${
     theme === "barclays"
       ? "h-32 w-[520px]"
@@ -730,6 +793,7 @@ function CompanySection({
     }`}
   />
 </div>
+
           <p className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] ${t.pill}`}>
             {label}
           </p>
@@ -939,7 +1003,9 @@ export default function Portfolio() {
               </Button>
             </div>
 
-            <div className="mt-10 overflow-visible rounded-[28px] border border-slate-200 bg-white shadow-lg">
+            <TopSkillsPanel />
+
+            <div className="mt-10 overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-lg xl:w-[112%] xl:-ml-[6%]">
               <div className="grid grid-cols-1 divide-y divide-slate-200 sm:grid-cols-2 sm:divide-x sm:divide-y-0 xl:grid-cols-4">
                 <CompanyLogo name="Amazon" image={logos.amazon} />
                 <CompanyLogo name="Barclays" image={logos.barclays} />
@@ -985,7 +1051,7 @@ export default function Portfolio() {
           heading="Amazon Projects"
           label="Pharmacy Finance · Cost Allocation · Contribution Profit"
           description="Finance data engineering-adjacent analytics work across MEC cost allocation, CP reporting, automation, governance, GenAI-assisted cost narratives, and stakeholder documentation."
-          pipelineTitle="Pipeline Architecture: GL → Contribution Profit"
+          pipelineTitle="Main pipeline I worked on: MEC → Contribution Profit"
           pipelineDescription="A simplified, portfolio-safe view of the financial allocation pipeline I helped debug, redesign, validate, document, and operationalize."
           pipelineSteps={pipelineDefinitions.amazonMec}
           projects={amazonProjects}
@@ -1000,7 +1066,7 @@ export default function Portfolio() {
           heading="Barclays Projects"
           label="Fintech · IVR · Contact Center Analytics"
           description="Customer journey and contact-center analytics across IVR funnels, callback workflows, cloud migration, SLA logic, A/B testing, and performance scoring."
-          pipelineTitle="Pipeline Architecture: Call Data → KPI dashboards"
+          pipelineTitle="Main analytics flow: IVR → KPI dashboards"
           pipelineDescription="Designed and led migration of a unified IVR analytics pipeline from legacy contact-center systems to a cloud-based reporting architecture, spanning call-data ingestion, ETL standardization, KPI logic, Tableau reporting, and operational decision support."
           pipelineSteps={pipelineDefinitions.barclaysIvr}
           projects={barclaysProjects}
