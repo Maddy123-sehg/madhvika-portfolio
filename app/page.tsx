@@ -528,14 +528,14 @@ function CompanyLogo({ name, image }: { name: string; image: string }) {
     : isBarclays
     ? "h-[90px] w-[340px] scale-[1.12]"
     : isAccenture
-    ? "h-[90px] w-[340px] scale-[1.16]"
+    ? "h-[90px] w-[430px] scale-[1.08]"
     : isEller
     ? "h-[90px] w-[330px]"
     : "h-[85px] w-[300px]";
 
   return (
-    <div className="flex h-[125px] items-center justify-center overflow-hidden bg-white px-10 sm:px-12 md:px-14">
-      <div className="flex h-full w-full items-center justify-center overflow-hidden">
+    <div className="flex h-[125px] items-center justify-center overflow-hidden bg-white px-6 sm:px-8 md:px-10">
+      <div className="flex h-full w-full items-center justify-center overflow-visible">
         <LogoImage src={image} alt={name} className={`object-contain ${sizing} max-w-full`} />
       </div>
     </div>
@@ -769,45 +769,38 @@ function CompanySection({
 }) {
   const t = themeClasses(theme);
 
-  const logoBoxClass =
+  return (
+    <section id={id} className={`border-y py-16 ${t.section}`}>
+      <div className="mx-auto max-w-7xl px-6">
+       <div
+  className={`mb-4 flex items-center ${
     theme === "barclays"
       ? "h-32 w-[520px]"
       : theme === "accenture"
       ? "h-20 w-[360px]"
-      : "h-20 w-[360px]";
+      : "h-20 w-[360px]"
+  }`}
+>
+  <LogoImage
+    src={logo}
+    alt={heading}
+    className={`object-contain ${
+      theme === "barclays"
+        ? "h-28 max-w-[460px]"
+        : theme === "accenture"
+        ? "h-14 max-w-[260px]"
+        : "h-16 max-w-[320px]"
+    }`}
+  />
+</div>
 
-  const logoImageClass =
-    theme === "barclays"
-      ? "h-28 max-w-[460px]"
-      : theme === "accenture"
-      ? "h-14 max-w-[260px]"
-      : "h-16 max-w-[320px]";
-
-  return (
-    <section id={id} className={`border-y py-16 ${t.section}`}>
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-8">
-          <div className={`mb-4 flex items-center ${logoBoxClass}`}>
-            <LogoImage
-              src={logo}
-              alt={heading}
-              className={`object-contain ${logoImageClass}`}
-            />
-          </div>
-
-          <p
-            className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] ${t.pill}`}
-          >
+          <p className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] ${t.pill}`}>
             {label}
           </p>
-
           <h2 className="mt-4 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
             {heading}
           </h2>
-
-          <p className="mt-3 max-w-3xl leading-7 text-slate-600">
-            {description}
-          </p>
+          <p className="mt-3 max-w-3xl leading-7 text-slate-600">{description}</p>
         </div>
 
         {pipelineTitle && pipelineDescription && pipelineSteps && (
@@ -815,23 +808,13 @@ function CompanySection({
             title={pipelineTitle}
             description={pipelineDescription}
             theme={theme}
-            onOpen={() =>
-              setPipelineModal({
-                title: pipelineTitle,
-                steps: pipelineSteps,
-                theme,
-              })
-            }
+            onOpen={() => setPipelineModal({ title: pipelineTitle, steps: pipelineSteps, theme })}
           />
         )}
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
-            <ProjectCard
-              key={project.title}
-              project={project}
-              onClick={() => setSelectedProject(project)}
-            />
+            <ProjectCard key={project.title} project={project} onClick={() => setSelectedProject(project)} />
           ))}
         </div>
       </div>
@@ -1021,18 +1004,18 @@ export default function Portfolio() {
             </div>
 
             <TopSkillsPanel />
+          </motion.div>
 
-            <div className="mt-10 overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-lg xl:w-[112%] xl:-ml-[6%]">
-              <div className="grid grid-cols-1 divide-y divide-slate-200 sm:grid-cols-2 sm:divide-x sm:divide-y-0 xl:grid-cols-4">
+          <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.65, delay: 0.1 }}>
+            <div className="mb-8 overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-lg">
+              <div className="grid grid-cols-2 divide-x divide-y divide-slate-200 md:grid-cols-4 md:divide-y-0">
                 <CompanyLogo name="Amazon" image={logos.amazon} />
                 <CompanyLogo name="Barclays" image={logos.barclays} />
                 <CompanyLogo name="Accenture" image={logos.accenture} />
                 <CompanyLogo name="University of Arizona" image={logos.eller} />
               </div>
             </div>
-          </motion.div>
 
-          <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.65, delay: 0.1 }}>
             <Card className="rounded-[2rem] border-slate-200 bg-white/90 shadow-2xl shadow-slate-200/70">
               <CardContent className="p-8">
                 <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-600">Portfolio Snapshot</p>
