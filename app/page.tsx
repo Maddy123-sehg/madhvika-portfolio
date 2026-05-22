@@ -765,42 +765,51 @@ function CompanySection({
   pipelineSteps?: string[];
   projects: Project[];
   setSelectedProject: (project: Project) => void;
-  setPipelineModal: (pipeline: { title: string; steps: string[]; theme: Theme } | null) => void;
+  setPipelineModal: (
+    pipeline: { title: string; steps: string[]; theme: Theme } | null
+  ) => void;
 }) {
   const t = themeClasses(theme);
 
-  return (
-    <section id={id} className={`border-y py-16 ${t.section}`}>
-      <div className="mx-auto max-w-7xl px-6">
-       <div
-  className={`mb-4 flex items-center ${
+  const logoBoxClass =
     theme === "barclays"
       ? "h-32 w-[520px]"
       : theme === "accenture"
       ? "h-20 w-[360px]"
-      : "h-20 w-[360px]"
-  }`}
->
-  <LogoImage
-    src={logo}
-    alt={heading}
-    className={`object-contain ${
-      theme === "barclays"
-        ? "h-28 max-w-[460px]"
-        : theme === "accenture"
-        ? "h-14 max-w-[260px]"
-        : "h-16 max-w-[320px]"
-    }`}
-  />
-</div>
+      : "h-20 w-[360px]";
 
-          <p className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] ${t.pill}`}>
+  const logoImageClass =
+    theme === "barclays"
+      ? "h-28 max-w-[460px]"
+      : theme === "accenture"
+      ? "h-14 max-w-[260px]"
+      : "h-16 max-w-[320px]";
+
+  return (
+    <section id={id} className={`border-y py-16 ${t.section}`}>
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-8">
+          <div className={`mb-4 flex items-center ${logoBoxClass}`}>
+            <LogoImage
+              src={logo}
+              alt={heading}
+              className={`object-contain ${logoImageClass}`}
+            />
+          </div>
+
+          <p
+            className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] ${t.pill}`}
+          >
             {label}
           </p>
+
           <h2 className="mt-4 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
             {heading}
           </h2>
-          <p className="mt-3 max-w-3xl leading-7 text-slate-600">{description}</p>
+
+          <p className="mt-3 max-w-3xl leading-7 text-slate-600">
+            {description}
+          </p>
         </div>
 
         {pipelineTitle && pipelineDescription && pipelineSteps && (
@@ -808,13 +817,23 @@ function CompanySection({
             title={pipelineTitle}
             description={pipelineDescription}
             theme={theme}
-            onOpen={() => setPipelineModal({ title: pipelineTitle, steps: pipelineSteps, theme })}
+            onOpen={() =>
+              setPipelineModal({
+                title: pipelineTitle,
+                steps: pipelineSteps,
+                theme,
+              })
+            }
           />
         )}
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
-            <ProjectCard key={project.title} project={project} onClick={() => setSelectedProject(project)} />
+            <ProjectCard
+              key={project.title}
+              project={project}
+              onClick={() => setSelectedProject(project)}
+            />
           ))}
         </div>
       </div>
