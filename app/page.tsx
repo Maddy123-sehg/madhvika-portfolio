@@ -496,25 +496,38 @@ function PipelineCard({
   };
   theme: "orange" | "sky";
 }) {
-  const themeClasses =
+  const buttonClasses =
     theme === "orange"
-      ? "from-orange-100 via-white to-teal-50 border-orange-200 text-orange-800"
-      : "from-sky-100 via-white to-blue-50 border-sky-200 text-sky-800";
+      ? "border-orange-200 bg-orange-50 text-orange-800 hover:bg-orange-100"
+      : "border-sky-200 bg-sky-50 text-sky-800 hover:bg-sky-100";
+
+  const panelClasses =
+    theme === "orange"
+      ? "border-orange-200 bg-gradient-to-br from-orange-50 via-white to-teal-50"
+      : "border-sky-200 bg-gradient-to-br from-sky-50 via-white to-blue-50";
 
   const iconClasses = theme === "orange" ? "bg-orange-600" : "bg-sky-600";
 
   return (
-    <details
-      className={`group mt-8 rounded-[2rem] border bg-gradient-to-br p-6 shadow-sm ${themeClasses}`}
-    >
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
-        <div className="flex items-center gap-4">
-          <div className={`flex h-14 w-14 items-center justify-center rounded-2xl text-white ${iconClasses}`}>
-            <Workflow className="h-7 w-7" />
+    <details className="group mt-6">
+      <summary
+        className={`inline-flex cursor-pointer list-none items-center gap-3 rounded-xl border px-5 py-3 text-sm font-black shadow-sm transition ${buttonClasses}`}
+      >
+        <Workflow className="h-5 w-5" />
+        View pipeline flow
+        <ChevronDown className="h-4 w-4 transition group-open:rotate-180" />
+      </summary>
+
+      <div className={`mt-5 rounded-[2rem] border p-6 shadow-sm ${panelClasses}`}>
+        <div className="flex items-start gap-4">
+          <div
+            className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-white ${iconClasses}`}
+          >
+            <Workflow className="h-6 w-6" />
           </div>
 
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.25em] opacity-80">
+            <p className="text-xs font-black uppercase tracking-[0.25em] text-slate-500">
               Pipeline view
             </p>
             <h3 className="mt-1 text-xl font-black text-slate-950">{flow.title}</h3>
@@ -522,18 +535,19 @@ function PipelineCard({
           </div>
         </div>
 
-        <ChevronDown className="h-6 w-6 shrink-0 transition group-open:rotate-180" />
-      </summary>
-
-      <div className="mt-6 grid gap-3 md:grid-cols-7">
-        {flow.steps.map((step, index) => (
-          <div key={step} className="relative rounded-2xl border border-white/80 bg-white p-4 shadow-sm">
-            <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-full bg-slate-950 text-sm font-black text-white">
-              {index + 1}
+        <div className="mt-6 grid gap-3 md:grid-cols-7">
+          {flow.steps.map((step, index) => (
+            <div
+              key={step}
+              className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
+            >
+              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-full bg-slate-950 text-sm font-black text-white">
+                {index + 1}
+              </div>
+              <p className="text-sm font-semibold leading-6 text-slate-800">{step}</p>
             </div>
-            <p className="text-sm font-semibold leading-6 text-slate-800">{step}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </details>
   );
