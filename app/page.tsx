@@ -621,7 +621,7 @@ function CompanyProjectSection({
     height={80}
     className={
       company === "Barclays"
-        ? "h-10 w-auto object-contain"
+        ? "h-22 w-auto object-contain"
         : company === "Amazon"
         ? "h-14 w-auto object-contain"
         : "h-12 w-auto object-contain"
