@@ -1,14 +1,17 @@
 import Image from "next/image";
 import {
   ArrowRight,
+  Bot,
   BriefcaseBusiness,
   CheckCircle2,
+  ChevronDown,
   Database,
   Download,
   FileText,
   Mail,
   MapPin,
   Sparkles,
+  Workflow,
 } from "lucide-react";
 
 const resumePdf = "/Madhvika_Sehgal_Analytics_Engineer_May_2026.pdf";
@@ -73,6 +76,13 @@ const amazonProjects = [
     tools: ["SQL", "QuickSight", "Audit Logs", "Governance", "Data Platform"],
   },
   {
+    code: "AI",
+    title: "AI-Assisted Finance Analytics Workflows",
+    description:
+      "Used Claude and Kiro-style AI assistance to accelerate SQL understanding, debugging, documentation, validation thinking, and variance-explanation workflows for complex finance analytics.",
+    tools: ["Claude", "Kiro", "SQL Debugging", "Documentation", "Analytics Acceleration"],
+  },
+  {
     code: "DOC",
     title: "Business-Facing Cost Allocation Documentation",
     description:
@@ -85,13 +95,6 @@ const amazonProjects = [
     description:
       "Investigated P&L discrepancies by tracing metrics across dashboards, Contribution Profit outputs, allocation logic, upstream GL mappings, and source data.",
     tools: ["SQL", "Root Cause", "Reconciliation", "Finance Reporting"],
-  },
-  {
-    code: "AI",
-    title: "GenAI-Assisted Variance Explanation Concepts",
-    description:
-      "Explored GenAI-assisted workflows to summarize cost allocation anomalies and month-end variance drivers from structured finance outputs.",
-    tools: ["Amazon Bedrock", "Claude", "Python", "GenAI", "Variance Analysis"],
   },
 ];
 
@@ -116,6 +119,13 @@ const barclaysProjects = [
     description:
       "Supported migration of operational contact-center datasets from Oracle to AWS S3/Athena/Redshift, improving reporting scalability for downstream analytics.",
     tools: ["AWS S3", "Athena", "Redshift", "Oracle", "Migration"],
+  },
+  {
+    code: "AI",
+    title: "AI-Assisted Metadata & Reporting Summaries",
+    description:
+      "Built and explored AI-assisted analytics workflows using AWS Lambda, S3, Python, pandas, and Amazon Bedrock to process uploaded files, extract metadata, and generate structured reporting summaries.",
+    tools: ["Amazon Bedrock", "AWS Lambda", "S3", "Python", "pandas"],
   },
   {
     code: "AB",
@@ -143,6 +153,35 @@ const accentureProjects = [
   },
 ];
 
+const pipelineFlows = {
+  amazon: {
+    title: "Amazon Pharmacy Finance Pipeline View",
+    subtitle: "Cost allocation to Contribution Profit reporting",
+    steps: [
+      "GL / finance cost inputs",
+      "COGNOS_BASE and source-aligned staging",
+      "Work-unit driver tables",
+      "MEC cost allocation logic",
+      "Rate-card and allocation outputs",
+      "Contribution Profit reporting tables",
+      "QuickSight / Finance reporting",
+    ],
+  },
+  barclays: {
+    title: "Barclays IVR Analytics Pipeline View",
+    subtitle: "Contact-center logs to operational dashboards",
+    steps: [
+      "Avaya and AWS contact-center logs",
+      "Deduplication and standardization",
+      "Tableau Prep / SQL transformations",
+      "IVR metric layer",
+      "Containment, transfer, SLA, and self-service KPIs",
+      "Tableau dashboards",
+      "Operational decision support",
+    ],
+  },
+};
+
 const skillGroups = [
   {
     title: "Analytics Engineering",
@@ -157,8 +196,8 @@ const skillGroups = [
     skills: ["Tableau", "QuickSight", "KPI Design", "Funnel Analysis"],
   },
   {
-    title: "Finance Analytics",
-    skills: ["Cost Allocation", "CP Reporting", "Reconciliation", "Variance Analysis"],
+    title: "AI-Assisted Analytics",
+    skills: ["Claude", "Kiro", "Amazon Bedrock", "Python Automation"],
   },
 ];
 
@@ -168,16 +207,24 @@ const toolDepth = [
     use: "Transformation logic, allocation rules, reconciliation checks, window functions, metric validation, and pipeline debugging.",
   },
   {
+    tool: "Claude / Kiro",
+    use: "Used as AI copilots to speed up SQL comprehension, debug long transformation logic, generate validation ideas, summarize business rules, and improve documentation quality.",
+  },
+  {
+    tool: "Amazon Bedrock",
+    use: "Applied in analytics prototypes to generate structured summaries from metadata and reporting inputs, helping translate raw files or metrics into business-readable explanations.",
+  },
+  {
     tool: "AWS Athena / Redshift",
     use: "Querying warehouse and data-lake layers, validating transformed outputs, and supporting reporting pipelines.",
   },
   {
-    tool: "QuickSight / Tableau",
-    use: "Executive dashboards, KPI design, filters, drilldowns, dashboard performance, and stakeholder-ready reporting.",
+    tool: "Python / pandas",
+    use: "Data validation, automation prototypes, file handling, metadata extraction, and AI-assisted analytics workflow support.",
   },
   {
-    tool: "Python",
-    use: "Data validation, automation prototypes, file handling, metadata processing, and analytics support workflows.",
+    tool: "QuickSight / Tableau",
+    use: "Executive dashboards, KPI design, filters, drilldowns, dashboard performance, and stakeholder-ready reporting.",
   },
   {
     tool: "Excel",
@@ -203,9 +250,6 @@ function Header() {
           <a href="#featured" className="hover:text-blue-600">
             Featured
           </a>
-          <a href="#pipelines" className="hover:text-blue-600">
-            Pipelines
-          </a>
           <a href="#amazon" className="hover:text-blue-600">
             Amazon
           </a>
@@ -213,7 +257,7 @@ function Header() {
             Barclays
           </a>
           <a href="#skills" className="hover:text-blue-600">
-            Skills
+            AI + Tools
           </a>
           <a href="#contact" className="hover:text-blue-600">
             Contact
@@ -239,7 +283,7 @@ function HeroSection() {
       <div className="self-start">
         <div className="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 shadow-sm">
           <Sparkles className="h-4 w-4" />
-          Analytics Engineering · Finance Data Systems · BI Decision Layers
+          Analytics Engineering · Finance Data Systems · AI-Assisted BI
         </div>
 
         <h1 className="mt-7 text-5xl font-black leading-[1.03] tracking-tight text-slate-950 md:text-7xl">
@@ -249,8 +293,8 @@ function HeroSection() {
 
         <p className="mt-7 max-w-3xl text-lg leading-8 text-slate-600">
           Analytics Engineer focused on SQL-heavy finance and operations data —
-          building trusted reporting layers, debugging complex metrics, and translating
-          messy business logic into decision-ready dashboards.
+          building trusted reporting layers, debugging complex metrics, and using AI
+          assistance to accelerate analysis, documentation, and decision-ready reporting.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-4">
@@ -262,11 +306,11 @@ function HeroSection() {
           </a>
 
           <a
-            href="#pipelines"
+            href="#skills"
             className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-4 text-base font-bold text-slate-900 hover:bg-slate-50"
           >
-            <Database className="mr-2 h-4 w-4" />
-            View Pipeline Flows
+            <Bot className="mr-2 h-4 w-4" />
+            AI + Analytics Tools
           </a>
 
           <a
@@ -441,80 +485,57 @@ function FeaturedWorkSection() {
   );
 }
 
-function PipelineViewsSection() {
-  const flows = [
-    {
-      title: "Amazon Pharmacy Finance: Cost Allocation to Contribution Profit",
-      subtitle: "How finance source data became reporting-ready business metrics.",
-      steps: [
-        "GL / finance cost inputs",
-        "COGNOS_BASE and source-aligned staging",
-        "Work-unit driver tables",
-        "MEC cost allocation logic",
-        "Rate-card and allocation outputs",
-        "Contribution Profit reporting tables",
-        "QuickSight / Finance reporting",
-      ],
-    },
-    {
-      title: "Barclays IVR Analytics: Contact-Center Journey Reporting",
-      subtitle: "How call logs turned into operational KPIs and dashboard insights.",
-      steps: [
-        "Avaya and AWS contact-center logs",
-        "Deduplication and standardization",
-        "Tableau Prep / SQL transformations",
-        "IVR metric layer",
-        "Containment, transfer, SLA, and self-service KPIs",
-        "Tableau dashboards",
-        "Operational decision support",
-      ],
-    },
-  ];
+function PipelineCard({
+  flow,
+  theme,
+}: {
+  flow: {
+    title: string;
+    subtitle: string;
+    steps: string[];
+  };
+  theme: "orange" | "sky";
+}) {
+  const themeClasses =
+    theme === "orange"
+      ? "from-orange-100 via-white to-teal-50 border-orange-200 text-orange-800"
+      : "from-sky-100 via-white to-blue-50 border-sky-200 text-sky-800";
+
+  const iconClasses = theme === "orange" ? "bg-orange-600" : "bg-sky-600";
 
   return (
-    <section id="pipelines" className="bg-white py-16">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto mb-10 max-w-3xl text-center">
-          <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-600">
-            Pipeline views
-          </p>
+    <details
+      className={`group mt-8 rounded-[2rem] border bg-gradient-to-br p-6 shadow-sm ${themeClasses}`}
+    >
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <div className={`flex h-14 w-14 items-center justify-center rounded-2xl text-white ${iconClasses}`}>
+            <Workflow className="h-7 w-7" />
+          </div>
 
-          <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
-            I think in data flows, not just dashboards.
-          </h2>
-
-          <p className="mt-3 leading-7 text-slate-600">
-            Simplified, public-safe views of the systems I worked across — from raw
-            operational and finance inputs to reporting-ready analytics layers.
-          </p>
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.25em] opacity-80">
+              Pipeline view
+            </p>
+            <h3 className="mt-1 text-xl font-black text-slate-950">{flow.title}</h3>
+            <p className="mt-1 text-sm leading-6 text-slate-600">{flow.subtitle}</p>
+          </div>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-2">
-          {flows.map((flow) => (
-            <div key={flow.title} className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6">
-              <h3 className="text-xl font-black text-slate-950">{flow.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-slate-600">{flow.subtitle}</p>
+        <ChevronDown className="h-6 w-6 shrink-0 transition group-open:rotate-180" />
+      </summary>
 
-              <div className="mt-6 space-y-3">
-                {flow.steps.map((step, index) => (
-                  <div key={step}>
-                    <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4">
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-black text-white">
-                        {index + 1}
-                      </div>
-                      <p className="text-sm font-semibold text-slate-800">{step}</p>
-                    </div>
-                    {index < flow.steps.length - 1 && (
-                      <div className="ml-4 h-4 w-px bg-slate-300" />
-                    )}
-                  </div>
-                ))}
-              </div>
+      <div className="mt-6 grid gap-3 md:grid-cols-7">
+        {flow.steps.map((step, index) => (
+          <div key={step} className="relative rounded-2xl border border-white/80 bg-white p-4 shadow-sm">
+            <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-full bg-slate-950 text-sm font-black text-white">
+              {index + 1}
             </div>
-          ))}
-        </div>
+            <p className="text-sm font-semibold leading-6 text-slate-800">{step}</p>
+          </div>
+        ))}
       </div>
-    </section>
+    </details>
   );
 }
 
@@ -527,6 +548,7 @@ function CompanyProjectSection({
   description,
   projects,
   theme,
+  pipeline,
 }: {
   id: string;
   company: string;
@@ -541,6 +563,11 @@ function CompanyProjectSection({
     tools: string[];
   }[];
   theme: "orange" | "sky" | "purple";
+  pipeline?: {
+    title: string;
+    subtitle: string;
+    steps: string[];
+  };
 }) {
   const themes = {
     orange: {
@@ -591,6 +618,10 @@ function CompanyProjectSection({
           </h2>
 
           <p className="mt-3 max-w-3xl leading-7 text-slate-600">{description}</p>
+
+          {pipeline && theme !== "purple" && (
+            <PipelineCard flow={pipeline} theme={theme === "orange" ? "orange" : "sky"} />
+          )}
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -645,12 +676,18 @@ function ToolDepthSection() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto mb-10 max-w-3xl text-center">
           <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-600">
-            Tool depth
+            AI + tool depth
           </p>
 
           <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
-            Not just tools I list — how I use them.
+            Analytics engineering with practical AI acceleration.
           </h2>
+
+          <p className="mt-3 leading-7 text-slate-600">
+            I use AI as a productivity layer around analytics work — to speed up SQL
+            comprehension, metadata extraction, documentation, validation thinking, and
+            stakeholder-ready summaries.
+          </p>
         </div>
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -707,7 +744,7 @@ function ContactSection() {
 
               <p className="mt-4 max-w-3xl leading-7 text-slate-300">
                 Best fit: roles where business ambiguity, SQL-heavy pipelines, finance
-                logic, and stakeholder communication all meet.
+                logic, AI-assisted analysis, and stakeholder communication all meet.
               </p>
 
               <div className="mt-6 grid gap-4 text-sm text-slate-200 sm:grid-cols-3">
@@ -772,7 +809,6 @@ export default function Home() {
       <main id="top">
         <HeroSection />
         <FeaturedWorkSection />
-        <PipelineViewsSection />
 
         <CompanyProjectSection
           id="amazon"
@@ -780,9 +816,10 @@ export default function Home() {
           logo="/logos/Amazon.png"
           eyebrow="Pharmacy Finance · Cost Allocation · Contribution Profit"
           title="Amazon Projects"
-          description="Finance analytics and data engineering-adjacent work across MEC cost allocation, Contribution Profit reporting, data platform governance, reconciliation, business documentation, and variance-analysis concepts."
+          description="Finance analytics and data engineering-adjacent work across MEC cost allocation, Contribution Profit reporting, data platform governance, AI-assisted analytics workflows, reconciliation, and business documentation."
           projects={amazonProjects}
           theme="orange"
+          pipeline={pipelineFlows.amazon}
         />
 
         <CompanyProjectSection
@@ -791,9 +828,10 @@ export default function Home() {
           logo="/logos/Barclays.svg"
           eyebrow="Fintech · IVR · Contact Center Analytics"
           title="Barclays Projects"
-          description="Customer journey and contact-center analytics across IVR funnels, callback workflows, reporting data migration, SLA logic, A/B testing, and performance scoring."
+          description="Customer journey and contact-center analytics across IVR funnels, callback workflows, reporting data migration, SLA logic, AI-assisted reporting summaries, A/B testing, and performance scoring."
           projects={barclaysProjects}
           theme="sky"
+          pipeline={pipelineFlows.barclays}
         />
 
         <CompanyProjectSection
