@@ -182,25 +182,6 @@ const pipelineFlows = {
   },
 };
 
-const skillGroups = [
-  {
-    title: "Analytics Engineering",
-    skills: ["SQL", "ETL/ELT", "Data Modeling", "Data Validation"],
-  },
-  {
-    title: "Cloud + Data Platforms",
-    skills: ["AWS S3", "Athena", "Redshift", "Glue/Lambda"],
-  },
-  {
-    title: "BI + Product Analytics",
-    skills: ["Tableau", "QuickSight", "KPI Design", "Funnel Analysis"],
-  },
-  {
-    title: "AI-Assisted Analytics",
-    skills: ["Claude", "Kiro", "Amazon Bedrock", "Python Automation"],
-  },
-];
-
 const toolSections = [
   {
     category: "Analytics Engineering Core",
@@ -733,8 +714,8 @@ function ToolDepthSection() {
           </h2>
 
           <p className="mt-3 leading-7 text-slate-600">
-            I combine SQL-heavy analytics engineering, BI delivery, finance logic, cloud data
-            platforms, and AI-assisted workflows to move faster without losing analytical rigor.
+           I combine SQL-heavy analytics engineering, BI delivery, finance logic, cloud data
+          platforms, and AI-assisted workflows to turn messy business rules into trusted reporting layers.
           </p>
         </div>
 
@@ -803,28 +784,6 @@ function ToolDepthSection() {
                     </div>
                   );
                 })}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {skillGroups.map((group) => (
-            <div
-              key={group.title}
-              className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-            >
-              <h3 className="text-sm font-black text-slate-950">{group.title}</h3>
-
-              <div className="mt-3 flex flex-wrap gap-2">
-                {group.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-800"
-                  >
-                    {skill}
-                  </span>
-                ))}
               </div>
             </div>
           ))}
