@@ -613,15 +613,21 @@ function CompanyProjectSection({
     <section id={id} className={`border-y py-16 ${t.section}`}>
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-8">
-          <div className="mb-4 flex h-20 w-[360px] items-center">
-            <Image
-              src={logo}
-              alt={`${company} logo`}
-              width={360}
-              height={120}
-              className="max-h-20 max-w-[320px] object-contain"
-            />
-          </div>
+         <div className="mb-4 flex h-16 items-center">
+       <Image
+         src={logo}
+    alt={`${company} logo`}
+    width={260}
+    height={80}
+    className={
+      company === "Barclays"
+        ? "h-10 w-auto object-contain"
+        : company === "Amazon"
+        ? "h-14 w-auto object-contain"
+        : "h-12 w-auto object-contain"
+    }
+  />
+</div>
 
           <p className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] ${t.pill}`}>
             {eyebrow}
@@ -705,24 +711,64 @@ function ToolDepthSection() {
         </div>
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {toolDepth.map((item) => (
-            <div
-              key={item.tool}
-              className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5"
-            >
-              <h3 className="font-black text-slate-950">{item.tool}</h3>
-              <p className="mt-2 text-sm leading-7 text-slate-600">{item.use}</p>
-            </div>
-          ))}
+          {toolDepth.map((item, index) => {
+            const isAiTool =
+              item.tool.includes("Claude") ||
+              item.tool.includes("Kiro") ||
+              item.tool.includes("Bedrock") ||
+              item.tool.includes("Python");
+
+            return (
+              <div
+                key={item.tool}
+                className={`group relative overflow-hidden rounded-[1.75rem] border p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
+                  isAiTool
+                    ? "border-blue-200 bg-gradient-to-br from-blue-50 via-white to-indigo-50"
+                    : "border-slate-200 bg-gradient-to-br from-white to-slate-50"
+                }`}
+              >
+                <div
+                  className={`absolute right-0 top-0 h-20 w-20 rounded-bl-[3rem] opacity-70 ${
+                    isAiTool ? "bg-blue-100" : "bg-slate-100"
+                  }`}
+                />
+
+                <div className="relative">
+                  <div className="mb-5 flex items-center justify-between">
+                    <div
+                      className={`flex h-11 w-11 items-center justify-center rounded-2xl text-sm font-black ${
+                        isAiTool
+                          ? "bg-blue-600 text-white"
+                          : "bg-slate-950 text-white"
+                      }`}
+                    >
+                      {isAiTool ? "AI" : index + 1}
+                    </div>
+
+                    {isAiTool && (
+                      <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-xs font-bold text-blue-700">
+                        AI-assisted
+                      </span>
+                    )}
+                  </div>
+
+                  <h3 className="text-lg font-black text-slate-950">{item.tool}</h3>
+
+                  <p className="mt-3 text-sm leading-7 text-slate-600">{item.use}</p>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {skillGroups.map((group) => (
             <div
               key={group.title}
-              className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+              className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
             >
               <h3 className="text-sm font-black text-slate-950">{group.title}</h3>
+
               <div className="mt-3 flex flex-wrap gap-2">
                 {group.skills.map((skill) => (
                   <span
