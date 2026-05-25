@@ -155,29 +155,101 @@ const accentureProjects = [
 
 const pipelineFlows = {
   amazon: {
-    title: "Amazon Pharmacy Finance Pipeline View",
-    subtitle: "Cost allocation to Contribution Profit reporting",
+    title: "Amazon Pharmacy Finance Analytics Pipeline",
+    subtitle:
+      "Mostly ELT: finance and operational data was loaded into analytics platforms first, then transformed, enriched, allocated, and served for reporting.",
     steps: [
-      "GL / finance cost inputs",
-      "COGNOS_BASE and source-aligned staging",
-      "Work-unit driver tables",
-      "MEC cost allocation logic",
-      "Rate-card and allocation outputs",
-      "Contribution Profit reporting tables",
-      "QuickSight / Finance reporting",
+      {
+        label: "Extract / Load",
+        title: "Finance & operational inputs",
+        detail:
+          "GL costs, operational cost inputs, pharmacy activity data, and source-aligned finance feeds.",
+      },
+      {
+        label: "Staging",
+        title: "Source-aligned base tables",
+        detail:
+          "Cleaned and organized source data into reusable base layers such as finance cost and operational activity tables.",
+      },
+      {
+        label: "Transformation",
+        title: "Work-unit driver logic",
+        detail:
+          "Created business drivers such as fulfillment, billing, customer service, and pharmacy work units used for allocation.",
+      },
+      {
+        label: "Enrichment",
+        title: "Business rules & mappings",
+        detail:
+          "Applied cost-center mappings, account mappings, attribution rules, segment logic, and finance definitions.",
+      },
+      {
+        label: "Allocation",
+        title: "MEC cost allocation",
+        detail:
+          "Distributed operational and finance costs across products, channels, facilities, and reporting segments using driver-based logic.",
+      },
+      {
+        label: "Semantic / Reporting Layer",
+        title: "Contribution Profit outputs",
+        detail:
+          "Prepared trusted reporting-ready tables for Contribution Profit, rate-card logic, reconciliation, and finance review.",
+      },
+      {
+        label: "Consumption",
+        title: "Finance dashboards",
+        detail:
+          "Served final metrics to QuickSight dashboards, month-end reviews, and stakeholder-facing finance reporting.",
+      },
     ],
   },
   barclays: {
-    title: "Barclays IVR Analytics Pipeline View",
-    subtitle: "Contact-center logs to operational dashboards",
+    title: "Barclays IVR Customer Journey Analytics Pipeline",
+    subtitle:
+      "Mostly ELT with Tableau Prep/SQL transformations: contact-center data was extracted and loaded, then standardized, modeled, and served into dashboards.",
     steps: [
-      "Avaya and AWS contact-center logs",
-      "Deduplication and standardization",
-      "Tableau Prep / SQL transformations",
-      "IVR metric layer",
-      "Containment, transfer, SLA, and self-service KPIs",
-      "Tableau dashboards",
-      "Operational decision support",
+      {
+        label: "Extract / Load",
+        title: "Call-center source data",
+        detail:
+          "Avaya IVR logs, AWS contact-center data, customer interaction records, and servicing outcome data.",
+      },
+      {
+        label: "Staging",
+        title: "Raw call records organized",
+        detail:
+          "Brought call-level data into structured reporting inputs while preserving key identifiers, timestamps, and journey fields.",
+      },
+      {
+        label: "Standardization",
+        title: "Deduplication & cleanup",
+        detail:
+          "Removed duplicate calls across systems, standardized fields, and aligned customer journey records across platforms.",
+      },
+      {
+        label: "Transformation",
+        title: "IVR metric logic",
+        detail:
+          "Built business logic for containment, transfers, self-service, callbacks, SLA performance, and routing outcomes.",
+      },
+      {
+        label: "Enrichment",
+        title: "Journey & outcome context",
+        detail:
+          "Added customer journey context, queue details, agent outcomes, callback indicators, and performance dimensions.",
+      },
+      {
+        label: "Semantic / KPI Layer",
+        title: "Operational metric layer",
+        detail:
+          "Created consistent KPI definitions for dashboards, scorecards, trend reporting, and operational analysis.",
+      },
+      {
+        label: "Consumption",
+        title: "Tableau dashboards",
+        detail:
+          "Delivered metrics into Tableau dashboards used by operations and contact-center stakeholders.",
+      },
     ],
   },
 };
@@ -502,7 +574,11 @@ function PipelineCard({
   flow: {
     title: string;
     subtitle: string;
-    steps: string[];
+    steps: {
+      label: string;
+      title: string;
+      detail: string;
+    }[];
   };
   theme: "orange" | "sky";
 }) {
@@ -516,6 +592,11 @@ function PipelineCard({
       ? "border-orange-200 bg-gradient-to-br from-orange-50 via-white to-teal-50"
       : "border-sky-200 bg-gradient-to-br from-sky-50 via-white to-blue-50";
 
+  const badgeClasses =
+    theme === "orange"
+      ? "border-orange-200 bg-orange-100 text-orange-800"
+      : "border-sky-200 bg-sky-100 text-sky-800";
+
   const iconClasses = theme === "orange" ? "bg-orange-600" : "bg-sky-600";
 
   return (
@@ -524,39 +605,62 @@ function PipelineCard({
         className={`inline-flex cursor-pointer list-none items-center gap-3 rounded-xl border px-5 py-3 text-sm font-black shadow-sm transition ${buttonClasses}`}
       >
         <Workflow className="h-5 w-5" />
-        View pipeline flow
+        View ELT pipeline flow
         <ChevronDown className="h-4 w-4 transition group-open:rotate-180" />
       </summary>
 
       <div className={`mt-5 rounded-[2rem] border p-6 shadow-sm ${panelClasses}`}>
-        <div className="flex items-start gap-4">
-          <div
-            className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-white ${iconClasses}`}
-          >
-            <Workflow className="h-6 w-6" />
+        <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+          <div className="flex items-start gap-4">
+            <div
+              className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-white ${iconClasses}`}
+            >
+              <Workflow className="h-6 w-6" />
+            </div>
+
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-slate-500">
+                Pipeline view
+              </p>
+              <h3 className="mt-1 text-xl font-black text-slate-950">{flow.title}</h3>
+              <p className="mt-1 max-w-4xl text-sm leading-6 text-slate-600">
+                {flow.subtitle}
+              </p>
+            </div>
           </div>
 
-          <div>
-            <p className="text-xs font-black uppercase tracking-[0.25em] text-slate-500">
-              Pipeline view
-            </p>
-            <h3 className="mt-1 text-xl font-black text-slate-950">{flow.title}</h3>
-            <p className="mt-1 text-sm leading-6 text-slate-600">{flow.subtitle}</p>
-          </div>
+          <span className={`inline-flex rounded-full border px-3 py-1 text-xs font-black ${badgeClasses}`}>
+            ELT-style analytics pipeline
+          </span>
         </div>
 
-        <div className="mt-6 grid gap-3 md:grid-cols-7">
+        <div className="mt-6 grid gap-4 lg:grid-cols-7">
           {flow.steps.map((step, index) => (
             <div
-              key={step}
+              key={`${step.label}-${step.title}`}
               className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
             >
-              <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-full bg-slate-950 text-sm font-black text-white">
-                {index + 1}
+              <div className="mb-3 flex items-center justify-between gap-3">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-950 text-sm font-black text-white">
+                  {index + 1}
+                </div>
+
+                <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-slate-500">
+                  {step.label}
+                </span>
               </div>
-              <p className="text-sm font-semibold leading-6 text-slate-800">{step}</p>
+
+              <h4 className="text-sm font-black leading-5 text-slate-950">{step.title}</h4>
+              <p className="mt-2 text-xs leading-5 text-slate-600">{step.detail}</p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-5 rounded-2xl border border-slate-200 bg-white/80 p-4 text-sm leading-6 text-slate-600">
+          <span className="font-black text-slate-950">How to read this:</span>{" "}
+          Extract/Load brings data into the analytics environment, staging organizes it,
+          transformation applies repeatable logic, enrichment adds business context, and
+          the semantic/reporting layer makes the data usable for dashboards and decisions.
         </div>
       </div>
     </details>
@@ -588,10 +692,14 @@ function CompanyProjectSection({
   }[];
   theme: "orange" | "sky" | "purple";
   pipeline?: {
+  title: string;
+  subtitle: string;
+  steps: {
+    label: string;
     title: string;
-    subtitle: string;
-    steps: string[];
-  };
+    detail: string;
+  }[];
+};
 }) {
   const themes = {
     orange: {
