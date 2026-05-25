@@ -201,34 +201,63 @@ const skillGroups = [
   },
 ];
 
-const toolDepth = [
+const toolSections = [
   {
-    tool: "SQL",
-    use: "Transformation logic, allocation rules, reconciliation checks, window functions, metric validation, and pipeline debugging.",
+    category: "Analytics Engineering Core",
+    description:
+      "How I structure, validate, and productionize business logic into trusted reporting layers.",
+    items: [
+      {
+        tool: "SQL",
+        use: "Transformation logic, allocation rules, reconciliation checks, window functions, metric validation, and pipeline debugging.",
+      },
+      {
+        tool: "dbt-style Modeling",
+        use: "Applied staging-to-transformation-to-reporting patterns, even when the internal stack did not explicitly use dbt naming.",
+      },
+      {
+        tool: "Airflow-style Orchestration",
+        use: "Worked with dependency-based internal scheduling concepts similar to Airflow DAGs, including upstream/downstream job sequencing.",
+      },
+    ],
   },
   {
-    tool: "Claude / Kiro",
-    use: "Used as AI copilots to speed up SQL comprehension, debug long transformation logic, generate validation ideas, summarize business rules, and improve documentation quality.",
+    category: "Cloud, BI & Finance Analytics",
+    description:
+      "Tools used to query, validate, model, and present finance and operations data.",
+    items: [
+      {
+        tool: "AWS Athena / Redshift",
+        use: "Querying warehouse and data-lake layers, validating transformed outputs, and supporting reporting pipelines.",
+      },
+      {
+        tool: "QuickSight / Tableau",
+        use: "Executive dashboards, KPI design, filters, drilldowns, dashboard performance, and stakeholder-ready reporting.",
+      },
+      {
+        tool: "Excel",
+        use: "Finance allocation modeling, reconciliation frameworks, driver review, and stakeholder-friendly validation.",
+      },
+    ],
   },
   {
-    tool: "Amazon Bedrock",
-    use: "Applied in analytics prototypes to generate structured summaries from metadata and reporting inputs, helping translate raw files or metrics into business-readable explanations.",
-  },
-  {
-    tool: "AWS Athena / Redshift",
-    use: "Querying warehouse and data-lake layers, validating transformed outputs, and supporting reporting pipelines.",
-  },
-  {
-    tool: "Python / pandas",
-    use: "Data validation, automation prototypes, file handling, metadata extraction, and AI-assisted analytics workflow support.",
-  },
-  {
-    tool: "QuickSight / Tableau",
-    use: "Executive dashboards, KPI design, filters, drilldowns, dashboard performance, and stakeholder-ready reporting.",
-  },
-  {
-    tool: "Excel",
-    use: "Finance allocation modeling, reconciliation frameworks, driver review, and stakeholder-friendly validation.",
+    category: "AI-Assisted Analytics",
+    description:
+      "AI used as a productivity layer around analytics work, not as a replacement for technical judgment.",
+    items: [
+      {
+        tool: "Claude / Kiro",
+        use: "Used as AI copilots to speed up SQL comprehension, debug long transformation logic, generate validation ideas, summarize business rules, and improve documentation quality.",
+      },
+      {
+        tool: "Amazon Bedrock",
+        use: "Applied in analytics prototypes to generate structured summaries from metadata and reporting inputs, helping translate raw files or metrics into business-readable explanations.",
+      },
+      {
+        tool: "Python / pandas",
+        use: "Data validation, automation prototypes, file handling, metadata extraction, and AI-assisted analytics workflow support.",
+      },
+    ],
   },
 ];
 
@@ -613,21 +642,21 @@ function CompanyProjectSection({
     <section id={id} className={`border-y py-16 ${t.section}`}>
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-8">
-         <div className="mb-4 flex h-16 items-center">
-       <Image
-         src={logo}
-    alt={`${company} logo`}
-    width={260}
-    height={80}
-    className={
-      company === "Barclays"
-        ? "h-22 w-auto object-contain"
-        : company === "Amazon"
-        ? "h-14 w-auto object-contain"
-        : "h-12 w-auto object-contain"
-    }
-  />
-</div>
+          <div className="mb-4 flex h-16 items-center">
+            <Image
+              src={logo}
+              alt={`${company} logo`}
+              width={260}
+              height={80}
+              className={
+                company === "Barclays"
+                  ? "h-16 w-auto object-contain"
+                  : company === "Amazon"
+                  ? "h-14 w-auto object-contain"
+                  : "h-12 w-auto object-contain"
+              }
+            />
+          </div>
 
           <p className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] ${t.pill}`}>
             {eyebrow}
@@ -694,9 +723,9 @@ function ToolDepthSection() {
   return (
     <section id="skills" className="bg-white py-16">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto mb-10 max-w-3xl text-center">
+        <div className="mx-auto mb-12 max-w-3xl text-center">
           <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-600">
-            AI + tool depth
+            Tools, concepts & AI acceleration
           </p>
 
           <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
@@ -704,61 +733,79 @@ function ToolDepthSection() {
           </h2>
 
           <p className="mt-3 leading-7 text-slate-600">
-            I use AI as a productivity layer around analytics work — to speed up SQL
-            comprehension, metadata extraction, documentation, validation thinking, and
-            stakeholder-ready summaries.
+            I combine SQL-heavy analytics engineering, BI delivery, finance logic, cloud data
+            platforms, and AI-assisted workflows to move faster without losing analytical rigor.
           </p>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {toolDepth.map((item, index) => {
-            const isAiTool =
-              item.tool.includes("Claude") ||
-              item.tool.includes("Kiro") ||
-              item.tool.includes("Bedrock") ||
-              item.tool.includes("Python");
-
-            return (
-              <div
-                key={item.tool}
-                className={`group relative overflow-hidden rounded-[1.75rem] border p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-                  isAiTool
-                    ? "border-blue-200 bg-gradient-to-br from-blue-50 via-white to-indigo-50"
-                    : "border-slate-200 bg-gradient-to-br from-white to-slate-50"
-                }`}
-              >
-                <div
-                  className={`absolute right-0 top-0 h-20 w-20 rounded-bl-[3rem] opacity-70 ${
-                    isAiTool ? "bg-blue-100" : "bg-slate-100"
-                  }`}
-                />
-
-                <div className="relative">
-                  <div className="mb-5 flex items-center justify-between">
-                    <div
-                      className={`flex h-11 w-11 items-center justify-center rounded-2xl text-sm font-black ${
-                        isAiTool
-                          ? "bg-blue-600 text-white"
-                          : "bg-slate-950 text-white"
-                      }`}
-                    >
-                      {isAiTool ? "AI" : index + 1}
-                    </div>
-
-                    {isAiTool && (
-                      <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-xs font-bold text-blue-700">
-                        AI-assisted
-                      </span>
-                    )}
-                  </div>
-
-                  <h3 className="text-lg font-black text-slate-950">{item.tool}</h3>
-
-                  <p className="mt-3 text-sm leading-7 text-slate-600">{item.use}</p>
+        <div className="space-y-8">
+          {toolSections.map((section) => (
+            <div
+              key={section.category}
+              className="rounded-[2rem] border border-slate-200 bg-gradient-to-br from-slate-50 via-white to-blue-50/40 p-6 shadow-sm"
+            >
+              <div className="mb-6 flex flex-col justify-between gap-3 md:flex-row md:items-end">
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.25em] text-blue-600">
+                    {section.category}
+                  </p>
+                  <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
+                    {section.description}
+                  </p>
                 </div>
               </div>
-            );
-          })}
+
+              <div className="grid gap-5 md:grid-cols-3">
+                {section.items.map((item) => {
+                  const isAiTool =
+                    section.category.includes("AI") ||
+                    item.tool.includes("Claude") ||
+                    item.tool.includes("Kiro") ||
+                    item.tool.includes("Bedrock");
+
+                  return (
+                    <div
+                      key={item.tool}
+                      className={`group relative overflow-hidden rounded-[1.5rem] border p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
+                        isAiTool
+                          ? "border-blue-200 bg-gradient-to-br from-blue-50 via-white to-indigo-50"
+                          : "border-slate-200 bg-white"
+                      }`}
+                    >
+                      <div
+                        className={`absolute right-0 top-0 h-16 w-16 rounded-bl-[2.5rem] opacity-70 ${
+                          isAiTool ? "bg-blue-100" : "bg-slate-100"
+                        }`}
+                      />
+
+                      <div className="relative">
+                        <div className="mb-4 flex items-center justify-between">
+                          <div
+                            className={`flex h-10 w-10 items-center justify-center rounded-2xl text-xs font-black ${
+                              isAiTool
+                                ? "bg-blue-600 text-white"
+                                : "bg-slate-950 text-white"
+                            }`}
+                          >
+                            {isAiTool ? "AI" : "AE"}
+                          </div>
+
+                          {isAiTool && (
+                            <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-xs font-bold text-blue-700">
+                              AI-assisted
+                            </span>
+                          )}
+                        </div>
+
+                        <h3 className="text-lg font-black text-slate-950">{item.tool}</h3>
+                        <p className="mt-3 text-sm leading-7 text-slate-600">{item.use}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
         </div>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -794,17 +841,18 @@ function ContactSection() {
         <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 p-8 text-white shadow-2xl shadow-slate-400/20 md:p-10">
           <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.25em] text-slate-300">
-                Open to roles
+              <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue-300">
+                Open to analytics engineering roles
               </p>
 
               <h2 className="mt-3 text-3xl font-black md:text-4xl">
-                Analytics Engineer · BI Engineer · Finance Analytics
+                Analytics Engineer · BI Engineer · Data Analyst
               </h2>
 
               <p className="mt-4 max-w-3xl leading-7 text-slate-300">
-                Best fit: roles where business ambiguity, SQL-heavy pipelines, finance
-                logic, AI-assisted analysis, and stakeholder communication all meet.
+                Best fit: roles where SQL-heavy data modeling, BI systems, finance or
+                operations logic, AI-assisted analysis, and stakeholder-ready storytelling
+                come together.
               </p>
 
               <div className="mt-6 grid gap-4 text-sm text-slate-200 sm:grid-cols-3">
@@ -833,12 +881,14 @@ function ContactSection() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row">
+            <div className="grid w-full gap-3 sm:w-auto sm:grid-cols-2">
               <a
                 href="mailto:madhvika.sehgal@gmail.com?subject=Portfolio%20Inquiry%20-%20Madhvika%20Sehgal"
-                className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-4 font-bold text-slate-950 hover:bg-slate-100"
+                className="group inline-flex min-w-[190px] items-center justify-center gap-3 rounded-2xl bg-white px-5 py-4 text-sm font-black text-slate-950 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:bg-blue-50"
               >
-                <Mail className="mr-2 h-4 w-4" />
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-blue-700 transition group-hover:bg-blue-600 group-hover:text-white">
+                  <Mail className="h-5 w-5" />
+                </span>
                 Contact Me
               </a>
 
@@ -846,9 +896,11 @@ function ContactSection() {
                 href={resumePdf}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-4 font-bold text-slate-950 hover:bg-slate-100"
+                className="group inline-flex min-w-[190px] items-center justify-center gap-3 rounded-2xl bg-white px-5 py-4 text-sm font-black text-slate-950 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:bg-blue-50"
               >
-                <FileText className="mr-2 h-4 w-4" />
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-blue-700 transition group-hover:bg-blue-600 group-hover:text-white">
+                  <FileText className="h-5 w-5" />
+                </span>
                 Resume PDF
               </a>
             </div>
