@@ -19,22 +19,22 @@ const featuredProjects = [
     title: "MEC Cost Allocation & Contribution Profit Framework",
     company: "Amazon Pharmacy Finance",
     problem:
-      "Finance teams needed reliable allocation of operational costs across fulfillment, customer service, pharmacist, billing, and contribution profit reporting workflows.",
+      "Finance teams needed a more reliable way to understand how operational costs flowed into Contribution Profit reporting.",
     approach:
-      "Worked across SQL allocation logic, upstream cost-center mappings, validation checks, reconciliation outputs, and business-facing documentation.",
+      "Worked across SQL allocation logic, upstream cost-center mappings, work-unit drivers, reconciliation checks, and business-facing documentation.",
     impact:
-      "Improved transparency of contribution profit reporting and reduced ambiguity around month-end cost allocation logic.",
+      "Improved transparency around month-end cost allocation logic and made complex finance methodology easier for stakeholders to review.",
     tools: ["SQL", "Athena", "Redshift", "Excel Modeling", "Finance Analytics"],
   },
   {
-    title: "HFDA Data Platform Usage Metrics Dashboard",
-    company: "Amazon Pharmacy",
+    title: "Data Platform Usage & Governance Dashboard",
+    company: "Amazon Pharmacy · Internal Data Platform",
     problem:
-      "Data platform stakeholders needed visibility into dataset usage, access patterns, adoption, and unused assets.",
+      "Data platform stakeholders needed visibility into dataset usage, access patterns, adoption, and unused data assets.",
     approach:
       "Analyzed audit log events, classified platform access patterns, and designed dashboard views for governance and capacity planning.",
     impact:
-      "Enabled better understanding of platform adoption, dataset utilization, and team-level access behavior.",
+      "Enabled better understanding of platform adoption, dataset utilization, team-level usage, and underused assets.",
     tools: ["SQL", "QuickSight", "Audit Logs", "Governance", "Data Platform"],
   },
   {
@@ -55,43 +55,43 @@ const amazonProjects = [
     code: "CP",
     title: "MEC Cost Allocation & Contribution Profit Framework",
     description:
-      "Led analysis, debugging, enhancement, and validation of a 1,900+ line SQL-based cost allocation pipeline powering Pharmacy Finance reporting.",
+      "Analyzed, debugged, enhanced, and validated a 1,900+ line SQL-based cost allocation pipeline powering Pharmacy Finance reporting.",
     tools: ["SQL", "Athena", "Redshift", "Finance Analytics", "Cost Allocation"],
   },
   {
     code: "MEC",
     title: "Cost Allocation Redesign During Cost Center Restructuring",
     description:
-      "Redesigned allocation logic during cost center restructuring and validated downstream impacts through SQL reconciliation and structured allocation models.",
+      "Redesigned allocation logic during cost center restructuring and validated downstream impacts through reconciliation checks and structured allocation models.",
     tools: ["SQL", "Excel Modeling", "Reconciliation", "Cost Centers", "P&L"],
   },
   {
-    code: "LA",
-    title: "Automated Labor Allocation for Month-End Close",
+    code: "GOV",
+    title: "Data Platform Usage & Governance Dashboard",
     description:
-      "Built an automated labor allocation solution connecting ADP payroll data, warehouse metadata, and employee-to-warehouse business logic.",
-    tools: ["Python", "SQL", "AWS S3", "ADP", "Automation"],
-  },
-  {
-    code: "HFDA",
-    title: "HFDA Data Platform Usage Metrics Dashboard",
-    description:
-      "Built a governance dashboard using audit log event data to measure dataset adoption, platform usage, user access patterns, and unused assets.",
+      "Built a governance dashboard for an internal healthcare finance data platform using audit log events to measure dataset adoption, platform usage, user access patterns, and unused assets.",
     tools: ["SQL", "QuickSight", "Audit Logs", "Governance", "Data Platform"],
-  },
-  {
-    code: "AI",
-    title: "GenAI-Assisted Cost Variance Summaries",
-    description:
-      "Integrated Claude via Amazon Bedrock to analyze cost allocation anomalies and generate natural-language summaries of month-end variance reports.",
-    tools: ["Amazon Bedrock", "Claude", "Python", "GenAI", "Variance Analysis"],
   },
   {
     code: "DOC",
     title: "Business-Facing Cost Allocation Documentation",
     description:
-      "Authored a business-facing cost allocation framework explaining methodology, cost drivers, manual adjustments, and rate-card logic.",
+      "Authored a business-facing cost allocation framework explaining methodology, cost drivers, manual adjustments, current-month logic, and rate-card concepts.",
     tools: ["Documentation", "Finance Analytics", "Cost Drivers", "Methodology"],
+  },
+  {
+    code: "DQ",
+    title: "Finance Data Quality & Root-Cause Investigations",
+    description:
+      "Investigated P&L discrepancies by tracing metrics across dashboards, Contribution Profit outputs, allocation logic, upstream GL mappings, and source data.",
+    tools: ["SQL", "Root Cause", "Reconciliation", "Finance Reporting"],
+  },
+  {
+    code: "AI",
+    title: "GenAI-Assisted Variance Explanation Concepts",
+    description:
+      "Explored GenAI-assisted workflows to summarize cost allocation anomalies and month-end variance drivers from structured finance outputs.",
+    tools: ["Amazon Bedrock", "Claude", "Python", "GenAI", "Variance Analysis"],
   },
 ];
 
@@ -112,34 +112,17 @@ const barclaysProjects = [
   },
   {
     code: "AWS",
-    title: "Cloud Migration & Data Lake Setup",
+    title: "Cloud Migration & Reporting Data Lake Setup",
     description:
-      "Co-led migration of multi-terabyte datasets from Oracle to AWS S3, creating a scalable data lake and reducing query latency using Athena and Redshift.",
+      "Supported migration of operational contact-center datasets from Oracle to AWS S3/Athena/Redshift, improving reporting scalability for downstream analytics.",
     tools: ["AWS S3", "Athena", "Redshift", "Oracle", "Migration"],
   },
   {
     code: "AB",
     title: "Queue Optimization, A/B Testing & Agent Performance Analytics",
     description:
-      "Designed A/B tests for queue restructuring and developed an agent performance scoring model using sentiment, CSAT, NPS, and Z-score normalization.",
+      "Designed queue-performance analyses and agent scoring logic using customer experience signals such as sentiment, CSAT, NPS, and standardized metrics.",
     tools: ["A/B Testing", "Z-Score", "CSAT", "NPS", "Tableau"],
-  },
-];
-
-const accentureProjects = [
-  {
-    code: "P2P",
-    title: "SAP MM / Procure-to-Pay Workflow Automation",
-    description:
-      "Streamlined procurement operations by implementing SAP MM workflow automation including automatic PO generation and release strategy configuration.",
-    tools: ["SAP MM", "P2P", "Workflow Automation", "Procurement"],
-  },
-  {
-    code: "UAT",
-    title: "SAP Integration, BRDs & UAT Enablement",
-    description:
-      "Delivered functional specifications, BRDs, UAT support, stakeholder workshops, training, and integration coordination across SAP MM, SD, FI, and PP teams.",
-    tools: ["BRD", "UAT", "SAP Integration", "Workshops"],
   },
 ];
 
@@ -157,8 +140,8 @@ const skillGroups = [
     skills: ["Tableau", "QuickSight", "KPI Design", "Funnel Analysis"],
   },
   {
-    title: "Finance + AI Analytics",
-    skills: ["Cost Allocation", "CP Reporting", "Bedrock/Claude", "Variance Narratives"],
+    title: "Finance Analytics",
+    skills: ["Cost Allocation", "CP Reporting", "Reconciliation", "Variance Analysis"],
   },
 ];
 
@@ -183,7 +166,6 @@ const allSkills = [
   "Finance Analytics",
   "Data Validation",
   "Root Cause Analysis",
-  "Amazon Bedrock",
   "JIRA",
   "Confluence",
 ];
@@ -209,11 +191,11 @@ function Header() {
           <a href="#featured" className="hover:text-blue-600">
             Featured
           </a>
-          <a href="#amazon" className="hover:text-blue-600">
-            Amazon
+          <a href="#case-studies" className="hover:text-blue-600">
+            Case Studies
           </a>
-          <a href="#barclays" className="hover:text-blue-600">
-            Barclays
+          <a href="#debugging" className="hover:text-blue-600">
+            Debugging
           </a>
           <a href="#skills" className="hover:text-blue-600">
             Skills
@@ -253,15 +235,16 @@ function HeroSection() {
         <p className="mt-7 max-w-3xl text-lg leading-8 text-slate-600">
           Analytics Engineer with 4+ years across Amazon Pharmacy Finance, Barclays,
           and Accenture — specializing in SQL-heavy data pipelines, cost allocation,
-          BI dashboards, cloud analytics, and stakeholder-ready decision systems.
+          BI dashboards, cloud analytics, reconciliation workflows, and stakeholder-ready
+          decision systems.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-4">
           <a
-            href="#featured"
+            href="#case-studies"
             className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-4 text-base font-bold text-white shadow-lg shadow-blue-600/20 hover:bg-blue-700"
           >
-            View Projects <ArrowRight className="ml-2 h-4 w-4" />
+            View Case Studies <ArrowRight className="ml-2 h-4 w-4" />
           </a>
 
           <a
@@ -295,7 +278,8 @@ function HeroSection() {
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-slate-600">
-              A compact snapshot before the detailed project case studies.
+              Data systems thinking, business logic translation, metric debugging,
+              and finance-focused BI delivery.
             </p>
           </div>
 
@@ -360,8 +344,8 @@ function LogoGrid() {
 
 function PortfolioSnapshot() {
   const stats = [
-    { value: "1,900+", label: "line finance SQL pipeline", icon: Database },
-    { value: "1M+", label: "monthly audit log events", icon: CheckCircle2 },
+    { value: "1,900+", label: "line finance SQL pipeline analyzed and enhanced", icon: Database },
+    { value: "1M+", label: "monthly audit log events classified for usage analytics", icon: CheckCircle2 },
     { value: "45+", label: "dashboards and reports enhanced", icon: BriefcaseBusiness },
     { value: "5M+", label: "IVR interactions analyzed", icon: Database },
   ];
@@ -425,9 +409,10 @@ function AboutSection() {
           </p>
 
           <p className="mt-4 max-w-4xl text-base leading-8 text-slate-600 md:text-lg">
-            I specialize in tracing messy metrics from dashboards back through upstream
-            tables, transformation logic, finance definitions, and business rules —
-            then turning that complexity into reporting people can actually trust.
+            I like the messy middle of analytics — the part where the dashboard number
+            looks wrong, the upstream table changed silently, the SQL has twelve joins,
+            and Finance needs an answer before month-end close. That is usually where
+            I’m most useful.
           </p>
 
           <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -470,7 +455,7 @@ function FeaturedProjects() {
           </h2>
           <p className="mt-3 leading-7 text-slate-600">
             A tighter view of my strongest analytics engineering, finance analytics,
-            and BI platform work.
+            data platform governance, and BI reporting work.
           </p>
         </div>
 
@@ -523,6 +508,411 @@ function FeaturedProjects() {
   );
 }
 
+function ArchitectureSection() {
+  const flows = [
+    {
+      title: "Amazon Pharmacy Finance: Cost Allocation to Contribution Profit",
+      subtitle: "How finance source data became reporting-ready business metrics.",
+      steps: [
+        "GL / finance cost inputs",
+        "COGNOS_BASE and source-aligned staging",
+        "Work-unit driver tables",
+        "MEC cost allocation logic",
+        "Rate-card and allocation outputs",
+        "Contribution Profit reporting tables",
+        "QuickSight / Finance reporting",
+      ],
+    },
+    {
+      title: "Barclays IVR Analytics: Contact-Center Journey Reporting",
+      subtitle: "How call logs turned into operational KPIs and dashboard insights.",
+      steps: [
+        "Avaya and AWS contact-center logs",
+        "Deduplication and standardization",
+        "Tableau Prep / SQL transformations",
+        "IVR metric layer",
+        "Containment, transfer, SLA, and self-service KPIs",
+        "Tableau dashboards",
+        "Operational decision support",
+      ],
+    },
+  ];
+
+  return (
+    <section className="bg-white py-16">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto mb-10 max-w-3xl text-center">
+          <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-600">
+            Architecture thinking
+          </p>
+          <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
+            I think in data flows, not just dashboards.
+          </h2>
+          <p className="mt-3 leading-7 text-slate-600">
+            These are sanitized, simplified versions of the systems I worked across.
+          </p>
+        </div>
+
+        <div className="grid gap-8 lg:grid-cols-2">
+          {flows.map((flow) => (
+            <div key={flow.title} className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6">
+              <h3 className="text-xl font-black text-slate-950">{flow.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-600">{flow.subtitle}</p>
+
+              <div className="mt-6 space-y-3">
+                {flow.steps.map((step, index) => (
+                  <div key={step}>
+                    <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-black text-white">
+                        {index + 1}
+                      </div>
+                      <p className="text-sm font-semibold text-slate-800">{step}</p>
+                    </div>
+                    {index < flow.steps.length - 1 && (
+                      <div className="ml-4 h-4 w-px bg-slate-300" />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CaseStudiesSection() {
+  return (
+    <section id="case-studies" className="bg-slate-950 py-16 text-white">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto mb-12 max-w-3xl text-center">
+          <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-300">
+            Deep-dive case studies
+          </p>
+          <h2 className="mt-3 text-3xl font-black tracking-tight md:text-4xl">
+            More than resume bullets: how I actually approached the work.
+          </h2>
+          <p className="mt-3 leading-7 text-slate-300">
+            Sanitized, public-safe summaries that show the problem-solving layer behind
+            the projects.
+          </p>
+        </div>
+
+        <div className="grid gap-8">
+          <article className="rounded-[2rem] border border-slate-700 bg-white/5 p-8">
+            <p className="text-xs font-black uppercase tracking-[0.25em] text-orange-300">
+              Amazon Pharmacy Finance
+            </p>
+            <h3 className="mt-3 text-3xl font-black">
+              MEC Cost Allocation & Contribution Profit Framework
+            </h3>
+
+            <div className="mt-8 grid gap-6 md:grid-cols-3">
+              <div>
+                <h4 className="font-black text-white">Business problem</h4>
+                <p className="mt-3 text-sm leading-7 text-slate-300">
+                  Finance reporting depended on complex cost allocation logic across
+                  fulfillment, customer service, pharmacist, billing, and operational
+                  cost domains. The challenge was not just producing numbers — it was
+                  making the numbers explainable and traceable.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-black text-white">Technical approach</h4>
+                <p className="mt-3 text-sm leading-7 text-slate-300">
+                  I worked through upstream cost inputs, cost-center mappings, work-unit
+                  drivers, allocation rules, reconciliation checks, and reporting outputs
+                  to understand how source costs became Contribution Profit metrics.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-black text-white">Stakeholder value</h4>
+                <p className="mt-3 text-sm leading-7 text-slate-300">
+                  The work helped translate dense finance and SQL logic into a clearer
+                  framework that business stakeholders could review, validate, and use
+                  during month-end analysis.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-8 rounded-2xl border border-slate-700 bg-slate-900 p-5">
+              <h4 className="font-black text-white">Before vs After</h4>
+              <div className="mt-4 grid gap-4 md:grid-cols-2">
+                <div className="rounded-2xl bg-red-950/30 p-4">
+                  <p className="text-sm font-black text-red-200">Before</p>
+                  <p className="mt-2 text-sm leading-7 text-slate-300">
+                    Cost allocation outputs were difficult to explain without tracing
+                    multiple upstream tables, drivers, and business rules.
+                  </p>
+                </div>
+                <div className="rounded-2xl bg-emerald-950/30 p-4">
+                  <p className="text-sm font-black text-emerald-200">After</p>
+                  <p className="mt-2 text-sm leading-7 text-slate-300">
+                    Allocation logic, cost drivers, reconciliation steps, and finance
+                    definitions became easier to review and communicate.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article className="rounded-[2rem] border border-slate-700 bg-white/5 p-8">
+            <p className="text-xs font-black uppercase tracking-[0.25em] text-blue-300">
+              Amazon Pharmacy · Internal Data Platform
+            </p>
+            <h3 className="mt-3 text-3xl font-black">
+              Data Platform Usage & Governance Dashboard
+            </h3>
+
+            <div className="mt-8 grid gap-6 md:grid-cols-3">
+              <div>
+                <h4 className="font-black text-white">Business problem</h4>
+                <p className="mt-3 text-sm leading-7 text-slate-300">
+                  Platform stakeholders needed to understand which datasets were used,
+                  which tools accessed them, where adoption was growing, and which assets
+                  appeared underused.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-black text-white">Technical approach</h4>
+                <p className="mt-3 text-sm leading-7 text-slate-300">
+                  I analyzed high-volume audit log events and classified access patterns
+                  across platforms, users, datasets, and roles to create governance-ready
+                  usage views.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-black text-white">Stakeholder value</h4>
+                <p className="mt-3 text-sm leading-7 text-slate-300">
+                  The dashboard gave teams a clearer view of dataset adoption, platform
+                  behavior, unused assets, and capacity-planning signals.
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function DebuggingSection() {
+  const steps = [
+    "Confirm the metric definition with the business owner.",
+    "Reproduce the dashboard number using the same filters and grain.",
+    "Trace the metric back to the reporting table or semantic layer.",
+    "Inspect joins, deduplication logic, date filters, and aggregation level.",
+    "Compare transformed outputs against source-aligned tables.",
+    "Build reconciliation checks for expected vs actual totals.",
+    "Document the root cause, business impact, and prevention check.",
+  ];
+
+  return (
+    <section id="debugging" className="bg-white py-16">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-600">
+              Debugging methodology
+            </p>
+            <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
+              How I investigate broken metrics.
+            </h2>
+            <p className="mt-4 leading-8 text-slate-600">
+              My strongest pattern is tracing a suspicious number from dashboard symptom
+              to source data, transformation logic, business definition, and final
+              stakeholder explanation.
+            </p>
+          </div>
+
+          <div className="rounded-[2rem] border border-slate-200 bg-slate-50 p-6">
+            <div className="space-y-3">
+              {steps.map((step, index) => (
+                <div key={step} className="flex gap-4 rounded-2xl border border-slate-200 bg-white p-4">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-black text-white">
+                    {index + 1}
+                  </div>
+                  <p className="text-sm leading-6 text-slate-700">{step}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function DashboardThinkingSection() {
+  return (
+    <section className="bg-slate-50 py-16">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto mb-10 max-w-3xl text-center">
+          <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-600">
+            Dashboard thinking
+          </p>
+          <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
+            I design dashboards around decision-making, not just charts.
+          </h2>
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-3">
+          {[
+            {
+              title: "Executive Summary",
+              items: [
+                "Current month performance",
+                "Variance vs prior month",
+                "Top cost or metric drivers",
+                "High-level risk flags",
+              ],
+            },
+            {
+              title: "Operational Drilldown",
+              items: [
+                "Cost center",
+                "Facility or business segment",
+                "Work type or driver",
+                "Payment / customer / channel dimensions",
+              ],
+            },
+            {
+              title: "Validation Layer",
+              items: [
+                "Source vs reporting totals",
+                "Missing or unmapped categories",
+                "Unexpected month-over-month movement",
+                "Data freshness and completeness checks",
+              ],
+            },
+          ].map((block) => (
+            <div key={block.title} className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+              <h3 className="text-xl font-black text-slate-950">{block.title}</h3>
+              <ul className="mt-5 space-y-3">
+                {block.items.map((item) => (
+                  <li key={item} className="flex gap-3 text-sm leading-6 text-slate-600">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function GlossarySection() {
+  const terms = [
+    {
+      term: "Contribution Profit",
+      meaning:
+        "A finance metric that connects revenue, cost, and operational expense logic into a profitability view.",
+    },
+    {
+      term: "Cost Allocation",
+      meaning:
+        "The process of distributing shared operational costs across products, teams, facilities, or business segments using defined drivers.",
+    },
+    {
+      term: "Work Units",
+      meaning:
+        "Operational activity measures used as allocation drivers, such as fulfilled orders, claims, shipments, or handling effort.",
+    },
+    {
+      term: "Rate Card",
+      meaning:
+        "A standardized cost-per-unit framework used to apply allocation logic consistently across reporting outputs.",
+    },
+    {
+      term: "Containment Rate",
+      meaning:
+        "The share of customer interactions resolved within IVR/self-service without needing agent transfer.",
+    },
+    {
+      term: "Transfer Rate",
+      meaning:
+        "The share of customer interactions routed from one service stage or agent group to another.",
+    },
+  ];
+
+  return (
+    <section className="bg-white py-16">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto mb-10 max-w-3xl text-center">
+          <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-600">
+            Business glossary
+          </p>
+          <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
+            I translate technical logic into business language.
+          </h2>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {terms.map((item) => (
+            <div key={item.term} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+              <h3 className="font-black text-slate-950">{item.term}</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-600">{item.meaning}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function RoleFitSection() {
+  return (
+    <section className="bg-slate-950 py-16 text-white">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid gap-8 lg:grid-cols-2">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-300">
+              Role fit
+            </p>
+            <h2 className="mt-3 text-3xl font-black tracking-tight md:text-4xl">
+              Best-fit roles
+            </h2>
+
+            <div className="mt-6 flex flex-wrap gap-3">
+              {[
+                "Analytics Engineer",
+                "Business Intelligence Engineer",
+                "Finance Data Analyst",
+                "Product / Operations Data Analyst",
+                "Data Platform Analytics Analyst",
+                "BI Developer",
+              ].map((role) => (
+                <span
+                  key={role}
+                  className="rounded-full border border-slate-700 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-100"
+                >
+                  {role}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-[2rem] border border-slate-700 bg-white/5 p-6">
+            <h3 className="text-xl font-black">Where I add the most value</h3>
+            <ul className="mt-5 space-y-3 text-sm leading-7 text-slate-300">
+              <li>• SQL-heavy finance and operations reporting pipelines</li>
+              <li>• Broken metric debugging across dashboard, semantic, and source layers</li>
+              <li>• Cost allocation, reconciliation, and month-end reporting workflows</li>
+              <li>• BI dashboards with complicated business logic behind simple KPIs</li>
+              <li>• Data platform usage analytics, governance, and adoption reporting</li>
+              <li>• Translating technical data logic into stakeholder-ready narratives</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ProjectSection({
   id,
   company,
@@ -545,7 +935,7 @@ function ProjectSection({
     description: string;
     tools: string[];
   }[];
-  theme: "orange" | "sky" | "purple";
+  theme: "orange" | "sky";
 }) {
   const themes = {
     orange: {
@@ -554,7 +944,6 @@ function ProjectSection({
       bar: "from-orange-400 to-teal-500",
       icon: "bg-slate-950 text-white",
       tag: "bg-orange-50 text-orange-800 border-orange-100",
-      link: "text-orange-700",
     },
     sky: {
       section: "bg-gradient-to-br from-sky-50 via-white to-blue-50 border-sky-100",
@@ -562,15 +951,6 @@ function ProjectSection({
       bar: "from-sky-400 to-blue-600",
       icon: "bg-sky-500 text-white",
       tag: "bg-sky-50 text-sky-800 border-sky-100",
-      link: "text-sky-700",
-    },
-    purple: {
-      section: "bg-gradient-to-br from-purple-50 via-white to-violet-50 border-purple-100",
-      pill: "bg-purple-100 text-purple-800 border-purple-200",
-      bar: "from-purple-500 to-violet-700",
-      icon: "bg-purple-700 text-white",
-      tag: "bg-purple-50 text-purple-800 border-purple-100",
-      link: "text-purple-700",
     },
   };
 
@@ -605,29 +985,23 @@ function ProjectSection({
           {projects.map((project) => (
             <article
               key={project.title}
-              className="group h-full overflow-hidden rounded-3xl border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+              className="h-full overflow-hidden rounded-3xl border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
             >
               <div className={`h-2 bg-gradient-to-r ${t.bar}`} />
 
               <div className="p-6">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex gap-4">
-                    <div
-                      className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-xs font-black ${t.icon}`}
-                    >
-                      {project.code}
-                    </div>
-
-                    <div>
-                      <h3 className="text-lg font-black leading-snug text-slate-950">
-                        {project.title}
-                      </h3>
-                    </div>
+                <div className="flex gap-4">
+                  <div
+                    className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-xs font-black ${t.icon}`}
+                  >
+                    {project.code}
                   </div>
 
-                  <ArrowRight
-                    className={`h-5 w-5 shrink-0 transition group-hover:translate-x-1 ${t.link}`}
-                  />
+                  <div>
+                    <h3 className="text-lg font-black leading-snug text-slate-950">
+                      {project.title}
+                    </h3>
+                  </div>
                 </div>
 
                 <p className="mt-5 text-sm leading-7 text-slate-600">
@@ -644,10 +1018,6 @@ function ProjectSection({
                     </span>
                   ))}
                 </div>
-
-                <p className={`mt-5 flex items-center gap-2 text-sm font-bold ${t.link}`}>
-                  View details
-                </p>
               </div>
             </article>
           ))}
@@ -657,18 +1027,28 @@ function ProjectSection({
   );
 }
 
-function SkillsSection() {
-  const softSkills = [
-    "Deep ownership",
-    "Cross-functional delivery",
-    "Stakeholder communication",
-    "Root-cause debugging",
-    "Ambiguity handling",
-    "Executive-ready storytelling",
-    "Requirements gathering",
-    "UAT facilitation",
-    "Change management",
-    "Team leadership",
+function ToolDepthSection() {
+  const tools = [
+    {
+      tool: "SQL",
+      use: "Transformation logic, allocation rules, reconciliation checks, window functions, and metric validation.",
+    },
+    {
+      tool: "AWS Athena / Redshift",
+      use: "Querying warehouse and data-lake layers, validating transformed outputs, and supporting reporting pipelines.",
+    },
+    {
+      tool: "QuickSight / Tableau",
+      use: "Executive dashboards, KPI design, filters, drilldowns, dashboard performance, and stakeholder-ready reporting.",
+    },
+    {
+      tool: "Python",
+      use: "Data validation, automation prototypes, file handling, metadata processing, and analytics support workflows.",
+    },
+    {
+      tool: "Excel",
+      use: "Finance allocation modeling, reconciliation frameworks, driver review, and stakeholder-friendly validation.",
+    },
   ];
 
   return (
@@ -676,29 +1056,23 @@ function SkillsSection() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto mb-10 max-w-3xl text-center">
           <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-600">
-            Skills
+            Tool depth
           </p>
           <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
-            Technical and cross-functional strengths
+            Not just tools I list — how I use them.
           </h2>
-          <p className="mt-3 leading-7 text-slate-600">
-            A practical mix of BI, analytics engineering, finance analytics, cloud migration,
-            stakeholder delivery, and business storytelling.
-          </p>
         </div>
 
-        <div className="mb-10 flex flex-wrap justify-center gap-3">
-          {softSkills.map((skill) => (
-            <span
-              key={skill}
-              className="rounded-full border border-blue-100 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-800 shadow-sm"
-            >
-              {skill}
-            </span>
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {tools.map((item) => (
+            <div key={item.tool} className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
+              <h3 className="font-black text-slate-950">{item.tool}</h3>
+              <p className="mt-2 text-sm leading-7 text-slate-600">{item.use}</p>
+            </div>
           ))}
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3">
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
           {allSkills.map((skill) => (
             <span
               key={skill}
@@ -707,6 +1081,40 @@ function SkillsSection() {
               {skill}
             </span>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function EarlierFoundationSection() {
+  return (
+    <section className="bg-slate-50 py-14">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="rounded-[2rem] border border-slate-200 bg-white p-8">
+          <div className="mb-5 flex h-14 w-[260px] items-center">
+            <Image
+              src="/logos/Accenture.svg"
+              alt="Accenture logo"
+              width={260}
+              height={90}
+              className="max-h-14 max-w-[220px] object-contain"
+            />
+          </div>
+
+          <p className="text-xs font-black uppercase tracking-[0.25em] text-purple-700">
+            Earlier foundation · Consulting · SAP · UAT
+          </p>
+
+          <h2 className="mt-3 text-2xl font-black text-slate-950">
+            Accenture Foundation
+          </h2>
+
+          <p className="mt-3 max-w-4xl leading-7 text-slate-600">
+            Enterprise consulting experience that built my foundation in stakeholder
+            communication, requirements gathering, documentation, UAT support, SAP MM /
+            procure-to-pay workflows, and cross-functional delivery.
+          </p>
         </div>
       </div>
     </section>
@@ -794,10 +1202,14 @@ export default function Home() {
 
       <main id="top">
         <HeroSection />
-
         <AboutSection />
-
         <FeaturedProjects />
+        <ArchitectureSection />
+        <CaseStudiesSection />
+        <DebuggingSection />
+        <DashboardThinkingSection />
+        <GlossarySection />
+        <RoleFitSection />
 
         <ProjectSection
           id="amazon"
@@ -805,7 +1217,7 @@ export default function Home() {
           logo="/logos/Amazon.png"
           eyebrow="Pharmacy Finance · Cost Allocation · Contribution Profit"
           title="Amazon Projects"
-          description="Finance data engineering-adjacent analytics work across MEC cost allocation, CP reporting, automation, governance, GenAI-assisted cost narratives, and stakeholder documentation."
+          description="Finance analytics and data engineering-adjacent work across MEC cost allocation, Contribution Profit reporting, data platform governance, reconciliation, business documentation, and variance-analysis concepts."
           projects={amazonProjects}
           theme="orange"
         />
@@ -816,24 +1228,13 @@ export default function Home() {
           logo="/logos/Barclays.svg"
           eyebrow="Fintech · IVR · Contact Center Analytics"
           title="Barclays Projects"
-          description="Customer journey and contact-center analytics across IVR funnels, callback workflows, cloud migration, SLA logic, A/B testing, and performance scoring."
+          description="Customer journey and contact-center analytics across IVR funnels, callback workflows, reporting data migration, SLA logic, A/B testing, and performance scoring."
           projects={barclaysProjects}
           theme="sky"
         />
 
-        <ProjectSection
-          id="accenture"
-          company="Accenture"
-          logo="/logos/Accenture.svg"
-          eyebrow="Consulting · SAP MM · Procure-to-Pay"
-          title="Accenture Foundation"
-          description="Enterprise consulting experience that built the foundation for stakeholder management, requirements gathering, UAT, documentation, and cross-functional delivery."
-          projects={accentureProjects}
-          theme="purple"
-        />
-
-        <SkillsSection />
-
+        <EarlierFoundationSection />
+        <ToolDepthSection />
         <ContactSection />
       </main>
     </div>
