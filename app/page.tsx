@@ -23,7 +23,8 @@ const resumePdf = "/Madhvika-Sehgal-Resume-2026.pdf";
 type ExperienceProject = {
   category: string;
   title: string;
-  technical: string;
+  challenge: string;
+  built: string;
   impact: string;
   tools: string[];
 };
@@ -39,8 +40,10 @@ const amazonProjects: ExperienceProject[] = [
   {
     category: "Finance systems",
     title: "Cost Allocation and Profitability Platform",
-    technical:
-      "Redesigned a 1,900+ line SQL framework using operational drivers and time-clock actuals while preserving general-ledger and P&L reconciliation.",
+    challenge:
+      "Rapid site growth made legacy allocation logic difficult to explain and reconcile.",
+    built:
+      "Redesigned a 1,900+ line SQL framework with operational drivers, time-clock actuals, and general-ledger controls.",
     impact:
       "Improved explainability of cost-to-fill reporting and supported operational growth from 4 to 38 sites.",
     tools: ["SQL", "Athena", "Redshift"],
@@ -48,7 +51,9 @@ const amazonProjects: ExperienceProject[] = [
   {
     category: "Analytics automation",
     title: "Workforce Allocation Automation",
-    technical:
+    challenge:
+      "Monthly labor allocation depended on repetitive Excel formulas across disconnected sources.",
+    built:
       "Integrated payroll, warehouse metadata, operational flags, and configurable business rules into a repeatable SQL workflow.",
     impact:
       "Replaced manual Excel formulas and saved more than 7 hours during each monthly reporting cycle.",
@@ -57,8 +62,10 @@ const amazonProjects: ExperienceProject[] = [
   {
     category: "Platform analytics",
     title: "Data Governance and Adoption Dashboard",
-    technical:
-      "Classified more than 1 million monthly audit events across datasets, users, and tools to create a prioritized governance view.",
+    challenge:
+      "More than 1 million monthly audit events obscured which data assets were useful, stale, or expensive.",
+    built:
+      "Classified activity by dataset, user, and tool and surfaced priorities in a QuickSight governance dashboard.",
     impact:
       "Enabled retirement of 14 stale jobs and optimization of the four highest-compute jobs.",
     tools: ["QuickSight", "SQL", "Audit Logs"],
@@ -75,8 +82,10 @@ const barclaysProjects: ExperienceProject[] = [
   {
     category: "Cloud data migration",
     title: "Contact-Center Analytics Modernization",
-    technical:
-      "Reconciled Avaya and Oracle call schemas across S3, Athena, Redshift, and Oracle while standardizing containment and self-service KPIs.",
+    challenge:
+      "A contact-center migration left gaps between legacy and cloud call records used by more than 30 dashboards.",
+    built:
+      "Reconciled Avaya and Oracle schemas across S3, Athena, Redshift, and Oracle and standardized containment and self-service metrics.",
     impact:
       "Restored completeness from 2.5 million to 4.5 million monthly calls for more than 30 Tableau dashboards.",
     tools: ["AWS", "SQL", "Tableau"],
@@ -84,17 +93,21 @@ const barclaysProjects: ExperienceProject[] = [
   {
     category: "KPI design and experimentation",
     title: "Callback Analytics and Routing Experiment",
-    technical:
-      "Redesigned SLA logic, modified upstream SQL, and led a production A/B test across control and treatment call groups.",
+    challenge:
+      "Legacy service-level logic and routing rules limited comparable journey and agent insights.",
+    built:
+      "Redesigned service-level logic, modified upstream SQL, and led a production A/B test across control and treatment call groups.",
     impact:
       "Validated 45+ reports, contributed to 12% higher retention and 8% fewer transfers, and helped eliminate roughly 8,000 transfers per month.",
     tools: ["Experimentation", "SQL", "Tableau"],
   },
   {
-    category: "Enterprise GenAI",
+    category: "Enterprise generative AI",
     title: "AI-Assisted Reporting Documentation",
-    technical:
-      "Built a serverless workflow that transformed report metadata into lineage, KPI definitions, validation rules, and audit documentation.",
+    challenge:
+      "Report lineage, metric definitions, and audit documentation took days to assemble manually.",
+    built:
+      "Created a serverless workflow that transformed report metadata into lineage, definitions, validation rules, and audit documentation.",
     impact:
       "Reduced a days-long documentation process to minutes while preserving structured review and validation.",
     tools: ["Bedrock", "Lambda", "Python"],
@@ -102,8 +115,8 @@ const barclaysProjects: ExperienceProject[] = [
 ];
 
 const barclaysAdditional = [
-  "Reconstructed customer journeys with SQL event sequencing across IVR, queue, callback, and servicing outcomes.",
-  "Created a normalized agent-performance index combining sentiment, CSAT, and NPS to extend comparable scoring to the full agent base.",
+  "Reconstructed customer journeys with SQL event sequencing across interactive voice response, queue, callback, and servicing outcomes.",
+  "Created a normalized agent-performance index combining sentiment, customer satisfaction, and Net Promoter Score to extend comparable scoring to the full agent base.",
 ];
 
 const pipelineFlows = {
@@ -134,7 +147,7 @@ const capabilityGroups = [
     title: "Cloud and Engineering",
     description: "Reliable analytics workflows with validation, automation, and traceability.",
     icon: Code2,
-    skills: ["AWS", "Athena", "Redshift", "S3 and Lambda", "Python and pandas", "DAG-Based Orchestration", "Data Quality", "Git"],
+    skills: ["AWS", "Athena", "Redshift", "S3 and Lambda", "Python and pandas", "Workflow Orchestration", "Data Quality", "Git"],
   },
   {
     title: "Analytics and Decisions",
@@ -162,7 +175,7 @@ const aiCapabilities = [
     href: "https://github.com/Maddy123-sehg/analytics-investigation-agent",
   },
   {
-    title: "Enterprise GenAI Workflows",
+    title: "Enterprise Generative AI Workflows",
     tools: "Amazon Bedrock · Claude · Lambda · S3",
     description:
       "Transform reporting metadata into lineage, KPI definitions, validation rules, audit documentation, and structured summaries.",
@@ -288,7 +301,10 @@ function ExperienceProjectCard({ project }: { project: ExperienceProject }) {
     <article className="flex h-full flex-col border-t-2 border-blue-600 bg-white p-6 ring-1 ring-slate-200">
       <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-600">{project.category}</p>
       <h3 className="mt-3 text-xl font-black leading-snug text-slate-950">{project.title}</h3>
-      <p className="mt-4 text-sm leading-7 text-slate-600">{project.technical}</p>
+      <div className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
+        <p><span className="font-black text-slate-800">Challenge:</span> {project.challenge}</p>
+        <p><span className="font-black text-slate-800">Built:</span> {project.built}</p>
+      </div>
       <div className="mt-5 flex gap-3 border-t border-slate-100 pt-5 text-sm leading-6 text-slate-800">
         <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" />
         <p><span className="font-black">Impact:</span> {project.impact}</p>
@@ -401,7 +417,7 @@ function ExperienceSection() {
         logoAlt="Barclays"
         role="Business Intelligence Analyst · Credit Card & Contact Center Analytics"
         dates="Jan 2021 - Jul 2025"
-        summary="Analytics engineering and decision support across cloud migration, KPI design, experimentation, customer journeys, and enterprise GenAI workflows."
+        summary="Analytics engineering and decision support across cloud migration, KPI design, experimentation, customer journeys, and enterprise generative AI workflows."
         projects={barclaysProjects}
         additional={barclaysAdditional}
         pipeline={pipelineFlows.barclays}
@@ -550,9 +566,9 @@ function CareerFoundationSection() {
           <Image src="/logos/Accenture.svg" alt="Accenture" width={190} height={60} className="h-12 w-auto object-contain" />
           <div>
             <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">Career foundation</p>
-            <h2 className="mt-2 text-xl font-black text-slate-950">Business Analysis and SAP MM</h2>
+            <h2 className="mt-2 text-xl font-black text-slate-950">Business Analysis and SAP Materials Management</h2>
             <p className="mt-2 leading-7 text-slate-600">
-              Earlier enterprise consulting experience across requirements, process mapping, UAT, stakeholder coordination, and procure-to-pay workflows.
+              Earlier enterprise consulting experience across requirements, process mapping, user acceptance testing, stakeholder coordination, and procure-to-pay workflows.
             </p>
           </div>
         </div>
@@ -567,7 +583,7 @@ function ContactSection() {
       <div className="mx-auto max-w-7xl px-5 sm:px-6">
         <div className="grid gap-8 bg-slate-950 p-7 text-white sm:p-9 lg:grid-cols-[1.25fr_.75fr] lg:items-center">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-300">Open to mid-level BIE opportunities</p>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-300">Open to mid-level business intelligence opportunities</p>
             <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Business Intelligence Engineer</h2>
             <p className="mt-4 max-w-3xl leading-7 text-slate-300">
               Interested in roles focused on SQL, cloud data systems, BI delivery, experimentation, financial and operational analytics, and applied AI.
