@@ -328,12 +328,9 @@ function Header() {
           <span className="mt-1 block text-[11px] font-black tracking-[0.06em] text-slate-700 sm:text-xs">
             DAGs <span className="text-blue-600">·</span> DataFrames <span className="text-blue-600">·</span> Dashboards
           </span>
-          <span className="mt-0.5 block text-[10px] leading-4 text-slate-500 sm:text-[11px]">
-            Downstream of Data Engineering: <span className="font-semibold text-slate-700">BI &amp; Analytics Engineering</span> <span className="whitespace-nowrap font-semibold text-blue-600">· ✨ Applied AI</span>
-          </span>
         </a>
 
-        <nav className="hidden items-center gap-7 text-sm font-semibold text-slate-700 xl:flex" aria-label="Primary navigation">
+        <nav className="hidden items-center gap-7 text-sm font-semibold text-slate-700 lg:flex" aria-label="Primary navigation">
           {links.map((link) => (
             <a key={link.href} href={link.href} className="inline-flex items-center gap-1 transition hover:text-blue-600">
               {link.ai ? <AiMark /> : null}{link.label}
@@ -354,12 +351,12 @@ function HeroSection() {
   return (
     <section id="top" className="mx-auto max-w-7xl px-5 pb-12 pt-14 sm:px-6 lg:pb-14 lg:pt-20">
       <div className="max-w-5xl">
-        <p className="text-xs font-black uppercase tracking-[0.24em] text-blue-600">Business intelligence engineering portfolio</p>
+        <p className="text-xs font-black uppercase tracking-[0.24em] text-blue-600">Business intelligence engineering &amp; analytics portfolio</p>
         <h1 className="mt-4 max-w-4xl text-4xl font-black leading-[1.03] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
           I turn complex data into <span className="text-blue-600">trusted metrics and scalable analytics</span> that teams can act on.
         </h1>
         <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
-          Business Intelligence Engineer with 4+ years across Amazon, Barclays, and Accenture, combining SQL, cloud data modeling, dashboards, experimentation, and <AiPhrase>applied AI</AiPhrase> to solve financial, operational, and customer problems.
+          Business intelligence engineering and analytics professional with 4+ years across Amazon, Barclays, and Accenture, combining SQL, cloud data modeling, dashboards, experimentation, and <AiPhrase>applied AI</AiPhrase> to solve financial, operational, and customer problems.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-3">
@@ -793,8 +790,8 @@ function ContactSection() {
       <div className="mx-auto max-w-7xl px-5 sm:px-6">
         <div className="grid gap-8 bg-slate-950 p-7 text-white sm:p-9 lg:grid-cols-[1.25fr_.75fr] lg:items-center">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-300">Open to mid-level business intelligence opportunities</p>
-            <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Business Intelligence Engineer</h2>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-300">Open to mid-level opportunities</p>
+            <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Business Intelligence Engineering &amp; Analytics</h2>
             <p className="mt-4 max-w-3xl leading-7 text-slate-300">
               Interested in roles focused on SQL, cloud data systems, BI delivery, experimentation, financial and operational analytics, and applied AI.
             </p>

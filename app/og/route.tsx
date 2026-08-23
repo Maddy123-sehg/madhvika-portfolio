@@ -19,15 +19,15 @@ export async function GET() {
       >
         <div
           style={{
-            fontSize: 34,
+            fontSize: 28,
             fontWeight: 700,
             color: "#2563eb",
-            letterSpacing: "4px",
+            letterSpacing: "3px",
             textTransform: "uppercase",
             marginBottom: "28px",
           }}
         >
-          Business Intelligence Engineer · Applied AI
+          Business Intelligence Engineering &amp; Analytics
         </div>
 
         <div
