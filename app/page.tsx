@@ -36,7 +36,6 @@ type PipelineStep = {
   label: string;
   title: string;
   detail: string;
-  tools: string[];
 };
 
 type PipelineFlow = {
@@ -163,43 +162,36 @@ const pipelineFlows = {
         label: "Extract / Load",
         title: "Finance & operational inputs",
         detail: "GL costs, operational cost inputs, pharmacy activity data, and source-aligned finance feeds.",
-        tools: ["Athena", "Redshift", "Internal source feeds"],
       },
       {
         label: "Staging",
         title: "Source-aligned base tables",
         detail: "Cleaned and organized source data into reusable base layers such as finance cost and operational activity tables.",
-        tools: ["SQL", "Internal transformation framework (dbt-style)"],
       },
       {
         label: "Transformation",
         title: "Work-unit driver logic",
         detail: "Created business drivers such as fulfillment, billing, customer service, and pharmacy work units used for allocation.",
-        tools: ["SQL", "Internal transformation framework"],
       },
       {
         label: "Enrichment",
         title: "Business rules & mappings",
         detail: "Applied cost-center mappings, account mappings, attribution rules, segment logic, and finance definitions.",
-        tools: ["SQL", "Mapping tables"],
       },
       {
         label: "Allocation",
         title: "MEC cost allocation",
         detail: "Distributed operational and finance costs across products, channels, facilities, and reporting segments using driver-based logic.",
-        tools: ["SQL", "Reconciliation controls"],
       },
       {
         label: "Semantic / Reporting Layer",
         title: "Contribution Profit outputs",
         detail: "Prepared trusted reporting-ready tables for Contribution Profit, rate-card logic, reconciliation, and finance review.",
-        tools: ["Redshift", "Semantic models"],
       },
       {
         label: "Consumption",
         title: "Finance dashboards",
         detail: "Served final metrics to QuickSight dashboards, month-end reviews, and stakeholder-facing finance reporting.",
-        tools: ["QuickSight", "Finance reporting"],
       },
     ],
   },
@@ -212,43 +204,36 @@ const pipelineFlows = {
         label: "Extract / Load",
         title: "Call-center source data",
         detail: "Avaya IVR logs, AWS contact-center data, customer interaction records, and servicing outcome data.",
-        tools: ["Avaya", "Oracle", "AWS S3"],
       },
       {
         label: "Staging",
         title: "Raw call records organized",
         detail: "Brought call-level data into structured reporting inputs while preserving key identifiers, timestamps, and journey fields.",
-        tools: ["SQL", "Oracle", "Redshift"],
       },
       {
         label: "Standardization",
         title: "Deduplication & cleanup",
         detail: "Removed duplicate calls across systems, standardized fields, and aligned customer journey records across platforms.",
-        tools: ["SQL", "Tableau Prep"],
       },
       {
         label: "Transformation",
         title: "IVR metric logic",
         detail: "Built business logic for containment, transfers, self-service, callbacks, SLA performance, and routing outcomes.",
-        tools: ["SQL", "Athena", "Redshift"],
       },
       {
         label: "Enrichment",
         title: "Journey & outcome context",
         detail: "Added customer journey context, queue details, agent outcomes, callback indicators, and performance dimensions.",
-        tools: ["SQL", "Journey modeling"],
       },
       {
         label: "Semantic / KPI Layer",
         title: "Operational metric layer",
         detail: "Created consistent KPI definitions for dashboards, scorecards, trend reporting, and operational analysis.",
-        tools: ["SQL", "Semantic models"],
       },
       {
         label: "Consumption",
         title: "Tableau dashboards",
         detail: "Delivered metrics into Tableau dashboards used by operations and contact-center stakeholders.",
-        tools: ["Tableau", "Operational reporting"],
       },
     ],
   },
@@ -493,17 +478,15 @@ function PipelineDetails({ flow }: { flow: PipelineFlow }) {
         summary: "border-orange-200 bg-orange-50 text-orange-950 hover:bg-orange-100",
         panel: "border-orange-200 bg-gradient-to-br from-orange-50 via-white to-amber-50",
         accent: "bg-orange-500",
-        label: "bg-orange-100 text-orange-800",
+        label: "text-orange-700",
         arrow: "text-orange-400",
-        tool: "border-orange-100 bg-orange-50 text-orange-800",
       }
     : {
         summary: "border-sky-200 bg-sky-50 text-sky-950 hover:bg-sky-100",
         panel: "border-sky-200 bg-gradient-to-br from-sky-50 via-white to-blue-50",
         accent: "bg-sky-600",
-        label: "bg-sky-100 text-sky-800",
+        label: "text-sky-700",
         arrow: "text-sky-400",
-        tool: "border-sky-100 bg-sky-50 text-sky-800",
       };
 
   return (
@@ -530,20 +513,14 @@ function PipelineDetails({ flow }: { flow: PipelineFlow }) {
           {flow.steps.map((step, index) => (
             <div key={step.title} className="contents">
               <article className="min-w-0 flex-1 rounded-xl border border-white bg-white p-4 shadow-sm ring-1 ring-slate-200/70">
-                <div className="flex items-center justify-between gap-2">
-                  <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-black text-white ${theme.accent}`}>{index + 1}</span>
-                  <span className={`rounded-full px-2 py-1 text-[10px] font-black uppercase leading-4 tracking-[0.08em] ${theme.label}`}>{step.label}</span>
+                <div className="flex min-h-14 items-start gap-2 border-b border-slate-100 pb-3">
+                  <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-[11px] font-black tracking-tight text-white ${theme.accent}`} aria-label={`Stage ${index + 1}`}>
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className={`min-w-0 pt-0.5 text-[9px] font-black uppercase leading-4 tracking-[0.06em] ${theme.label}`}>{step.label}</span>
                 </div>
-                <h4 className="mt-3 text-sm font-black leading-5 text-slate-950">{step.title}</h4>
+                <h4 className="mt-4 text-sm font-black leading-5 text-slate-950 xl:min-h-[3.75rem]">{step.title}</h4>
                 <p className="mt-2 text-xs leading-5 text-slate-600">{step.detail}</p>
-                <div className="mt-4 border-t border-slate-100 pt-3">
-                  <p className="text-[10px] font-black uppercase tracking-[0.12em] text-slate-400">Tools & methods</p>
-                  <div className="mt-2 flex flex-wrap gap-1.5">
-                    {step.tools.map((tool) => (
-                      <span key={tool} className={`rounded-md border px-2 py-1 text-[10px] font-bold leading-4 ${theme.tool}`}>{tool}</span>
-                    ))}
-                  </div>
-                </div>
               </article>
               {index < flow.steps.length - 1 ? (
                 <div className={`flex shrink-0 items-center justify-center py-2 xl:px-1.5 xl:py-0 ${theme.arrow}`} aria-hidden="true">
