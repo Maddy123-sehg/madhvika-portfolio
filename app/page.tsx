@@ -323,20 +323,17 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-4 sm:px-6">
-        <a href="#top" className="min-w-0">
+        <a href="#top" className="min-w-0 max-w-2xl pr-2">
           <span className="block text-xl font-black tracking-tight text-slate-950 sm:text-2xl">Madhvika Sehgal</span>
-          <span className="mt-0.5 flex items-center gap-1 text-xs text-slate-500 sm:hidden">
-            BI Engineer · Data Analytics · <AiMark /> Applied AI
+          <span className="mt-1 block text-[11px] font-black tracking-[0.06em] text-slate-700 sm:text-xs">
+            DAGs <span className="text-blue-600">·</span> DataFrames <span className="text-blue-600">·</span> Dashboards
           </span>
-          <span className="mt-0.5 hidden items-center gap-1 text-sm text-slate-500 sm:flex lg:hidden">
-            BI Engineer · Data Analytics · <AiMark /> Applied AI
-          </span>
-          <span className="mt-0.5 hidden items-center gap-1 text-sm text-slate-500 lg:flex">
-            Business Intelligence Engineer · Data Analytics · Analytics Engineering · <AiMark /> Applied AI
+          <span className="mt-0.5 block text-[10px] leading-4 text-slate-500 sm:text-[11px]">
+            Downstream of Data Engineering: <span className="font-semibold text-slate-700">BI &amp; Analytics Engineering</span> <span className="whitespace-nowrap font-semibold text-blue-600">· ✨ Applied AI</span>
           </span>
         </a>
 
-        <nav className="hidden items-center gap-7 text-sm font-semibold text-slate-700 md:flex" aria-label="Primary navigation">
+        <nav className="hidden items-center gap-7 text-sm font-semibold text-slate-700 xl:flex" aria-label="Primary navigation">
           {links.map((link) => (
             <a key={link.href} href={link.href} className="inline-flex items-center gap-1 transition hover:text-blue-600">
               {link.ai ? <AiMark /> : null}{link.label}

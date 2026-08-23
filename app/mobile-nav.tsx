@@ -15,7 +15,7 @@ export function MobileNav({ resumePdf }: { resumePdf: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative md:hidden">
+    <div className="relative xl:hidden">
       <button
         type="button"
         aria-expanded={isOpen}
