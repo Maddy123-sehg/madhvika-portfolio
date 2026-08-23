@@ -36,6 +36,15 @@ const impactStats = [
   { category: "Customer analytics", value: "5M+", label: "interactions analyzed each month" },
 ];
 
+const portfolioIndexItems = [
+  { number: "01", title: "Amazon projects", summary: "Finance systems, automation, and governance", href: "#amazon" },
+  { number: "02", title: "Barclays projects", summary: "Cloud migration, experiments, and customer analytics", href: "#barclays" },
+  { number: "03", title: "Accenture work", summary: "Business analysis, SAP, and enterprise delivery", href: "#accenture" },
+  { number: "04", title: "AI projects", summary: "Agentic analytics and generative AI workflows", href: "#ai" },
+  { number: "05", title: "Personal projects", summary: "Public pipelines, dashboards, and tested code", href: "#projects" },
+  { number: "06", title: "Skills overview", summary: "SQL, cloud engineering, BI, and decision methods", href: "#skills" },
+];
+
 const amazonProjects: ExperienceProject[] = [
   {
     category: "Finance systems",
@@ -119,6 +128,21 @@ const barclaysAdditional = [
   "Created a normalized agent-performance index combining sentiment, customer satisfaction, and Net Promoter Score to extend comparable scoring to the full agent base.",
 ];
 
+const accentureWork = [
+  {
+    title: "Business analysis",
+    description: "Gathered requirements, mapped business processes, maintained documentation, and coordinated decisions across technical and business stakeholders.",
+  },
+  {
+    title: "SAP materials management",
+    description: "Supported procure-to-pay, purchasing, inventory, and master-data workflows within an enterprise SAP environment.",
+  },
+  {
+    title: "Testing and delivery",
+    description: "Supported user acceptance testing, defect triage, release readiness, and cross-functional delivery across enterprise workstreams.",
+  },
+];
+
 const pipelineFlows = {
   amazon: [
     "Finance and operational sources",
@@ -183,8 +207,26 @@ const aiCapabilities = [
   },
 ];
 
+function CompanyLogo({ src, alt, priority = false, compact = false }: { src: string; alt: string; priority?: boolean; compact?: boolean }) {
+  const needsArtworkCrop = alt === "Barclays";
+
+  return (
+    <div className="relative h-14 w-full max-w-56 overflow-hidden">
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="224px"
+        priority={priority}
+        className={`object-contain ${needsArtworkCrop ? (compact ? "scale-[1.55] sm:scale-[3]" : "scale-[3]") : ""}`}
+      />
+    </div>
+  );
+}
+
 function Header() {
   const links = [
+    { label: "Index", href: "#index" },
     { label: "Experience", href: "#experience" },
     { label: "Projects", href: "#projects" },
     { label: "Skills & AI", href: "#skills" },
@@ -247,10 +289,16 @@ function HeroSection() {
       <div className="mt-12 grid border-y border-slate-200 md:grid-cols-[1.35fr_.65fr] md:divide-x md:divide-slate-200">
         <div className="flex flex-col gap-5 py-6 md:pr-8">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">Experience across</p>
-          <div className="grid grid-cols-3 items-center gap-7">
-            <Image src="/logos/Amazon.png" alt="Amazon" width={180} height={60} className="h-10 w-full object-contain" priority />
-            <Image src="/logos/Barclays.svg" alt="Barclays" width={190} height={60} className="h-9 w-full object-contain" priority />
-            <Image src="/logos/Accenture.svg" alt="Accenture" width={190} height={60} className="h-9 w-full object-contain" priority />
+          <div className="grid grid-cols-3 divide-x divide-slate-200">
+            <div className="flex h-20 items-center justify-center px-2 sm:px-4">
+              <CompanyLogo src="/logos/Amazon.svg" alt="Amazon" priority compact />
+            </div>
+            <div className="flex h-20 items-center justify-center px-2 sm:px-4">
+              <CompanyLogo src="/logos/Barclays.svg" alt="Barclays" priority compact />
+            </div>
+            <div className="flex h-20 items-center justify-center px-2 sm:px-4">
+              <CompanyLogo src="/logos/Accenture.svg" alt="Accenture" priority compact />
+            </div>
           </div>
         </div>
         <div className="flex items-center gap-4 py-6 md:pl-8">
@@ -277,6 +325,33 @@ function ImpactSection() {
               <p className="mt-2 text-4xl font-black tracking-tight">{stat.value}</p>
               <p className="mt-2 max-w-56 text-sm leading-6 text-slate-300">{stat.label}</p>
             </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PortfolioIndexSection() {
+  return (
+    <section id="index" className="border-b border-slate-200 bg-slate-50 py-12" aria-labelledby="index-title">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-blue-600">Portfolio index</p>
+            <h2 id="index-title" className="mt-2 text-3xl font-black tracking-tight text-slate-950">Explore the work.</h2>
+          </div>
+          <p className="max-w-xl text-sm leading-6 text-slate-600">Jump to a section or continue scrolling for the complete story.</p>
+        </div>
+
+        <div className="mt-7 grid grid-cols-2 gap-px overflow-hidden border border-slate-200 bg-slate-200 sm:grid-cols-3 xl:grid-cols-6">
+          {portfolioIndexItems.map((item) => (
+            <a key={item.href} href={item.href} className="group flex min-h-44 flex-col bg-white p-4 hover:bg-blue-50 sm:p-5">
+              <span className="text-xs font-black text-blue-600">{item.number}</span>
+              <h3 className="mt-5 text-base font-black text-slate-950 group-hover:text-blue-700">{item.title}</h3>
+              <p className="mt-2 text-xs leading-5 text-slate-600">{item.summary}</p>
+              <ArrowRight className="mt-auto h-5 w-5 text-blue-500 group-hover:translate-x-0.5 group-hover:text-blue-700" />
+            </a>
           ))}
         </div>
       </div>
@@ -370,7 +445,7 @@ function CompanyExperience({ id, logo, logoAlt, role, dates, summary, projects, 
       <div className="mx-auto max-w-7xl px-5 sm:px-6">
         <div className="flex flex-col gap-6 border-b border-slate-200 pb-7 md:flex-row md:items-end md:justify-between">
           <div>
-            <Image src={logo} alt={logoAlt} width={210} height={70} className="h-12 w-auto object-contain" />
+            <CompanyLogo src={logo} alt={logoAlt} />
             <h2 className="mt-5 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">{role}</h2>
             <p className="mt-3 max-w-3xl leading-7 text-slate-600">{summary}</p>
           </div>
@@ -382,6 +457,33 @@ function CompanyExperience({ id, logo, logoAlt, role, dates, summary, projects, 
         <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-4">
           <PipelineDetails title="View analytics pipeline" steps={pipeline} />
           <AdditionalContributions items={additional} />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AccentureExperienceSection() {
+  return (
+    <section id="accenture" className="bg-white py-14 lg:py-16">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="border-b border-slate-200 pb-7">
+          <CompanyLogo src="/logos/Accenture.svg" alt="Accenture" />
+          <p className="mt-5 text-xs font-black uppercase tracking-[0.18em] text-blue-600">Earlier professional experience</p>
+          <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">Business Analyst · SAP Materials Management</h2>
+          <p className="mt-3 max-w-3xl leading-7 text-slate-600">
+            Enterprise consulting experience across requirements, process design, testing, stakeholder coordination, and procure-to-pay operations.
+          </p>
+        </div>
+
+        <div className="mt-8 grid gap-5 md:grid-cols-3">
+          {accentureWork.map((item, index) => (
+            <article key={item.title} className="border-t-2 border-violet-500 bg-slate-50 p-6 ring-1 ring-slate-200">
+              <p className="text-xs font-black text-violet-700">0{index + 1}</p>
+              <h3 className="mt-4 text-xl font-black text-slate-950">{item.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-slate-600">{item.description}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -402,7 +504,7 @@ function ExperienceSection() {
       </section>
       <CompanyExperience
         id="amazon"
-        logo="/logos/Amazon.png"
+        logo="/logos/Amazon.svg"
         logoAlt="Amazon"
         role="Business Intelligence Engineer · Pharmacy Finance & Analytics"
         dates="Aug 2025 - Present"
@@ -423,6 +525,7 @@ function ExperienceSection() {
         pipeline={pipelineFlows.barclays}
         background="slate"
       />
+      <AccentureExperienceSection />
     </div>
   );
 }
@@ -438,13 +541,14 @@ function IndependentProjectsSection() {
         />
         <div className="mt-9 grid gap-6 lg:grid-cols-2">
           <article className="overflow-hidden border border-slate-200 bg-white">
-            <div className="relative aspect-[2.5/1] overflow-hidden bg-slate-100">
+            <div className="relative aspect-[2.5/1] overflow-hidden border-b border-slate-200 bg-white">
               <Image
-                src="/retail-dashboard.png"
+                src="/retail-dashboard.png?preview=2"
                 alt="Retail Sales Performance dashboard with monthly and regional revenue charts"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-top"
+                unoptimized
+                className="origin-top-left scale-[1.67] object-cover object-left-top"
               />
             </div>
             <div className="p-6">
@@ -558,25 +662,6 @@ function SkillsAndAiSection() {
   );
 }
 
-function CareerFoundationSection() {
-  return (
-    <section className="bg-white py-10">
-      <div className="mx-auto max-w-7xl px-5 sm:px-6">
-        <div className="grid items-center gap-6 border-y border-slate-200 py-7 md:grid-cols-[0.3fr_1.7fr]">
-          <Image src="/logos/Accenture.svg" alt="Accenture" width={190} height={60} className="h-12 w-auto object-contain" />
-          <div>
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">Career foundation</p>
-            <h2 className="mt-2 text-xl font-black text-slate-950">Business Analysis and SAP Materials Management</h2>
-            <p className="mt-2 leading-7 text-slate-600">
-              Earlier enterprise consulting experience across requirements, process mapping, user acceptance testing, stakeholder coordination, and procure-to-pay workflows.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function ContactSection() {
   return (
     <section id="contact" className="bg-white pb-12 pt-4">
@@ -611,10 +696,10 @@ export default function Home() {
       <main>
         <HeroSection />
         <ImpactSection />
+        <PortfolioIndexSection />
         <ExperienceSection />
         <IndependentProjectsSection />
         <SkillsAndAiSection />
-        <CareerFoundationSection />
         <ContactSection />
       </main>
     </div>
