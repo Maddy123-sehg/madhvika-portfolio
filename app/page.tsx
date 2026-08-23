@@ -360,7 +360,7 @@ function Header() {
           <a href="#top" className="text-2xl font-black tracking-tight text-slate-950">
             Madhvika Sehgal
           </a>
-          <p className="mt-1 text-sm text-slate-500">Business intelligence · Analytics engineering · Decision systems</p>
+          <p className="mt-1 text-sm text-slate-500">Business Intelligence · Analytics Engineering · Decision Systems</p>
         </div>
 
         <nav className="hidden items-center gap-8 text-sm font-medium text-slate-700 lg:flex">
