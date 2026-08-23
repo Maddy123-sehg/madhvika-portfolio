@@ -256,7 +256,7 @@ const pipelineFlows = {
 
 const toolSections = [
   {
-    category: "Analytics Engineering Core",
+    category: "Data Analytics & BI Core",
     description:
       "How I structure, validate, and productionize business logic into trusted reporting layers.",
     items: [
@@ -322,7 +322,7 @@ function Header() {
           <a href="#top" className="text-2xl font-black tracking-tight text-slate-950">
             Madhvika Sehgal
           </a>
-          <p className="mt-1 text-sm text-slate-500">Analytics Engineer</p>
+          <p className="mt-1 text-sm text-slate-500">Business Intelligence Engineer</p>
         </div>
 
         <nav className="hidden items-center gap-8 text-sm font-medium text-slate-700 lg:flex">
@@ -365,7 +365,7 @@ function HeroSection() {
       <div className="self-start">
         <div className="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 shadow-sm">
           <Sparkles className="h-4 w-4" />
-          Analytics Engineering · Finance Data Systems · AI-Assisted BI
+          Data Analytics · Business Intelligence · Finance Data Systems · AI-Assisted BI
         </div>
 
         <h1 className="mt-7 text-5xl font-black leading-[1.03] tracking-tight text-slate-950 md:text-7xl">
@@ -374,7 +374,7 @@ function HeroSection() {
         </h1>
 
         <p className="mt-7 max-w-3xl text-lg leading-8 text-slate-600">
-          Analytics Engineer focused on SQL-heavy finance and operations data —
+          Business Intelligence Engineer focused on SQL-heavy finance and operations data —
           building trusted reporting layers, debugging complex metrics, and using AI
           assistance to accelerate analysis, documentation, and decision-ready reporting.
         </p>
@@ -818,11 +818,11 @@ function ToolDepthSection() {
           </p>
 
           <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
-            Analytics engineering with practical AI acceleration.
+            Data analytics and business intelligence with practical AI acceleration.
           </h2>
 
           <p className="mt-3 leading-7 text-slate-600">
-           I combine SQL-heavy analytics engineering, BI delivery, finance logic, cloud data
+           I combine SQL-heavy data analytics, BI delivery, finance logic, cloud data
           platforms, and AI-assisted workflows to turn messy business rules into trusted reporting layers.
           </p>
         </div>
@@ -909,11 +909,11 @@ function ContactSection() {
           <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
             <div>
               <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue-300">
-                Open to analytics engineering roles
+                Open to data analytics and business intelligence roles
               </p>
 
               <h2 className="mt-3 text-3xl font-black md:text-4xl">
-                Analytics Engineer · BI Engineer · Data Analyst
+                Data Analyst · Business Intelligence Engineer
               </h2>
 
               <p className="mt-4 max-w-3xl leading-7 text-slate-300">
