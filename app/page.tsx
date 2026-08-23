@@ -6,7 +6,6 @@ import {
   CheckCircle2,
   ChevronDown,
   Database,
-  Download,
   ExternalLink,
   FileText,
   GitBranch,
@@ -17,19 +16,18 @@ import {
   Workflow,
 } from "lucide-react";
 
-const resumePdf = "/Madhvika_Sehgal_Analytics_Engineer_May_2026.pdf";
-const resumeDocx = "/Madhvika_Sehgal_Analytics_Engineer_May_2026.docx";
+const resumePdf = "/Madhvika-Sehgal-Resume-2026.pdf";
 
 const featuredProjects = [
   {
-    title: "MEC Cost Allocation & Contribution Profit Framework",
-    company: "Amazon Pharmacy Finance",
+    title: "Operational Cost Allocation & Profitability Reporting",
+    company: "Amazon Health · Pharmacy Finance & Analytics",
     problem:
       "Finance teams needed a more reliable way to understand how operational costs flowed into Contribution Profit reporting.",
     approach:
-      "Worked across SQL allocation logic, upstream cost-center mappings, work-unit drivers, reconciliation checks, and business-facing documentation.",
+      "Replaced broad allocation proxies with granular operational drivers and time-clock actuals while preserving general-ledger and profit-and-loss reconciliation.",
     impact:
-      "Improved transparency around month-end cost allocation logic and made complex finance methodology easier for stakeholders to review.",
+      "Supported growth from 4 to 38 sites, automated 7+ hours of monthly work, and made cost-to-fill reporting more reliable and explainable.",
     tools: ["SQL", "Athena", "Redshift", "Excel Modeling", "Finance Analytics"],
   },
   {
@@ -38,9 +36,9 @@ const featuredProjects = [
     problem:
       "Platform stakeholders needed visibility into dataset usage, access patterns, adoption, and unused data assets.",
     approach:
-      "Analyzed audit log events, classified platform access patterns, and designed dashboard views for governance and capacity planning.",
+      "Classified 1M+ monthly audit events across datasets, users, and tools, then designed leadership views for governance and capacity planning.",
     impact:
-      "Enabled better understanding of platform adoption, dataset utilization, team-level usage, and underused assets.",
+      "Drove retirement of 14 stale jobs and optimization of the 4 highest-compute jobs, saving roughly 1 hour of compute per day.",
     tools: ["SQL", "QuickSight", "Audit Logs", "Governance", "Data Platform"],
   },
   {
@@ -49,9 +47,9 @@ const featuredProjects = [
     problem:
       "Contact-center teams needed reliable IVR journey metrics across call containment, transfers, self-service, and customer outcomes.",
     approach:
-      "Built and maintained ETL/reporting logic across call logs, IVR outcomes, dashboard calculations, and operational KPI definitions.",
+      "Designed the analytics layer for an Avaya/Oracle-to-AWS Connect migration and standardized containment, self-service, and operational KPI logic.",
     impact:
-      "Supported 30+ Tableau dashboards and enabled analysis across millions of customer interactions.",
+      "Restored call-data completeness from 2.5M to 4.5M calls per month and standardized the data feeding 30+ Tableau dashboards.",
     tools: ["SQL", "Tableau", "Tableau Prep", "Oracle", "AWS"],
   },
 ];
@@ -90,44 +88,44 @@ const independentProjects = [
 const amazonProjects = [
   {
     code: "CP",
-    title: "MEC Cost Allocation & Contribution Profit Framework",
+    title: "Monthly Cost Allocation & Profitability Reporting Framework",
     description:
-      "Analyzed, debugged, enhanced, and validated a 1,900+ line SQL-based cost allocation pipeline powering Pharmacy Finance reporting.",
+      "Redesigned a 1,900+ line SQL allocation pipeline using operational drivers and time-clock actuals while preserving general-ledger and P&L reconciliation.",
     tools: ["SQL", "Athena", "Redshift", "Finance Analytics", "Cost Allocation"],
   },
   {
     code: "MEC",
-    title: "Cost Allocation Redesign During Cost Center Restructuring",
+    title: "Workforce Cost Allocation Automation",
     description:
-      "Redesigned allocation logic during cost center restructuring and validated downstream impacts through reconciliation checks and structured allocation models.",
+      "Integrated payroll, warehouse metadata, operational flags, and configurable business rules in SQL, replacing manual Excel formulas and saving 7+ hours each month.",
     tools: ["SQL", "Excel Modeling", "Reconciliation", "Cost Centers", "P&L"],
   },
   {
     code: "GOV",
     title: "Data Platform Usage & Governance Dashboard",
     description:
-      "Built a governance dashboard for an internal healthcare finance data platform using audit log events to measure dataset adoption, platform usage, user access patterns, and unused assets.",
+      "Built a governance dashboard from 1M+ monthly audit events; enabled retirement of 14 stale jobs and optimization of the 4 highest-compute jobs.",
     tools: ["SQL", "QuickSight", "Audit Logs", "Governance", "Data Platform"],
   },
   {
     code: "AI",
-    title: "AI-Assisted Finance Analytics Workflows",
+    title: "AI-Assisted Financial Anomaly Investigation",
     description:
-      "Used Claude and Kiro-style AI assistance to accelerate SQL understanding, debugging, documentation, validation thinking, and variance-explanation workflows for complex finance analytics.",
+      "Used Claude to generate root-cause hypotheses and validation queries for month-end general-ledger and cost-allocation anomalies, then independently verified results through reconciliation and regression checks, cutting roughly 3 hours per issue.",
     tools: ["Claude", "Kiro", "SQL Debugging", "Documentation", "Analytics Acceleration"],
   },
   {
     code: "DOC",
-    title: "Business-Facing Cost Allocation Documentation",
+    title: "Data Migration Quality & Validation Guardrails",
     description:
-      "Authored a business-facing cost allocation framework explaining methodology, cost drivers, manual adjustments, current-month logic, and rate-card concepts.",
+      "Remediated risk during a primary-key and schema migration by updating 4-5 downstream SQL jobs and adding validation guardrails across 10+ dependent datasets with zero material metric regression.",
     tools: ["Documentation", "Finance Analytics", "Cost Drivers", "Methodology"],
   },
   {
     code: "DQ",
-    title: "Finance Data Quality & Root-Cause Investigations",
+    title: "Analytics On-Call & Root-Cause Operations",
     description:
-      "Investigated P&L discrepancies by tracing metrics across dashboards, Contribution Profit outputs, allocation logic, upstream GL mappings, and source data.",
+      "Converted recurring analytics incidents into reusable procedures and an ownership/escalation map, reducing routing and triage overhead by roughly 4 hours per week.",
     tools: ["SQL", "Root Cause", "Reconciliation", "Finance Reporting"],
   },
 ];
@@ -135,37 +133,37 @@ const amazonProjects = [
 const barclaysProjects = [
   {
     code: "IVR",
-    title: "IVR Customer Journey Analytics & ETL Framework",
+    title: "Cloud Contact-Center Analytics Migration",
     description:
-      "Built and managed ETL processes powering 30+ IVR Tableau dashboards and analyzed 5M+ interactions across call logs and servicing data.",
+      "Reconciled Avaya and Oracle call schemas across AWS S3, Athena, Redshift, and Oracle; restored completeness from 2.5M to 4.5M calls per month for 30+ Tableau dashboards.",
     tools: ["Tableau", "ETL", "Oracle", "AWS", "IVR"],
   },
   {
     code: "CB",
     title: "Callback Feature Revamp & SLA Logic Redesign",
     description:
-      "Led a 3-member team to redesign SLA logic and integrate callback features into contact-center workflows, enhancing 45+ dashboards and reports.",
+      "Led a 3-person analytics workstream, redefined service-level KPIs, modified upstream SQL, and validated 45+ dashboards and reports; contributed to 12% higher retention and 8% fewer transfers.",
     tools: ["Tableau", "SLA", "Callback Analytics", "Leadership"],
   },
   {
     code: "AWS",
-    title: "Cloud Migration & Reporting Data Lake Setup",
+    title: "Production Routing Experiment & Statistical Validation",
     description:
-      "Supported migration of operational contact-center datasets from Oracle to AWS S3/Athena/Redshift, improving reporting scalability for downstream analytics.",
-    tools: ["AWS S3", "Athena", "Redshift", "Oracle", "Migration"],
+      "Designed a 2-month production A/B test with 5K control and 5K treatment calls; validated transfer reduction from 40% to 36% and helped eliminate roughly 8K transfers per month.",
+    tools: ["A/B Testing", "Hypothesis Testing", "SQL", "Experimentation", "IVR"],
   },
   {
     code: "AI",
     title: "AI-Assisted Metadata & Reporting Summaries",
     description:
-      "Built and explored AI-assisted analytics workflows using AWS Lambda, S3, Python, pandas, and Amazon Bedrock to process uploaded files, extract metadata, and generate structured reporting summaries.",
+      "Engineered a serverless workflow using Python, Lambda, S3, Boto3, Bedrock, and Claude to turn report metadata into lineage, KPI definitions, validation rules, and audit documentation in minutes instead of days.",
     tools: ["Amazon Bedrock", "AWS Lambda", "S3", "Python", "pandas"],
   },
   {
     code: "AB",
-    title: "Queue Optimization, A/B Testing & Agent Performance Analytics",
+    title: "Customer Journey & Agent Performance Analytics",
     description:
-      "Designed queue-performance analyses and agent scoring logic using customer experience signals such as sentiment, CSAT, NPS, and standardized metrics.",
+      "Reconstructed customer journeys with SQL event sequencing and created a Z-score-normalized agent index combining sentiment, CSAT, and NPS to extend comparable scoring from about 10% to the full agent base.",
     tools: ["A/B Testing", "Z-Score", "CSAT", "NPS", "Tableau"],
   },
 ];
@@ -440,15 +438,6 @@ function HeroSection() {
           >
             <FileText className="mr-2 h-4 w-4" />
             Resume PDF
-          </a>
-
-          <a
-            href={resumeDocx}
-            download
-            className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-4 text-base font-bold text-slate-900 hover:bg-slate-50"
-          >
-            <Download className="mr-2 h-4 w-4" />
-            Download DOCX
           </a>
 
           <a
@@ -1116,9 +1105,9 @@ export default function Home() {
           id="amazon"
           company="Amazon"
           logo="/logos/Amazon.png"
-          eyebrow="Pharmacy Finance · Cost Allocation · Contribution Profit"
-          title="Amazon Projects"
-          description="Finance analytics and data engineering-adjacent work across MEC cost allocation, Contribution Profit reporting, data platform governance, AI-assisted analytics workflows, reconciliation, and business documentation."
+          eyebrow="Pharmacy Finance · Cost Allocation · Profitability Reporting"
+          title="Business Intelligence Engineer | Amazon Health - Pharmacy Finance & Analytics"
+          description="Finance analytics and data-platform work spanning operational cost allocation, profitability reporting, workforce automation, schema-migration quality, platform governance, and AI-assisted anomaly investigation. Aug 2025 - Present."
           projects={amazonProjects}
           theme="orange"
           pipeline={pipelineFlows.amazon}
@@ -1129,8 +1118,8 @@ export default function Home() {
           company="Barclays"
           logo="/logos/Barclays.svg"
           eyebrow="Fintech · IVR · Contact Center Analytics"
-          title="Barclays Projects"
-          description="Customer journey and contact-center analytics across IVR funnels, callback workflows, reporting data migration, SLA logic, AI-assisted reporting summaries, A/B testing, and performance scoring."
+          title="Business Intelligence Analyst | Barclays - Credit Card & Contact Center Analytics"
+          description="Analytics engineering and decision-support work across cloud contact-center migration, customer journeys, callback operations, KPI redesign, production experimentation, GenAI documentation, and agent-performance scoring. Jan 2021 - Jul 2025."
           projects={barclaysProjects}
           theme="sky"
           pipeline={pipelineFlows.barclays}
