@@ -4,7 +4,7 @@ import { Menu, Sparkles, X } from "lucide-react";
 import { useState } from "react";
 
 const links = [
-  { label: "Work", href: "#index" },
+  { label: "Portfolio", href: "#index" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Skills & AI", href: "#skills", ai: true },

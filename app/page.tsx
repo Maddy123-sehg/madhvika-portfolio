@@ -288,14 +288,19 @@ const aiCapabilities = [
 
 function CompanyLogo({ src, alt, priority = false, compact = false }: { src: string; alt: string; priority?: boolean; compact?: boolean }) {
   const needsArtworkCrop = alt === "Barclays";
+  const compactWidth = needsArtworkCrop
+    ? "max-w-[14.5rem]"
+    : alt === "Amazon" || alt === "Accenture"
+      ? "max-w-52"
+      : "max-w-56";
 
   return (
-    <div className="relative h-14 w-full max-w-56 overflow-hidden">
+    <div className={`relative h-14 w-full overflow-hidden ${compact ? compactWidth : "max-w-56"}`}>
       <Image
         src={src}
         alt={alt}
         fill
-        sizes="224px"
+        sizes={compact ? (needsArtworkCrop ? "232px" : "208px") : "224px"}
         priority={priority}
         className={`object-contain ${needsArtworkCrop ? (compact ? "scale-[1.55] sm:scale-[3]" : "scale-[3]") : ""}`}
       />
@@ -313,7 +318,7 @@ function AiPhrase({ children }: { children: ReactNode }) {
 
 function Header() {
   const links = [
-    { label: "Work", href: "#index" },
+    { label: "Portfolio", href: "#index" },
     { label: "Experience", href: "#experience" },
     { label: "Projects", href: "#projects" },
     { label: "Skills & AI", href: "#skills", ai: true },
@@ -353,15 +358,17 @@ function Header() {
 function HeroSection() {
   return (
     <section id="top" className="mx-auto max-w-7xl px-5 pb-10 pt-10 sm:px-6 lg:pb-12 lg:pt-12">
-      <div className="max-w-5xl">
-        <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-600 sm:tracking-[0.2em]">
-          <span className="block sm:inline">4+ years across</span>{" "}
-          <span className="block sm:inline">Amazon · Barclays · Accenture</span>
+      <div className="max-w-6xl">
+        <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-600">
+          <span className="block sm:inline">4+ years in</span>{" "}
+          <span className="block sm:inline">Business Intelligence &amp; Analytics</span>
         </p>
-        <h1 className="mt-4 max-w-4xl text-4xl font-black leading-[1.03] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-          I build <span className="text-blue-600">trusted analytics systems</span> from complex business data.
+        <h1 className="mt-4 max-w-[1100px] text-4xl font-black leading-[1.01] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl xl:text-[64px]">
+          I build <span className="text-blue-600 lg:whitespace-nowrap">trusted analytics systems</span>
+          <br className="hidden lg:block" />{" "}
+          from complex business data.
         </h1>
-        <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-700">
+        <p className="mt-6 max-w-3xl text-base leading-7 text-slate-700 sm:text-lg sm:leading-8">
           Business Intelligence Engineer specializing in SQL, cloud data modeling, KPI design, dashboards, and experimentation. I also build AI-assisted workflows for financial, operational, and customer analytics.
         </p>
 
