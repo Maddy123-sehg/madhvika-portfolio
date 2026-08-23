@@ -408,18 +408,17 @@ function HeroSection() {
       <div className="self-start">
         <div className="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 shadow-sm">
           <Sparkles className="h-4 w-4" />
-          Data Analytics · Business Intelligence · Finance Data Systems · AI-Assisted BI
+          Business Intelligence · Analytics Engineering · Decision Support · Applied AI
         </div>
 
         <h1 className="mt-7 text-5xl font-black leading-[1.03] tracking-tight text-slate-950 md:text-7xl">
-          I build trusted analytics layers for messy finance, operations, and{" "}
-          <span className="text-blue-600">customer journey data.</span>
+          I turn complex business data into trusted decisions for{" "}
+          <span className="text-blue-600">leaders, operators, and customer teams.</span>
         </h1>
 
         <p className="mt-7 max-w-3xl text-lg leading-8 text-slate-600">
-          Business Intelligence Engineer who builds trusted data models, reporting systems,
-          experiments, and decision tools across finance, operations, customer experience,
-          and data-platform domains.
+          Across pharmacy, contact centers, finance, workforce, product, and data platforms,
+          I build reliable datasets, KPIs, dashboards, experiments, and automation.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-4">
