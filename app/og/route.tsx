@@ -1,7 +1,5 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
-
 export async function GET() {
   return new ImageResponse(
     (
@@ -27,7 +25,7 @@ export async function GET() {
             marginBottom: "28px",
           }}
         >
-          Business Intelligence Engineer · Applied AI
+          Business Intelligence · Analytics · Applied AI
         </div>
 
         <div
@@ -50,7 +48,7 @@ export async function GET() {
             maxWidth: "980px",
           }}
         >
-          Financial, operational, and customer analytics built with SQL, cloud data systems, BI, experimentation, and applied AI.
+          SQL data models, KPI systems, dashboards, experimentation, and AI-assisted workflows across finance, operations, and customer analytics.
         </div>
       </div>
     ),

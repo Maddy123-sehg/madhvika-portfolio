@@ -6,14 +6,16 @@ const siteUrl = "https://madhvika-portfolio.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Madhvika Sehgal | Business Intelligence Engineer",
+    default: "Madhvika Sehgal | Business Intelligence & Analytics",
     template: "%s | Madhvika Sehgal",
   },
   description:
-    "Business Intelligence Engineer with 4+ years across Amazon, Barclays, and Accenture, building SQL data models, cloud pipelines, BI systems, experiments, and applied AI workflows.",
+    "Business Intelligence and analytics portfolio with 4+ years across Amazon, Barclays, and Accenture, covering SQL data models, KPI design, dashboards, experimentation, cloud data systems, and applied AI.",
   keywords: [
     "Madhvika Sehgal",
     "Analytics Engineer",
+    "Data Analyst",
+    "Data Analytics",
     "Business Intelligence Engineer",
     "BI Engineer",
     "Financial Analytics",
@@ -26,13 +28,16 @@ export const metadata: Metadata = {
     "Cost Allocation",
     "Data Pipelines",
     "Analytics Engineering",
+    "KPI Design",
+    "A/B Testing",
+    "Applied AI",
   ],
   authors: [{ name: "Madhvika Sehgal" }],
   creator: "Madhvika Sehgal",
   openGraph: {
-    title: "Madhvika Sehgal | Business Intelligence Engineer",
+    title: "Madhvika Sehgal | Business Intelligence & Analytics",
     description:
-      "SQL data models, cloud pipelines, BI systems, experimentation, financial and customer analytics, and applied AI.",
+      "SQL data models, KPI systems, dashboards, experimentation, and AI-assisted workflows across finance, operations, and customer analytics.",
     url: siteUrl,
     siteName: "Madhvika Sehgal Portfolio",
     images: [
@@ -40,7 +45,7 @@ export const metadata: Metadata = {
         url: "/og",
         width: 1200,
         height: 630,
-        alt: "Madhvika Sehgal - Business Intelligence Engineer",
+        alt: "Madhvika Sehgal - Business Intelligence and Analytics",
       },
     ],
     locale: "en_US",
@@ -48,9 +53,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Madhvika Sehgal | Business Intelligence Engineer",
+    title: "Madhvika Sehgal | Business Intelligence & Analytics",
     description:
-      "SQL data models, cloud pipelines, BI systems, experimentation, financial and customer analytics, and applied AI.",
+      "SQL data models, KPI systems, dashboards, experimentation, and AI-assisted workflows across finance, operations, and customer analytics.",
     images: ["/og"],
   },
   icons: {

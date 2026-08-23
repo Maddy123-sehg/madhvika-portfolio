@@ -313,7 +313,7 @@ function AiPhrase({ children }: { children: ReactNode }) {
 
 function Header() {
   const links = [
-    { label: "Index", href: "#index" },
+    { label: "Work", href: "#index" },
     { label: "Experience", href: "#experience" },
     { label: "Projects", href: "#projects" },
     { label: "Skills & AI", href: "#skills", ai: true },
@@ -322,8 +322,8 @@ function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-4 sm:px-6">
-        <a href="#top" className="min-w-0 max-w-2xl pr-2">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-3 sm:px-6">
+        <a href="#top" className="min-w-0 max-w-2xl rounded-sm pr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-4">
           <span className="block text-xl font-black tracking-tight text-slate-950 sm:text-2xl">Madhvika Sehgal</span>
           <span className="mt-1 block text-[11px] font-black tracking-[0.06em] text-slate-700 sm:text-xs">
             DAGs <span className="text-blue-600">·</span> DataFrames <span className="text-blue-600">·</span> Dashboards
@@ -335,11 +335,11 @@ function Header() {
 
         <nav className="hidden items-center gap-7 text-sm font-semibold text-slate-700 xl:flex" aria-label="Primary navigation">
           {links.map((link) => (
-            <a key={link.href} href={link.href} className="inline-flex items-center gap-1 transition hover:text-blue-600">
+            <a key={link.href} href={link.href} className="inline-flex items-center gap-1 rounded-sm transition hover:text-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-4">
               {link.ai ? <AiMark /> : null}{link.label}
             </a>
           ))}
-          <a href={resumePdf} target="_blank" rel="noreferrer" className="rounded-lg bg-blue-600 px-4 py-2.5 font-black text-white hover:bg-blue-700">
+          <a href={resumePdf} target="_blank" rel="noreferrer" className="rounded-lg bg-blue-600 px-4 py-2.5 font-black text-white hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">
             Resume
           </a>
         </nav>
@@ -352,30 +352,30 @@ function Header() {
 
 function HeroSection() {
   return (
-    <section id="top" className="mx-auto max-w-7xl px-5 pb-12 pt-14 sm:px-6 lg:pb-14 lg:pt-20">
+    <section id="top" className="mx-auto max-w-7xl px-5 pb-10 pt-10 sm:px-6 lg:pb-12 lg:pt-12">
       <div className="max-w-5xl">
-        <p className="text-xs font-black uppercase tracking-[0.24em] text-blue-600">Business intelligence engineering portfolio</p>
+        <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-600 sm:tracking-[0.2em]">
+          <span className="block sm:inline">4+ years across</span>{" "}
+          <span className="block sm:inline">Amazon · Barclays · Accenture</span>
+        </p>
         <h1 className="mt-4 max-w-4xl text-4xl font-black leading-[1.03] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-          I turn complex data into <span className="text-blue-600">trusted metrics and scalable analytics</span> that teams can act on.
+          I build <span className="text-blue-600">trusted analytics systems</span> from complex business data.
         </h1>
-        <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
-          Business Intelligence Engineer with 4+ years across Amazon, Barclays, and Accenture, combining SQL, cloud data modeling, dashboards, experimentation, and <AiPhrase>applied AI</AiPhrase> to solve financial, operational, and customer problems.
+        <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-700">
+          Business Intelligence Engineer specializing in SQL, cloud data modeling, KPI design, dashboards, and experimentation. I also build AI-assisted workflows for financial, operational, and customer analytics.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-3">
-          <a href="#experience" className="inline-flex items-center rounded-lg bg-blue-600 px-5 py-3.5 text-sm font-black text-white shadow-lg shadow-blue-600/20 hover:bg-blue-700">
-            View experience <ArrowRight className="ml-2 h-4 w-4" />
+          <a href="#index" className="inline-flex items-center rounded-lg bg-blue-600 px-5 py-3.5 text-sm font-black text-white shadow-lg shadow-blue-600/20 hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">
+            View selected work <ArrowRight className="ml-2 h-4 w-4" />
           </a>
-          <a href={resumePdf} target="_blank" rel="noreferrer" className="inline-flex items-center rounded-lg border border-slate-200 bg-white px-5 py-3.5 text-sm font-black text-slate-900 hover:bg-slate-50">
-            <FileText className="mr-2 h-4 w-4" /> Resume
-          </a>
-          <a href="https://github.com/Maddy123-sehg" target="_blank" rel="noreferrer" className="inline-flex items-center rounded-lg border border-slate-200 bg-white px-5 py-3.5 text-sm font-black text-slate-900 hover:bg-slate-50">
+          <a href="https://github.com/Maddy123-sehg" target="_blank" rel="noreferrer" className="inline-flex items-center rounded-lg border border-slate-200 bg-white px-5 py-3.5 text-sm font-black text-slate-900 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">
             <GitBranch className="mr-2 h-4 w-4" /> GitHub
           </a>
         </div>
       </div>
 
-      <div className="mt-12 grid border-y border-slate-200 md:grid-cols-[1.35fr_.65fr] md:divide-x md:divide-slate-200">
+      <div className="mt-10 grid border-y border-slate-200 md:grid-cols-[1.35fr_.65fr] md:divide-x md:divide-slate-200">
         <div className="flex flex-col gap-5 py-6 md:pr-8">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">Experience across</p>
           <div className="grid grid-cols-3 divide-x divide-slate-200">
@@ -416,7 +416,7 @@ function PortfolioIndexSection() {
 
         <div className="mt-7 grid grid-cols-2 gap-px overflow-hidden border border-slate-700 bg-slate-700 sm:grid-cols-3 xl:grid-cols-6">
           {portfolioIndexItems.map((item) => (
-            <a key={item.href} href={item.href} className="group flex min-h-44 flex-col bg-slate-900 p-4 transition hover:bg-slate-800 sm:p-5">
+            <a key={item.href} href={item.href} className="group flex min-h-44 flex-col bg-slate-900 p-4 transition hover:bg-slate-800 focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-300 sm:p-5">
               <span className="text-xs font-black text-blue-300">{item.number}</span>
               <h3 className="mt-5 flex items-center gap-1.5 text-base font-black text-white group-hover:text-blue-200">
                 {item.ai ? <AiMark className="text-blue-300" /> : null}{item.title}
