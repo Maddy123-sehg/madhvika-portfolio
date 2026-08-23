@@ -493,12 +493,12 @@ function AccentureExperienceSection() {
 function ExperienceSection() {
   return (
     <div id="experience">
-      <section className="bg-white pt-14 lg:pt-16">
+      <section className="border-y border-blue-100 bg-blue-50 py-12 lg:py-14">
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionIntro
-            eyebrow="Enterprise experience"
-            title="Analytics systems built at scale."
-            description="Selected work across financial reporting, data platforms, cloud migration, customer analytics, experimentation, and AI-assisted operations. Each example connects technical delivery to a measurable business result."
+            eyebrow="Professional experience"
+            title="Experience across Amazon, Barclays, and Accenture."
+            description="Selected work spanning financial reporting, data platforms, cloud migration, customer analytics, experimentation, and AI-assisted operations. Each example connects technical delivery to a measurable business result."
           />
         </div>
       </section>
