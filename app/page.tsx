@@ -294,7 +294,7 @@ const toolSections = [
 const experienceIndex = [
   {
     number: "01",
-    title: "Amazon Health",
+    title: "Amazon",
     subtitle: "Finance analytics and data platforms",
     summary: "Cost allocation, profitability reporting, governance, data quality, and AI-assisted operations.",
     href: "#amazon",
@@ -426,7 +426,7 @@ function HeroSection() {
             href="#start"
             className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-4 text-base font-bold text-white shadow-lg shadow-blue-600/20 hover:bg-blue-700"
           >
-            Choose a project path <ArrowRight className="ml-2 h-4 w-4" />
+            Explore projects <ArrowRight className="ml-2 h-4 w-4" />
           </a>
 
           <a
@@ -474,15 +474,15 @@ function ExperienceIndexSection() {
         <div className="grid gap-6 lg:grid-cols-[0.65fr_1.35fr] lg:items-end">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-600">
-              Start here
+              Portfolio overview
             </p>
             <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
-              Choose the work most relevant to your role.
+              Explore my work.
             </h2>
           </div>
           <p className="max-w-3xl leading-7 text-slate-600">
-            A compact index for hiring managers. Open a path for detailed projects, tools,
-            outcomes, and expandable pipeline views.
+            Browse by company, independent project, or applied AI. Each section highlights
+            the work, tools, and outcomes, with optional pipeline details.
           </p>
         </div>
 
