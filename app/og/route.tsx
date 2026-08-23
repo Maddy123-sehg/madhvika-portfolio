@@ -27,7 +27,7 @@ export async function GET() {
             marginBottom: "28px",
           }}
         >
-          Analytics Engineer · BI Engineer
+          Business Intelligence Engineer · Applied AI
         </div>
 
         <div
@@ -50,7 +50,7 @@ export async function GET() {
             maxWidth: "980px",
           }}
         >
-          Finance data pipelines, cost allocation, cloud analytics, SQL, Tableau, and QuickSight.
+          Financial, operational, and customer analytics built with SQL, cloud data systems, BI, experimentation, and applied AI.
         </div>
       </div>
     ),

@@ -6,17 +6,19 @@ const siteUrl = "https://madhvika-portfolio.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Madhvika Sehgal | Analytics Engineer & BI Engineer",
+    default: "Madhvika Sehgal | Business Intelligence Engineer",
     template: "%s | Madhvika Sehgal",
   },
   description:
-    "Analytics Engineer and BI Engineer with experience in finance data pipelines, cost allocation, cloud analytics, SQL, AWS, Tableau, and QuickSight.",
+    "Business Intelligence Engineer with 4+ years across Amazon, Barclays, and Accenture, building SQL data models, cloud pipelines, BI systems, experiments, and applied AI workflows.",
   keywords: [
     "Madhvika Sehgal",
     "Analytics Engineer",
     "Business Intelligence Engineer",
     "BI Engineer",
-    "Finance Analytics",
+    "Financial Analytics",
+    "Operational Analytics",
+    "Customer Analytics",
     "SQL",
     "AWS",
     "Tableau",
@@ -28,9 +30,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Madhvika Sehgal" }],
   creator: "Madhvika Sehgal",
   openGraph: {
-    title: "Madhvika Sehgal | Analytics Engineer & BI Engineer",
+    title: "Madhvika Sehgal | Business Intelligence Engineer",
     description:
-      "Finance analytics, SQL-heavy data pipelines, cloud analytics, BI dashboards, and stakeholder-ready reporting.",
+      "SQL data models, cloud pipelines, BI systems, experimentation, financial and customer analytics, and applied AI.",
     url: siteUrl,
     siteName: "Madhvika Sehgal Portfolio",
     images: [
@@ -38,7 +40,7 @@ export const metadata: Metadata = {
         url: "/og",
         width: 1200,
         height: 630,
-        alt: "Madhvika Sehgal - Analytics Engineer and BI Engineer",
+        alt: "Madhvika Sehgal - Business Intelligence Engineer",
       },
     ],
     locale: "en_US",
@@ -46,9 +48,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Madhvika Sehgal | Analytics Engineer & BI Engineer",
+    title: "Madhvika Sehgal | Business Intelligence Engineer",
     description:
-      "Finance analytics, SQL-heavy data pipelines, cloud analytics, BI dashboards, and stakeholder-ready reporting.",
+      "SQL data models, cloud pipelines, BI systems, experimentation, financial and customer analytics, and applied AI.",
     images: ["/og"],
   },
   icons: {

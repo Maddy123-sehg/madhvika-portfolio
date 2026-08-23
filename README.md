@@ -1,6 +1,6 @@
 # Madhvika Sehgal | Analytics & BI Portfolio
 
-A recruiter-facing portfolio highlighting enterprise analytics experience, independently verifiable projects, data-pipeline design, business intelligence delivery, and AI-assisted analytics workflows.
+A portfolio highlighting enterprise analytics experience, independently verifiable projects, data-pipeline design, business intelligence delivery, and AI-assisted analytics workflows.
 
 ## Live site
 
