@@ -329,7 +329,7 @@ function Header() {
             DAGs <span className="text-blue-600">·</span> DataFrames <span className="text-blue-600">·</span> Dashboards
           </span>
           <span className="mt-0.5 block text-[10px] leading-4 text-slate-500 sm:text-[11px]">
-            Downstream of Data Engineering: <span className="font-semibold text-slate-700">BI &amp; Analytics Engineering</span> <span className="whitespace-nowrap font-semibold text-blue-600">· ✨ Applied AI</span>
+            Business Intelligence and Analytics · Applied AI
           </span>
         </a>
 
