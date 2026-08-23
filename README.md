@@ -1,4 +1,4 @@
-# Madhvika Sehgal — Analytics & BI Portfolio
+# Madhvika Sehgal | Analytics & BI Portfolio
 
 A recruiter-facing portfolio highlighting enterprise analytics experience, independently verifiable projects, data-pipeline design, business intelligence delivery, and AI-assisted analytics workflows.
 
@@ -10,7 +10,7 @@ A recruiter-facing portfolio highlighting enterprise analytics experience, indep
 
 - Finance analytics and cost-allocation systems
 - Customer-journey and contact-center BI
-- Bronze–Silver–Gold analytics engineering project
+- Bronze-Silver-Gold analytics engineering project
 - Transparent analytics investigation agent
 - SQL, AWS, Tableau, QuickSight, DuckDB, Python, and Streamlit
 - Responsive design, SEO metadata, sitemap, robots configuration, and Open Graph image
