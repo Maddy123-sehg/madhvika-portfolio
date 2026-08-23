@@ -7,9 +7,12 @@ import {
   ChevronDown,
   Database,
   Download,
+  ExternalLink,
   FileText,
+  GitBranch,
   Mail,
   MapPin,
+  ShieldCheck,
   Sparkles,
   Workflow,
 } from "lucide-react";
@@ -50,6 +53,37 @@ const featuredProjects = [
     impact:
       "Supported 30+ Tableau dashboards and enabled analysis across millions of customer interactions.",
     tools: ["SQL", "Tableau", "Tableau Prep", "Oracle", "AWS"],
+  },
+];
+
+const independentProjects = [
+  {
+    title: "Retail Medallion Analytics",
+    eyebrow: "Analytics engineering · End-to-end build",
+    description:
+      "A reproducible Bronze–Silver–Gold retail pipeline that turns intentionally imperfect source data into tested, business-ready KPI marts and a Streamlit executive dashboard.",
+    outcomes: [
+      "23 raw orders → 22 deduplicated Silver records",
+      "Four Gold marts with $2,913 revenue fully reconciled",
+      "Automated quality tests and GitHub Actions CI",
+    ],
+    tools: ["Python", "SQL", "DuckDB", "Parquet", "Streamlit"],
+    href: "https://github.com/Maddy123-sehg/retail-medallion-analytics",
+    accent: "emerald",
+  },
+  {
+    title: "Analytics Investigation Agent",
+    eyebrow: "Agentic analytics · Root-cause investigation",
+    description:
+      "A transparent analytics agent that uses a visible decide–call–observe loop to investigate a revenue decline and produce an evidence-backed business conclusion.",
+    outcomes: [
+      "Explains a 15.2% daily revenue decline",
+      "Identifies Pharmacy as the $12,305 primary driver",
+      "Separates value/mix effects from order volume",
+    ],
+    tools: ["Python", "Agent Design", "KPI Decomposition", "Testing"],
+    href: "https://github.com/Maddy123-sehg/analytics-investigation-agent",
+    accent: "blue",
   },
 ];
 
@@ -322,7 +356,7 @@ function Header() {
           <a href="#top" className="text-2xl font-black tracking-tight text-slate-950">
             Madhvika Sehgal
           </a>
-          <p className="mt-1 text-sm text-slate-500">BIE by title · Analytics storyteller by instinct</p>
+          <p className="mt-1 text-sm text-slate-500">Business intelligence · Analytics engineering · Decision systems</p>
         </div>
 
         <nav className="hidden items-center gap-8 text-sm font-medium text-slate-700 lg:flex">
@@ -330,7 +364,10 @@ function Header() {
             Home
           </a>
           <a href="#featured" className="hover:text-blue-600">
-            Featured
+            Experience
+          </a>
+          <a href="#portfolio" className="hover:text-blue-600">
+            Portfolio
           </a>
           <a href="#amazon" className="hover:text-blue-600">
             Amazon
@@ -412,6 +449,16 @@ function HeroSection() {
           >
             <Download className="mr-2 h-4 w-4" />
             Download DOCX
+          </a>
+
+          <a
+            href="https://github.com/Maddy123-sehg"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-4 text-base font-bold text-slate-900 hover:bg-slate-50"
+          >
+            <GitBranch className="mr-2 h-4 w-4" />
+            GitHub Portfolio
           </a>
         </div>
       </div>
@@ -561,6 +608,81 @@ function FeaturedWorkSection() {
               </div>
             </article>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function IndependentPortfolioSection() {
+  return (
+    <section id="portfolio" className="border-y border-slate-200 bg-slate-950 py-20 text-white">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-300">
+              Independent proof of work
+            </p>
+            <h2 className="mt-4 text-4xl font-black tracking-tight md:text-5xl">
+              Working systems recruiters can inspect.
+            </h2>
+          </div>
+          <p className="max-w-3xl text-lg leading-8 text-slate-300">
+            These public projects complement my enterprise experience with reproducible code,
+            documented business logic, quantified findings, and passing automated tests.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          {independentProjects.map((project) => {
+            const isEmerald = project.accent === "emerald";
+            return (
+              <article
+                key={project.title}
+                className="group rounded-[2rem] border border-white/10 bg-white/[0.06] p-7 shadow-2xl backdrop-blur transition hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.09]"
+              >
+                <div className="flex items-start justify-between gap-5">
+                  <div>
+                    <p className={`text-xs font-black uppercase tracking-[0.22em] ${isEmerald ? "text-emerald-300" : "text-blue-300"}`}>
+                      {project.eyebrow}
+                    </p>
+                    <h3 className="mt-3 text-2xl font-black">{project.title}</h3>
+                  </div>
+                  <div className={`rounded-2xl p-3 ${isEmerald ? "bg-emerald-400/15 text-emerald-300" : "bg-blue-400/15 text-blue-300"}`}>
+                    <GitBranch className="h-6 w-6" />
+                  </div>
+                </div>
+
+                <p className="mt-5 leading-7 text-slate-300">{project.description}</p>
+
+                <div className="mt-6 space-y-3">
+                  {project.outcomes.map((outcome) => (
+                    <div key={outcome} className="flex gap-3 text-sm leading-6 text-slate-200">
+                      <ShieldCheck className={`mt-0.5 h-5 w-5 shrink-0 ${isEmerald ? "text-emerald-300" : "text-blue-300"}`} />
+                      <span>{outcome}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {project.tools.map((tool) => (
+                    <span key={tool} className="rounded-lg border border-white/10 bg-white/[0.07] px-3 py-1.5 text-xs font-semibold text-slate-200">
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+
+                <a
+                  href={project.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-7 inline-flex items-center gap-2 font-black text-white hover:underline"
+                >
+                  View code and test results <ExternalLink className="h-4 w-4" />
+                </a>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -988,6 +1110,7 @@ export default function Home() {
       <main id="top">
         <HeroSection />
         <FeaturedWorkSection />
+        <IndependentPortfolioSection />
 
         <CompanyProjectSection
           id="amazon"
