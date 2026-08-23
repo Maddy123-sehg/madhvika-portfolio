@@ -18,48 +18,12 @@ import {
 
 const resumePdf = "/Madhvika-Sehgal-Resume-2026.pdf";
 
-const featuredProjects = [
-  {
-    title: "Operational Cost Allocation & Profitability Reporting",
-    company: "Amazon Health · Pharmacy Finance & Analytics",
-    problem:
-      "Finance teams needed a more reliable way to understand how operational costs flowed into Contribution Profit reporting.",
-    approach:
-      "Replaced broad allocation proxies with granular operational drivers and time-clock actuals while preserving general-ledger and profit-and-loss reconciliation.",
-    impact:
-      "Supported growth from 4 to 38 sites, automated 7+ hours of monthly work, and made cost-to-fill reporting more reliable and explainable.",
-    tools: ["SQL", "Athena", "Redshift", "Excel Modeling", "Finance Analytics"],
-  },
-  {
-    title: "Data Platform Usage & Governance Dashboard",
-    company: "Amazon Pharmacy · Internal Data Platform",
-    problem:
-      "Platform stakeholders needed visibility into dataset usage, access patterns, adoption, and unused data assets.",
-    approach:
-      "Classified 1M+ monthly audit events across datasets, users, and tools, then designed leadership views for governance and capacity planning.",
-    impact:
-      "Drove retirement of 14 stale jobs and optimization of the 4 highest-compute jobs, saving roughly 1 hour of compute per day.",
-    tools: ["SQL", "QuickSight", "Audit Logs", "Governance", "Data Platform"],
-  },
-  {
-    title: "IVR Customer Journey Analytics & ETL Framework",
-    company: "Barclays",
-    problem:
-      "Contact-center teams needed reliable IVR journey metrics across call containment, transfers, self-service, and customer outcomes.",
-    approach:
-      "Designed the analytics layer for an Avaya/Oracle-to-AWS Connect migration and standardized containment, self-service, and operational KPI logic.",
-    impact:
-      "Restored call-data completeness from 2.5M to 4.5M calls per month and standardized the data feeding 30+ Tableau dashboards.",
-    tools: ["SQL", "Tableau", "Tableau Prep", "Oracle", "AWS"],
-  },
-];
-
 const independentProjects = [
   {
     title: "Retail Medallion Analytics",
     eyebrow: "Analytics engineering · End-to-end build",
     description:
-      "A reproducible Bronze–Silver–Gold retail pipeline that turns intentionally imperfect source data into tested, business-ready KPI marts and a Streamlit executive dashboard.",
+      "A reproducible Bronze-Silver-Gold retail pipeline that turns intentionally imperfect source data into tested, business-ready KPI marts and a Streamlit executive dashboard.",
     outcomes: [
       "23 raw orders → 22 deduplicated Silver records",
       "Four Gold marts with $2,913 revenue fully reconciled",
@@ -73,7 +37,7 @@ const independentProjects = [
     title: "Analytics Investigation Agent",
     eyebrow: "Agentic analytics · Root-cause investigation",
     description:
-      "A transparent analytics agent that uses a visible decide–call–observe loop to investigate a revenue decline and produce an evidence-backed business conclusion.",
+      "A transparent analytics agent that uses a visible decide-call-observe loop to investigate a revenue decline and produce an evidence-backed business conclusion.",
     outcomes: [
       "Explains a 15.2% daily revenue decline",
       "Identifies Pharmacy as the $12,305 primary driver",
@@ -307,9 +271,9 @@ const toolSections = [
     ],
   },
   {
-    category: "Cloud, BI & Finance Analytics",
+    category: "Cloud, BI & Business Analytics",
     description:
-      "Tools used to query, validate, model, and present finance and operations data.",
+      "Tools used to query, validate, model, and present financial, operational, customer, and platform data.",
     items: [
       {
         tool: "AWS Athena / Redshift",
@@ -320,29 +284,73 @@ const toolSections = [
         use: "Executive dashboards, KPI design, filters, drilldowns, dashboard performance, and stakeholder-ready reporting.",
       },
       {
-        tool: "Excel",
-        use: "Finance allocation modeling, reconciliation frameworks, driver review, and stakeholder-friendly validation.",
+        tool: "Experimentation & Journey Analytics",
+        use: "A/B testing, hypothesis testing, funnel analysis, event sequencing, KPI design, and customer journey reconstruction.",
       },
     ],
   },
+];
+
+const experienceIndex = [
   {
-    category: "AI-Assisted Analytics",
-    description:
-      "AI used as a productivity layer around analytics work, not as a replacement for technical judgment.",
-    items: [
-      {
-        tool: "Claude / Kiro",
-        use: "Used as AI copilots to speed up SQL comprehension, debug long transformation logic, generate validation ideas, summarize business rules, and improve documentation quality.",
-      },
-      {
-        tool: "Amazon Bedrock",
-        use: "Applied in analytics prototypes to generate structured summaries from metadata and reporting inputs, helping translate raw files or metrics into business-readable explanations.",
-      },
-      {
-        tool: "Python / pandas",
-        use: "Data validation, automation prototypes, file handling, metadata extraction, and AI-assisted analytics workflow support.",
-      },
-    ],
+    number: "01",
+    title: "Amazon Health",
+    subtitle: "Finance analytics and data platforms",
+    summary: "Cost allocation, profitability reporting, governance, data quality, and AI-assisted operations.",
+    href: "#amazon",
+    metric: "1M+ monthly audit events",
+  },
+  {
+    number: "02",
+    title: "Barclays",
+    subtitle: "Customer and contact-center analytics",
+    summary: "Cloud migration, KPI redesign, experimentation, journey analysis, and GenAI documentation.",
+    href: "#barclays",
+    metric: "4.5M calls per month",
+  },
+  {
+    number: "03",
+    title: "Independent portfolio",
+    subtitle: "Public, tested analytics systems",
+    summary: "A medallion data pipeline and an analytics investigation agent with inspectable code and CI.",
+    href: "#portfolio",
+    metric: "2 working GitHub projects",
+  },
+  {
+    number: "04",
+    title: "AI engineering",
+    subtitle: "Coding, agents, and automation",
+    summary: "ChatGPT/Codex, Claude Code, Bedrock, Python automation, tool use, and validation workflows.",
+    href: "#ai",
+    metric: "Code + agents + workflows",
+  },
+];
+
+const aiCapabilities = [
+  {
+    title: "AI-assisted software development",
+    tools: "ChatGPT / Codex · Claude Code · Kiro",
+    detail:
+      "Build and improve Python, SQL, and web projects; inspect repositories; debug failures; write tests; document systems; and verify changes through builds and browser checks.",
+  },
+  {
+    title: "Agentic analytics",
+    tools: "Tool calling · Decision loops · Guardrails",
+    detail:
+      "Designed a public analytics investigation agent that chooses analysis tools, observes results, decomposes KPI movement, and produces an evidence-backed conclusion.",
+    href: "https://github.com/Maddy123-sehg/analytics-investigation-agent",
+  },
+  {
+    title: "Enterprise GenAI workflows",
+    tools: "Amazon Bedrock · Claude · AWS Lambda · S3",
+    detail:
+      "Built serverless workflows that turn reporting metadata into lineage, KPI definitions, validation rules, audit documentation, and structured business summaries.",
+  },
+  {
+    title: "AI-supported analytics operations",
+    tools: "SQL investigation · Python · pandas · SOP automation",
+    detail:
+      "Use AI to generate hypotheses, targeted validation queries, documentation drafts, and incident playbooks, then independently verify every result through reconciliation and regression checks.",
   },
 ];
 
@@ -361,8 +369,8 @@ function Header() {
           <a href="#top" className="border-b-2 border-blue-600 pb-2 text-blue-600">
             Home
           </a>
-          <a href="#featured" className="hover:text-blue-600">
-            Experience
+          <a href="#start" className="hover:text-blue-600">
+            Start here
           </a>
           <a href="#portfolio" className="hover:text-blue-600">
             Portfolio
@@ -373,8 +381,8 @@ function Header() {
           <a href="#barclays" className="hover:text-blue-600">
             Barclays
           </a>
-          <a href="#skills" className="hover:text-blue-600">
-            AI + Tools
+          <a href="#ai" className="hover:text-blue-600">
+            AI
           </a>
           <a href="#contact" className="hover:text-blue-600">
             Contact
@@ -409,25 +417,25 @@ function HeroSection() {
         </h1>
 
         <p className="mt-7 max-w-3xl text-lg leading-8 text-slate-600">
-          Business Intelligence Engineer and data analytics professional focused on SQL-heavy finance and operations data —
-          building trusted reporting layers, debugging complex metrics, and using AI
-          assistance to accelerate analysis, documentation, and decision-ready reporting.
+          Business Intelligence Engineer who builds trusted data models, reporting systems,
+          experiments, and decision tools across finance, operations, customer experience,
+          and data-platform domains.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-4">
           <a
-            href="#featured"
+            href="#start"
             className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-4 text-base font-bold text-white shadow-lg shadow-blue-600/20 hover:bg-blue-700"
           >
-            View Featured Work <ArrowRight className="ml-2 h-4 w-4" />
+            Choose a project path <ArrowRight className="ml-2 h-4 w-4" />
           </a>
 
           <a
-            href="#skills"
+            href="#ai"
             className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-4 text-base font-bold text-slate-900 hover:bg-slate-50"
           >
             <Bot className="mr-2 h-4 w-4" />
-            AI + Analytics Tools
+            AI capabilities
           </a>
 
           <a
@@ -455,6 +463,50 @@ function HeroSection() {
       <div>
         <LogoGrid />
         <PortfolioSnapshot />
+      </div>
+    </section>
+  );
+}
+
+function ExperienceIndexSection() {
+  return (
+    <section id="start" className="border-y border-slate-200 bg-slate-50 py-16">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid gap-6 lg:grid-cols-[0.65fr_1.35fr] lg:items-end">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-600">
+              Start here
+            </p>
+            <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
+              Choose the work most relevant to your role.
+            </h2>
+          </div>
+          <p className="max-w-3xl leading-7 text-slate-600">
+            A compact index for hiring managers. Open a path for detailed projects, tools,
+            outcomes, and expandable pipeline views.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {experienceIndex.map((item) => (
+            <a
+              key={item.number}
+              href={item.href}
+              className="group flex h-full flex-col rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl"
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-black text-blue-600">{item.number}</span>
+                <ArrowRight className="h-4 w-4 text-slate-400 transition group-hover:translate-x-1 group-hover:text-blue-600" />
+              </div>
+              <h3 className="mt-5 text-xl font-black text-slate-950">{item.title}</h3>
+              <p className="mt-1 text-sm font-bold text-blue-700">{item.subtitle}</p>
+              <p className="mt-4 flex-1 text-sm leading-6 text-slate-600">{item.summary}</p>
+              <p className="mt-5 border-t border-slate-100 pt-4 text-xs font-black uppercase tracking-[0.16em] text-slate-500">
+                {item.metric}
+              </p>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -532,74 +584,6 @@ function PortfolioSnapshot() {
         </p>
       </div>
     </div>
-  );
-}
-
-function FeaturedWorkSection() {
-  return (
-    <section id="featured" className="bg-slate-50 py-16">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto mb-10 max-w-3xl text-center">
-          <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-600">
-            Featured work
-          </p>
-
-          <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
-            Selected projects that show how I solve messy data problems.
-          </h2>
-
-          <p className="mt-3 leading-7 text-slate-600">
-            A focused view of my strongest work across finance analytics, data platform
-            governance, customer journey reporting, and BI decision systems.
-          </p>
-        </div>
-
-        <div className="grid gap-6 lg:grid-cols-3">
-          {featuredProjects.map((project) => (
-            <article
-              key={project.title}
-              className="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
-            >
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-600">
-                {project.company}
-              </p>
-
-              <h3 className="mt-3 text-xl font-black leading-snug text-slate-950">
-                {project.title}
-              </h3>
-
-              <div className="mt-5 space-y-4 text-sm leading-7 text-slate-600">
-                <div>
-                  <p className="font-black text-slate-950">Problem</p>
-                  <p>{project.problem}</p>
-                </div>
-
-                <div>
-                  <p className="font-black text-slate-950">Approach</p>
-                  <p>{project.approach}</p>
-                </div>
-
-                <div>
-                  <p className="font-black text-slate-950">Impact</p>
-                  <p>{project.impact}</p>
-                </div>
-              </div>
-
-              <div className="mt-5 flex flex-wrap gap-2">
-                {project.tools.map((tool) => (
-                  <span
-                    key={tool}
-                    className="rounded-lg border border-blue-100 bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-800"
-                  >
-                    {tool}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -925,16 +909,16 @@ function ToolDepthSection() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto mb-12 max-w-3xl text-center">
           <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-600">
-            Tools, concepts & AI acceleration
+            Analytics toolkit
           </p>
 
           <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
-            Data analytics and business intelligence with practical AI acceleration.
+            Core business intelligence and analytics capabilities.
           </h2>
 
           <p className="mt-3 leading-7 text-slate-600">
-           I combine SQL-heavy data analytics, BI delivery, finance logic, cloud data
-          platforms, and AI-assisted workflows to turn messy business rules into trusted reporting layers.
+            I use these capabilities to turn complex business rules into reliable data models,
+            decision-ready dashboards, and measurable operational insights across domains.
           </p>
         </div>
 
@@ -957,44 +941,18 @@ function ToolDepthSection() {
 
               <div className="grid gap-5 md:grid-cols-3">
                 {section.items.map((item) => {
-                  const isAiTool =
-                    section.category.includes("AI") ||
-                    item.tool.includes("Claude") ||
-                    item.tool.includes("Kiro") ||
-                    item.tool.includes("Bedrock");
-
                   return (
                     <div
                       key={item.tool}
-                      className={`group relative overflow-hidden rounded-[1.5rem] border p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-                        isAiTool
-                          ? "border-blue-200 bg-gradient-to-br from-blue-50 via-white to-indigo-50"
-                          : "border-slate-200 bg-white"
-                      }`}
+                      className="group relative overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                     >
-                      <div
-                        className={`absolute right-0 top-0 h-16 w-16 rounded-bl-[2.5rem] opacity-70 ${
-                          isAiTool ? "bg-blue-100" : "bg-slate-100"
-                        }`}
-                      />
+                      <div className="absolute right-0 top-0 h-16 w-16 rounded-bl-[2.5rem] bg-slate-100 opacity-70" />
 
                       <div className="relative">
                         <div className="mb-4 flex items-center justify-between">
-                          <div
-                            className={`flex h-10 w-10 items-center justify-center rounded-2xl text-xs font-black ${
-                              isAiTool
-                                ? "bg-blue-600 text-white"
-                                : "bg-slate-950 text-white"
-                            }`}
-                          >
-                            {isAiTool ? "AI" : "AE"}
+                          <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-950 text-xs font-black text-white">
+                            BI
                           </div>
-
-                          {isAiTool && (
-                            <span className="rounded-full border border-blue-200 bg-white px-3 py-1 text-xs font-bold text-blue-700">
-                              AI-assisted
-                            </span>
-                          )}
                         </div>
 
                         <h3 className="text-lg font-black text-slate-950">{item.tool}</h3>
@@ -1005,6 +963,51 @@ function ToolDepthSection() {
                 })}
               </div>
             </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AiCapabilitiesSection() {
+  return (
+    <section id="ai" className="bg-slate-950 py-16 text-white">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-300">
+              Applied AI
+            </p>
+            <h2 className="mt-3 text-3xl font-black tracking-tight md:text-4xl">
+              AI skills applied to real analytics work.
+            </h2>
+          </div>
+          <p className="max-w-3xl leading-7 text-slate-300">
+            I use AI to accelerate development, investigation, and documentation. The work
+            remains grounded in tested code, reconciled data, clear business rules, and human review.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-5 md:grid-cols-2">
+          {aiCapabilities.map((capability) => (
+            <article key={capability.title} className="rounded-[1.5rem] border border-slate-700 bg-slate-900 p-6">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-blue-300">
+                {capability.tools}
+              </p>
+              <h3 className="mt-3 text-xl font-black">{capability.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-300">{capability.detail}</p>
+              {capability.href && (
+                <a
+                  href={capability.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-blue-300 hover:text-white"
+                >
+                  View public agent <ExternalLink className="h-4 w-4" />
+                </a>
+              )}
+            </article>
           ))}
         </div>
       </div>
@@ -1024,7 +1027,7 @@ function ContactSection() {
               </p>
 
               <h2 className="mt-3 text-3xl font-black md:text-4xl">
-                Business Intelligence Engineer · Data Analyst
+                Business Intelligence Engineer | Data Analyst
               </h2>
 
               <p className="mt-4 max-w-3xl leading-7 text-slate-300">
@@ -1098,7 +1101,7 @@ export default function Home() {
 
       <main id="top">
         <HeroSection />
-        <FeaturedWorkSection />
+        <ExperienceIndexSection />
         <IndependentPortfolioSection />
 
         <CompanyProjectSection
@@ -1137,6 +1140,7 @@ export default function Home() {
         />
 
         <ToolDepthSection />
+        <AiCapabilitiesSection />
         <ContactSection />
       </main>
     </div>
