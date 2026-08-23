@@ -1,13 +1,13 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
+import { Menu, Sparkles, X } from "lucide-react";
 import { useState } from "react";
 
 const links = [
   { label: "Index", href: "#index" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
-  { label: "Skills & AI", href: "#skills" },
+  { label: "Skills & AI", href: "#skills", ai: true },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -38,9 +38,9 @@ export function MobileNav({ resumePdf }: { resumePdf: string }) {
               key={link.href}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="block rounded-lg px-4 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-blue-600"
+              className="flex items-center gap-1.5 rounded-lg px-4 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-blue-600"
             >
-              {link.label}
+              {link.ai ? <Sparkles aria-hidden="true" className="h-3.5 w-3.5 shrink-0 text-blue-500" /> : null}{link.label}
             </a>
           ))}
           <a

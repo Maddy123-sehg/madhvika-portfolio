@@ -1,5 +1,7 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 import {
+  ArrowDown,
   ArrowRight,
   BarChart3,
   BriefcaseBusiness,
@@ -27,20 +29,19 @@ type ExperienceProject = {
   built: string;
   impact: string;
   tools: string[];
+  ai?: boolean;
 };
 
-const impactStats = [
-  { category: "Finance operations", value: "7+ hrs", label: "of monthly allocation work automated" },
-  { category: "Data governance", value: "1M+", label: "platform events classified each month" },
-  { category: "BI modernization", value: "45+", label: "dashboards and reports validated" },
-  { category: "Customer analytics", value: "5M+", label: "interactions analyzed each month" },
-];
+type PipelineStep = {
+  title: string;
+  description: string;
+};
 
 const portfolioIndexItems = [
   { number: "01", title: "Amazon projects", summary: "Finance systems, automation, and governance", href: "#amazon" },
   { number: "02", title: "Barclays projects", summary: "Cloud migration, experiments, and customer analytics", href: "#barclays" },
   { number: "03", title: "Accenture work", summary: "Business analysis, SAP, and enterprise delivery", href: "#accenture" },
-  { number: "04", title: "AI projects", summary: "Agentic analytics and generative AI workflows", href: "#ai" },
+  { number: "04", title: "AI projects", summary: "Agentic analytics and generative AI workflows", href: "#ai", ai: true },
   { number: "05", title: "Personal projects", summary: "Public pipelines, dashboards, and tested code", href: "#projects" },
   { number: "06", title: "Skills overview", summary: "SQL, cloud engineering, BI, and decision methods", href: "#skills" },
 ];
@@ -105,7 +106,7 @@ const barclaysProjects: ExperienceProject[] = [
     challenge:
       "Legacy service-level logic and routing rules limited comparable journey and agent insights.",
     built:
-      "Redesigned service-level logic, modified upstream SQL, and led a production A/B test across control and treatment call groups.",
+      "Built a normalized agent-performance metric from scratch using sentiment, customer satisfaction, and Net Promoter Score, extending comparable scoring to the full agent base; also redesigned service-level logic and led a production A/B test.",
     impact:
       "Validated 45+ reports, contributed to 12% higher retention and 8% fewer transfers, and helped eliminate roughly 8,000 transfers per month.",
     tools: ["Experimentation", "SQL", "Tableau"],
@@ -120,12 +121,12 @@ const barclaysProjects: ExperienceProject[] = [
     impact:
       "Reduced a days-long documentation process to minutes while preserving structured review and validation.",
     tools: ["Bedrock", "Lambda", "Python"],
+    ai: true,
   },
 ];
 
 const barclaysAdditional = [
   "Reconstructed customer journeys with SQL event sequencing across interactive voice response, queue, callback, and servicing outcomes.",
-  "Created a normalized agent-performance index combining sentiment, customer satisfaction, and Net Promoter Score to extend comparable scoring to the full agent base.",
 ];
 
 const accentureWork = [
@@ -145,18 +146,18 @@ const accentureWork = [
 
 const pipelineFlows = {
   amazon: [
-    "Finance and operational sources",
-    "Validated staging models",
-    "Operational driver logic",
-    "Cost allocation and reconciliation",
-    "Profitability reporting",
+    { title: "Sources", description: "General ledger, payroll, time-clock, and operational data" },
+    { title: "Validation", description: "Grain, keys, completeness, and finance-control checks" },
+    { title: "Enrichment", description: "Operational drivers, metadata, and configurable business rules" },
+    { title: "Allocation", description: "Cost logic with general-ledger and P&L reconciliation" },
+    { title: "Semantic layer and BI", description: "Governed profitability metrics and decision-ready reporting" },
   ],
   barclays: [
-    "Contact-center source data",
-    "Schema reconciliation",
-    "Journey and KPI logic",
-    "Semantic reporting layer",
-    "Tableau dashboards",
+    { title: "Sources", description: "Legacy and cloud contact-center event data" },
+    { title: "Reconciliation", description: "Schemas, identifiers, timestamps, and completeness checks" },
+    { title: "Journey enrichment", description: "IVR, queue, callback, agent, and outcome sequencing" },
+    { title: "Metric and semantic layer", description: "Standardized service, journey, experiment, and agent KPIs" },
+    { title: "BI and experiments", description: "Tableau reporting, monitoring, and A/B-test decisions" },
   ],
 };
 
@@ -177,7 +178,7 @@ const capabilityGroups = [
     title: "Analytics and Decisions",
     description: "Methods that connect business questions to measurable recommendations.",
     icon: BarChart3,
-    skills: ["KPI Development", "A/B Testing", "Hypothesis Testing", "Funnel Analysis", "Customer Journeys", "Reconciliation", "Governance", "Stakeholder Storytelling"],
+    skills: ["KPI Development", "Composite Metric Design", "A/B Testing", "Hypothesis Testing", "Funnel Analysis", "Customer Journeys", "Reconciliation", "Governance", "Stakeholder Storytelling"],
   },
 ];
 
@@ -224,12 +225,20 @@ function CompanyLogo({ src, alt, priority = false, compact = false }: { src: str
   );
 }
 
+function AiMark({ className = "text-blue-500" }: { className?: string }) {
+  return <Sparkles aria-hidden="true" className={`h-3.5 w-3.5 shrink-0 ${className}`} />;
+}
+
+function AiPhrase({ children }: { children: ReactNode }) {
+  return <span className="inline-flex items-center gap-1 whitespace-nowrap font-semibold text-slate-700"><AiMark />{children}</span>;
+}
+
 function Header() {
   const links = [
     { label: "Index", href: "#index" },
     { label: "Experience", href: "#experience" },
     { label: "Projects", href: "#projects" },
-    { label: "Skills & AI", href: "#skills" },
+    { label: "Skills & AI", href: "#skills", ai: true },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -238,17 +247,22 @@ function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-4 sm:px-6">
         <a href="#top" className="min-w-0">
           <span className="block text-xl font-black tracking-tight text-slate-950 sm:text-2xl">Madhvika Sehgal</span>
-          <span className="mt-0.5 block text-xs text-slate-500 sm:hidden">
-            BI Engineer · Analytics · Applied AI
+          <span className="mt-0.5 flex items-center gap-1 text-xs text-slate-500 sm:hidden">
+            BI Engineer · Data Analytics · <AiMark /> Applied AI
           </span>
-          <span className="mt-0.5 hidden text-sm text-slate-500 sm:block">
-            Business Intelligence Engineer · Analytics Engineering · Applied AI
+          <span className="mt-0.5 hidden items-center gap-1 text-sm text-slate-500 sm:flex lg:hidden">
+            BI Engineer · Data Analytics · <AiMark /> Applied AI
+          </span>
+          <span className="mt-0.5 hidden items-center gap-1 text-sm text-slate-500 lg:flex">
+            Business Intelligence Engineer · Data Analytics · Analytics Engineering · <AiMark /> Applied AI
           </span>
         </a>
 
         <nav className="hidden items-center gap-7 text-sm font-semibold text-slate-700 md:flex" aria-label="Primary navigation">
           {links.map((link) => (
-            <a key={link.href} href={link.href} className="transition hover:text-blue-600">{link.label}</a>
+            <a key={link.href} href={link.href} className="inline-flex items-center gap-1 transition hover:text-blue-600">
+              {link.ai ? <AiMark /> : null}{link.label}
+            </a>
           ))}
           <a href={resumePdf} target="_blank" rel="noreferrer" className="rounded-lg bg-blue-600 px-4 py-2.5 font-black text-white hover:bg-blue-700">
             Resume
@@ -267,10 +281,10 @@ function HeroSection() {
       <div className="max-w-5xl">
         <p className="text-xs font-black uppercase tracking-[0.24em] text-blue-600">Business intelligence engineering portfolio</p>
         <h1 className="mt-4 max-w-4xl text-4xl font-black leading-[1.03] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-          I build <span className="text-blue-600">reliable data systems</span> for financial, operational, and customer decisions.
+          I turn complex data into <span className="text-blue-600">trusted metrics and scalable analytics</span> that teams can act on.
         </h1>
         <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
-          Business Intelligence Engineer with 4+ years across Amazon, Barclays, and Accenture, building SQL data models, cloud pipelines, BI systems, experiments, and AI-assisted analytics workflows.
+          Business Intelligence Engineer with 4+ years across Amazon, Barclays, and Accenture, combining SQL, cloud data modeling, dashboards, experimentation, and <AiPhrase>applied AI</AiPhrase> to solve financial, operational, and customer problems.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-3">
@@ -313,44 +327,27 @@ function HeroSection() {
   );
 }
 
-function ImpactSection() {
-  return (
-    <section className="bg-slate-950 py-10 text-white" aria-labelledby="impact-title">
-      <div className="mx-auto max-w-7xl px-5 sm:px-6">
-        <h2 id="impact-title" className="text-xl font-black tracking-tight sm:text-2xl">Selected impact</h2>
-        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-slate-700">
-          {impactStats.map((stat) => (
-            <div key={stat.category} className="lg:px-6 lg:first:pl-0 lg:last:pr-0">
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-300">{stat.category}</p>
-              <p className="mt-2 text-4xl font-black tracking-tight">{stat.value}</p>
-              <p className="mt-2 max-w-56 text-sm leading-6 text-slate-300">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function PortfolioIndexSection() {
   return (
-    <section id="index" className="border-b border-slate-200 bg-slate-50 py-12" aria-labelledby="index-title">
+    <section id="index" className="bg-slate-950 py-12 text-white" aria-labelledby="index-title">
       <div className="mx-auto max-w-7xl px-5 sm:px-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-blue-600">Portfolio index</p>
-            <h2 id="index-title" className="mt-2 text-3xl font-black tracking-tight text-slate-950">Explore the work.</h2>
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-blue-300">Portfolio index</p>
+            <h2 id="index-title" className="mt-2 text-3xl font-black tracking-tight text-white">Explore the work.</h2>
           </div>
-          <p className="max-w-xl text-sm leading-6 text-slate-600">Jump to a section or continue scrolling for the complete story.</p>
+          <p className="max-w-xl text-sm leading-6 text-slate-300">Jump to a section or continue scrolling for the complete story.</p>
         </div>
 
-        <div className="mt-7 grid grid-cols-2 gap-px overflow-hidden border border-slate-200 bg-slate-200 sm:grid-cols-3 xl:grid-cols-6">
+        <div className="mt-7 grid grid-cols-2 gap-px overflow-hidden border border-slate-700 bg-slate-700 sm:grid-cols-3 xl:grid-cols-6">
           {portfolioIndexItems.map((item) => (
-            <a key={item.href} href={item.href} className="group flex min-h-44 flex-col bg-white p-4 hover:bg-blue-50 sm:p-5">
-              <span className="text-xs font-black text-blue-600">{item.number}</span>
-              <h3 className="mt-5 text-base font-black text-slate-950 group-hover:text-blue-700">{item.title}</h3>
-              <p className="mt-2 text-xs leading-5 text-slate-600">{item.summary}</p>
-              <ArrowRight className="mt-auto h-5 w-5 text-blue-500 group-hover:translate-x-0.5 group-hover:text-blue-700" />
+            <a key={item.href} href={item.href} className="group flex min-h-44 flex-col bg-slate-900 p-4 transition hover:bg-slate-800 sm:p-5">
+              <span className="text-xs font-black text-blue-300">{item.number}</span>
+              <h3 className="mt-5 flex items-center gap-1.5 text-base font-black text-white group-hover:text-blue-200">
+                {item.ai ? <AiMark className="text-blue-300" /> : null}{item.title}
+              </h3>
+              <p className="mt-2 text-xs leading-5 text-slate-400">{item.summary}</p>
+              <ArrowRight className="mt-auto h-5 w-5 text-blue-300 transition group-hover:translate-x-0.5 group-hover:text-white" />
             </a>
           ))}
         </div>
@@ -359,11 +356,13 @@ function PortfolioIndexSection() {
   );
 }
 
-function SectionIntro({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
+function SectionIntro({ eyebrow, title, description, ai = false }: { eyebrow: string; title: string; description: ReactNode; ai?: boolean }) {
   return (
     <div className="grid gap-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
       <div>
-        <p className="text-xs font-black uppercase tracking-[0.22em] text-blue-600">{eyebrow}</p>
+        <p className="flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.22em] text-blue-600">
+          {ai ? <AiMark /> : null}{eyebrow}
+        </p>
         <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">{title}</h2>
       </div>
       <p className="max-w-3xl leading-7 text-slate-600">{description}</p>
@@ -374,7 +373,9 @@ function SectionIntro({ eyebrow, title, description }: { eyebrow: string; title:
 function ExperienceProjectCard({ project }: { project: ExperienceProject }) {
   return (
     <article className="flex h-full flex-col border-t-2 border-blue-600 bg-white p-6 ring-1 ring-slate-200">
-      <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-600">{project.category}</p>
+      <p className="flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.16em] text-blue-600">
+        {project.ai ? <AiMark /> : null}{project.category}
+      </p>
       <h3 className="mt-3 text-xl font-black leading-snug text-slate-950">{project.title}</h3>
       <div className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
         <p><span className="font-black text-slate-800">Challenge:</span> {project.challenge}</p>
@@ -393,21 +394,32 @@ function ExperienceProjectCard({ project }: { project: ExperienceProject }) {
   );
 }
 
-function PipelineDetails({ title, steps }: { title: string; steps: string[] }) {
+function PipelineDetails({ title, steps }: { title: string; steps: PipelineStep[] }) {
   return (
-    <details className="group">
-      <summary className="inline-flex cursor-pointer list-none items-center rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-black text-slate-800 hover:border-blue-200 hover:text-blue-700">
-        <Workflow className="mr-2 h-4 w-4" />{title}<ChevronDown className="ml-2 h-4 w-4 transition group-open:rotate-180" />
-      </summary>
-      <div className="mt-4 grid gap-2 sm:grid-cols-5">
+    <div className="mt-8 border-t border-slate-200 pt-7">
+      <div className="flex items-center gap-2">
+        <Workflow className="h-5 w-5 text-blue-600" />
+        <h3 className="text-lg font-black text-slate-950">{title}</h3>
+      </div>
+      <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">How source data becomes a governed, decision-ready analytics product.</p>
+      <div className="mt-5 flex flex-col lg:flex-row lg:items-stretch">
         {steps.map((step, index) => (
-          <div key={step} className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white p-3 text-sm font-semibold text-slate-700 sm:block">
-            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-600 text-xs font-black text-white">{index + 1}</span>
-            <p className="sm:mt-3">{step}</p>
+          <div key={step.title} className="contents">
+            <article className="flex-1 rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-600 text-xs font-black text-white">{index + 1}</span>
+              <h4 className="mt-3 text-sm font-black text-slate-950">{step.title}</h4>
+              <p className="mt-2 text-xs leading-5 text-slate-600">{step.description}</p>
+            </article>
+            {index < steps.length - 1 ? (
+              <div className="flex shrink-0 items-center justify-center py-2 text-blue-500 lg:px-2 lg:py-0" aria-hidden="true">
+                <ArrowDown className="h-5 w-5 lg:hidden" />
+                <ArrowRight className="hidden h-5 w-5 lg:block" />
+              </div>
+            ) : null}
           </div>
         ))}
       </div>
-    </details>
+    </div>
   );
 }
 
@@ -434,10 +446,10 @@ function CompanyExperience({ id, logo, logoAlt, role, dates, summary, projects, 
   logoAlt: string;
   role: string;
   dates: string;
-  summary: string;
+  summary: ReactNode;
   projects: ExperienceProject[];
   additional: string[];
-  pipeline: string[];
+  pipeline: PipelineStep[];
   background?: "white" | "slate";
 }) {
   return (
@@ -454,10 +466,8 @@ function CompanyExperience({ id, logo, logoAlt, role, dates, summary, projects, 
         <div className="mt-8 grid gap-5 lg:grid-cols-3">
           {projects.map((project) => <ExperienceProjectCard key={project.title} project={project} />)}
         </div>
-        <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-4">
-          <PipelineDetails title="View analytics pipeline" steps={pipeline} />
-          <AdditionalContributions items={additional} />
-        </div>
+        <PipelineDetails title={`${logoAlt} analytics pipeline`} steps={pipeline} />
+        <div className="mt-5"><AdditionalContributions items={additional} /></div>
       </div>
     </section>
   );
@@ -498,7 +508,7 @@ function ExperienceSection() {
           <SectionIntro
             eyebrow="Professional experience"
             title="Experience across Amazon, Barclays, and Accenture."
-            description="Selected work spanning financial reporting, data platforms, cloud migration, customer analytics, experimentation, and AI-assisted operations. Each example connects technical delivery to a measurable business result."
+            description={<>Selected work spanning financial reporting, data platforms, cloud migration, customer analytics, experimentation, and <AiPhrase>AI-assisted operations</AiPhrase>. Each example connects technical delivery to a measurable business result.</>}
           />
         </div>
       </section>
@@ -508,7 +518,7 @@ function ExperienceSection() {
         logoAlt="Amazon"
         role="Business Intelligence Engineer · Pharmacy Finance & Analytics"
         dates="Aug 2025 - Present"
-        summary="Finance and data-platform work across profitability reporting, allocation automation, governance, data quality, and AI-assisted investigation."
+        summary={<>Finance and data-platform work across profitability reporting, allocation automation, governance, data quality, and <AiPhrase>AI-assisted investigation</AiPhrase>.</>}
         projects={amazonProjects}
         additional={amazonAdditional}
         pipeline={pipelineFlows.amazon}
@@ -519,7 +529,7 @@ function ExperienceSection() {
         logoAlt="Barclays"
         role="Business Intelligence Analyst · Credit Card & Contact Center Analytics"
         dates="Jan 2021 - Jul 2025"
-        summary="Analytics engineering and decision support across cloud migration, KPI design, experimentation, customer journeys, and enterprise generative AI workflows."
+        summary={<>Analytics engineering and decision support across cloud migration, KPI design, experimentation, customer journeys, and <AiPhrase>enterprise generative AI workflows</AiPhrase>.</>}
         projects={barclaysProjects}
         additional={barclaysAdditional}
         pipeline={pipelineFlows.barclays}
@@ -573,7 +583,7 @@ function IndependentProjectsSection() {
 
           <article className="flex flex-col border border-slate-200 bg-slate-950 p-6 text-white">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-blue-300">Agentic analytics</p>
+              <p className="flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.18em] text-blue-300"><AiMark className="text-blue-300" />Agentic analytics</p>
               <h3 className="mt-3 text-2xl font-black">Analytics Investigation Agent</h3>
               <p className="mt-3 leading-7 text-slate-300">
                 A transparent Python agent that chooses tools, investigates KPI movement, and returns an evidence-backed business conclusion with visible reasoning steps.
@@ -613,6 +623,7 @@ function SkillsAndAiSection() {
           eyebrow="Skills and applied AI"
           title="Capabilities built through delivery."
           description="A concise view of the technical and analytical skills demonstrated across the experience and project evidence above."
+          ai
         />
         <div className="mt-9 grid gap-5 lg:grid-cols-3">
           {capabilityGroups.map((group) => {
@@ -634,7 +645,7 @@ function SkillsAndAiSection() {
 
         <div id="ai" className="mt-12 border-t border-slate-300 pt-10">
           <div className="max-w-3xl">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-blue-600">Applied AI</p>
+            <p className="flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.22em] text-blue-600"><AiMark />Applied AI</p>
             <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">AI used with evidence and guardrails.</h2>
             <p className="mt-3 leading-7 text-slate-600">
               AI accelerates development and investigation. Tested code, reconciled data, clear business rules, and human review remain the final controls.
@@ -671,7 +682,7 @@ function ContactSection() {
             <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-300">Open to mid-level business intelligence opportunities</p>
             <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Business Intelligence Engineer</h2>
             <p className="mt-4 max-w-3xl leading-7 text-slate-300">
-              Interested in roles focused on SQL, cloud data systems, BI delivery, experimentation, financial and operational analytics, and applied AI.
+              Interested in roles focused on SQL, cloud data systems, BI delivery, experimentation, financial and operational analytics, and <span className="inline-flex items-center gap-1 whitespace-nowrap font-semibold text-white"><AiMark className="text-blue-300" />applied AI</span>.
             </p>
             <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-200">
               <a href="mailto:madhvika.sehgal@gmail.com?subject=Portfolio%20Inquiry%20-%20Madhvika%20Sehgal" className="inline-flex items-center hover:text-white"><Mail className="mr-2 h-4 w-4" />madhvika.sehgal@gmail.com</a>
@@ -695,7 +706,6 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
-        <ImpactSection />
         <PortfolioIndexSection />
         <ExperienceSection />
         <IndependentProjectsSection />
