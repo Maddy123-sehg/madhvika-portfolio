@@ -520,27 +520,37 @@ function LogoGrid() {
 
 function PortfolioSnapshot() {
   const stats = [
-    { value: "1,900+", label: "lines of finance SQL analyzed and enhanced", icon: Database },
-    { value: "1M+", label: "monthly data-platform events classified", icon: CheckCircle2 },
-    { value: "45+", label: "dashboards and reports validated", icon: BriefcaseBusiness },
-    { value: "5M+", label: "customer interactions analyzed", icon: Database },
+    {
+      category: "Finance systems",
+      value: "1,900+",
+      label: "Lines in a finance allocation pipeline redesigned",
+      icon: Database,
+    },
+    {
+      category: "Data platforms",
+      value: "1M+",
+      label: "Monthly events classified for governance and adoption insights",
+      icon: CheckCircle2,
+    },
+    {
+      category: "BI reporting",
+      value: "45+",
+      label: "Dashboards and reports validated during KPI redesign",
+      icon: BriefcaseBusiness,
+    },
+    {
+      category: "Customer analytics",
+      value: "5M+",
+      label: "Monthly customer interactions analyzed",
+      icon: Database,
+    },
   ];
 
   return (
     <div className="mt-12 rounded-[2rem] border border-slate-200 bg-white/90 p-6 shadow-xl shadow-slate-200/60 md:p-8">
-      <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-600">
-            Portfolio snapshot
-          </p>
-          <h2 className="mt-3 text-2xl font-black text-slate-950 md:text-3xl">
-            Selected impact at a glance.
-          </h2>
-        </div>
-        <p className="max-w-xl text-sm leading-6 text-slate-600">
-          Evidence of delivery across finance, data platforms, BI reporting, and customer analytics.
-        </p>
-      </div>
+      <h2 className="text-2xl font-black tracking-tight text-slate-950 md:text-3xl">
+        Selected impact
+      </h2>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat) => {
@@ -548,24 +558,21 @@ function PortfolioSnapshot() {
           return (
             <div
               key={stat.label}
-              className="rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-blue-50/60 p-5 shadow-sm"
+              className="flex min-h-52 flex-col rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-blue-50/60 p-5 shadow-sm"
             >
-              <div className="flex items-center gap-4">
-                <Icon className="h-7 w-7 text-blue-600" />
-                <div className="text-3xl font-black text-blue-600">{stat.value}</div>
+              <div className="flex items-center justify-between gap-4">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-slate-500">
+                  {stat.category}
+                </p>
+                <Icon className="h-6 w-6 shrink-0 text-blue-600" />
               </div>
-              <div className="mt-2 pl-11 text-sm text-slate-600">{stat.label}</div>
+              <div className="mt-6 text-4xl font-black tracking-tight text-blue-600">
+                {stat.value}
+              </div>
+              <p className="mt-3 max-w-xs text-sm leading-6 text-slate-600">{stat.label}</p>
             </div>
           );
         })}
-      </div>
-
-      <div className="mt-5 flex gap-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
-        <CheckCircle2 className="mt-1 h-6 w-6 shrink-0 text-emerald-600" />
-        <p className="text-sm leading-7 text-slate-700">
-          Core strength: connecting business questions to reliable data, validated metrics,
-          and actionable recommendations.
-        </p>
       </div>
     </div>
   );
