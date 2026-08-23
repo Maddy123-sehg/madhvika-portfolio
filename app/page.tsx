@@ -322,7 +322,7 @@ function Header() {
           <a href="#top" className="text-2xl font-black tracking-tight text-slate-950">
             Madhvika Sehgal
           </a>
-          <p className="mt-1 text-sm text-slate-500">Business Intelligence Engineer</p>
+          <p className="mt-1 text-sm text-slate-500">BIE by title · Analytics storyteller by instinct</p>
         </div>
 
         <nav className="hidden items-center gap-8 text-sm font-medium text-slate-700 lg:flex">
@@ -374,7 +374,7 @@ function HeroSection() {
         </h1>
 
         <p className="mt-7 max-w-3xl text-lg leading-8 text-slate-600">
-          Business Intelligence Engineer focused on SQL-heavy finance and operations data —
+          Business Intelligence Engineer and data analytics professional focused on SQL-heavy finance and operations data —
           building trusted reporting layers, debugging complex metrics, and using AI
           assistance to accelerate analysis, documentation, and decision-ready reporting.
         </p>
@@ -913,7 +913,7 @@ function ContactSection() {
               </p>
 
               <h2 className="mt-3 text-3xl font-black md:text-4xl">
-                Data Analyst · Business Intelligence Engineer
+                Business Intelligence Engineer · Data Analyst
               </h2>
 
               <p className="mt-4 max-w-3xl leading-7 text-slate-300">
