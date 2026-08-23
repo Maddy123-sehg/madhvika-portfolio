@@ -11,7 +11,6 @@ import {
   Mail,
   MapPin,
   ShieldCheck,
-  Sparkles,
   Workflow,
 } from "lucide-react";
 
@@ -395,15 +394,10 @@ function Header() {
 
 function HeroSection() {
   return (
-    <section className="mx-auto max-w-7xl px-6 pb-14 pt-16">
+    <section className="mx-auto max-w-7xl px-6 pb-14 pt-10 md:pt-14">
       <div className="grid items-center gap-12 lg:grid-cols-[1.08fr_.92fr]">
         <div className="self-start">
-          <div className="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 shadow-sm">
-            <Sparkles className="h-4 w-4" />
-            Business Intelligence · Financial & Operational Analytics · Applied AI
-          </div>
-
-          <h1 className="mt-7 text-4xl font-black leading-[1.04] tracking-tight text-slate-950 sm:text-5xl md:text-6xl">
+          <h1 className="text-4xl font-black leading-[1.04] tracking-tight text-slate-950 sm:text-5xl md:text-6xl">
             I turn complex financial, operational, and customer data into{" "}
             <span className="text-blue-600">trusted decisions.</span>
           </h1>
