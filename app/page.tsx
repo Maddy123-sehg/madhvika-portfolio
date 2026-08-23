@@ -1,7 +1,6 @@
 import Image from "next/image";
 import {
   ArrowRight,
-  Bot,
   BriefcaseBusiness,
   CheckCircle2,
   ChevronDown,
@@ -366,11 +365,11 @@ function Header() {
         </div>
 
         <nav className="hidden items-center gap-8 text-sm font-medium text-slate-700 lg:flex">
-          <a href="#top" className="border-b-2 border-blue-600 pb-2 text-blue-600">
+          <a href="#top" className="hover:text-blue-600">
             Home
           </a>
           <a href="#start" className="hover:text-blue-600">
-            Start here
+            Overview
           </a>
           <a href="#portfolio" className="hover:text-blue-600">
             Portfolio
@@ -389,14 +388,6 @@ function Header() {
           </a>
         </nav>
 
-        <a
-          href={resumePdf}
-          target="_blank"
-          rel="noreferrer"
-          className="hidden rounded-xl bg-blue-600 px-4 py-2 text-sm font-bold text-white shadow-lg shadow-blue-600/20 hover:bg-blue-700 md:inline-flex"
-        >
-          Resume PDF
-        </a>
       </div>
     </header>
   );
@@ -404,66 +395,59 @@ function Header() {
 
 function HeroSection() {
   return (
-    <section className="mx-auto grid max-w-7xl items-center gap-14 px-6 pb-12 pt-16 lg:grid-cols-[1.05fr_.95fr]">
-      <div className="self-start">
-        <div className="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 shadow-sm">
-          <Sparkles className="h-4 w-4" />
-          Business Intelligence · Financial & Operational Analytics · Applied AI
+    <section className="mx-auto max-w-7xl px-6 pb-14 pt-16">
+      <div className="grid items-center gap-12 lg:grid-cols-[1.08fr_.92fr]">
+        <div className="self-start">
+          <div className="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 shadow-sm">
+            <Sparkles className="h-4 w-4" />
+            Business Intelligence · Financial & Operational Analytics · Applied AI
+          </div>
+
+          <h1 className="mt-7 text-4xl font-black leading-[1.04] tracking-tight text-slate-950 sm:text-5xl md:text-6xl">
+            I turn complex financial, operational, and customer data into{" "}
+            <span className="text-blue-600">trusted decisions.</span>
+          </h1>
+
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
+            With 4+ years across Amazon, Barclays, and Accenture, I build data pipelines,
+            analytics frameworks, dashboards, experiments, and automation for finance leaders,
+            operations teams, and customer-focused organizations.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-4">
+            <a
+              href="#start"
+              className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-4 text-base font-bold text-white shadow-lg shadow-blue-600/20 hover:bg-blue-700"
+            >
+              Explore projects <ArrowRight className="ml-2 h-4 w-4" />
+            </a>
+
+            <a
+              href={resumePdf}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-4 text-base font-bold text-slate-900 hover:bg-slate-50"
+            >
+              <FileText className="mr-2 h-4 w-4" />
+              Resume
+            </a>
+
+            <a
+              href="https://github.com/Maddy123-sehg"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-4 text-base font-bold text-slate-900 hover:bg-slate-50"
+            >
+              <GitBranch className="mr-2 h-4 w-4" />
+              GitHub
+            </a>
+          </div>
         </div>
 
-        <h1 className="mt-7 text-5xl font-black leading-[1.03] tracking-tight text-slate-950 md:text-7xl">
-          I turn complex financial, operational, and customer data into{" "}
-          <span className="text-blue-600">trusted decisions.</span>
-        </h1>
-
-        <p className="mt-7 max-w-3xl text-lg leading-8 text-slate-600">
-          With 4+ years across Amazon, Barclays, and Accenture, I build data pipelines,
-          analytics frameworks, dashboards, experiments, and automation for finance leaders,
-          operations teams, and customer-focused organizations.
-        </p>
-
-        <div className="mt-8 flex flex-wrap gap-4">
-          <a
-            href="#start"
-            className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-4 text-base font-bold text-white shadow-lg shadow-blue-600/20 hover:bg-blue-700"
-          >
-            Explore projects <ArrowRight className="ml-2 h-4 w-4" />
-          </a>
-
-          <a
-            href="#ai"
-            className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-4 text-base font-bold text-slate-900 hover:bg-slate-50"
-          >
-            <Bot className="mr-2 h-4 w-4" />
-            AI capabilities
-          </a>
-
-          <a
-            href={resumePdf}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-4 text-base font-bold text-slate-900 hover:bg-slate-50"
-          >
-            <FileText className="mr-2 h-4 w-4" />
-            Resume PDF
-          </a>
-
-          <a
-            href="https://github.com/Maddy123-sehg"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-4 text-base font-bold text-slate-900 hover:bg-slate-50"
-          >
-            <GitBranch className="mr-2 h-4 w-4" />
-            GitHub Portfolio
-          </a>
-        </div>
-      </div>
-
-      <div>
         <LogoGrid />
-        <PortfolioSnapshot />
       </div>
+
+      <PortfolioSnapshot />
     </section>
   );
 }
@@ -521,7 +505,7 @@ function LogoGrid() {
   ];
 
   return (
-    <div className="mb-8 overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-lg">
+    <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-lg">
       <div className="grid grid-cols-2 divide-x divide-y divide-slate-200 md:grid-cols-4 md:divide-y-0">
         {logos.map((logo) => (
           <div key={logo.alt} className="flex h-[125px] items-center justify-center bg-white px-5">
@@ -542,23 +526,29 @@ function LogoGrid() {
 
 function PortfolioSnapshot() {
   const stats = [
-    { value: "1,900+", label: "line finance SQL pipeline analyzed and enhanced", icon: Database },
-    { value: "1M+", label: "monthly audit log events classified for usage analytics", icon: CheckCircle2 },
-    { value: "45+", label: "dashboards and reports enhanced", icon: BriefcaseBusiness },
-    { value: "5M+", label: "IVR interactions analyzed", icon: Database },
+    { value: "1,900+", label: "lines of finance SQL analyzed and enhanced", icon: Database },
+    { value: "1M+", label: "monthly data-platform events classified", icon: CheckCircle2 },
+    { value: "45+", label: "dashboards and reports validated", icon: BriefcaseBusiness },
+    { value: "5M+", label: "customer interactions analyzed", icon: Database },
   ];
 
   return (
-    <div className="rounded-[2rem] border border-slate-200 bg-white/90 p-8 shadow-2xl shadow-slate-200/70">
-      <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-600">
-        Portfolio Snapshot
-      </p>
+    <div className="mt-12 rounded-[2rem] border border-slate-200 bg-white/90 p-6 shadow-xl shadow-slate-200/60 md:p-8">
+      <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.35em] text-blue-600">
+            Portfolio snapshot
+          </p>
+          <h2 className="mt-3 text-2xl font-black text-slate-950 md:text-3xl">
+            Selected impact at a glance.
+          </h2>
+        </div>
+        <p className="max-w-xl text-sm leading-6 text-slate-600">
+          Evidence of delivery across finance, data platforms, BI reporting, and customer analytics.
+        </p>
+      </div>
 
-      <h2 className="mt-4 text-2xl font-black text-slate-950 md:text-3xl">
-        Scale, complexity, and business impact.
-      </h2>
-
-      <div className="mt-6 grid grid-cols-2 gap-4">
+      <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat) => {
           const Icon = stat.icon;
           return (
@@ -576,11 +566,11 @@ function PortfolioSnapshot() {
         })}
       </div>
 
-      <div className="mt-6 flex gap-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
+      <div className="mt-5 flex gap-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
         <CheckCircle2 className="mt-1 h-6 w-6 shrink-0 text-emerald-600" />
         <p className="text-sm leading-7 text-slate-700">
-          Core strength: tracing broken metrics from dashboard → SQL logic → source data →
-          business definition.
+          Core strength: connecting business questions to reliable data, validated metrics,
+          and actionable recommendations.
         </p>
       </div>
     </div>
