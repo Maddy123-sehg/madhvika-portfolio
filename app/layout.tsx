@@ -6,17 +6,15 @@ const siteUrl = "https://madhvika-portfolio.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Madhvika Sehgal | Business Intelligence Engineering & Analytics",
+    default: "Madhvika Sehgal | Business Intelligence Engineer",
     template: "%s | Madhvika Sehgal",
   },
   description:
-    "Business intelligence engineering and analytics professional with 4+ years across Amazon, Barclays, and Accenture, building SQL data models, cloud pipelines, BI systems, experiments, and applied AI workflows.",
+    "Business Intelligence Engineer with 4+ years across Amazon, Barclays, and Accenture, building SQL data models, cloud pipelines, BI systems, experiments, and applied AI workflows.",
   keywords: [
     "Madhvika Sehgal",
     "Analytics Engineer",
     "Business Intelligence Engineer",
-    "Business Intelligence Engineering",
-    "Data Analytics",
     "BI Engineer",
     "Financial Analytics",
     "Operational Analytics",
@@ -32,7 +30,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Madhvika Sehgal" }],
   creator: "Madhvika Sehgal",
   openGraph: {
-    title: "Madhvika Sehgal | Business Intelligence Engineering & Analytics",
+    title: "Madhvika Sehgal | Business Intelligence Engineer",
     description:
       "SQL data models, cloud pipelines, BI systems, experimentation, financial and customer analytics, and applied AI.",
     url: siteUrl,
@@ -42,7 +40,7 @@ export const metadata: Metadata = {
         url: "/og",
         width: 1200,
         height: 630,
-        alt: "Madhvika Sehgal - Business Intelligence Engineering and Analytics",
+        alt: "Madhvika Sehgal - Business Intelligence Engineer",
       },
     ],
     locale: "en_US",
@@ -50,7 +48,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Madhvika Sehgal | Business Intelligence Engineering & Analytics",
+    title: "Madhvika Sehgal | Business Intelligence Engineer",
     description:
       "SQL data models, cloud pipelines, BI systems, experimentation, financial and customer analytics, and applied AI.",
     images: ["/og"],
