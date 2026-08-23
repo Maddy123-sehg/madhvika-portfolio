@@ -601,7 +601,7 @@ function AccentureExperienceSection() {
         <div className="border-b border-slate-200 pb-7">
           <CompanyLogo src="/logos/Accenture.svg" alt="Accenture" />
           <p className="mt-5 text-xs font-black uppercase tracking-[0.18em] text-blue-600">Earlier professional experience</p>
-          <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">Business Analyst · SAP Materials Management</h2>
+          <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">Business Consultant · SAP Materials Management</h2>
           <p className="mt-3 max-w-3xl leading-7 text-slate-600">
             Enterprise consulting experience across requirements, process design, testing, stakeholder coordination, and procure-to-pay operations.
           </p>
