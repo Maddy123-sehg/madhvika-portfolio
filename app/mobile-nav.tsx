@@ -22,7 +22,7 @@ export function MobileNav({ resumePdf }: { resumePdf: string }) {
         aria-controls="mobile-navigation"
         aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
         onClick={() => setIsOpen((open) => !open)}
-        className="flex items-center justify-center rounded-lg border border-slate-200 bg-white p-2.5 text-slate-900 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
+        className="flex items-center justify-center rounded-sm border border-parchment bg-paper-soft p-2.5 text-ink shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wine focus-visible:ring-offset-2"
       >
         {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
       </button>
@@ -30,7 +30,7 @@ export function MobileNav({ resumePdf }: { resumePdf: string }) {
       {isOpen ? (
         <nav
           id="mobile-navigation"
-          className="absolute right-0 top-12 w-56 rounded-xl border border-slate-200 bg-white p-2 shadow-xl"
+          className="absolute right-0 top-12 w-56 border border-parchment bg-paper-soft p-2 shadow-2xl shadow-wine-deep/15"
           aria-label="Mobile navigation"
         >
           {links.map((link) => (
@@ -38,9 +38,9 @@ export function MobileNav({ resumePdf }: { resumePdf: string }) {
               key={link.href}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-1.5 rounded-lg px-4 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-600"
+              className="flex items-center gap-1.5 rounded-sm px-4 py-3 text-sm font-bold text-ink-soft hover:bg-gold-soft/50 hover:text-wine focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-wine"
             >
-              {link.ai ? <Sparkles aria-hidden="true" className="h-3.5 w-3.5 shrink-0 text-blue-500" /> : null}{link.label}
+              {link.ai ? <Sparkles aria-hidden="true" className="h-3.5 w-3.5 shrink-0 text-gold" /> : null}{link.label}
             </a>
           ))}
           <a
@@ -48,7 +48,7 @@ export function MobileNav({ resumePdf }: { resumePdf: string }) {
             target="_blank"
             rel="noreferrer"
             onClick={() => setIsOpen(false)}
-            className="mt-1 block rounded-lg bg-blue-600 px-4 py-3 text-sm font-black text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2"
+            className="mt-1 block rounded-sm bg-wine px-4 py-3 text-sm font-black text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
           >
             Resume PDF
           </a>

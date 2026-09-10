@@ -308,12 +308,12 @@ function CompanyLogo({ src, alt, priority = false, compact = false }: { src: str
   );
 }
 
-function AiMark({ className = "text-blue-500" }: { className?: string }) {
+function AiMark({ className = "text-gold" }: { className?: string }) {
   return <Sparkles aria-hidden="true" className={`h-3.5 w-3.5 shrink-0 ${className}`} />;
 }
 
 function AiPhrase({ children }: { children: ReactNode }) {
-  return <span className="inline-flex items-center gap-1 whitespace-nowrap font-semibold text-slate-700"><AiMark />{children}</span>;
+  return <span className="inline-flex items-center gap-1 whitespace-nowrap font-semibold text-ink-soft"><AiMark />{children}</span>;
 }
 
 function Header() {
@@ -326,25 +326,25 @@ function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-parchment bg-paper/95 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-3 sm:px-6">
-        <a href="#top" className="min-w-0 max-w-2xl rounded-sm pr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-4">
-          <span className="block text-xl font-black tracking-tight text-slate-950 sm:text-2xl">Madhvika Sehgal</span>
-          <span className="mt-1 block text-[11px] font-black tracking-[0.06em] text-slate-700 sm:text-xs">
-            DAGs <span className="text-blue-600">·</span> DataFrames <span className="text-blue-600">·</span> Dashboards
+        <a href="#top" className="min-w-0 max-w-2xl rounded-sm pr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wine focus-visible:ring-offset-4">
+          <span className="block font-heading text-2xl font-bold tracking-tight text-ink sm:text-[1.7rem]">Madhvika Sehgal</span>
+          <span className="mt-0.5 block text-[10px] font-black uppercase tracking-[0.09em] text-ink-soft sm:text-[11px]">
+            DAGs <span className="text-gold">·</span> DataFrames <span className="text-gold">·</span> Dashboards
           </span>
-          <span className="mt-0.5 block text-[10px] leading-4 text-slate-500 sm:text-[11px]">
+          <span className="mt-0.5 block text-[10px] leading-4 text-[#746960] sm:text-[11px]">
             Business Intelligence and Analytics · Applied AI
           </span>
         </a>
 
-        <nav className="hidden items-center gap-7 text-sm font-semibold text-slate-700 xl:flex" aria-label="Primary navigation">
+        <nav className="hidden items-center gap-7 text-sm font-semibold text-ink-soft xl:flex" aria-label="Primary navigation">
           {links.map((link) => (
-            <a key={link.href} href={link.href} className="inline-flex items-center gap-1 rounded-sm transition hover:text-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-4">
+            <a key={link.href} href={link.href} className="inline-flex items-center gap-1 border-b border-transparent py-1 transition hover:border-gold hover:text-wine focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wine focus-visible:ring-offset-4">
               {link.ai ? <AiMark /> : null}{link.label}
             </a>
           ))}
-          <a href={resumePdf} target="_blank" rel="noreferrer" className="rounded-lg bg-blue-600 px-4 py-2.5 font-black text-white hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">
+          <a href={resumePdf} target="_blank" rel="noreferrer" className="rounded-sm bg-wine px-4 py-2.5 font-black text-white shadow-sm hover:bg-wine-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wine focus-visible:ring-offset-2">
             Resume
           </a>
         </nav>
@@ -357,35 +357,36 @@ function Header() {
 
 function HeroSection() {
   return (
-    <section id="top" className="mx-auto max-w-7xl px-5 pb-10 pt-10 sm:px-6 lg:pb-12 lg:pt-12">
-      <div className="max-w-6xl">
-        <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-600">
+    <section id="top" className="editorial-surface border-b border-parchment">
+      <div className="mx-auto max-w-7xl px-5 pb-10 pt-10 sm:px-6 lg:pb-12 lg:pt-14">
+      <div className="max-w-6xl border-l-2 border-gold pl-5 sm:pl-7">
+        <p className="text-xs font-black uppercase tracking-[0.18em] text-wine">
           <span className="block sm:inline">4+ years in</span>{" "}
           <span className="block sm:inline">Business Intelligence &amp; Analytics</span>
         </p>
-        <h1 className="mt-4 max-w-[1100px] text-4xl font-black leading-[1.01] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl xl:text-[64px]">
-          I build <span className="text-blue-600 lg:whitespace-nowrap">trusted analytics systems</span>
+        <h1 className="mt-5 max-w-[1100px] font-heading text-4xl font-bold leading-[1.02] tracking-[-0.035em] text-ink sm:text-5xl lg:text-6xl xl:text-[68px]">
+          I build <span className="text-wine lg:whitespace-nowrap">trusted analytics systems</span>
           <br className="hidden lg:block" />{" "}
           from complex business data.
         </h1>
-        <p className="mt-6 max-w-3xl text-base leading-7 text-slate-700 sm:text-lg sm:leading-8">
+        <p className="mt-6 max-w-3xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
           Business Intelligence Engineer specializing in SQL, cloud data modeling, KPI design, dashboards, and experimentation. I also build AI-assisted workflows for financial, operational, and customer analytics.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-3">
-          <a href="#index" className="inline-flex items-center rounded-lg bg-blue-600 px-5 py-3.5 text-sm font-black text-white shadow-lg shadow-blue-600/20 hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">
+          <a href="#index" className="inline-flex items-center rounded-sm bg-wine px-5 py-3.5 text-sm font-black text-white shadow-lg shadow-wine/20 hover:bg-wine-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wine focus-visible:ring-offset-2">
             View selected work <ArrowRight className="ml-2 h-4 w-4" />
           </a>
-          <a href="https://github.com/Maddy123-sehg" target="_blank" rel="noreferrer" className="inline-flex items-center rounded-lg border border-slate-200 bg-white px-5 py-3.5 text-sm font-black text-slate-900 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">
+          <a href="https://github.com/Maddy123-sehg" target="_blank" rel="noreferrer" className="inline-flex items-center rounded-sm border border-parchment bg-paper-soft px-5 py-3.5 text-sm font-black text-ink hover:border-gold hover:bg-gold-soft/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wine focus-visible:ring-offset-2">
             <GitBranch className="mr-2 h-4 w-4" /> GitHub
           </a>
         </div>
       </div>
 
-      <div className="mt-10 grid border-y border-slate-200 md:grid-cols-[1.35fr_.65fr] md:divide-x md:divide-slate-200">
+      <div className="mt-10 grid border-y border-parchment bg-paper-soft/80 md:grid-cols-[1.35fr_.65fr] md:divide-x md:divide-parchment">
         <div className="flex flex-col gap-5 py-6 md:pr-8">
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">Experience across</p>
-          <div className="grid grid-cols-3 divide-x divide-slate-200">
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-[#746960]">Experience across</p>
+          <div className="grid grid-cols-3 divide-x divide-parchment">
             <div className="flex h-20 items-center justify-center px-2 sm:px-4">
               <CompanyLogo src="/logos/Amazon.svg" alt="Amazon" priority compact />
             </div>
@@ -400,10 +401,11 @@ function HeroSection() {
         <div className="flex items-center gap-4 py-6 md:pl-8">
           <Image src="/logos/Eller.png" alt="University of Arizona Eller College" width={150} height={55} className="h-12 w-28 shrink-0 object-contain" priority />
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-slate-500">Education</p>
-            <p className="mt-1 text-sm font-bold leading-5 text-slate-800">MS, Management Information Systems</p>
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#746960]">Education</p>
+            <p className="mt-1 text-sm font-bold leading-5 text-ink">MS, Management Information Systems</p>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
@@ -411,25 +413,25 @@ function HeroSection() {
 
 function PortfolioIndexSection() {
   return (
-    <section id="index" className="bg-slate-950 py-12 text-white" aria-labelledby="index-title">
+    <section id="index" className="bg-wine-deep py-12 text-white" aria-labelledby="index-title">
       <div className="mx-auto max-w-7xl px-5 sm:px-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-blue-300">Portfolio index</p>
-            <h2 id="index-title" className="mt-2 text-3xl font-black tracking-tight text-white">Explore the work.</h2>
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-gold-soft">Portfolio index</p>
+            <h2 id="index-title" className="mt-2 font-heading text-4xl font-bold tracking-tight text-white">Explore the work.</h2>
           </div>
-          <p className="max-w-xl text-sm leading-6 text-slate-300">Jump to a section or continue scrolling for the complete story.</p>
+          <p className="max-w-xl text-sm leading-6 text-[#ddced3]">Jump to a section or continue scrolling for the complete story.</p>
         </div>
 
-        <div className="mt-7 grid grid-cols-2 gap-px overflow-hidden border border-slate-700 bg-slate-700 sm:grid-cols-3 xl:grid-cols-6">
+        <div className="mt-7 grid grid-cols-2 gap-px overflow-hidden border border-gold/40 bg-gold/40 sm:grid-cols-3 xl:grid-cols-6">
           {portfolioIndexItems.map((item) => (
-            <a key={item.href} href={item.href} className="group flex min-h-44 flex-col bg-slate-900 p-4 transition hover:bg-slate-800 focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-300 sm:p-5">
-              <span className="text-xs font-black text-blue-300">{item.number}</span>
-              <h3 className="mt-5 flex items-center gap-1.5 text-base font-black text-white group-hover:text-blue-200">
-                {item.ai ? <AiMark className="text-blue-300" /> : null}{item.title}
+            <a key={item.href} href={item.href} className="group flex min-h-44 flex-col bg-[#321722] p-4 transition hover:bg-[#4a2533] focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold sm:p-5">
+              <span className="text-xs font-black text-gold-soft">{item.number}</span>
+              <h3 className="mt-5 flex items-center gap-1.5 font-heading text-xl font-bold text-white group-hover:text-gold-soft">
+                {item.ai ? <AiMark className="text-gold" /> : null}{item.title}
               </h3>
-              <p className="mt-2 text-xs leading-5 text-slate-400">{item.summary}</p>
-              <ArrowRight className="mt-auto h-5 w-5 text-blue-300 transition group-hover:translate-x-0.5 group-hover:text-white" />
+              <p className="mt-2 text-xs leading-5 text-[#c9b6bd]">{item.summary}</p>
+              <ArrowRight className="mt-auto h-5 w-5 text-gold transition group-hover:translate-x-0.5 group-hover:text-white" />
             </a>
           ))}
         </div>
@@ -442,34 +444,34 @@ function SectionIntro({ eyebrow, title, description, ai = false }: { eyebrow: st
   return (
     <div className="grid gap-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
       <div>
-        <p className="flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.22em] text-blue-600">
+        <p className="flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.22em] text-wine">
           {ai ? <AiMark /> : null}{eyebrow}
         </p>
-        <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">{title}</h2>
+        <h2 className="mt-3 font-heading text-4xl font-bold tracking-tight text-ink sm:text-5xl">{title}</h2>
       </div>
-      <p className="max-w-3xl leading-7 text-slate-600">{description}</p>
+      <p className="max-w-3xl border-l border-gold pl-5 leading-7 text-ink-soft">{description}</p>
     </div>
   );
 }
 
 function ExperienceProjectCard({ project }: { project: ExperienceProject }) {
   return (
-    <article className="flex h-full flex-col border-t-2 border-blue-600 bg-white p-6 ring-1 ring-slate-200">
-      <p className="flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.16em] text-blue-600">
+    <article className="ledger-card flex h-full flex-col border border-parchment border-t-[3px] border-t-wine bg-paper-soft p-6 transition-transform duration-300 hover:-translate-y-1">
+      <p className="flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.16em] text-wine">
         {project.ai ? <AiMark /> : null}{project.category}
       </p>
-      <h3 className="mt-3 text-xl font-black leading-snug text-slate-950">{project.title}</h3>
-      <div className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
-        <p><span className="font-black text-slate-800">Challenge:</span> {project.challenge}</p>
-        <p><span className="font-black text-slate-800">Built:</span> {project.built}</p>
+      <h3 className="mt-3 font-heading text-2xl font-bold leading-snug text-ink">{project.title}</h3>
+      <div className="mt-4 space-y-3 text-sm leading-6 text-ink-soft">
+        <p><span className="font-black text-ink">Challenge:</span> {project.challenge}</p>
+        <p><span className="font-black text-ink">Built:</span> {project.built}</p>
       </div>
-      <div className="mt-5 flex gap-3 border-t border-slate-100 pt-5 text-sm leading-6 text-slate-800">
-        <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" />
+      <div className="mt-5 flex gap-3 border-t border-parchment pt-5 text-sm leading-6 text-ink">
+        <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
         <p><span className="font-black">Impact:</span> {project.impact}</p>
       </div>
       <div className="mt-5 flex flex-wrap gap-2">
         {project.tools.map((tool) => (
-          <span key={tool} className="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-600">{tool}</span>
+          <span key={tool} className="rounded-sm border border-parchment bg-paper px-2.5 py-1 text-xs font-bold text-ink-soft">{tool}</span>
         ))}
       </div>
     </article>
@@ -479,52 +481,52 @@ function ExperienceProjectCard({ project }: { project: ExperienceProject }) {
 function PipelineDetails({ flow }: { flow: PipelineFlow }) {
   const theme = flow.theme === "orange"
     ? {
-        summary: "border-orange-200 bg-orange-50 text-orange-950 hover:bg-orange-100",
-        panel: "border-orange-200 bg-gradient-to-br from-orange-50 via-white to-amber-50",
-        accent: "bg-orange-500",
-        label: "text-orange-700",
-        arrow: "text-orange-400",
+        summary: "border-[#d8b77b] bg-[#f6ead3] text-[#4a321b] hover:bg-[#efdfbf]",
+        panel: "border-[#d8b77b] bg-gradient-to-br from-[#f6ead3] via-paper-soft to-[#efe0c1]",
+        accent: "bg-[#a8642d]",
+        label: "text-[#8b4f20]",
+        arrow: "text-[#b77b42]",
       }
     : {
-        summary: "border-sky-200 bg-sky-50 text-sky-950 hover:bg-sky-100",
-        panel: "border-sky-200 bg-gradient-to-br from-sky-50 via-white to-blue-50",
-        accent: "bg-sky-600",
-        label: "text-sky-700",
-        arrow: "text-sky-400",
+        summary: "border-[#bca8ae] bg-wine-soft/70 text-wine-deep hover:bg-wine-soft",
+        panel: "border-[#bca8ae] bg-gradient-to-br from-wine-soft via-paper-soft to-[#eee4df]",
+        accent: "bg-wine",
+        label: "text-wine",
+        arrow: "text-wine/70",
       };
 
   return (
-    <details className="group mt-8 border-t border-slate-200 pt-7">
-      <summary className={`flex cursor-pointer list-none items-center justify-between gap-4 rounded-xl border px-4 py-3.5 transition sm:px-5 [&::-webkit-details-marker]:hidden ${theme.summary}`}>
+    <details className="group mt-8 border-t border-parchment pt-7">
+      <summary className={`flex cursor-pointer list-none items-center justify-between gap-4 rounded-sm border px-4 py-3.5 transition sm:px-5 [&::-webkit-details-marker]:hidden ${theme.summary}`}>
         <span className="flex min-w-0 items-center gap-3">
           <Workflow className="h-5 w-5 shrink-0" />
           <span className="text-sm font-black sm:text-base">View detailed analytics pipeline</span>
-          <span className="hidden rounded-full bg-white/80 px-2.5 py-1 text-xs font-black sm:inline">7 stages</span>
+          <span className="hidden rounded-full bg-paper-soft/90 px-2.5 py-1 text-xs font-black sm:inline">7 stages</span>
         </span>
         <ChevronDown className="h-5 w-5 shrink-0 transition-transform group-open:rotate-180" />
       </summary>
 
-      <div className={`mt-4 rounded-2xl border p-4 sm:p-6 ${theme.panel}`}>
+      <div className={`mt-4 border p-4 sm:p-6 ${theme.panel}`}>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <h3 className="text-xl font-black tracking-tight text-slate-950 sm:text-2xl">{flow.title}</h3>
-            <p className="mt-2 max-w-4xl text-sm leading-6 text-slate-600">{flow.subtitle}</p>
+            <h3 className="font-heading text-2xl font-bold tracking-tight text-ink sm:text-3xl">{flow.title}</h3>
+            <p className="mt-2 max-w-4xl text-sm leading-6 text-ink-soft">{flow.subtitle}</p>
           </div>
-          <span className="w-fit shrink-0 rounded-full border border-white bg-white/90 px-3 py-1.5 text-xs font-black text-slate-600 shadow-sm">7-stage ELT flow</span>
+          <span className="w-fit shrink-0 rounded-full border border-parchment bg-paper-soft/90 px-3 py-1.5 text-xs font-black text-ink-soft shadow-sm">7-stage ELT flow</span>
         </div>
 
         <div className="mt-6 flex flex-col xl:flex-row xl:items-stretch">
           {flow.steps.map((step, index) => (
             <div key={step.title} className="contents">
-              <article className="min-w-0 flex-1 rounded-xl border border-white bg-white p-4 shadow-sm ring-1 ring-slate-200/70">
-                <div className="flex min-h-14 items-start gap-2 border-b border-slate-100 pb-3">
-                  <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-[11px] font-black tracking-tight text-white ${theme.accent}`} aria-label={`Stage ${index + 1}`}>
+              <article className="min-w-0 flex-1 border border-parchment bg-paper-soft p-4 shadow-sm">
+                <div className="flex min-h-14 items-start gap-2 border-b border-parchment pb-3">
+                  <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-sm text-[11px] font-black tracking-tight text-white ${theme.accent}`} aria-label={`Stage ${index + 1}`}>
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <span className={`min-w-0 pt-0.5 text-[9px] font-black uppercase leading-4 tracking-[0.06em] ${theme.label}`}>{step.label}</span>
                 </div>
-                <h4 className="mt-4 text-sm font-black leading-5 text-slate-950 xl:min-h-[3.75rem]">{step.title}</h4>
-                <p className="mt-2 text-xs leading-5 text-slate-600">{step.detail}</p>
+                <h4 className="mt-4 font-heading text-base font-bold leading-5 text-ink xl:min-h-[3.75rem]">{step.title}</h4>
+                <p className="mt-2 text-xs leading-5 text-ink-soft">{step.detail}</p>
               </article>
               {index < flow.steps.length - 1 ? (
                 <div className={`flex shrink-0 items-center justify-center py-2 xl:px-1.5 xl:py-0 ${theme.arrow}`} aria-hidden="true">
@@ -536,8 +538,8 @@ function PipelineDetails({ flow }: { flow: PipelineFlow }) {
           ))}
         </div>
 
-        <p className="mt-6 rounded-xl border border-white bg-white/80 p-4 text-xs leading-5 text-slate-600 shadow-sm sm:text-sm sm:leading-6">
-          <span className="font-black text-slate-800">How to read this:</span> Extract and load brings data into the analytics environment, staging organizes it, transformation applies repeatable logic, enrichment adds business context, and the semantic and reporting layers make the data usable for dashboards and decisions.
+        <p className="mt-6 border border-parchment bg-paper-soft/80 p-4 text-xs leading-5 text-ink-soft shadow-sm sm:text-sm sm:leading-6">
+          <span className="font-black text-ink">How to read this:</span> Extract and load brings data into the analytics environment, staging organizes it, transformation applies repeatable logic, enrichment adds business context, and the semantic and reporting layers make the data usable for dashboards and decisions.
         </p>
       </div>
     </details>
@@ -547,13 +549,13 @@ function PipelineDetails({ flow }: { flow: PipelineFlow }) {
 function AdditionalContributions({ items }: { items: string[] }) {
   return (
     <details className="group">
-      <summary className="inline-flex cursor-pointer list-none items-center rounded-lg px-3 py-2.5 text-sm font-black text-blue-700 hover:bg-blue-50">
+      <summary className="inline-flex cursor-pointer list-none items-center rounded-sm px-3 py-2.5 text-sm font-black text-wine hover:bg-wine-soft/60">
         Additional contributions<ChevronDown className="ml-2 h-4 w-4 transition group-open:rotate-180" />
       </summary>
-      <div className="mt-3 max-w-4xl space-y-3 rounded-lg border border-slate-200 bg-white p-5">
+      <div className="mt-3 max-w-4xl space-y-3 border border-parchment bg-paper-soft p-5">
         {items.map((item) => (
-          <p key={item} className="flex gap-3 text-sm leading-6 text-slate-600">
-            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-blue-600" />{item}
+          <p key={item} className="flex gap-3 text-sm leading-6 text-ink-soft">
+            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-wine" />{item}
           </p>
         ))}
       </div>
@@ -574,15 +576,15 @@ function CompanyExperience({ id, logo, logoAlt, role, dates, summary, projects, 
   background?: "white" | "slate";
 }) {
   return (
-    <section id={id} className={`py-14 lg:py-16 ${background === "slate" ? "bg-slate-50" : "bg-white"}`}>
+    <section id={id} className={`py-14 lg:py-16 ${background === "slate" ? "bg-[#eee6dc]" : "bg-paper"}`}>
       <div className="mx-auto max-w-7xl px-5 sm:px-6">
-        <div className="flex flex-col gap-6 border-b border-slate-200 pb-7 md:flex-row md:items-end md:justify-between">
+        <div className="flex flex-col gap-6 border-b border-parchment pb-7 md:flex-row md:items-end md:justify-between">
           <div>
             <CompanyLogo src={logo} alt={logoAlt} />
-            <h2 className="mt-5 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">{role}</h2>
-            <p className="mt-3 max-w-3xl leading-7 text-slate-600">{summary}</p>
+            <h2 className="mt-5 font-heading text-4xl font-bold tracking-tight text-ink sm:text-5xl">{role}</h2>
+            <p className="mt-3 max-w-3xl leading-7 text-ink-soft">{summary}</p>
           </div>
-          <p className="shrink-0 text-sm font-black text-slate-500">{dates}</p>
+          <p className="shrink-0 border-l-2 border-gold pl-3 text-sm font-black text-[#746960]">{dates}</p>
         </div>
         <div className="mt-8 grid gap-5 lg:grid-cols-3">
           {projects.map((project) => <ExperienceProjectCard key={project.title} project={project} />)}
@@ -596,23 +598,23 @@ function CompanyExperience({ id, logo, logoAlt, role, dates, summary, projects, 
 
 function AccentureExperienceSection() {
   return (
-    <section id="accenture" className="bg-white py-14 lg:py-16">
+    <section id="accenture" className="bg-paper py-14 lg:py-16">
       <div className="mx-auto max-w-7xl px-5 sm:px-6">
-        <div className="border-b border-slate-200 pb-7">
+        <div className="border-b border-parchment pb-7">
           <CompanyLogo src="/logos/Accenture.svg" alt="Accenture" />
-          <p className="mt-5 text-xs font-black uppercase tracking-[0.18em] text-blue-600">Earlier professional experience</p>
-          <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">Business Consultant · SAP Materials Management</h2>
-          <p className="mt-3 max-w-3xl leading-7 text-slate-600">
+          <p className="mt-5 text-xs font-black uppercase tracking-[0.18em] text-wine">Earlier professional experience</p>
+          <h2 className="mt-3 font-heading text-4xl font-bold tracking-tight text-ink sm:text-5xl">Business Consultant · SAP Materials Management</h2>
+          <p className="mt-3 max-w-3xl leading-7 text-ink-soft">
             Enterprise consulting experience across requirements, process design, testing, stakeholder coordination, and procure-to-pay operations.
           </p>
         </div>
 
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {accentureWork.map((item, index) => (
-            <article key={item.title} className="border-t-2 border-violet-500 bg-slate-50 p-6 ring-1 ring-slate-200">
-              <p className="text-xs font-black text-violet-700">0{index + 1}</p>
-              <h3 className="mt-4 text-xl font-black text-slate-950">{item.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-slate-600">{item.description}</p>
+            <article key={item.title} className="ledger-card border border-parchment border-t-[3px] border-t-gold bg-paper-soft p-6">
+              <p className="text-xs font-black text-wine">0{index + 1}</p>
+              <h3 className="mt-4 font-heading text-2xl font-bold text-ink">{item.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-ink-soft">{item.description}</p>
             </article>
           ))}
         </div>
@@ -624,7 +626,7 @@ function AccentureExperienceSection() {
 function ExperienceSection() {
   return (
     <div id="experience">
-      <section className="border-y border-blue-100 bg-blue-50 py-12 lg:py-14">
+      <section className="border-y border-parchment bg-[#e9dfd3] py-12 lg:py-14">
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionIntro
             eyebrow="Professional experience"
@@ -663,7 +665,7 @@ function ExperienceSection() {
 
 function IndependentProjectsSection() {
   return (
-    <section id="projects" className="bg-white py-14 lg:py-16">
+    <section id="projects" className="bg-paper py-14 lg:py-16">
       <div className="mx-auto max-w-7xl px-5 sm:px-6">
         <SectionIntro
           eyebrow="Independent projects"
@@ -671,8 +673,8 @@ function IndependentProjectsSection() {
           description="Two public repositories demonstrate reproducible analytics engineering and agentic investigation outside proprietary enterprise systems."
         />
         <div className="mt-9 grid gap-6 lg:grid-cols-2">
-          <article className="overflow-hidden border border-slate-200 bg-white">
-            <div className="relative aspect-[2.5/1] overflow-hidden border-b border-slate-200 bg-white">
+          <article className="ledger-card overflow-hidden border border-parchment bg-paper-soft">
+            <div className="relative aspect-[2.5/1] overflow-hidden border-b border-parchment bg-white">
               <Image
                 src="/retail-dashboard.png?preview=2"
                 alt="Retail Sales Performance dashboard with monthly and regional revenue charts"
@@ -683,49 +685,49 @@ function IndependentProjectsSection() {
               />
             </div>
             <div className="p-6">
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-700">Analytics engineering</p>
-              <h3 className="mt-3 text-2xl font-black text-slate-950">Retail Medallion Analytics</h3>
-              <p className="mt-3 leading-7 text-slate-600">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-wine">Analytics engineering</p>
+              <h3 className="mt-3 font-heading text-3xl font-bold text-ink">Retail Medallion Analytics</h3>
+              <p className="mt-3 leading-7 text-ink-soft">
                 A Bronze-Silver-Gold pipeline that converts imperfect retail source data into tested dimensional marts and an executive Streamlit dashboard.
               </p>
               <div className="mt-5 grid gap-3 sm:grid-cols-3">
                 {["Tested data layers", "Automated reconciliation", "GitHub Actions CI"].map((item) => (
-                  <p key={item} className="flex gap-2 text-sm font-semibold text-slate-700"><ShieldCheck className="h-4 w-4 shrink-0 text-emerald-600" />{item}</p>
+                  <p key={item} className="flex gap-2 text-sm font-semibold text-ink-soft"><ShieldCheck className="h-4 w-4 shrink-0 text-gold" />{item}</p>
                 ))}
               </div>
               <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-                <p className="text-xs font-bold text-slate-500">Python · SQL · DuckDB · Streamlit</p>
-                <a href="https://github.com/Maddy123-sehg/retail-medallion-analytics" target="_blank" rel="noreferrer" className="inline-flex items-center text-sm font-black text-blue-700 hover:underline">
+                <p className="text-xs font-bold text-[#746960]">Python · SQL · DuckDB · Streamlit</p>
+                <a href="https://github.com/Maddy123-sehg/retail-medallion-analytics" target="_blank" rel="noreferrer" className="inline-flex items-center text-sm font-black text-wine hover:underline">
                   View GitHub project <ExternalLink className="ml-2 h-4 w-4" />
                 </a>
               </div>
             </div>
           </article>
 
-          <article className="flex flex-col border border-slate-200 bg-slate-950 p-6 text-white">
+          <article className="ledger-card flex flex-col border border-gold/40 bg-wine-deep p-6 text-white">
             <div>
-              <p className="flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.18em] text-blue-300"><AiMark className="text-blue-300" />Agentic analytics</p>
-              <h3 className="mt-3 text-2xl font-black">Analytics Investigation Agent</h3>
-              <p className="mt-3 leading-7 text-slate-300">
+              <p className="flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.18em] text-gold-soft"><AiMark className="text-gold" />Agentic analytics</p>
+              <h3 className="mt-3 font-heading text-3xl font-bold">Analytics Investigation Agent</h3>
+              <p className="mt-3 leading-7 text-[#ddced3]">
                 A transparent Python agent that chooses tools, investigates KPI movement, and returns an evidence-backed business conclusion with visible reasoning steps.
               </p>
             </div>
-            <div className="my-7 grid gap-2 rounded-lg border border-slate-700 bg-slate-900 p-4 sm:grid-cols-5">
+            <div className="my-7 grid gap-2 border border-gold/30 bg-[#321722] p-4 sm:grid-cols-5">
               {["Question", "Inspect", "Query", "Validate", "Conclude"].map((step, index) => (
                 <div key={step} className="flex items-center gap-2 sm:block">
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-600 text-xs font-black">{index + 1}</span>
-                  <p className="text-xs font-bold text-slate-300 sm:mt-2">{step}</p>
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gold text-xs font-black text-wine-deep">{index + 1}</span>
+                  <p className="text-xs font-bold text-[#ddced3] sm:mt-2">{step}</p>
                 </div>
               ))}
             </div>
             <div className="grid gap-3 sm:grid-cols-3">
               {["Deterministic data", "Tool-call guardrails", "Automated tests"].map((item) => (
-                <p key={item} className="flex gap-2 text-sm font-semibold text-slate-200"><ShieldCheck className="h-4 w-4 shrink-0 text-blue-300" />{item}</p>
+                <p key={item} className="flex gap-2 text-sm font-semibold text-[#efe4e7]"><ShieldCheck className="h-4 w-4 shrink-0 text-gold" />{item}</p>
               ))}
             </div>
             <div className="mt-auto flex flex-wrap items-center justify-between gap-4 pt-7">
-              <p className="text-xs font-bold text-slate-400">Python · Tool Calling · KPI Decomposition</p>
-              <a href="https://github.com/Maddy123-sehg/analytics-investigation-agent" target="_blank" rel="noreferrer" className="inline-flex items-center text-sm font-black text-blue-300 hover:text-white">
+              <p className="text-xs font-bold text-[#c9b6bd]">Python · Tool Calling · KPI Decomposition</p>
+              <a href="https://github.com/Maddy123-sehg/analytics-investigation-agent" target="_blank" rel="noreferrer" className="inline-flex items-center text-sm font-black text-gold-soft hover:text-white">
                 View GitHub project <ExternalLink className="ml-2 h-4 w-4" />
               </a>
             </div>
@@ -738,7 +740,7 @@ function IndependentProjectsSection() {
 
 function SkillsAndAiSection() {
   return (
-    <section id="skills" className="border-y border-slate-200 bg-slate-50 py-14 lg:py-16">
+    <section id="skills" className="border-y border-parchment bg-[#eee6dc] py-14 lg:py-16">
       <div className="mx-auto max-w-7xl px-5 sm:px-6">
         <SectionIntro
           eyebrow="Skills and applied AI"
@@ -750,13 +752,13 @@ function SkillsAndAiSection() {
           {capabilityGroups.map((group) => {
             const Icon = group.icon;
             return (
-              <article key={group.title} className="border border-slate-200 bg-white p-6">
-                <Icon className="h-6 w-6 text-blue-600" />
-                <h3 className="mt-4 text-xl font-black text-slate-950">{group.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{group.description}</p>
+              <article key={group.title} className="ledger-card border border-parchment bg-paper-soft p-6">
+                <Icon className="h-6 w-6 text-wine" />
+                <h3 className="mt-4 font-heading text-2xl font-bold text-ink">{group.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-ink-soft">{group.description}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {group.skills.map((skill) => (
-                    <span key={skill} className="rounded-md bg-slate-100 px-2.5 py-1.5 text-xs font-bold text-slate-700">{skill}</span>
+                    <span key={skill} className="rounded-sm border border-parchment bg-paper px-2.5 py-1.5 text-xs font-bold text-ink-soft">{skill}</span>
                   ))}
                 </div>
               </article>
@@ -764,24 +766,24 @@ function SkillsAndAiSection() {
           })}
         </div>
 
-        <div id="ai" className="mt-12 border-t border-slate-300 pt-10">
+        <div id="ai" className="mt-12 border-t border-[#c9b9aa] pt-10">
           <div className="max-w-3xl">
-            <p className="flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.22em] text-blue-600"><AiMark />Applied AI</p>
-            <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">AI used with evidence and guardrails.</h2>
-            <p className="mt-3 leading-7 text-slate-600">
+            <p className="flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.22em] text-wine"><AiMark />Applied AI</p>
+            <h2 className="mt-3 font-heading text-4xl font-bold tracking-tight text-ink sm:text-5xl">AI used with evidence and guardrails.</h2>
+            <p className="mt-3 leading-7 text-ink-soft">
               AI accelerates development and investigation. Tested code, reconciled data, clear business rules, and human review remain the final controls.
             </p>
           </div>
           <div className="mt-8 grid gap-5 lg:grid-cols-3">
             {aiCapabilities.map((capability) => (
-              <article key={capability.title} className="flex h-full flex-col border border-slate-800 bg-slate-950 p-6 text-white">
-                <Sparkles className="h-5 w-5 text-blue-300" />
-                <p className="mt-4 text-xs font-black uppercase tracking-[0.15em] text-blue-300">{capability.tools}</p>
-                <h3 className="mt-3 text-xl font-black">{capability.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-300">{capability.description}</p>
-                <p className="mt-5 border-t border-slate-800 pt-4 text-sm leading-6 text-slate-200"><span className="font-black text-white">Evidence:</span> {capability.evidence}</p>
+              <article key={capability.title} className="flex h-full flex-col border border-gold/30 bg-wine-deep p-6 text-white">
+                <Sparkles className="h-5 w-5 text-gold" />
+                <p className="mt-4 text-xs font-black uppercase tracking-[0.15em] text-gold-soft">{capability.tools}</p>
+                <h3 className="mt-3 font-heading text-2xl font-bold">{capability.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-[#ddced3]">{capability.description}</p>
+                <p className="mt-5 border-t border-gold/20 pt-4 text-sm leading-6 text-[#efe4e7]"><span className="font-black text-white">Evidence:</span> {capability.evidence}</p>
                 {capability.href ? (
-                  <a href={capability.href} target="_blank" rel="noreferrer" className="mt-auto inline-flex items-center pt-5 text-sm font-black text-blue-300 hover:text-white">
+                  <a href={capability.href} target="_blank" rel="noreferrer" className="mt-auto inline-flex items-center pt-5 text-sm font-black text-gold-soft hover:text-white">
                     View public agent <ExternalLink className="ml-2 h-4 w-4" />
                   </a>
                 ) : null}
@@ -796,24 +798,24 @@ function SkillsAndAiSection() {
 
 function ContactSection() {
   return (
-    <section id="contact" className="bg-white pb-12 pt-4">
+    <section id="contact" className="bg-paper pb-12 pt-4">
       <div className="mx-auto max-w-7xl px-5 sm:px-6">
-        <div className="grid gap-8 bg-slate-950 p-7 text-white sm:p-9 lg:grid-cols-[1.25fr_.75fr] lg:items-center">
+        <div className="grid gap-8 border border-gold/30 bg-wine-deep p-7 text-white sm:p-9 lg:grid-cols-[1.25fr_.75fr] lg:items-center">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-300">Open to mid-level business intelligence opportunities</p>
-            <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Business Intelligence Engineer</h2>
-            <p className="mt-4 max-w-3xl leading-7 text-slate-300">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-gold-soft">Open to mid-level business intelligence opportunities</p>
+            <h2 className="mt-3 font-heading text-4xl font-bold tracking-tight sm:text-5xl">Business Intelligence Engineer</h2>
+            <p className="mt-4 max-w-3xl leading-7 text-[#ddced3]">
               Interested in roles focused on SQL, cloud data systems, BI delivery, experimentation, financial and operational analytics, and applied AI.
             </p>
-            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-200">
+            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm text-[#efe4e7]">
               <a href="mailto:madhvika.sehgal@gmail.com?subject=Portfolio%20Inquiry%20-%20Madhvika%20Sehgal" className="inline-flex items-center hover:text-white"><Mail className="mr-2 h-4 w-4" />madhvika.sehgal@gmail.com</a>
               <span className="inline-flex items-center"><MapPin className="mr-2 h-4 w-4" />Seattle, WA</span>
               <a href="https://www.linkedin.com/in/madhvika-sehgal/" target="_blank" rel="noreferrer" className="inline-flex items-center hover:text-white"><BriefcaseBusiness className="mr-2 h-4 w-4" />LinkedIn</a>
             </div>
           </div>
           <div className="flex flex-wrap gap-3 lg:justify-end">
-            <a href="mailto:madhvika.sehgal@gmail.com?subject=Portfolio%20Inquiry%20-%20Madhvika%20Sehgal" className="inline-flex items-center rounded-lg bg-blue-600 px-5 py-3.5 text-sm font-black text-white hover:bg-blue-500"><Mail className="mr-2 h-4 w-4" />Contact</a>
-            <a href={resumePdf} target="_blank" rel="noreferrer" className="inline-flex items-center rounded-lg bg-white px-5 py-3.5 text-sm font-black text-slate-950 hover:bg-blue-50"><FileText className="mr-2 h-4 w-4" />Resume PDF</a>
+            <a href="mailto:madhvika.sehgal@gmail.com?subject=Portfolio%20Inquiry%20-%20Madhvika%20Sehgal" className="inline-flex items-center rounded-sm bg-gold px-5 py-3.5 text-sm font-black text-wine-deep hover:bg-gold-soft"><Mail className="mr-2 h-4 w-4" />Contact</a>
+            <a href={resumePdf} target="_blank" rel="noreferrer" className="inline-flex items-center rounded-sm bg-paper-soft px-5 py-3.5 text-sm font-black text-ink hover:bg-gold-soft"><FileText className="mr-2 h-4 w-4" />Resume PDF</a>
           </div>
         </div>
       </div>
@@ -823,7 +825,7 @@ function ContactSection() {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-slate-900 [font-family:Inter,Segoe_UI,Arial,sans-serif]">
+    <div className="min-h-screen bg-paper text-ink">
       <Header />
       <main>
         <HeroSection />
